@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C839 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C839 - Intro to Cryptography</h1>
+                <p class="alert">Hopefully you have a good memory.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="N">Notes</button>
+                  <button class="R">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="N">
+                        <div id="N"></div>
+                        <h2>Fundamentals</h2>
+                        <h3>Basics</h3>
+                        <div>
+                          <ul>
+                            <li>Tools</li>
+                            <ul>
+                              <li>Aescrypt - Individual files</li>
+                              <li>BitLocker and FileVault - Entire Disks</li>
+                            </ul>
+                            <li>Cipher Methods</li>
+                            <ul>
+                              <li>Mono-alphabetic</li>
+                              <ul>
+                                <li>Uses a single mapping from our alphabet</li>
+                                <li>Vulnerable to frequency analysis</li>
+                              </ul>
+                              <li>Poly-alphabetic</li>
+                              <ul>
+                                <li>Uses multiple mappings</li>
+                              </ul>
+                              <li>One-time pad</li>
+                              <ul>
+                                <li>Only uses cipher code once</li>
+                                <li>Theoretically unbreakable</li>
+                              </ul>
+                            </ul>
+                            <li>Random Number Generators</li>
+                            <ul>
+                              <li>PRNG</li>
+                              <ul>
+                                <li>Pseudo-random because the numbers will repeat after enough time.</li>
+                                <li>Fast and deterministic</li>
+                              </ul>
+                              <li>TRNG</li>
+                              <ul>
+                                <li>True-random but slow</li>
+                              </ul>
+                            </ul>
+                            <li>Encoding</li>
+                            <ul>
+                              <li>Binary representations of characters</li>
+                              <li>ASCII - 8 bit</li>
+                              <li>UTF-16 - 16 bits</li>
+                            </ul>
+                            <li>HSM</li>
+                            <ul>
+                              <li>Seperate physical device for crypto keys and processing</li>
+                            </ul>
+                            <li>TPM</li>
+                            <ul>
+                              <li>Handles disk encryption on a device and contains the encryption keys</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Math</h3>
+                        <div>
+                          <ul>
+                            <li>Combinations</li>
+                            <ul>
+                              <li>Not concerned with order</li>
+                            </ul>
+                            <li>Permutations</li>
+                            <ul>
+                              <li>Consider all options, including sequence</li>
+                            </ul>
+                            <li>Probability Theory</li>
+                            <ul>
+                              <li>Dependent, Independent, and Mutually Exclusive</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Secret Keys</h3>
+                        <div>
+                          <ul>
+                            <li>Secret Key encryption</li>
+                            <ul>
+                              <li>Uses a single key for both encryption and decryption.</li>
+                              <li>Sharing or transporting the key securely between entities is a challenge.</li>
+                              <li>Diffie-Hellman is a popular key exchange algorithm used to exchange secret keys.</li>
+                              <li>S-boxes are used in secret key ciphers to perform substitution during the encryption process.</li>
+                              <li>All current cipher codes can be cracked, and the work factor is used to measure the security of a code.</li>
+                              <li>Salting is the process of adding an initialization vector to the ciphering process to ensure that the ciphertext does not give the original plaintext when played back.</li>
+                            </ul>
+                            <li>Symmetric encryption</li>
+                            <ul>
+                              <li>There are two types of symmetric encryption: Block and Stream.</li>
+                              <li>Symmetric block encryption groups data into blocks and encrypts them, while stream encryption encrypts one bit at a time.</li>
+                              <li>Padding is used in block encryption to fill blocks to operating size when data doesn't fit perfectly.</li>
+                              <li>Block cipher modes include ECB, CBC, CFB, OFB, and CTR.</li>
+                              <li>IVs refer random value used to initialize the encryption process, which is combined with the key to generate the keystream.</li>
+                              <li>Stream encryption is faster and more suitable for real-time applications.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Hashing</h3>
+                        <div>
+                          <ul>
+                            <li>Definition: a one-way encryption technique used to protect data integrity and authentication</li>
+                            <li>Process: producing a fixed-length output (message digest) from a variable-length input</li>
+                            <li>Weakness: same input produces the same output unless salt is applied</li>
+                            <li>Factors affecting hash signatures:</li>
+                            <ul>
+                              <li>Collision: when two different inputs produce the same hash signature</li>
+                              <li>Similar context attack: when part of the message has some significance to the original</li>
+                              <li>Full context attack: where an alternative message is created with the same hash signature and has a direct relatio</li>
+                            </ul>
+                            <li>APR1 format: addresses brute force attacks on MD5 by iterating the hash value 1,000 times</li>
+                            <li>SHA weakness: does not have a salted value, making it vulnerable to rainbow table and brute force attacks</li>
+                            <li>HMAC: a message authentication code that can be used to verify integrity of a message and involves hashing the message with a secret key</li>
+                          </ul>
+                        </div>
+                        <h3>Passwords</h3>
+                        <div>
+                          <ul>
+                            <li>Hashed value passwords: can be cracked with rainbow tables or brute force attacks</li>
+                            <li>One-time passwords (OTP):</li>
+                            <ul>
+                              <li>Definition: a better option than hashed value passwords</li>
+                              <li>Generated based on an initial seed or time</li>
+                              <li>Types:</li>
+                              <ul>
+                                <li>OTP: unique password to be created for each instance, based on an initial seed</li>
+                                <li>TOTP: unique passcode to be created for each instance, based on an initial seed and for a given time period</li>
+                                <li>HOTP: unique passcode to be created each instance, based on a counter value and an
+  initial seed.</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Public key encryption</h3>
+                        <div>
+                          <ul>
+                            <li>Uses a key pair (public and private) for encryption and decryption.</li>
+                            <li>Only the public key should be shared or distributed.</li>
+                            <li>Is secure but often too slow for real-time communications.</li>
+                            <li>Main applications are identity checking and key protection.</li>
+                          </ul>
+                        </div>
+                        <h3>Public key encryption algorithms</h3>
+                        <div>
+                          <ul>
+                            <li>RSA is based on the difficulty of factorizing products of large prime numbers.</li>
+                            <li>Homomorphic encryption allows performing mathematical operations on ciphered values.</li>
+                            <li>Elliptic Curve is an improved solution over RSA with smaller keys and more difficult curves to crack. Bitcoins use Elliptic Curve cryptography with 32-byte private keys and 64-byte public keys.</li>
+                            <li>El Gamal is a public key method for encryption and digital signing, using discrete logarithms.</li>
+                            <li>Cramer-Shoup is an extension of El Gamal with a one-way hashing method to protect against attacks.</li>
+                            <li>The Paillier cryptosystem supports homomorphic encryption.</li>
+                          </ul>
+                        </div>
+                        <h3>Secret Key Exchange</h3>
+                        <div>
+                          <ul>
+                            <li>Secret-key encryption's major problem is passing the key between entities.</li>
+                            <li>Two methods for key exchange in symmetric cryptography are key exchange algorithms and public key encryption.</li>
+                            <li>Forward secrecy is important in key exchange, preventing compromise of long-term keys from compromising previous session keys.</li>
+                            <li>Ephemeral key methods use a different key for each connection, preventing all associated session keys from being breached if a long-term key is leaked.</li>
+                            <li>Diffie-Hellman is a widely used key exchange algorithm, but a weakness was discovered in its use of two popular parameters.</li>
+                            <li>DHE_EXPORT Downgrade attack involves forcing key negotiation to default to 512-bit prime numbers, but it can be combated by disabling export cipher suites, using ECDHE, or using a strong group.</li>
+                            <li>Diffie-Hellman has three groups with varying sizes of prime numbers.</li>
+                            <li>Diffie-Hellman suffers from man-in-the-middle attacks, but public key encryption is an improved method.</li>
+                            <li>The strength of Diffie-Hellman depends on the size of the prime number bases used.</li>
+                            <ul>
+                              <li>Select None if you do not want to use perfect forward secrecy.</li>
+                              <li>Select a group below:</li>
+                              <ul>
+                                <li>Group 1: 768-bit modulus (do not use in FIPS 140 mode)</li>
+                                <li>Group 2: 1024-bit modulus (do not use in FIPS 140 mode)</li>
+                                <li>Group 5: 1536-bit modulus (do not use in FIPS 140 mode)</li>
+                                <li>Group 14: 2048-bit modulus</li>
+                                <li>Elliptic curve groups:</li>
+                                <ul>
+                                  <li>Group 19: 256-bit random curve</li>
+                                  <li>Group 20: 384-bit random curve</li>
+                                  <li>Group 21: 521-bit random curve</li>
+                                </ul>
+                                <li>Group 24: 2048-bit modulus with 256-bit prime order subgroup</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Digital Certificates</h3>
+                        <div>
+                          <ul>
+                            <li>Common certificate applications:</li>
+                            <ul>
+                              <li>Server authentication</li>
+                              <li>Client authentication</li>
+                              <li>Code signing</li>
+                              <li>Email signing</li>
+                              <li>Time stamping</li>
+                              <li>IP security</li>
+                              <li>Windows hardware driver verification</li>
+                              <li>Smart card logon</li>
+                              <li>Document signing</li>
+                              <li>Public key transport</li>
+                            </ul>
+                            <li>Common certificate types:</li>
+                            <ul>
+                              <li>IKE</li>
+                              <li>PKCS #7</li>
+                              <li>PKCS #10</li>
+                              <li>RSA signatures</li>
+                              <li>X.509v3</li>
+                            </ul>                          
+                            <li>Public key transport in PKI:</li>
+                            <ul>
+                              <li>A digital certificate can be used for public key transport in PKI by securely sharing a certificate that contains the public key of the certificate owner, which can be validated by a trusted source.</li>
+                            </ul>
+                            <li>Obtaining a digital certificate signed by a trusted CA:</li>
+                            <ol>
+                              <li>Generating a key-pair</li>
+                              <li>Creating and submitting a Certificate Signing Request (CSR)</li>
+                              <li>CA generating the digital certificate</li>
+                              <li>CA signing the requester's digital certificate with its own private key and issuing the certificate to the requester.</li>
+                            </ol>
+                            <li>X.509 certificates:</li>
+                            <ul>
+                              <li>Can be in PEM (Base64 ASCII text) or DER (binary) format</li>
+                              <li>Common file types include .cer, .crt, .pem, .key, and .der.</li>
+                            </ul>
+                            <li>Authentication:</li>
+                            <ul>
+                              <li>End-to-end authentication requires user authentication to the end service</li>
+                              <li>Intermediate authentication only authenticates part of the conversation between entities.</li>
+                            </ul>                          
+                            <li>Key/certificate management:</li>
+                            <ol>
+                              <li>Initialization (registration, key pair generation, certificate creation and distribution, certificate dissemination, and key backup)</li>
+                              <li>Issued (certificate retrieval, validation, recovery, and update)</li>
+                              <li>Cancellation (expiration, revocation, history, and archiving)</li>
+                            </ol>
+                            <li>Validity and revocation:</li>
+                            <ul>
+                              <li>Certificates have a validity period designated by a start and end date or expiration date.</li>
+                              <li>Certificates may be revoked prior to the original expiration date due to reasons such as issuing CA or cert compromise, affiliation change, or update/superseding.</li>
+                              <li>RFC 5280 defines "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile," with two main revocation states: revoked and hold.</li>
+                              <li>CRLs must be published by the CA who originally generated the targeted certificates, signed by the CA's private key, and checked against its public key.</li>
+                              <li>An alternative to CRL is the Online Certificate Status Protocol (OCSP), which is an online service used to check the validity of a certificate.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Tunneling</h3>
+                        <div>
+                          <ul>
+                            <li>VPNs</li>
+                            <ul>
+                              <li>IPSec</li>
+                              <ul>
+                                <li>Mechanisms</li>
+                                <ul>
+                                  <li>ESP</li>
+                                  <li>AH</li>
+                                </ul>
+                                <li>Connection Setup</li>
+                                <ul>
+                                  <li>Phase 1</li>
+                                  <ul>
+                                    <li>Hash, encryption and key exchange methods are defined.</li>
+                                  </ul>
+                                  <li>Phase 2</li>
+                                  <ul>
+                                    <li>Policies are defined. Lifetime and AH/ESP</li>
+                                  </ul>
+                                </ul>
+                                <li>Transport Modes</li>
+                                <ul>
+                                  <li>End-to-End Tunneling</li>
+                                  <li>Tunneled Connection over a Public Network with Unprotected Traffic</li>
+                                </ul>
+                                <li>Handshake</li>
+                                <ul>
+                                  <li>UDP Port 500</li>
+                                  <li>Protocol Number 50 for ESP and 51 for AH</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                            <li>SSL/TLS</li>
+                            <ul>
+                              <li>Symmetric Key and Hashing Methods</li>
+                              <li>Tunnel Creation</li>
+                              <li>Flaws</li>
+                              <ul>
+                                <li>Export-Grade Ciphersuites</li>
+                                <li>DROWN</li>
+                                <li>POODLE</li>
+                                <li>FREAK</li>
+                              </ul>
+                            </ul>
+                            <li>Onion Routing</li>
+                            <ul>
+                              <li>Subscriber Computers</li>
+                              <li>Tor Network</li>
+                              <ul>
+                                <li>Volunteer Computers</li>
+                                <li>Reduced Traceability</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                          <h4>Other VPNs</h4>
+                          <div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Protocol</th>
+                                  <th>Security</th>
+                                  <th>Speed</th>
+                                  <th>Performance</th>
+                                  <th>Cost</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>PPTP</td>
+                                  <td>Low</td>
+                                  <td>Fast</td>
+                                  <td>Poorer and less stable</td>
+                                  <td>Lower than L2TP</td>
+                                </tr>
+                                <tr>
+                                  <td>L2TP</td>
+                                  <td>High</td>
+                                  <td>Slower than PPTP</td>
+                                  <td>More stable</td>
+                                  <td>Higher than PPTP</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <h3>Cracking</h3>
+                        <div>
+                          <ul>
+                            <li>Backdoor methods:</li>
+                            <ul>
+                              <li>Key escrow: a copy of the encryption key is kept in escrow for government use.</li>
+                              <li>NOBUS backdoor: only government agents can mathematically crack the encryption.</li>
+                            </ul>
+                            <li>Methods for intruders to crack a cipher:</li>
+                            <ul>
+                              <li>Exhaustive search: tries every possible key through brute force.</li>
+                              <li>Known plaintext attack: uses known ciphertext and plaintext to decrypt the rest of the message.</li>
+                              <li>Man-in-the-middle: intruder impersonates two parties to each other.</li>
+                              <li>Chosen-ciphertext: intruder sends a message to target and analyzes encrypted message.</li>
+                              <li>Active attack: intruder inserts or modifies messages.</li>
+                              <li>Replay system: intruder sends a legitimate message into the network at a future time.</li>
+                              <li>Cut-and-paste: intruder mixes parts of two encrypted messages to create a new message.</li>
+                              <li>Time resetting: resetting computer time or determining message creation time gives useful information.</li>
+                              <li>Time attack: determines user decryption time to find key.</li>
+                            </ul>
+                            <li>AES is generally secure, but poor implementation leaves it vulnerable to attacks such as brute force and copy-and-paste.</li>
+                            <li>RSA is susceptible to numerous attacks and cracking methods.</li>
+                          </ul>
+                        </div>
+                        <h3>Lightweight Crypto</h3>
+                        <div>
+                          <ul>
+                            <li>Most conventional cryptosystems are unsuitable for implementation in IoT, embedded systems, and RFID due to their high processing power, physical space, and battery power requirements.</li>
+                            <li>Light-weight cryptography refers to cryptosystems that can provide cryptographic functions while requiring less processing power, physical space, and battery power than conventional cryptosystems.</li>
+                            <li>NIST categorizes devices into two spectra:</li> 
+                            <ul>
+                              <li>Conventional cryptography for servers, desktops, tablets, and smartphones.</li>
+                              <li>Light-weight cryptography for embedded systems, RFID, and sensor networks.</li>
+                            </ul>
+                            <li>Quantum computers can break most existing RSA implementations due to their fast multiplication circuits.</li>
+                            <li>A Merkle tree is a hash tree that provides verification of large-scale data structures.</li>
+                            <li>Lattice-based cryptography is being investigated because of its quantum robustness, unlike existing public key methods such as RSA and Diffie-Hellman cryptosystems which can be broken with quantum computers.</li>
+                          </ul>
+                        </div>
+                        <h3>Cryptocurrencies</h3>
+                        <div>
+                          <ul>
+                            <li>Bitcoin</li>
+                            <ul>
+                              <li>Uses blockchain technology to protect against overspending.</li>
+                              <li>Created through mining, which involves using computers to perform complex calculations.</li>
+                              <li>New blocks of transactions are added to the blockchain every 10 minutes through a mining process.</li>
+                              <li>The blockchain is a publicly available ledger that records transactions and allows the Bitcoin network to know the number of bitcoins a user has.</li>
+                            </ul>
+                            <li>Ethereum</li>
+                            <ul>
+                              <li>Built on the Bitcoin/Blockchain concept and includes the concept of smart contracts.</li>
+                              <li>Smart contracts are programs stored on a blockchain that run when predetermined conditions are met.</li>
+                              <li>Gas is the unit used to measure the amount of work required to perform a single Keccak-256 hash in Ethereum applications.</li>
+                              <li>Enables users to create their own contracts that will be strictly abided by.</li>
+                            </ul>
+                            <li>Hyperledger</li>
+                            <ul>
+                              <li>Common option for implementing blockchain.</li>
+                              <li>Offers the smart contract feature.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Wireless</h3>
+                        <div>
+                          <ul>
+                            <li>Encryption schemes used with Wi-Fi:
+                              <ul>
+                                <li>40-bit RC4 (WEP)</li>
+                                <li>TKIP with 128-bit RC4 (WPA)</li>
+                                <li>128-bit AES-CCMP (WPA-2)</li>
+                              </ul>
+                            </li>
+                            <li>RC4 key limitations and increase:
+                              <ul>
+                                <li>RC4 key was initially limited to 40 bits due to export restrictions</li>
+                                <li>It was later increased to 128 bits</li>
+                              </ul>
+                            </li>
+                            <li>Weaknesses of WEP:
+                              <ul>
+                                <li>Small IV</li>
+                                <li>Susceptibility to weak key attacks</li>
+                                <li>Lack of protection against message replay and tampering</li>
+                                <li>No key updates</li>
+                              </ul>
+                            </li>
+                            <li>WPA addressing WEP weaknesses:
+                              <ul>
+                                <li>Supporting TKIP</li>
+                                <li>Increasing IV value to 48 bits</li>
+                                <li>Focusing on WPA-PSK and WPA Enterprise</li>
+                              </ul>
+                            </li>
+                            <li>Advancements in WPA-2:
+                              <ul>
+                                <li>Adding AES-CCMP</li>
+                                <li>Supporting Personal and Enterprise modes</li>
+                              </ul>
+                            </li>
+                            <li>WPA Enterprise:
+                              <ul>
+                                <li>Includes MIC to guard against bit flipping attacks identified within WEP</li>
+                              </ul>
+                            </li>
+                            <li>Mobile phone networks/GSM encryption:
+                              <ul>
+                                <li>A5/1 or A5/2 encryption has been targeted by crackers</li>
+                                <li>A5/3 is the upgrade to A5/1 and uses a block cipher</li>
+                              </ul>
+                            </li>
+                            <li>Alternative to AES for TLS connections:
+                              <ul>
+                                <li>Google proposed ChaCha20 as an alternative to AES</li>
+                                <li>Stream ciphers can be faster than block ciphers.</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        <h3>NSA Suite B</h3>
+                        <div>
+                          <ul>
+                            <li>AES: Symmetric Encryption</li>
+                            <li>AES w/ GCM: Authenticated Symmetric Encryption</li>
+                            <li>ECDSA: Digital Signatures</li>
+                            <li>ECDH: Key Agreement</li>
+                            <li>SHA2 (SHA256-SHA-384): Message Digest</li>
+                          </ul>
+                        </div>
+                        <h3>CNSA</h3>
+                        <div>
+                          <ul>
+                            <li>AES w/ 256 bit keys: Symmetric</li>
+                            <li>ECDH and ECDSA with curve P-384: Key Agreement and Digital Sigs</li>
+                            <li>SHA-2 with 384: Message Digests</li>
+                            <li>DH with 3072 bit modulus: Key Agreement</li>
+                            <li>RSA with 3072 modulus: Digital Sigs and Key Exchange</li>
+                          </ul>
+                        </div>
+                        <h3>PQC (Not necessary for class)</h3>
+                        <div>
+                          <ul>
+                            <li>Lattice-Based</li>
+                            <ul>
+                              <li>Based on the hardness of certain problems in lattice theory, such as the shortest vector problem or the closest vector problem.</li>
+                            </ul>
+                            <li>Multivariate</li>
+                            <ul>
+                              <li>Based on the difficulty of solving systems of multivariate equations over finite fields</li>
+                            </ul>
+                            <li>Hash-Based</li>
+                            <ul>
+                              <li>Based on the use of one-way hash functions</li>
+                              <li> One of the most well-known hash-based schemes is the Merkle signature scheme, which uses a hash tree structure to sign messages.</li>
+                            </ul>
+                            <li>Code-Based</li>
+                            <ul>
+                              <li>Code-based cryptography is based on the hardness of certain coding theory problems, such as the decoding problem or the syndrome decoding problem because they require solving a large system of linear equations.</li>
+                            </ul>
+                            <li>Supersingular Elliptic Curve Isogeny Cryptography</li>
+                            <ul>
+                              <li>Based on the use of isogenies, which are maps between elliptic curves that preserve certain algebraic properties</li>
+                            </ul>
+                            <li>Symmetric Key Quantum Resistance</li>
+                            <ul>
+                              <li>One example of a quantum-resistant symmetric key scheme is the AES-256 algorithm, which uses a 256-bit key and is believed to be secure against attacks by quantum computers</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Cisco (Not entirely necessary, just look at notes column)</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Cisco Password</th>
+                                <th>Crackability</th>
+                                <th>Best speed</th>
+                                <th>John the Ripper</th>
+                                <th>Hashcat</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Type 0</td>
+                                <td>instant</td>
+                                <td>instant</td>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>Clear-text password stored in the configuration file</td>
+                              </tr>
+                              <tr>
+                                <td>Type 7</td>
+                                <td>instant</td>
+                                <td>instant</td>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>Weak hashing algorithm (MD5) with no salt</td>
+                              </tr>
+                              <tr>
+                                <td>Type 4</td>
+                                <td>easy</td>
+                                <td>26.4 million per second</td>
+                                <td>--format=Raw-SHA256</td>
+                                <td>-m 5700</td>
+                                <td>SHA-256 hashing algorithm with no salt</td>
+                              </tr>
+                              <tr>
+                                <td>Type 5</td>
+                                <td>medium</td>
+                                <td>1.2 million per second</td>
+                                <td>--format=md5crypt</td>
+                                <td>-m 500</td>
+                                <td>MD5 hashing algorithm with salt</td>
+                              </tr>
+                              <tr>
+                                <td>Type 8</td>
+                                <td>hard</td>
+                                <td>11.6 thousand per second</td>
+                                <td>--format=pbkdf2-hmac-sha256</td>
+                                <td>-m 9200</td>
+                                <td>PBKDF2 key derivation function with HMAC-SHA256 and 1000 rounds of hashing</td>
+                              </tr>
+                              <tr>
+                                <td>Type 9</td>
+                                <td>very hard</td>
+                                <td>1.8 thousand per second</td>
+                                <td>--format=scrypt</td>
+                                <td>-m 9300</td>
+                                <td>Scrypt key derivation function with N=16384, r=8, p=1, and 64-byte salt</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Historical Ciphers</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Pigpen</td>
+                                <td>Mono-alphabetic substitution cipher that uses graphical characters instead of alphabetic ones to map plaintext characters.</td>
+                              </tr>
+                              <tr>
+                                <td>Rail Code</td>
+                                <td>Scrambles text by writing it in a sequence across a number of rails.</td>
+                              </tr>
+                              <tr>
+                                <td>BIFID</td>
+                                <td>Uses a grid to map letters into numeric values.</td>
+                              </tr>
+                              <tr>
+                                <td>Playfair</td>
+                                <td>Uses a 5 x 5 matrix containing the alphabet (excluding "J") to cipher/decipher text with a set of rules for column and row use.</td>
+                              </tr>
+                              <tr>
+                                <td>Morse Code</td>
+                                <td>Encoding method that translates characters into sequences of dots and dashes.</td>
+                              </tr>
+                              <tr>
+                                <td>Caesar</td>
+                                <td>Mono-alphabetic substitution cipher that replaces plaintext letters with a fixed number of positions down the alphabet.</td>
+                              </tr>
+                              <tr>
+                                <td>Vigenere</td>
+                                <td>Polyalphabetic cipher that maps each character of the cipher using a different mapping based on a keyword.</td>
+                              </tr>
+                              <tr>
+                                <td>One Time Pad</td>
+                                <td>Unbreakable cipher that uses a code mapping only once, requiring the generation of a new pad each time.</td>
+                              </tr>
+                              <tr>
+                                <td>Four-square</td>
+                                <td>Uses four 5 x 5 matrices arranged in a square for encoding and decoding operations.</td>
+                              </tr>
+                              <tr>
+                                <td>Enigma Machine</td>
+                                <td>Uses a polyalphabetic substitution cipher with a secret key that does not repeat within a reasonable time period.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Conventional Block</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Block Size (In Bits)</th>
+                                <th>Key Size (In Bits)</th>
+                                <th>Rounds</th>
+                                <th>Underlying Algorithm</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>DES</td>
+                                <td>64</td>
+                                <td>56</td>
+                                <td>16</td>
+                                <td>Feistel</td>
+                                <td>One of the earliest and most widely used encryption algorithms, but now considered insecure due to its short key length.</td>
+                              </tr>
+                              <tr>
+                                <td>3DES</td>
+                                <td>64</td>
+                                <td>112</td>
+                                <td>48</td>
+                                <td>Feistel</td>
+                                <td>An extension of DES that uses three iterations of the DES algorithm with two or three different keys, making it more secure but slower than DES.</td>
+                              </tr>
+                              <tr>
+                                <td>AES</td>
+                                <td>128</td>
+                                <td>128, 192, or 256</td>
+                                <td>10, 12, or 14</td>
+                                <td>Substitution-Permutation Network</td>
+                                <td>The most widely used encryption algorithm today, chosen as the standard symmetric encryption algorithm by the US government and widely adopted by other organizations.</td>
+                              </tr>
+                              <tr>
+                                <td>IDEA</td>
+                                <td>64</td>
+                                <td>128</td>
+                                <td>&gt;17</td>
+                                <td>Feistel</td>
+                                <td>Developed as a replacement for DES, but never gained widespread adoption due to patent issues. Still considered secure but slower than other alternatives.</td>
+                              </tr>
+                              <tr>
+                                <td>Skipjack</td>
+                                <td>64</td>
+                                <td>80</td>
+                                <td>32</td>
+                                <td>Feistel</td>
+                                <td>Developed by the NSA for use in the Clipper chip, a controversial encryption chip with a built-in backdoor for law enforcement access.</td>
+                              </tr>
+                              <tr>
+                                <td>Blowfish</td>
+                                <td>64</td>
+                                <td>32-448 (common = 128, 192, or 256)</td>
+                                <td>16</td>
+                                <td>Feistel</td>
+                                <td>A fast and widely used encryption algorithm, but now considered less secure than alternatives like AES or Twofish.</td>
+                              </tr>
+                              <tr>
+                                <td>Twofish</td>
+                                <td>128</td>
+                                <td>1-256 (common = 128, 192, or 256)</td>
+                                <td>16</td>
+                                <td>Feistel-like</td>
+                                <td>Developed as a candidate for the AES standard, but lost out to Rijndael. Still considered secure and widely used in applications like disk encryption.</td>
+                              </tr>
+                              <tr>
+                                <td>Camellia</td>
+                                <td>128</td>
+                                <td>128, 192, or 256</td>
+                                <td>18 or 24</td>
+                                <td>Substitution-Permutation Network</td>
+                                <td>A fast and secure encryption algorithm developed jointly by Mitsubishi Electric and NTT of Japan.</td>
+                              </tr>
+                              <tr>
+                                <td>RC5</td>
+                                <td>32, 64, or 128</td>
+                                <td>0-2048</td>
+                                <td>0-255</td>
+                                <td>Feistel-like</td>
+                                <td>A flexible encryption algorithm that allows for variable block and key sizes, as well as variable numbers of rounds.</td>
+                              </tr>
+                              <tr>
+                                <td>RC2</td>
+                                <td>64</td>
+                                <td>1-128 (suggested minimum = 40)</td>
+                                <td>18</td>
+                                <td>Feistel-like</td>
+                                <td>A fast and widely used encryption algorithm, but now considered less secure than alternatives like AES.</td>
+                              </tr>
+                              <tr>
+                                <td>RC6</td>
+                                <td>Variable (common = 128)</td>
+                                <td>Variable (common = 128, 192 or 256)</td>
+                                <td>20</td>
+                                <td>Feistel-like</td>
+                                <td>A flexible encryption algorithm that allows for variable block and key sizes, as well as variable numbers of rounds.</td>
+                              </tr>
+                              <tr>
+                                <td>XTEA</td>
+                                <td>64</td>
+                                <td>128</td>
+                                <td>Variable (64 suggested)</td>
+                                <td>Feistel</td>
+                                <td>A simple and fast encryption algorithm designed for use in applications like small embedded systems.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>                
+                        <h4>Block Cipher Modes</h4>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>ECB</td>
+                                <td>Each block of plaintext is encrypted separately and independently of each other, using the same key. This makes it susceptible to certain attacks, as identical plaintext blocks will result in identical ciphertext blocks.</td>
+                              </tr>
+                              <tr>
+                                <td>CBC</td>
+                                <td>Each plaintext block is XORed with the ciphertext of the previous block before encryption.</td>
+                              </tr>
+                              <tr>
+                                <td>PCBC</td>
+                                <td>Similar to CBC, but the XOR operation is also applied to the plaintext before encryption.</td>
+                              </tr>
+                              <tr>
+                                <td>CFB</td>
+                                <td>The encryption algorithm is applied to the previous ciphertext block to generate a keystream, which is then XORed with the plaintext block to generate the ciphertext block.</td>
+                              </tr>
+                              <tr>
+                                <td>OFB</td>
+                                <td>Similar to CFB, but the encryption algorithm is applied to the previous keystream to generate the next keystream, which is then XORed with the plaintext block to generate the ciphertext block.</td>
+                              </tr>
+                              <tr>
+                                <td>CTR</td>
+                                <td>A unique counter value is combined with the key to generate a keystream, which is then XORed with the plaintext to generate the ciphertext. This allows for parallel encryption and decryption, and is often used in applications that require random access to the encrypted data.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div> 
+                        <h3>Conventional Stream</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>RC4</td>
+                                <td>1-256 bytes key size (40-bit minimum recommended), 1 round</td>
+                              </tr>
+                              <tr>
+                                <td>ChaCha</td>
+                                <td>Uses a 256-bit key and a 64-bit nonce. ~ three times faster than software-enabled AES and is not sensitive to timing attacks</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Conventional Hash</h3>
+                        <div>
+                          <h4>Cryptographic</h4>
+                          <div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Hash Value (bits)</th>
+                                  <th>Notes</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>MD2</td>
+                                  <td>128</td>
+                                  <td>-</td>
+                                </tr>
+                                <tr>
+                                  <td>MD4</td>
+                                  <td>128</td>
+                                  <td>-</td>
+                                </tr>
+                                <tr>
+                                  <td>MD5</td>
+                                  <td>128</td>
+                                  <td>Vulnerable to collision attacks, and should not be used for security purposes.</td>
+                                </tr>
+                                <tr>
+                                  <td>MD6</td>
+                                  <td>1-512</td>
+                                  <td>Not widely used or standardized. Still under development and not yet established as a secure hash function.</td>
+                                </tr>
+                                <tr>
+                                  <td>SHA-1</td>
+                                  <td>160</td>
+                                  <td>Vulnerabilities have been found that make it susceptible to collision attacks.</td>
+                                </tr>
+                                <tr>
+                                  <td>SHA-2</td>
+                                  <td>256, 384, or 512</td>
+                                  <td>Widely used and considered secure for most purposes. SHA-256 is the most commonly used variant and is recommended for most purposes, while SHA-512 provides better security but is slower.</td>
+                                </tr>
+                                <tr>
+                                  <td>SHA-3</td>
+                                  <td>Variable</td>
+                                  <td>Newer standard and considered secure. Provides better security and performance than SHA-2.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <h4>Non-Cryptographic</h4>
+                          <div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Hash Value (bits)</th>
+                                  <th>Notes</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Bernstein</td>
+                                  <td>32</td>
+                                  <td>Simple and fast hash function.</td>
+                                </tr>
+                                <tr>
+                                  <td>Buzhash</td>
+                                  <td>Variable</td>
+                                  <td>Designed for pattern matching and data deduplication.</td>
+                                </tr>
+                                <tr>
+                                  <td>CityHash</td>
+                                  <td>64, 128, or 256</td>
+                                  <td>Optimized for hash table use and provides good performance for short keys.</td>
+                                </tr>
+                                <tr>
+                                  <td>Fowler-Noll-Vo</td>
+                                  <td>32, 64, 128, 126, 512, or 1024</td>
+                                  <td>Fast and widely used hash function with good distribution.</td>
+                                </tr>
+                                <tr>
+                                  <td>Java hashCode()</td>
+                                  <td>32</td>
+                                  <td>Simple hash function used in the Java programming language.</td>
+                                </tr>
+                                <tr>
+                                  <td>Jenkins</td>
+                                  <td>32 or 64</td>
+                                  <td>Fast and provides good distribution.</td>
+                                </tr>
+                                <tr>
+                                  <td>MurmurHash</td>
+                                  <td>32, 64, or 128</td>
+                                  <td>Fast and provides good distribution.</td>
+                                </tr>
+                                <tr>
+                                  <td>Numeric Hash</td>
+                                  <td>Variable</td>
+                                  <td>Designed for hashing numerical data.</td>
+                                </tr>
+                                <tr>
+                                  <td>Paul Hsieh’s SuperFastHash</td>
+                                  <td>32</td>
+                                  <td>Simple and fast hash function.</td>
+                                </tr>
+                                <tr>
+                                  <td>Pearson</td>
+                                  <td>8</td>
+                                  <td>Simple hash function used in some compression and encryption algorithms.</td>
+                                </tr>
+                                <tr>
+                                  <td>PJW hash/Elf Hash</td>
+                                  <td>32 or 64</td>
+                                  <td>Designed for use with strings and hash table keys.</td>
+                                </tr>
+                                <tr>
+                                  <td>SpookyHash</td>
+                                  <td>32, 64, or 128</td>
+                                  <td>Provides good distribution and collision resistance.</td>
+                                </tr>
+                                <tr>
+                                  <td>xxHash</td>
+                                  <td>32 or 64</td>
+                                  <td>Fast and provides good distribution.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <h3>Conventional Key Exchange</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tr>
+                              <td>Diffie-Hellman</td>
+                              <td>Provides a method for key exchange using a one-way function.</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <h3>Lightweight Block</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Block Size (In Bits)</th>
+                                <th>Key Size (In Bits)</th>
+                                <th>Rounds</th>
+                                <th>Lightweight Feasibility Attributes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>PRESENT</td>
+                                <td>64</td>
+                                <td>80 or 128</td>
+                                <td>32</td>
+                                <td>Relatively small key and block sizes. Uses an SPN (substitution permutation network) method. One of the 1st considered as an AES replacement for use in light-weight implementations.</td>
+                              </tr>
+                              <tr>
+                                <td>XTEA</td>
+                                <td>64</td>
+                                <td>128</td>
+                                <td>Variable (64 recommended)</td>
+                                <td>Relatively small key and block sizes and variable rounds setting. Operates with just a few lines of code. Fast speed.</td>
+                              </tr>
+                              <tr>
+                                <td>RC5</td>
+                                <td>32, 64, or 128</td>
+                                <td>0-2048</td>
+                                <td>Variable 0-255</td>
+                                <td>Variable block size, key size, and rounds. Can be optimized to IoT devices. Conventional method suitable for light-weight implementations.</td>
+                              </tr>
+                              <tr>
+                                <td>SIMON</td>
+                                <td>32, 48, 64, 96, 128</td>
+                                <td>64, 72, 96, 128, 144, 192, or 256</td>
+                                <td>Variable (32 or 44 common)</td>
+                                <td>Variable block sizes key sizes, and rounds. Optimized for hardware implementations.</td>
+                              </tr>
+                              <tr>
+                                <td>SPECK</td>
+                                <td>32, 48, 64, 96, or 128</td>
+                                <td>Variable</td>
+                                <td>Variable (32 or 44 common)</td>
+                                <td>Variable block sizes key sizes, and rounds. Optimized for software implementations.</td>
+                              </tr>
+                              <tr>
+                                <td>CLEFIA</td>
+                                <td>128</td>
+                                <td>128, 192, and 256</td>
+                                <td>18, 22, or 26</td>
+                                <td>Variable key size and rounds</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Lightweight Stream</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Key Size (In Bits)</th>
+                                <th>Initialization Vector (IV) Size (In Bits)</th>
+                                <th>Lightweight Feasibility Attributes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Rabbit</td>
+                                <td>128</td>
+                                <td>64</td>
+                                <td>Low memory requirements, high speed and efficiency</td>
+                              </tr>
+                              <tr>
+                                <td>Mickey v2</td>
+                                <td>80</td>
+                                <td>Variable up to 80</td>
+                                <td>Low power consumption, small code size, secure key exchange mechanisms</td>
+                              </tr>
+                              <tr>
+                                <td>Trivium</td>
+                                <td>80</td>
+                                <td>80</td>
+                                <td>Low memory requirements, small code size, high speed and efficiency, secure key exchange mechanisms</td>
+                              </tr>
+                              <tr>
+                                <td>Grain</td>
+                                <td>80</td>
+                                <td>64</td>
+                                <td>Low memory requirements, low power consumption, high speed and efficiency</td>
+                              </tr>
+                              <tr>
+                                <td>Enocoro</td>
+                                <td>128</td>
+                                <td>64</td>
+                                <td>Low memory requirements, high speed and efficiency, secure key exchange mechanisms</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Lightweight Hashing</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Hash Value (In Bits)</th>
+                                <th>Lightweight Feasibility Attributes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>PHOTON</td>
+                                <td>80, 128, 160, 224 or 256-bit</td>
+                                <td>Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Different size hash values available.</td>
+                              </tr>
+                              <tr>
+                                <td>SPONGENT</td>
+                                <td>88, 128, 160, 224 or 256</td>
+                                <td>Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Different size hash values available.</td>
+                              </tr>
+                              <tr>
+                                <td>Lesamnta-LW</td>
+                                <td>256</td>
+                                <td>Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Fast (five times faster than SHA-256). Primary target implementation is 8-bit CPUs for short message hashing.</td>
+                              </tr>
+                              <tr>
+                                <td>Quark</td>
+                                <td>64 or 112</td>
+                                <td>Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Can be used for hashing and in stream encryption.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Lightweight Signing</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Key Size (in bits)</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Chaskey</td>
+                                <td>128</td>
+                                <td>Light-weight cryptography method for signing messages (MAC). Relatively undemanding hardware implementation (only ~3,333 gates required at 1MHz clock rate) making it suitable for IoT implementation.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Lightweight Publickey</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Elli</td>
+                                <td>Light-Weight public key solution. Short for "Elliptic Light". Uses Elliptic Curves along with a Diffie-Hellman related handshake between the RFID tag and the RFID reader in RFID implementations</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Asymmetric</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>RSA</td>
+                                <td>Partially homomorphic crypto system that leverages prime number characteristics, 1024-4096 bits variable key size, 1 round.</td>
+                              </tr>
+                              <tr>
+                                <td>ECC</td>
+                                <td>Improved solution over RSA often used with key exchange methods as well as with DSA in creating digital signatures.</td>
+                              </tr>
+                              <tr>
+                                <td>EL Gamal</td>
+                                <td>Used in both encryption and digital signing.</td>
+                              </tr>
+                              <tr>
+                                <td>DSA</td>
+                                <td>Federal Information Processing Standard (FIPS 186) for digital signatures, based on the mathematical concept of modular exponentiation and the discrete logarithm problem.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h3>Standards</h3>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Standard</th>
+                                <th>Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>FIPS 180-2</td>
+                                <td>Cryptographic Hash Standard</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 140</td>
+                                <td>Security Requirements for Cryptographic Modules</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 186</td>
+                                <td>Digital Signature Standard</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 197</td>
+                                <td>Advanced Encryption Standard</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 180-4</td>
+                                <td>Secure Hash Standard</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 198-1</td>
+                                <td>The Keyed-Hash Message Authentication Code (HMAC)</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 202</td>
+                                <td>SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 800-38A</td>
+                                <td>Recommendation for Block Cipher Modes of Operation: Methods and Techniques</td>
+                              </tr>
+                              <tr>
+                                <td>FIPS 800-56A</td>
+                                <td>Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #1</td>
+                                <td>RSA Cryptography Standard</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #3</td>
+                                <td>Diffie-Hellman Key Agreement Standard</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #5</td>
+                                <td>Password-Based Cryptography Standard</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #7</td>
+                                <td>Cryptographic Message Syntax Standard</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #8</td>
+                                <td>Private-Key Information Syntax Standard</td>
+                              </tr>
+                              <tr>
+                                <td>PKCS #13</td>
+                                <td>Elliptic Curve Cryptography Standard</td>
+                              </tr>
+                              <tr>
+                                <td>RFC 2898</td>
+                                <td>Password-Based Cryptography Standard</td>
+                              </tr>
+                              <tr>
+                                <td>RFC 3174</td>
+                                <td>Secure Hash Algorithm (SHA-1) Signature Standard</td>
+                              </tr>
+                              <tr>
+                                <td>ANSI X9.31</td>
+                                <td>Digital Signatures Using Reversible Public Key Cryptography for the Financial Services Industry</td>
+                              </tr>
+                              <tr>
+                                <td>ANSI X9.63</td>
+                                <td>Key Agreement and Key Transport Using Elliptic Curve Cryptography</td>
+                              </tr>
+                              <tr>
+                                <td>ISO/IEC 9796-2</td>
+                                <td>Digital signature schemes giving message recovery</td>
+                              </tr>
+                              <tr>
+                                <td>ISO/IEC 18033</td>
+                                <td>Cryptographic Algorithms</td>
+                              </tr>
+                              <tr>
+                                <td>ISO/IEC 19772</td>
+                                <td>Authenticated Encryption</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h2>Resources</h2>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://www.studocu.com/en-us/document/western-governors-university/intro-to-cryptography/crypto-study-guide/45087140">Use stuhack on github.
+                            </a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://srm--c.na127.content.force.com/servlet/servlet.FileDownload?retURL=https%3A%2F%2Fsrm--c.na127.visual.force.com%2Fapex%2FFDP%2FCommonsExpandedChatter%3Fcode%3DC839&file=00P3x00001pOyLHEA0&_CONFIRMATIONTOKEN=VmpFPSxNakF5TXkwd05DMHlPRlF5TXpvek5qb3dNaTQxTURKYSxtYUQ1YTVBU0pCSnNlZml2ekRpTkxmLFlUQmhOamht&common.udd.actions.ActionsUtilORIG_URI=%2Fservlet%2Fservlet.FileDownload">Shawn's All-In-One Study Guide (You need to be authenticated to *.wgu.edu)
+                            </a>
+                          </li>
+                          <li><a href="https://testmoz.com/class/43834">Shawn's Knowledge Checks</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+    </div>
+  </div>
+</body>
+</html>

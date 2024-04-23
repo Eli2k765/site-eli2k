@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Embedded Linux Refresher</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Embedded Linux Refresher</h1>
+                <p class="alert">A quick overview/refresher</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Buildroot Installation Steps</h3>
+                    <div>
+                      <ol>
+                          <li>
+                              <strong>Install host tools:</strong><br>
+                              Use the command: <pre><code class="sudo apt install -y git build-essential wget cpio unzip rsync bc libncurses5-dev screen"</code></pre>
+                          </li>
+                          <li>
+                              <strong>Download Buildroot:</strong><br>
+                              Clone the Buildroot repository using Git: <pre><code class="git clone git://git.buildroot.net/buildroot"</code></pre>
+                              Change to the Buildroot directory: <pre><code class="cd buildroot/"</code></pre>
+                              Checkout the desired version (e.g., 2019.11.1): <pre><code class="git checkout 2019.11.1"</code></pre>
+                          </li>
+                          <li>
+                              <strong>Configure Buildroot for your hardware:</strong><br>
+                              Choose the appropriate configuration for your target board:<br>
+                              Raspberry Pi Zero W: <pre><code class="make raspberrypi0w_defconfig"</code></pre>
+                              Raspberry Pi Zero: <pre><code class="make raspberrypi0_defconfig"</code></pre>
+                              Virtual machine: <pre><code class="make qemu_x86_64_defconfig"</code></pre>
+                          </li>
+                          <li>
+                              <strong>Build the target image:</strong><br>
+                              Start the compilation process: <pre><code class="make"</code></pre>
+                          </li>
+                      </ol>
+                      <p>After following these steps, Buildroot will download and compile the necessary components to create the target operating system image. The resulting SD card image will be ready to burn onto the Pi's SD card or use in a virtual machine.</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

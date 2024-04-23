@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C846 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C846 - Business of IT: Applications
+                (ITILv4)</h1>
+                <p class="alert">This class was a drag, you may learn quite a bit, but if you are anything like me, it will be boring. Don't let that stop you though, the course instructor, Tony Robinson, was very helpful and pointed me in the direction of the CyberVista practice exams which aligned almost perfectly with the exam.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="N">Notes</button>
+                  <button class="R">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="N">
+                        <div id="N"></div>
+                        <h3>Exam Content</h3>
+                        <div>
+                          <p><img src=
+                          "https://eli2k.com/resources/images/notes/ITILv4_Question_Ratio.png"
+                          alt=
+                          "Key Concepts=5, Guiding Principles=6, Four Dimensions=2, SVS=1, SVC=2, 15 practices=7 and 7 Main Practices=17"></p>
+                        </div>
+                        <h3>Key Concepts</h3>
+                        <div>
+                          <ul>
+                            <li>Value</li>
+                            <ul>
+                              <li>The perceived benefit of a product
+                              or service</li>
+                            </ul>
+                            <li>Output</li>
+                            <ul>
+                              <li>The result of an activity</li>
+                            </ul>
+                            <li>Outcome</li>
+                            <ul>
+                              <li>The result for a stakeholder
+                              enabled by an output</li>
+                            </ul>
+                            <li>Stakeholders</li>
+                            <ul>
+                              <li>Organization</li>
+                              <ul>
+                                <li>An entity with its own functions
+                                and objectives</li>
+                              </ul>
+                              <li>Service Consumers</li>
+                              <ul>
+                                <li>Customers</li>
+                                <ul>
+                                  <li>Takes responsibility for the
+                                  outcome of the service</li>
+                                </ul>
+                                <li>Users</li>
+                                <ul>
+                                  <li>Uses the service</li>
+                                </ul>
+                                <li>Sponsors</li>
+                                <ul>
+                                  <li>Provides funding for the
+                                  service</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                            <li>Service Relationships</li>
+                            <ul>
+                              <li>Service Provision</li>
+                              <ul>
+                                <li>Activities performed by the
+                                service provider to deliver the
+                                service</li>
+                              </ul>
+                              <li>Service Consumption</li>
+                              <ul>
+                                <li>Activities performed by the
+                                service consumer to use the
+                                service</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Guiding Principles</h3>
+                        <div>
+                          <ul>
+                            <li>Focus on Value
+                              <ul>
+                                <li>Everything should be focused on delivering value to the stakeholder</li>
+                                <li>Includes the experience of the stakeholder</li>
+                              </ul>
+                            </li>
+                            <li>Start Where You Are
+                              <ul>
+                                <li>Start with what you have</li>
+                                <li>Don't try to reinvent the wheel</li>
+                              </ul>
+                            </li>
+                            <li>Progress Iteratively with Feedback
+                              <ul>
+                                <li>Break down the process into small steps</li>
+                                <li>Use feedback to improve the process</li>
+                              </ul>
+                            </li>
+                            <li>Collaborate and Promote Visibility
+                              <ul>
+                                <li>Work with others to deliver value</li>
+                                <li>Share information to improve the process</li>
+                                <li>Avoid hidden agendas</li>
+                              </ul>
+                            </li>
+                            <li>Think and Work Holistically
+                              <ul>
+                                <li>Think about the whole process</li>
+                                <li>Don't focus on individual parts</li>
+                              </ul>
+                            </li>
+                            <li>Keep it Simple and Practical
+                              <ul>
+                                <li>If a process fails to deliver value, it should be changed or removed</li>
+                                <li>Use outcome based thinking</li>
+                              </ul>
+                            </li>
+                            <li>Optimize and Automate
+                              <ul>
+                                <li>Eliminate waste</li>
+                                <li>Use technology to automate processes</li>
+                                <li>Human intervention should only happen when it contributes to value</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        <h3>Four Dimensions of Service
+                          Management</h3>
+                        <div>
+                          <ul>
+                            <li>
+                              Organizations and People
+                              <ul>
+                                <li>Deals with the structure, management, culture, and people of the organization</li>
+                              </ul>
+                            </li>
+                            <li>
+                              Information and Technology
+                              <ul>
+                                <li>Deals with the flow of information necessary to deliver services</li>
+                                <li>Includes the relationships between different components of the SVS</li>
+                                <li>Includes the use of technology to deliver services</li>
+                              </ul>
+                            </li>
+                            <li>
+                              Partners and Suppliers
+                              <ul>
+                                <li>Third parties and relationships with them as it pertains to the SVS</li>
+                              </ul>
+                            </li>
+                            <li>
+                              Value Streams and Processes
+                              <ul>
+                                <li>Activities, workflows, controls, and procedures that deliver value to the stakeholder</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        <h3>Service Value System</h3>
+                        <div>
+                          <p>The ITIL Service Value System (SVS)
+                          outlines how an organization's components
+                          and activities work together to create
+                          value. The SVS interfaces with other
+                          organizations to form an ecosystem that
+                          benefits all stakeholders. The inputs to
+                          the SVS are opportunity and demand, which
+                          leads to the creation of value, represented
+                          by the perceived benefits, usefulness, and
+                          importance of a product or service. The
+                          ITIL SVS can create value for a wide range
+                          of stakeholders.</p>
+                          <p>The SVS includes the following
+                          components:</p>
+                          <ul>
+                            <li>Guiding Principles</li>
+                            <ul>
+                              <li>Recommendations that can guide an
+                              organization in all circumstances,
+                              regardless of changes in its goals,
+                              strategies, type of work, or management
+                              structure</li>
+                            </ul>
+                            <li>Governance</li>
+                            <ul>
+                              <li>The means by which an organization
+                              is directed and controlled</li>
+                            </ul>
+                            <li>Service Value Chain</li>
+                            <ul>
+                              <li>The service value chain is a
+                              process to create value using ITIL
+                              practices and resources.</li>
+                              <li>It includes 6 activities: plan,
+                              improve, engage, design, obtain/build,
+                              deliver/support.</li>Service value
+                              streams are combinations of activities
+                              for specific scenarios, like app dev,
+                              subject to improvement.
+                              <li>More Below</li>
+                            </ul>
+                            <li>Practices</li>
+                            <ul>
+                              <li>Sets of organizational resources
+                              designed to achieve a specific
+                              objective</li>
+                            </ul>
+                            <li>Continual Improvement</li>
+                            <ul>
+                              <li>Activities that improve the
+                              performance of the SVS</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Service Value Chain</h3>
+                        <div>
+                          <ul>
+                            <li>Plan</li>
+                            <li>Improve</li>
+                            <li>Engage</li>
+                            <ul>
+                              <li>Provide a good understanding of the
+                              stakeholder's needs, third parties</li>
+                            </ul>
+                            <li>Design and Transition</li>
+                            <ul>
+                              <li>Ensure products and services meet
+                              the needs of the stakeholder</li>
+                            </ul>
+                            <li>Obtain and Build</li>
+                            <ul>
+                              <li>Ensure the availability of the
+                              resources needed to deliver the
+                              service</li>
+                            </ul>
+                            <li>Deliver and Support</li>
+                            <ul>
+                              <li>Deliver services and ensure they
+                              meet the expectations of the
+                              stakeholder</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Practices</h3>
+                        <div>
+                          <h4>15 Common Practices</h4>
+                          <div>
+                            <ul>
+                              <li>General Management</li>
+                              <ul>
+                                <li>Information Security
+                                Management</li>
+                                <ul>
+                                  <li>CIA Triad</li>
+                                </ul>
+                                <li>Relationship Management</li>
+                                <ul>
+                                  <li>The practice of establishing and
+                                  nurturing links between an
+                                  organization and its stakeholders at
+                                  strategic and tactical levels.</li>
+                                </ul>
+                                <li>Supplier Management</li>
+                                <ul>
+                                  <li>The practice of establishing and
+                                  nurturing links between an
+                                  organization and its suppliers at
+                                  strategic and tactical levels.</li>
+                                </ul>
+                              </ul>
+                              <li>Service Management</li>
+                              <ul>
+                                <li>IT Asset Management</li>
+                                <ul>
+                                  <li>The practice of managing the
+                                  lifecycle of IT assets</li>
+                                </ul>
+                                <li>Monitoring and Event
+                                Management</li>
+                                <ul>
+                                  <li>The practice of systematically
+                                  observing services and service
+                                  components, and recording and
+                                  reporting selected changes of state
+                                  identified as events.</li>
+                                </ul>
+                                <li>Release Management</li>
+                                <ul>
+                                  <li>The practice of making new and
+                                  changed services and features
+                                  available for use.</li>
+                                </ul>
+                                <li>Service Configuration
+                                Management</li>
+                                <ul>
+                                  <li>The practice of ensuring that
+                                  accurate and reliable information
+                                  about the configuration of services,
+                                  and the configuration items that
+                                  support them, is available when and
+                                  where needed.</li>
+                                </ul>
+                              </ul>
+                              <li>Technical Management</li>
+                              <ul>
+                                <li>Deployment Management</li>
+                                <ul>
+                                  <li>The practice of moving new or
+                                  changed hardware, software,
+                                  documentation, processes, or any
+                                  other service component to live
+                                  environments.</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>7 Main Practices</h4>
+                          <div>
+                            <ul>
+                              <li>Continual Improvement</li>
+                              <ul>
+                                <li>The purpose of continual
+                                improvement is to align an
+                                organization's practices and services
+                                with changing business needs through
+                                ongoing improvement of products,
+                                services, and practices.</li>
+                                <li>It includes the development of
+                                improvement-related methods and
+                                techniques and propagation of a
+                                continual improvement culture across
+                                the organization.</li>
+                                <li>Key activities include encouraging
+                                improvement, securing time and budget,
+                                identifying and prioritizing
+                                improvement opportunities, making
+                                business cases, planning and
+                                implementing improvements, measuring
+                                results, and coordinating
+                                activities.</li>
+                                <li>Different improvement methods may
+                                be used, such as Lean, Agile, DevOps,
+                                etc.</li>
+                                <li>The responsibility for continual
+                                improvement lies with everyone in the
+                                organization and should be embedded in
+                                every employee's job description and
+                                objectives.</li>
+                                <li>The highest levels of the
+                                organization should lead the effort and
+                                provide training to staff members and
+                                third-party suppliers should also be
+                                part of the improvement effort.</li>
+                                <li>A continual improvement register
+                                (CIR) is used to track and manage
+                                improvement ideas from identification
+                                to final action and provides visibility
+                                of the status of the improvement
+                                process.</li>
+                              </ul>
+                              <li>Change Enablement</li>
+                              <ul>
+                                <li>The change enablement practice is
+                                designed to increase the success rate
+                                of product and service changes by
+                                managing the change process</li>
+                                <li>Involves assessing risks,
+                                authorizing changes, and managing the
+                                change schedule</li>
+                                <li>Covers all IT infrastructure,
+                                applications, documentation, processes,
+                                supplier relationships, and anything
+                                else that might impact a product or
+                                service</li>
+                                <li>Distinguished from organizational
+                                change management which focuses on
+                                people aspects of changes</li>
+                                <li>Balances the need to improve
+                                products and services with the need to
+                                protect customers and users from
+                                adverse effects of changes</li>
+                                <li>There are three types of changes:
+                                standard, normal, and emergency</li>
+                                <li>Each type is managed differently
+                                (standard changes being low-risk and
+                                pre-authorized, normal changes
+                                requiring scheduling, assessment, and
+                                authorization, emergency changes being
+                                expedited)</li>
+                                <li>The change schedule is used to
+                                plan, communicate, avoid conflicts, and
+                                assign resources</li>
+                                <li>Involved in all service value chain
+                                activities including planning,
+                                improvement, engagement, design and
+                                transition, obtaining/building, and
+                                delivery and support</li>
+                              </ul>
+                              <li>Incident Management</li>
+                              <ul>
+                                <li>Incident Management is a critical
+                                practice for IT service management that
+                                helps to minimize the impact of
+                                incidents on customers and users</li>
+                                <li>Involves a process for logging and
+                                managing incidents, prioritizing
+                                incidents based on their impact, and
+                                allocating resources to resolve
+                                incidents as quickly as possible</li>
+                                <li>Effective incident management
+                                requires collaboration between teams
+                                and interaction with suppliers, as well
+                                as the use of modern IT service
+                                management tools</li>
+                                <li>The outcome of incident management
+                                should be to restore normal service
+                                operation as quickly as possible, while
+                                ensuring customer and user
+                                satisfaction</li>
+                                <li>The practice of incident management
+                                contributes to different value chain
+                                activities, such as engaging with
+                                users, delivering and supporting
+                                services, and improving overall service
+                                quality</li>
+                              </ul>
+                              <li>Problem Management</li>
+                              <ul>
+                                <li>Problem management is a practice in
+                                ITIL that aims to reduce the likelihood
+                                and impact of incidents</li>
+                                <li>Involves resolving causes of
+                                incidents (problems) through
+                                investigation and analysis to identify
+                                causes and develop workarounds</li>
+                                <li>Three phases in problem management:
+                                problem identification, problem
+                                control, and error control</li>
+                                <li>Problem identification activities
+                                include trend analysis of incident
+                                records, detection of recurring issues,
+                                and analysis of information received
+                                from internal and external sources</li>
+                                <li>Problem control activities include
+                                problem analysis and documenting
+                                workarounds and known errors,
+                                prioritized based on risk</li>
+                                <li>Error control activities manage
+                                known errors and assess the status of
+                                unresolved known errors</li>
+                                <li>Related to incident management,
+                                risk management, change enablement,
+                                knowledge management, and continual
+                                improvement</li>
+                                <li>Problem management can lead to
+                                improvement opportunities and initiate
+                                resolution via change enablement, but
+                                implementing changes is outside the
+                                scope of problem management</li>
+                              </ul>
+                              <li>Service Request Management</li>
+                              <ul>
+                                <li>Service Request Management practice
+                                is an important part of service
+                                delivery in an organization</li>
+                                <li>Its purpose is to handle
+                                user-initiated service requests in an
+                                effective and user-friendly manner, to
+                                support the agreed quality of the
+                                service</li>
+                                <li>Service requests can be a request
+                                for a service delivery action,
+                                information, access to a resource, or
+                                feedback</li>
+                                <li>Fulfilment of service requests
+                                should be standardized and automated to
+                                the greatest degree possible, with
+                                policies and workflows established to
+                                ensure clear communication and
+                                expectations</li>
+                                <li>Service request management
+                                contributes to the service value chain
+                                activities such as improvement,
+                                engagement, design and transition,
+                                obtaining/building, and delivering and
+                                supporting</li>
+                                <li>The practice is dependent on
+                                well-designed processes, procedures,
+                                and tracking and automation tools</li>
+                              </ul>
+                              <li>Service Level Management</li>
+                              <ul>
+                                <li>Service level management aims to
+                                set clear business-based targets for
+                                service levels and monitor and manage
+                                the delivery of services against these
+                                targets.</li>
+                                <li>This involves collection, analysis,
+                                storage, and reporting of relevant
+                                metrics, and performing service reviews
+                                to ensure that current services meet
+                                the needs of the organization and
+                                customers.</li>
+                                <li>Service level management requires a
+                                focus on the entire service and
+                                requires relationship management,
+                                business analysis, and
+                                commercial/supplier management skills
+                                and competencies.</li>
+                                <li>Service level agreements (SLAs) are
+                                documented agreements between a service
+                                provider and a customer that identify
+                                the required services and expected
+                                level of service.</li>
+                                <li>For SLAs to be successful, they
+                                must be related to a defined service,
+                                relate to defined outcomes, be agreed
+                                upon through engagement, and be simply
+                                written and easy to understand.</li>
+                                <li>Service level management also
+                                involves engaging with customers and
+                                gathering information from various
+                                sources, including customer engagement,
+                                incident management, and performance
+                                management.</li>
+                              </ul>
+                              <li>Service Desk</li>
+                              <ul>
+                                <li>Problem management is a practice in
+                                ITIL that aims to reduce the likelihood
+                                and impact of incidents</li>
+                                <li>Involves resolving causes of
+                                incidents (problems) through
+                                investigation and analysis to identify
+                                causes and develop workarounds</li>
+                                <li>Three phases in problem management:
+                                problem identification, problem
+                                control, and error control</li>
+                                <li>Problem identification activities
+                                include trend analysis of incident
+                                records, detection of recurring issues,
+                                and analysis of information received
+                                from internal and external sources</li>
+                                <li>Problem control activities include
+                                problem analysis and documenting
+                                workarounds and known errors,
+                                prioritized based on risk</li>
+                                <li>Error control activities manage
+                                known errors and assess the status of
+                                unresolved known errors</li>
+                                <li>Related to incident management,
+                                risk management, change enablement,
+                                knowledge management, and continual
+                                improvement</li>
+                                <li>Problem management can lead to
+                                improvement opportunities and initiate
+                                resolution via change enablement, but
+                                implementing changes is outside the
+                                scope of problem management</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h2>Resources</h2>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://online.fliphtml5.com/onhoh/wjps/#p=1">
+                            ITIL Cram Card</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://wgu.udemy.com/course/itil-4-foundation-practice-certification-exams-6-exams-q/learn/quiz/4585330/test#overview">
+                            ITIL Practice Tests</a>
+                          </li>
+                          <li>Provided Course Materials</li>
+                          <li>
+                            <a href=
+                            "https://app.pluralsight.com/score/certification/553539/access">
+                            CyberVista Practice Exams</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script>
+        // functionality:
+        // display a list of buttons which are tags at the top
+        // below the tags, display list of articles in div
+        // when a tag is clicked, hide the articles in the div and only display entry links which have a class that matches the tag
+
+        const tags = document.querySelectorAll('#tags > button');
+        const blurbs = document.querySelectorAll('#blurbs > div');
+        const displayAll = document.getElementById('all');
+
+        // Show all blurbs when the "all" button is clicked
+        displayAll.addEventListener('click', () => {
+        blurbs.forEach(blurb => blurb.style.display = 'block');
+        });
+
+        // Loop through each tag button
+        tags.forEach((tag, tagIndex) => {
+        // Show only the blurbs with a matching class when a tag button is clicked
+        tag.addEventListener('click', () => {
+          blurbs.forEach((blurb, blurbIndex) => {
+            if (tags[blurbIndex].getAttribute('class') === tag.getAttribute('class')) {
+            // Show the blurb with a matching class
+              blurb.style.display = 'block';
+            } else {
+              // Hide the blurbs without a matching class
+              blurb.style.display = 'none';
+            }
+          });
+        });
+        });
+
+        /*const tags = document.querySelectorAll('#tags > button');
+        const blurbs = document.querySelectorAll('#blurbs > div');
+        const displayAll = document.getElementById('all');
+        console.log(blurbs.length);
+        displayAll.addEventListener('click', event => {
+        for (let i = 0; i < blurbs.length; i++) {
+          blurbs[i].style.display = "block";
+        }
+        });
+        for (let i = 0; i < tags.length; i++) {
+        // when a tag button is clicked...
+        tags[i].addEventListener('click', event => {
+          // identify which classes belong to button
+          const buttonTag = tags[i].getAttribute('class');
+          // loop through post tags
+          for (let i = 0; i < blurbs.length; i++) {
+            // get post tags
+            const postTag = tags[i].getAttribute('class');
+            // if the "all" button is clicked, display everything
+            if (postTag === buttonTag) {
+              // display blurbs
+              blurbs[i].style.display = "block"
+            }
+            // if the post tag does not match the button tag...
+            else if (postTag != buttonTag) {
+              // hide the other blurbs
+              blurbs[i].style.display = "none"
+            }
+          }
+        });
+        }*/
+        </script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

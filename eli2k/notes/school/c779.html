@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C779 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body class="line-numbers">
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+      NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C779 - Web Development Foundations</h1>
+                <p class="alert">This class provided me with the opportunity to significantly expand my website. I seized the chance to not only learn about CSS and HTML, but also JavaScript. As a result, I implemented substantial updates to the site, which is why you may have noticed that all the pages were updated on March 5th.</p>
+                <div id="contain">
+                  <div class="tags">
+                    <span id="all"><button class=
+                    "all">All</button></span> <span id=
+                    "tags"><button class="F">Fundamentals</button>
+                    <button class="B">Business</button><button class="R">Resources</button></span>
+                  </div>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="F">
+                        <div id="F"></div>
+                        <h2>Web Dev Fundamentals</h2>
+                        <h3>CSS and Graphics</h3>
+                        <div>
+                          <h4>Specificity</h4>
+                          <div>
+                            <p>CSS specificity is the set of rules that
+                            determine which CSS styles are applied to
+                            an HTML element when multiple CSS rules are
+                            targeting the same element with conflicting
+                            styles.</p>
+                            <p>CSS specificity is based on the number
+                            and type of selectors used in a CSS rule.
+                            Specificity is calculated by assigning a
+                            weight to each selector and then combining
+                            the weights to determine which rule takes
+                            precedence. The order of precedence in CSS
+                            specificity is:</p>
+                            <ol>
+                              <li>Inline styles - Styles that are
+                              applied directly to an HTML element using
+                              the style attribute.</li>
+                              <li>ID selectors - Selectors that target
+                              an HTML element by its ID attribute.</li>
+                              <li>Class selectors, attribute selectors,
+                              and pseudo-classes - Selectors that
+                              target an HTML element by its class
+                              attribute, attribute values, or state
+                              (such as :hover).</li>
+                              <li>Element selectors and pseudo-elements
+                              - Selectors that target HTML elements by
+                              their tag name or by a specific part of
+                              an element (such as ::before and
+                              ::after).
+                                <p>If two or more CSS rules have the
+                                same level of specificity, then the
+                                rule that appears last in the CSS
+                                document will take precedence.</p>
+                              </li>
+                            </ol>
+                          </div>
+                          <h4>Inheritance</h4>
+                          <div>
+                            <p>Is the ability of child elements to
+                            inherit CSS styles from their parent
+                            elements. This means that if a style is
+                            applied to a parent element, all of its
+                            child elements will inherit that style by
+                            default. For example, if a font size is set
+                            on the body element, all text inside the
+                            body will inherit that font size unless a
+                            more specific style is applied to override
+                            it.</p>
+                          </div>
+                          <h4>Cascading</h4>
+                          <div>
+                            <p>Is the process by which styles are
+                            applied to HTML elements based on their
+                            specificity and order in the CSS document.
+                            When there are conflicting styles targeting
+                            the same element, the style with the
+                            highest specificity takes precedence. If
+                            two styles have the same specificity, the
+                            style that appears last in the CSS document
+                            will take precedence.</p>
+                          </div>
+                          <h4>!important rule</h4>
+                          <div>
+                            <p>overrides other styles, even if they
+                          have higher specificity</p>
+                          </div>
+                          <h4>SASS</h4>
+                          <div>
+                            <p>SASS helps to make writing and managing
+                            CSS more efficient and scalable, allowing
+                            developers to write cleaner, more
+                            organized, and maintainable code. Some of
+                            the key features of SASS include:</p>
+                            <ul>
+                              <li>Variables: Allows developers to store
+                              and reuse values throughout their
+                              stylesheets.</li>
+                              <li>Nesting: Provides a way to write more
+                              organized and readable styles by nesting
+                              selectors within one another.</li>
+                              <li>Mixins: Allows developers to define
+                              and reuse sets of CSS declarations across
+                              their stylesheets.</li>
+                              <li>Inheritance: Provides a way to create
+                              a hierarchical relationship between CSS
+                              classes, allowing one class to inherit
+                              styles from another.</li>
+                              <li>Functions: Provides a way to write
+                              reusable code that can be used to perform
+                              calculations or manipulate values in
+                              CSS.</li>
+                            </ul>
+                          </div>
+                          <h4>GIF89a v. GIF87a</h4>
+                          <div>
+                            <p>GIF89a is an updated version of the
+                            GIF87a format that supports transparent
+                            backgrounds, animation loops, and
+                            additional features.</p>
+                          </div>
+                          <h4>float</h4>
+                          <div>
+                            <p>The float property in CSS is used to
+                            position an element to the left or right of
+                            its container, allowing text and other
+                            elements to wrap around it.</p>
+                            <h4>Image interlacing</h4>
+                            <p>Image interlacing is a technique used to
+                            load images gradually, where a
+                            low-resolution version of the image is
+                            displayed first and then progressively more
+                            detailed versions are added until the full
+                            image is displayed.</p>
+                          </div>
+                        </div>
+                        <h3>Integrating HTML, CSS, and Media</h3>
+                        <div>
+                          <h4>video element</h4>
+                          <div>
+                            <p>The video element is used to embed video
+                            content into a web page, allowing users to
+                            play, pause, and control the playback of
+                            video files directly in the browser without
+                            the need for a separate video player.</p>
+                            <ul>
+                              <li>attributes</li>
+                              <ul>
+                                <li>controls</li>
+                                <ul>
+                                  <li>Adds standard controls</li>
+                                </ul>
+                                <li>loop</li>
+                                <ul>
+                                  <li>continuously loops the video
+                                  playback.</li>
+                                </ul>
+                                <li>poster</li>
+                                <ul>
+                                  <li>Specifies image</li>
+                                </ul>
+                              </ul>
+                              <li>file formats</li>
+                              <ul>
+                                <li>MP4</li>
+                                <ul>
+                                  <li>widely supported by most devices
+                                  and platforms and is commonly used
+                                  for sharing video content online</li>
+                                </ul>
+                                <li>WebM</li>
+                                <ul>
+                                  <li>designed to be used for HTML5
+                                  video and is supported by popular web
+                                  browsers such as Chrome and
+                                  Firefox</li>
+                                </ul>
+                                <li>Ogg</li>
+                                <ul>
+                                  <li>used primarily for high-quality
+                                  streaming and is often used in
+                                  combination with the Vorbis audio
+                                  codec</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>The Box Model</h4>
+                          <div>
+                            <p>The box model is essentially a
+                            rectangular box that encloses the content
+                            of an element, along with optional borders,
+                            padding, and margins.</p>
+                            <ul>
+                              <li>Content</li>
+                              <ul>
+                                <li>The actual content of the HTML
+                                element, such as text or images.</li>
+                              </ul>
+                              <li>Padding</li>
+                              <ul>
+                                <li>The space between the content and
+                                the border.</li>
+                                <li>Padding is used to create space
+                                around the content, making it easier to
+                                read and more visually appealing.</li>
+                              </ul>
+                              <li>Border</li>
+                              <ul>
+                                <li>A line or area that surrounds the
+                                padding and content, creating a
+                                boundary between the element and the
+                                rest of the page</li>
+                              </ul>
+                              <li>Margin</li>
+                              <ul>
+                                <li>The space outside the border, which
+                                separates the element from other
+                                elements on the page.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Positioning Schemes</h4>
+                          <div>
+                            <ul>
+                              <li>Static</li>
+                              <ul>
+                                <li>This is the default positioning
+                                scheme, in which an element is
+                                positioned according to the normal flow
+                                of the document.</li>
+                              </ul>
+                              <li>Relative</li>
+                              <ul>
+                                <li>In relative positioning, an element
+                                is positioned relative to its normal
+                                position in the document flow</li>
+                              </ul>
+                              <li>Absolute</li>
+                              <ul>
+                                <li>In absolute positioning, an element
+                                is positioned relative to the nearest
+                                positioned ancestor element (an element
+                                with a position property other than
+                                static).</li>
+                                <li>If no ancestor elements are
+                                positioned, the element is positioned
+                                relative to the document itself.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Markup and HTML5</h3>
+                        <div>
+                          <h4>HTML versions</h4>
+                          <div>
+                            <ul>
+                              <li>HTML 1.0 (1991) - The first version
+                              of HTML, which introduced basic markup
+                              tags for creating web pages.</li>
+                              <li>HTML 2.0 (1995) - An improved version
+                              of HTML 1.0 that introduced new features
+                              like tables, image maps, and form
+                              elements.</li>
+                              <li>HTML 3.2 (1997) - A major upgrade
+                              that standardized many of the features
+                              previously implemented differently by
+                              different browsers and added support for
+                              style sheets.</li>
+                              <li>HTML 4.01 (1999) - The last version
+                              of HTML before the introduction of XHTML,
+                              which added more features like frames and
+                              multimedia support.</li>
+                              <li>XHTML 1.0 (2000) - A stricter, more
+                              modular version of HTML that follows the
+                              rules of XML and requires all tags to be
+                              closed and all attributes to be
+                              quoted.</li>
+                              <li>HTML5 (2014) - The current version of
+                              HTML that introduces new tags and
+                              attributes for multimedia, graphics, and
+                              interactivity, as well as new APIs for
+                              web applications.</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Web Forms</h3>
+                        <div>
+                          <h4>Purpose</h4>
+                          <div>
+                            <p>The purpose of an HTML form is to
+                            collect and submit data from website
+                            visitors to a server, allowing users to
+                            input data through various form controls
+                            and interact with a website in a more
+                            personalized and effective manner.</p>
+                          </div>
+                          <h4>Elements</h4>
+                          <div>
+                            <ul>
+                              <li><code>&lt;form&gt;</code> element:
+                              This is the container element that
+                              defines the start and end of the
+                              form.</li>
+                              <li>Form controls:
+                                <ul>
+                                  <li><code>&lt;input&gt;</code>
+                                  element: This is the most commonly
+                                  used form control, and it allows
+                                  users to enter text, numbers, dates,
+                                  and other types of data.</li>
+                                  <li><code>&lt;textarea&gt;</code>
+                                  element: This form control allows
+                                  users to enter multi-line text, such
+                                  as comments or messages.</li>
+                                  <li><code>&lt;select&gt;</code>
+                                  element: This form control allows
+                                  users to select options from a
+                                  dropdown list.</li>
+                                  <li><code>&lt;button&gt;</code>
+                                  element: This element is used to
+                                  create a clickable button that can
+                                  trigger an action or submit the
+                                  form.</li>
+                                  <li>Other form controls include
+                                  checkboxes, radio buttons, and file
+                                  upload controls which I will give
+                                  examples for below.</li>
+                                </ul>
+                              </li>
+                              <li><code>&lt;label&gt;</code> element:
+                              This element is used to provide a label
+                              or description for each form control,
+                              which helps users understand what
+                              information they should enter.</li>
+                              <li>Action attribute: This attribute
+                              specifies the URL of the server-side
+                              script that will process the form
+                              data.</li>
+                              <li>Method attribute: This attribute
+                              specifies the HTTP method used to submit
+                              the form data to the server, which is
+                              typically either GET or POST.</li>
+                            </ul>
+                          </div>
+                          <h4>Form examples</h4>
+                          <div>
+                            <pre><code class="language-html">&lt;form action="/submit-form" method="POST"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="message"&gt;Message:&lt;/label&gt;
+  &lt;textarea id="message" name="message" rows="5" required&gt;&lt;/textarea&gt;
+
+  &lt;label for="country"&gt;Country:&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value="USA"&gt;United States&lt;/option&gt;
+    &lt;option value="CAN"&gt;Canada&lt;/option&gt;
+    &lt;option value="MEX"&gt;Mexico&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for="subscribe"&gt;Subscribe to newsletter:&lt;/label&gt;
+  &lt;input type="checkbox" id="subscribe" name="subscribe" value="yes"&gt;
+
+  &lt;label for="gender"&gt;Gender:&lt;/label&gt;
+  &lt;input type="radio" id="male" name="gender" value="male"&gt;
+  &lt;label for="male"&gt;Male&lt;/label&gt;
+
+  &lt;input type="radio" id="female" name="gender" value="female"&gt;
+  &lt;label for="female"&gt;Female&lt;/label&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                          </div>
+                        </div>
+                        <h3>Industry Standards</h3>
+                        <div>
+                          <h4>Server-Side Languages</h4>
+                          <div>
+                            <ul>
+                              <li>Server-side languages are executed on
+                              the server.</li>
+                              <li>Server-side languages are used to
+                              create dynamic web content.</li>
+                              <li>Server-side languages are typically
+                              more powerful than client-side
+                              languages.</li>
+                            </ul>
+                            <ul>
+                              <li>Common languages:</li>
+                              <ul>
+                                <li>PHP</li>
+                                <li>Ruby</li>
+                                <li>Python</li>
+                                <li>Java</li>
+                                <li>JavaScript (Node.js)</li>
+                              </ul>
+                              <li>Commonly used for:</li>
+                              <ul>
+                                <li>Dynamic web content generation</li>
+                                <li>User authentication and
+                                security</li>
+                                <li>Data processing and
+                                manipulation</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>DOM</h4>
+                          <div>
+                            <p>The DOM stands for Document Object
+                            Model. It is a programming interface for
+                            HTML and XML documents, which represents
+                            the document as a tree-like structure of
+                            objects.</p>
+                            <p>The DOM allows developers to:</p>
+                            <ul>
+                              <li>Manipulate content</li>
+                              <li>Handle events</li>
+                              <li>Change styles dynamically</li>
+                            </ul>
+                            <p>By using the DOM, developers can create
+                            dynamic and interactive web pages using
+                            programming languages like JavaScript. This
+                            allows for rich user experiences without
+                            the need for server-side processing or page
+                            reloads.</p>
+                            <pre><code class="language-js">// Get the div element by its ID
+var myDiv = document.getElementById("myDiv");
+
+// Create a DOM object for the div element
+var myDivObject = new Object();
+myDivObject.element = myDiv;
+myDivObject.color = "blue";
+myDivObject.showColor = function() {
+  alert(this.color);
+};</code></pre>
+                            <p>In this example, we first use the
+                            <code>getElementById()</code> method to get
+                            the <code>&lt;div&gt;</code> element with
+                            an ID of "myDiv". We then create a new
+                            JavaScript object called
+                            <code>myDivObject</code>, which has three
+                            properties:</p>
+                            <ul>
+                              <li><code>element</code> - This property
+                              contains a reference to the DOM element
+                              that we retrieved earlier.</li>
+                              <li><code>color</code> - This property
+                              stores the color "blue".</li>
+                              <li><code>showColor()</code> - This is a
+                              method that displays the value of the
+                              <code>color</code> property in an alert
+                              dialog box.</li>
+                            </ul>
+                            <p>Now we can use the
+                            <code>myDivObject</code> object to
+                            manipulate the <code>&lt;div&gt;</code>
+                            element and its properties. For example, we
+                            could change the color of the element like
+                            this:</p>
+                            <pre><code class="language-js">
+                myDivObject.element.style.backgroundColor = "red";</code></pre>
+                            <p>This would change the background color
+                            of the <code>&lt;div&gt;</code> element to
+                            red. We could also call the
+                            <code>showColor()</code> method to display
+                            the color property in an alert dialog
+                            box:</p>
+                            <pre><code class="language-js">myDivObject.showColor();</code></pre>
+                            <p>This would display the message "blue" in
+                            an alert dialog box.</p>
+                            <h4>HTML5 API</h4>
+                            <p>An HTML5 API is a set of JavaScript
+                            functions and methods that are provided by
+                            modern web browsers as part of the HTML5
+                            specification.</p>
+                          </div>
+                        </div>
+                        <h3>Editors and Mobile Sites</h3>
+                        <div>
+                          <h4>Optimizing a site for mobile
+                          devices:</h4>
+                          <div>
+                            <ul>
+                              <li>Use responsive web design to ensure
+                              the website adapts to different screen
+                              sizes</li>
+                              <li>Minimize page load times by
+                              optimizing images, reducing code and
+                              scripts, and using caching</li>
+                              <li>Optimize navigation for mobile by
+                              using dropdown menus, hamburger menus, or
+                              other mobile-specific options</li>
+                              <li>Make sure all interactive elements
+                              (buttons, links, forms, etc.) are easy to
+                              use on touchscreens</li>
+                              <li>Test the website across different
+                              mobile devices and web browsers to ensure
+                              compatibility and functionality</li>
+                            </ul>
+                          </div>
+                          <h4>Viewport</h4>
+                          <div>
+                            <p>The viewport meta tag is used in HTML to
+                            provide instructions to web browsers on how
+                            to display the content of a web page on
+                            different devices.</p>
+                          </div>
+                          <h4>AJAX</h4>
+                          <div>
+                            <p>AJAX (Asynchronous JavaScript and XML)
+                            is a web development technique that allows
+                            web pages to dynamically update content
+                            without requiring a full page reload.</p>
+                          </div>
+                          <h4>ATAG</h4>
+                          <div>
+                            <p>The W3C Authoring Tools Accessibility
+                            Guidelines (ATAG) 2.0 is a technical
+                            standard that explains how to make web
+                            content authoring tools more accessible and
+                            supportive of accessible web content12. It
+                            has two parts:</p>
+                            <ol>
+                              <li>Covers how to make the authorinag
+                              tools themselves accessible to people
+                              with disabilities</li>
+                              <li>Covers how to help authors create
+                              more accessible web content that conforms
+                              to Web Content Accessibility Guidelines
+                              (WCAG)1</li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="B">
+                        <div id="B"></div>
+                        <h2>Web Dev for Business</h2>
+                        <h3>Project Cycle</h3>
+                        <div>
+                          <ul>
+                            <li>The web development project cycle
+                            includes creating and documenting an
+                            initial plan, obtaining input from
+                            stakeholders, considering technical and
+                            non-technical concerns, developing and
+                            publishing the website, and ongoing
+                            maintenance.</li>
+                            <li>The website plan should include a
+                            statement about the purpose and intended
+                            audience of the site, a rough outline of
+                            necessary pages, and an estimate of
+                            required technologies.</li>
+                            <li>Wireframing can be a helpful tool in
+                            the planning process, involving the
+                            development of an outline for a website's
+                            layout and navigation.</li>
+                            <li>Stakeholder and audience input is
+                            crucial in developing a website with a
+                            clear message and focus, and design
+                            considerations such as fonts, images,
+                            color, and language choice should be
+                            carefully considered to appeal to the
+                            intended audience.</li>
+                            <li>Regular validation of the site should
+                            occur throughout the development process,
+                            and stakeholder input can help determine
+                            necessary information for the site's
+                            success.</li>
+                          </ul>
+                          <ul>
+                            <li>The Waterfall Model is the earliest
+                            and most widely used SDLC (Software
+                            Development Life Cycle) approach.</li>
+                            <li>It is a linear-sequential model that
+                            divides the software development process
+                            into distinct phases.</li>
+                            <li>Each phase must be completed before
+                            the next phase can begin, with no
+                            overlapping of phases.</li>
+                            <li>The phases are: Requirement Gathering
+                            and analysis, System Design,
+                            Implementation, Integration and Testing,
+                            Deployment of system, and
+                            Maintenance.</li>
+                            <li>The Waterfall Model is suitable for
+                            projects with well-documented and stable
+                            requirements, clear product definition,
+                            and ample resources.</li>
+                            <li>Advantages include simplicity, easy
+                            management, and well-documented process
+                            and results.</li>
+                            <li>Disadvantages include high risk and
+                            uncertainty, poor suitability for complex
+                            or ongoing projects, and difficulty
+                            accommodating changing requirements.</li>
+                          </ul>
+                        </div>
+                        <h3>Accessibility</h3>
+                        <div>
+                          <ul>
+                            <li>The Americans with Disabilities Act
+                            (ADA) was enacted in 1990 to protect the
+                            civil rights of disabled people and
+                            ensure equal employment opportunities,
+                            public accommodations, and electronic
+                            information accessibility.</li>
+                            <li>The ADA applies to cyberspace
+                            communications, and web designers should
+                            create "reasonable accommodation" in
+                            their websites for people with
+                            disabilities.</li>
+                            <li>Section 508 of the Rehabilitation Act
+                            requires that Federal agencies provide
+                            accommodations for users with
+                            disabilities for all electronic and
+                            information technology developed,
+                            procured, maintained or used by federal
+                            agencies.</li>
+                            <li>Section 508 includes specific
+                            standards for websites, such as providing
+                            text-based equivalents for all non-text
+                            elements, making multimedia content
+                            accessible to disabled persons, and
+                            identifying all row and column headers
+                            for tables.</li>
+                            <li>The World Wide Web Consortium (W3C)
+                            is an international organization that
+                            creates all web standards, while the Web
+                            Accessibility Initiative (WAI) aims to
+                            ensure that core technologies used on the
+                            web are equally accessible to all
+                            users.</li>
+                          </ul>
+                        </div>
+                        <h3>Ecommerce</h3>
+                        <div>
+                          <h4>Business models</h4>
+                          <div>
+                            <ul>
+                              <li>B2C (Business-to-consumer): Sells
+                              directly to end-users with a shorter
+                              sales cycle and lower average order value
+                              than B2B.</li>
+                              <li>B2B (Business-to-business): Sells to
+                              another business with a longer sales
+                              cycle, higher order value, and more
+                              recurring purchases.</li>
+                              <li>B2B2C
+                              (Business-to-business-to-consumer): Sells
+                              in partnership with another organization
+                              to an end customer.</li>
+                              <li>B2G (Business-to-government): Sells
+                              and markets to government entities or
+                              public administrations.</li>
+                              <li>C2B (Consumer-to-business): Allows
+                              individuals to sell goods and services to
+                              companies.</li>
+                              <li>D2C (Direct-to-consumer): Sells its
+                              own product directly to end customers,
+                              without third-party wholesalers or
+                              retailers.</li>
+                              <li>C2C (Consumer-to-consumer): Connects
+                              consumers to exchange goods and services
+                              and charges transaction or listing
+                              fees.</li>
+                            </ul>
+                          </div>
+                          <h4>Value Delivery Methods</h4>
+                          <div>
+                            <ul>
+                              <li>White labeling: Product produced by
+                              one company and sold under another
+                              company's brand name.</li>
+                              <li>Private labeling: Similar to white
+                              labeling, but the retailer creates their
+                              own brand name for the product.</li>
+                              <li>Wholesaling: Manufacturer sells
+                              products in bulk to retailers or
+                              distributors at a discounted price.</li>
+                              <li>Dropshipping: Retailer orders
+                              products from a manufacturer or
+                              wholesaler only after receiving an order
+                              from a customer.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h2>Resources</h2>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://srm--c.na127.visual.force.com/apex/coursearticle?Id=kA03x000000Ysy3CAC">
+                            Web Development Foundations, C779 -
+                            Detailed Study Guide</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://srm--c.na127.visual.force.com/apex/coursearticle?Id=kA03x000000l9UYCAY">
+                            Practice Tests by Topic</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+    </div>
+    <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+  </div>
+</body>
+</html>

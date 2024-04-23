@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C176 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+</head>
+<body class="line-numbers">
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+      NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C176 - Business of IT: Applications (Project+)</h1>
+                <p class="alert">Thankfully the last project management class. Again, a very informative but very boring experience.</p>
+                <div id="contain">
+                  <div class="tags">
+                    <span id="all"><button class=
+                    "all">All</button></span> <span id=
+                    "tags"><button class="C">Concepts</button>
+                    <button class="L">Life Cycle</button>
+                    <button class="T">Tools</button>
+                    <button class="G">Governance</button></span>
+                  </div>
+                  <form class="f1" action="" onsubmit=
+                  "if(this.t1.value!=null && this.t1.value!='') findString(this.t1.value);return false">
+                    <input type="text" class="t1" placeholder=
+                    "Search.." name="search">
+                  </form>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="C">
+                        <div id="C"></div>
+                        <h2>1.0 - Project Management Concepts</h2>
+                        <h3>Important Definitions</h3>
+                        <div>
+                          <ul>
+                            <li>Project</li>
+                            <ul>
+                              <li>Temporary endeavor to create a unique product or service</li>
+                            </ul>
+                            <li>Ongoing Operations</li>
+                            <ul>
+                              <li>A repetitive and ongoing process</li>
+                            </ul>
+                            <li>Minimum Value Product</li>
+                            <ul>
+                              <li>A product with enough features to satisfy early customers and to provide feedback for future product development.</li>
+                            </ul>
+                            <li>Program</li>
+                            <ul>
+                              <li>A collection of projects that are managed together</li>
+                            </ul>
+                            <li>Portfolio</li>
+                            <ul>
+                              <li>A collection of programs that support business goals</li>
+                            </ul>
+                            <li>Requirements</li>
+                            <ul>
+                              <li>Requirements are characteristics or conditions that a deliverable must meet to satisfy the objective of the project.</li>
+                            </ul>
+                            <li>Constraints</li>
+                            <ul>
+                              <li>Factors that limit the project team's options and restrict their actions.</li>
+                              <li>Time, budget, and scope</li>
+                            </ul>
+                            <li>Assumptions</li>
+                            <ul>
+                              <li>Conditions that are presumed to be true or real.</li>
+                              <li>They are documented in the assumption log and help manage project risks.</li>
+                            </ul>
+                            <li>Software Development Life Cycle</li>
+                            <ul>
+                              <li>The SDLC is a process that consists of phases such as planning, defining, designing, building, testing, and deploying.</li>
+                              <li>Waterfall and Agile are two types of SDLC methodologies.</li>
+                            </ul>
+                            <li>Development Life Cycles</li>
+                            <ul>
+                              <li>There are three types of development life cycles:</li>
+                              <ul>
+                                <li>predictive</li>
+                                <ul>
+                                  <li>Preferred whin the deliverable is well understood and lacks value until fully complete</li>
+                                  <li>Major changes in team comp at milestones</li>
+                                </ul>
+                                <li>iterative</li>
+                                <ul>
+                                  <li>Helpful when objectives and scope are subject to change</li>
+                                  <li>Incremental dev env with careful change mgmt</li>
+                                </ul>
+                                <li>adaptive</li>
+                                <ul>
+                                  <li>Ideal in rapidly changing env whun scope is hard to define in advance.</li>
+                                  <li>Useful when partially completed products offer value to stakeholders as dev continues</li>
+                                </ul>
+                              </ul>
+                              <li>Predictive is also known as the waterfall model, while adaptive is also known as Agile.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Agile v Waterfall</h3>
+                        <div>
+                          <h4>Agile</h4>
+                          <div>
+                            <ul>
+                              <li>Manages projects in small, incremental portions of work that can be easily managed and completed within a short period of time.</li>
+                              <li>Agile Scaling Framework
+                                <ul>
+                                  <li>The Agile Scaling Framework involves taking agile methodologies and scaling them to the enterprises</li>
+                                  <li>Scrum of Scrums</li>
+                                  <li>Scaled Agile Framework (SAFe)</li>
+                                  <li>Disciplined Agile</li>
+                                </ul>
+                              </li>
+                              <li>Usually uses an MSA contract</li>
+                              <ul>
+                                <li>Master Service Agreement</li>
+                                <li>Enables you to add new work to the contract without having to rewrite the entire agreement through the use of an appendix</li>
+                                <li></li>
+                              </ul>
+                              <li>Popular Methodologies:</li>
+                              <ul>
+                                <li>Scrum</li>
+                                <li>Kanban</li>
+                                <li>Extreme Programming(XP)</li>
+                                <li>Feature Driven Development(FDD)</li>
+                                <li>Dynamic Systems Development Method (DSDM)</li>
+                                <li>Agile Unified Process (AUP)</li>
+                              </ul>
+                              <li>Scrum</li>
+                              <ul>
+                                <li>Complete work in short, time-bound periods called sprints</li>
+                                <li>Scrum Board</li>
+                                <ul>
+                                  <li>Uses tasks to represent work and are time-bound, displaying the work of a sprint</li>
+                                  <li>Tasks are added to the first column, usually the backlog or user story column, and then broken down into tasks and pulled into the remaining columns as the work is completed</li>
+                                </ul>
+                                <li>Product Owner</li>
+                                <ul>
+                                  <li>The voice of the customer</li>
+                                </ul>
+                                <li>Scrum Master</li>
+                                <ul>
+                                  <li> The person responsible for ensuring that the Scrum framework is implemented correctly and that the team is following Scrum practices.</li>
+                                </ul>
+                                <li>Scrum Team</li>
+                                <ul>
+                                  <li>The individuals who develop and deliver the product increments. The team is self-organizing and cross-functional.</li>
+                                </ul>
+                              </ul>
+                              <li>Kanban</li>
+                              <ul>
+                                <li>The work does not start and stop but continues through to completion</li>
+                                <li>Kanban Board</li>
+                                <ul>
+                                  <li>Uses cards or tasks to represent work and are capacity-bound</li>
+                                  <li>Work is progressive and continuous, without a start and stop date</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Waterfall</h4>
+                          <div>
+                            <ul>
+                              <li>Works best when products are known</li>
+                              <li>Linear</li>
+                            </ul>
+                            <ol>
+                              <li>Gather Requirements</li>
+                              <li>Generate Plans</li>
+                              <li>Monitor and Control Work</li>
+                              <li>Maintain Change Controls</li>
+                              <li>Deliver and Support</li>
+                            </ol>
+                          </div>
+                          <h4>PRINCE2</h4>
+                          <div>
+                            <ul>
+                              <li>Breaks down the project into stages and emphasizes continuous control and monitoring of the project.</li>
+                              <li>Seven Guiding Principles</li>
+                              <ol>
+                                <li>Justify the business need for the project throughout the project life cycle</li>
+                                <li>Learn from experience</li>
+                                <li>Define roles and responsibilities</li>
+                                <li>Manage work in stages</li>
+                                <li>Manage exceptions</li>
+                                <li>Focus on quality</li>
+                                <li>Tailor the processes</li>
+                              </ol>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Change Control</h3>
+                        <div>
+                          <ul>
+                            <li>CCB</li>
+                            <ul>
+                              <li>The Change Control Board (CCB) reviews, approves, denies, or delays change requests.</li>
+                            </ul>
+                          </ul>
+                          <h4>Types of Organizational Change</h4>
+                          <div>
+                            <p>Organizational change involves transforming processes, systems, organizational structure, personnel, products, applications, and more. The types of organizational change include:</p>
+                            <ul>
+                              <li>Business merger</li>
+                              <li>Acquisition</li>
+                              <li>Demerger</li>
+                              <li>Split</li>
+                              <li>Business process change</li>
+                              <li>Internal reorganization</li>
+                              <li>Relocation</li>
+                              <li>Outsourcing</li>
+                            </ul>
+                          </div>
+                          <h4>Process Steps for Organizational Change</h4>
+                          <div>
+                            <p>The steps for organizational change include:</p>
+                            <ol>
+                              <li>Defining the change</li>
+                              <li>Communicating the change</li>
+                              <li>Analyzing impacts and responses</li>
+                              <li>Training</li>
+                              <li>Ensuring adoption over time</li>
+                              <li>Communicating during and after the change</li>
+                              <li>Documenting the change</li>
+                              <li>Creating new knowledge bases</li>
+                              <li>Creating new processes</li>
+                            </ol>
+                          </div>
+                          <h4>Operational Change Control on IT Projects</h4>
+                          <div>
+                            <p>This involves infrastructure control for managing elements of the IT environment, including hardware, software, and cloud updates.</p>
+                          </div>
+                        </div>
+                        <h3>Three Environments on IT Projects</h3>
+                        <div>
+                          <p>The three environments on IT projects are:</p>
+                          <ul>
+                            <li>Development: where code is written</li>
+                            <li>Beta-staging: the testing environment</li>
+                            <li>Production: where the live program or application resides</li>
+                          </ul>
+                          <h4>Elements of Change Control</h4>
+                          <div>
+                            <ul>
+                              <li>Creating and submitting change requests</li>
+                              <ul>
+                                <li>Created when a stakeholder identifies a need to change the project scope, schedule, cost, or quality</li>
+                                <li>should include a description of the change, the rationale for the change, and the impact of the change on the project</li>
+                              </ul>
+                              <li>Identifying and documenting the change</li>
+                              <ul>
+                                <li>Once the change request is received, the change control process identifies and documents the proposed change</li>
+                                <li>includes analyzing the impact of the change on the project and identifying any associated risks.</li>
+                              </ul>
+                              <li>Conducting a preliminary review</li>
+                              <ul>
+                                <li>The change control process then conducts a preliminary review of the change request to determine if it is feasible and aligned with project objectives</li>
+                                <li>This review also considers the impact of the change on the project's scope, schedule, cost, and quality</li>
+                              </ul>
+                              <li>Performing impact assessments</li>
+                              <ul>
+                                <li>The change control process performs impact assessments to determine the effect of the proposed change on the project's schedule, cost, and quality</li>
+                              </ul>
+                              <li>Documenting change recommendations</li>
+                              <ul>
+                                <li>Based on the impact assessments, the change control process documents change recommendations</li>
+                              </ul>
+                              <li>Determining decision-makers</li>
+                              <ul>
+                                <li>The change control process determines the decision-makers who will approve or reject the proposed change</li>
+                              </ul>
+                              <li>Escalating to the CCB</li>
+                              <ul>
+                                <li> If the proposed change is significant or has a high impact on the project, it may be escalated to the Change Control Board (CCB) for further review and approval.</li>
+                              </ul>
+                              <li>Documenting changes in the change control log</li>
+                              <ul>
+                                <li>The change control process documents all changes and their status in the change control log</li>
+                              </ul>
+                              <li>Updating the project plan</li>
+                              <ul>
+                                <li>Once the change is approved, the project plan is updated to reflect the change. This includes updating the project schedule, cost estimates, and other project documentation</li>
+                              </ul>
+                              <li>Implementing the change</li>
+                              <li>Validating the change</li>
+                              <ul>
+                                <li>ensure that it has been implemented correctly and that it meets the project objectives</li>
+                              </ul>
+                              <li>Coordinating and communicating with stakeholders</li>
+                              <ul>
+                                <li>includes notifying stakeholders of any changes to the project plan or schedule</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Risk Management</h3>
+                        <div>
+                          <h4>Risk Analysis</h4>
+                          <div>
+                            <ul>
+                              <li>Qualitative Analysis</li>
+                              <ul>
+                                <li>Uses subjective judgment to assess the likelihood and impact of a risk event</li>
+                              </ul>
+                              <li>Quantitative Analysis</li>
+                              <ul>
+                                <li>Uses numerical data to assess the likelihood and impact of a risk event.</li>
+                                <li>Monte Carlo Analysis</li>
+                                <ul>
+                                  <li>Involves creating a mathematical model of the project and running simulations with various inputs to estimate the likelihood and impact of different project outcomes</li>
+                                  <li>Uses multiple inputs, usually related to cost and schedule, to estimate potential outcomes for each of the inputs used in the model.</li>
+                                  <li>A “what if-" based analysis that is performed multiple times to determine potential outcomes</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Variance</h4>
+                          <div>
+                            <ul>
+                              <li>Random Variance</li>
+                              <ul>
+                                <li>Unpredictable and cannot be explained by any specific cause</li>
+                              </ul>
+                              <li>Know Variance</li>
+                              <ul>
+                                <li>Can be attributed to specific causes, such as known risks or changes in the project scope</li>
+                              </ul>
+                              <li>Inherent Variance</li>
+                              <ul>
+                                <li>Always present in the project process and can be addressed through process improvements.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Situational Risks</h4>
+                          <div>
+                            <ul>
+                              <li>New Projects</li>
+                              <ul>
+                                <li>Risks associated with starting a new project, such as unclear requirements, lack of project team experience, or untested technologies</li>
+                              </ul>
+                              <li>New Management</li>
+                              <ul>
+                                <li>Risks associated with changes in project management, such as changes in leadership style, communication breakdowns, or conflicting priorities</li>
+                              </ul>
+                              <li>Regulation Changes</li>
+                              <ul>
+                                <li>Risks associated with changes in laws, regulations, or policies that affect the project, such as new environmental regulations, tax laws, or industry standards</li>
+                              </ul>
+                              <li>Digital Transformation</li>
+                              <ul>
+                                <li>Risks associated with the adoption of new digital technologies, such as cybersecurity threats, data privacy breaches, or compatibility issues with existing systems</li>
+                              </ul>
+                              <li>Infrastructure EOL</li>
+                              <ul>
+                                <li></li>
+                              </ul>
+                              <li>Merger and Acquisition</li>
+                              <ul>
+                                <li>Similar to risk involved with changing management</li>
+                              </ul>
+                              <li>Reorganization</li>
+                              <li>Security Events</li>
+                              <li>Impact Analysis</li>
+                              <ul>
+                                <li>Assesses the potential impact of a risk event on project objectives.</li>
+                              </ul>
+                              <li>Situational/Scenario Analysis</li>
+                              <ul>
+                                <li> Analyzes the impact of a risk event under different scenarios or conditions.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Risk Response Planning</h4>
+                          <div>
+                            <ul>
+                              <li>Negative risk response strategies</li>
+                              <ul>
+                                <li>Avoid</li>
+                                <ul>
+                                  <li>Eliminating the risk or avoiding the activity that could trigger the risk</li>
+                                </ul>
+                                <li>Transfer</li>
+                                <ul>
+                                  <li>Transferring the risk to another party, such as an insurance company or a vendor</li>
+                                </ul>
+                                <li>Mitigate</li>
+                                <ul>
+                                  <li>Reducing the probability or impact of the risk.</li>
+                                </ul>
+                                <li>Accept</li>
+                                <ul>
+                                  <li>Acknowledging the risk and accepting the consequences if it occurs</li>
+                                </ul>
+                              </ul>
+                              <li>Positive Risk Response Strategies</li>
+                              <ul>
+                                <li>Exploit</li>
+                                <ul>
+                                  <li>Aims to maximize the benefits of a positive risk by taking proactive steps to ensure it occurs</li>
+                                </ul>
+                                <li>Share</li>
+                                <ul>
+                                  <li>An opportunity to share the benefits of a positive risk event with a third party who can help ensure it occurs</li>
+                                </ul>
+                                <li>Enhance</li>
+                                <ul>
+                                  <li>Increasing the probability or impact of a positive risk</li>
+                                </ul>
+                                <li>Accept</li>
+                                <ul>
+                                  <li>Same as negative, but instead of having a bad impack it has a positive one. The team does not seek to exploit this.</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Schedule Development</h3>
+                        <div>
+                          <h4>Resource Leveling v Resource Smoothing</h4>
+                          <div>
+                            <ul>
+                              <li>Resource Leveling</li>
+                              <ul>
+                                <li>Adjusting the project schedule to ensure that the resources are allocated evenly over time, which can change the critical path and project end date.</li>
+                              </ul>
+                              <li>Resource Smoothing</li>
+                              <ul>
+                                <li>Adjusting the project schedule to ensure that the resource usage is smoothed out over time without changing the critical path or project end date.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Task Sequencing</h4>
+                          <div>
+                            <ul>
+                              <li>Involves determining the order in which activities should be performed based on their dependencies and relationships with other activities.</li>
+                              <li>Logical Relationships</li>
+                              <ul>
+                                <li>finish-to-start (FS)</li>
+                                <li>start-to-start (SS)</li>
+                                <li>start-to-finish (SF)</li>
+                                <li>finish-to-finish (FF)</li>
+                              </ul>
+                              <li>Critical Path</li>
+                              <ul>
+                                <li>Determines the earliest and latest start and finish times for each activity and identifies the minimum project duration</li>
+                                <li>Any delay to a critical path task will delay the completion date of the project</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Work Breakdown Structure</h4>
+                          <div>
+                            <ul>
+                              <li>A hierarchical decomposition of a project into smaller, more manageable components called work packages</li>
+                              <li>The highest level of the WBS is typically the project name, and the lower levels consist of the major deliverables, project phases, subprojects, and work packages. </li>
+                              <li>WBS Dictionary</li>
+                              <ul>
+                                <li>A document that provides detailed information about each work package in the WBS</li>
+                                <li>Includes a description of the work package, its deliverables, code of accounts identifier, estimates, resources, criteria for acceptance, and any other relevant information that helps to clarify the deliverables.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Estimation</h4>
+                          <div>
+                            <ul>
+                              <li>Analogous Estimation</li>
+                              <ul>
+                                <li>A top-down technique that uses expert judgment and historical information to estimate the duration, cost, or resource requirements of a project or work package.</li>
+                                <li>It is based on the assumption that the current project is similar to a past project, and uses the historical data from that project as a basis for estimating the current one.</li>
+                              </ul>
+                              <li>Parametric Estimation</li>
+                              <ul>
+                                <li>Using mathematical models</li>
+                              </ul>
+                              <li>Bottom-up Estimation</li>
+                              <ul>
+                                <li>Bottom-up estimating involves breaking down a project or work package into smaller, more manageable components and estimating the duration, cost, or resource requirements of each component.</li>
+                              </ul>
+                              <li>Estimating Task Duration</li>
+                              <ul>
+                                <li>Expert judgment relies on the knowledge of someone familiar with the tasks</li>
+                                <li>Analogous estimating bases the estimate on similar activities from a previous project</li>
+                                <li>Parametric estimates are quantitatively-based estimates that typically calculate the rate times the quantity</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Project Schedules</h4>
+                          <div>
+                            <ul>
+                              <li>Can be displayed in various ways, including milestone charts, PERT network diagrams, and Gantt charts.</li>
+                              <ul>
+                                <li> A Gantt chart is a type of bar chart that displays the project schedule as a horizontal bar for each activity or task</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Duration Compression</h4>
+                          <div>
+                            <ul>
+                              <li>Crashing</li>
+                              <ul>
+                                <li>Hiring more staff, using overtime, or outsourcing some work to a third-party vendor so a project can be completed faster</li>
+                              </ul>
+                              <li>Fast-Tracking</li>
+                              <ul>
+                                <li>Overlapping tasks that would normally be done sequentially.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Performance Management</h3>
+                        <div>
+                          <h4>Tools</h4>
+                          <div>
+                            <ul>
+                              <li>KPIs</li>
+                              <ul>
+                                <li>Metrics that are used to assess the performance of a project or process.</li>
+                              </ul>
+                              <li>Balanced Scorecards</li>
+                              <ul>
+                                <li>Helps organizations align their business activities with their strategic goals</li>
+                              </ul>
+                              <li>Key Objectives and Results</li>
+                              <ul>
+                                <li>A set of objectives that are established to ensure that the project meets its goals and objectives.</li>
+                              </ul>
+                              <li>Cost and Schedule Performance Measures</li>
+                              <ul>
+                                <li>Metrics that are used to track project performance against budget and schedule</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Communication Management</h3>
+                        <div>
+                          <h4>Planning</h4>
+                          <ul>
+                            <li>The communication plan should contain info regarding who needs information, what type, when, in what format, and frequency</li>
+                          </ul>
+                          <h4>Records</h4>
+                          <ul>
+                            <li>RMS</li>
+                            <li>Security</li>
+                            <ul>
+                              <li>ensuring that communication records are protected from unauthorized access, modification, or destruction.</li>
+                            </ul>
+                            <li>Integrity</li>
+                            <ul>
+                              <li>storing communication records in a secure and accessible location for future reference.</li>
+                            </ul>
+                            <ul>
+                              <li>ensuring that communication records are accurate, complete, and unaltered</li>
+                            </ul>
+                            <li>Archiving</li>
+                          </ul>
+                          <h4>Methods</h4>
+                          <div>
+                            <ul>
+                              <li><strong>Meetings</strong>
+                              <ul>
+                                <li>Advantages: Effective for discussing complex issues, real-time feedback, allows for nonverbal communication.</li>
+                                <li>Disadvantages: Can be time-consuming, scheduling conflicts, may require travel expenses.</li>
+                              </ul>
+                              </li>
+                              <li><strong>Email</strong>
+                              <ul>
+                                <li>Advantages: Efficient for sending documents and data, allows for asynchronous communication, can reach multiple people at once.</li>
+                                <li>Disadvantages: Can be misinterpreted, may be subject to spam filters, lacks nonverbal cues.</li>
+                              </ul>
+                              </li>
+                              <li><strong>Fax</strong>
+                              <ul>
+                                <li>Advantages: Documents can be sent quickly, legally binding in some cases.</li>
+                                <li>Disadvantages: Becoming less common, can be difficult to read, may require specialized equipment.</li>
+                              </ul>
+                              </li>
+                              <li><strong>Instant Messaging</strong></li>
+                              <ul>
+                                <li>Advantages: Real-time communication, can be used for quick questions or informal conversations.</li>
+                                <li>Disadvantages: Can be distracting, may not be appropriate for all types of communication, lacks nonverbal cues.</li>
+                              </ul>
+
+                              <li><strong>Videoconferencing</strong></li>
+                              <ul>
+                                <li>Advantages: enables face-to-face communication, supports visual aids, can reduce travel costs and time.</li>
+                                <li>Disadvantages: requires technology and stable internet connection, may have technical difficulties, can be impersonal.</li>
+                              </ul>
+
+                              <li><strong>Email</strong></li>
+                              <ul>
+                                <li>Advantages: allows for detailed communication, provides a written record, can be sent and received at any time.</li>
+                                <li>Disadvantages: can be time-consuming, may result in information overload, can be misinterpreted.</li>
+                              </ul>
+                              <li><strong>Voice conferencing</strong></li>
+                              <ul>
+                                <li>Advantages: enables real-time communication, reduces travel costs and time, allows for quick problem solving.</li>
+                                <li>Disadvantages: requires technology and stable phone connection, can be impersonal, may have technical difficulties.</li>
+                              </ul>
+                              <li><strong>SMS or text messages</strong></li>
+                              <ul>
+                                <li>Advantages: fast, informal, can be sent and received at any time.</li>
+                                <li>Disadvantages: messages may be misinterpreted, not ideal for complex or lengthy discussions, limited character count.</li>
+                              </ul>
+                              <li><strong>Distribution of printed media</strong></li>
+                              <ul>
+                                <li>Advantages: can be read at any time, can be used as a reference, can be distributed to a wide audience.</li>
+                                <li>Disadvantages: can be costly, requires physical distribution, may not be environmentally friendly.</li>
+                              </ul>
+                              <li><strong>Social media</li></strong></li>
+                                <ul>
+                                  <li>Advantages: allows for real-time communication, can be used to reach a wide audience, facilitates collaboration and knowledge sharing.</li>
+                                  <li>Disadvantages: can be distracting, may not be secure, messages may be misinterpreted.</li>
+                                </ul>
+                            </ul>
+                          </div>
+
+                          <h4>Communication Triggers</h4>
+                          <div>
+                            <ul>
+                              <li>Audits: provide updates on the audit process, findings, and recommendations.</li>
+                              <li>Project planning: discuss the project goals, objectives, scope, and resources.</li>
+                              <li>Project change: inform stakeholders about any changes in project scope, timeline, budget, or deliverables.</li>
+                              <li>Risk register updates: discuss changes to the risk register and update stakeholders on the risk management plan.</li>
+                              <li>Milestones: celebrate project milestones and keep stakeholders informed of project progress.</li>
+                              <li>Schedule changes: update stakeholders on any changes to the project schedule or timeline.</li>
+                              <li>Task initiation/completion: inform stakeholders about the start and completion of project tasks.</li>
+                              <li>Stakeholder changes: update stakeholders on any changes in project stakeholders, including new stakeholders or stakeholders who are no longer involved in the project.</li>
+                              <li>Phase gate reviews: discuss the results of phase gate reviews and to make decisions about moving forward with the project.</li>
+                              <li>Business continuity response: develop and implement a business continuity plan in the event of a crisis or disaster.</li>
+                              <li>Incident response: respond to incidents, investigate the causes of the incident, and develop a plan to prevent similar incidents from occurring in the future.</li>
+                              <li>Resource changes: update stakeholders on changes in project resources, including changes in staff, equipment, or facilities.</li>
+                            </ul>
+                          </div>
+                          <h4>Influencing Factors</h4>
+                          <div>
+                            <ul>
+                              <li>Language barriers: Differences in language or dialect can make communication difficult or impossible, requiring translation or interpretation.</li>
+                              <li>Time zones/geographical factors: Differences in time zones or physical location can make real-time communication difficult, requiring scheduling or asynchronous communication methods.</li>
+                              <li>Technological factors: Differences in technology or access to technology can impact the availability and effectiveness of communication methods.</li>
+                              <li>Cultural differences: Differences in cultural norms, values, and communication styles can impact the effectiveness of communication methods and require adaptation or cultural awareness.</li>
+                              <li>Interorganizational differences: Differences in organizational structures, policies, and communication protocols can impact the effectiveness of communication methods between different organizations.</li>
+                              <li>Intraorganizational differences: Differences in organizational structures, policies, and communication protocols can impact the effectiveness of communication methods within the same organization.</li>
+                              <li>Personal preferences: Personal preferences for communication methods, such as email versus phone, can impact the effectiveness of communication and require adaptation or negotiation.</li>
+                              <li>Rapport building/relationship building: The need to build rapport and relationships with stakeholders can impact the effectiveness of communication methods and require attention to interpersonal skills.</li>
+                              <li>Tailoring of the method based on content of message: The content and context of the message can impact the effectiveness of communication methods and require adaptation or tailoring of the method.</li>
+                              <li>Criticality factors: The criticality or urgency of the message can impact the effectiveness of communication methods and require prioritization or escalation.</li>
+                              <li>Specific stakeholder communication requirements: The specific communication requirements of different stakeholders, such as legal or regulatory requirements, can impact the effectiveness of communication methods and require attention to detail and compliance.</li>
+                            </ul>
+                          </div>
+                          <h4>Stakeholder Needs</h4>
+                          <div>
+                            <ul>
+                              <li>Frequency of communication</li>
+                              <li>Level of report detail</li>
+                              <li>Types of communication</li>
+                              <li>Confidentiality constraints</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Meeting Management</h3>
+                        <div>
+                          <ul>
+                            <li>Kickoff Meeting</li>
+                            <ul>
+                              <li>The first official meeting that takes place at the beginning of a project.</li>
+                              <li>Attended by the project sponsor, key project team members, and key stakeholders.</li>
+                              <li>The goal is to make certain stakeholders understand the purpose and objectives of the project, and to understand their role in the project.</li>
+                            </ul>
+                          </ul>
+                          <h4>Meeting Types</h4>
+                          <div>
+                            <ul>
+                              <li>Collaborative meeting
+                                <ul>
+                                  <li>Workshops</li>
+                                  <li>Focus groups</li>
+                                  <li>JAD sessions</li>
+                                  <li>Brainstorming</li>
+                                </ul>
+                              </li>
+                              <li>Informative meeting
+                                <ul>
+                                  <li>Demonstrations/presentations</li>
+                                  <li>Standups</li>
+                                  <li>Project status</li>
+                                </ul>
+                              </li>
+                              <li>Decisive meeting
+                                <ul>
+                                  <li>Backlog refinement</li>
+                                  <li>Task setting</li>
+                                  <li>Sprint planning meeting</li>
+                                  <li>Project steering committees</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
+                          <h4>Preparing for meetings</h4>
+                          <div>
+                            <ul>
+                              <li>Creating agendas: This involves outlining the topics to be discussed in the meeting and setting priorities to ensure that the most important items are covered.</li>
+                              <li>Determining meeting roles: Assigning roles such as facilitator, timekeeper, note-taker, and participants can help ensure that the meeting runs smoothly and efficiently.</li>
+                              <li>Timeboxing agenda items and meetings: Setting a specific amount of time for each agenda item and for the meeting as a whole can help keep the meeting on track and prevent it from running over schedule.</li>
+                              <li>Reviewing action items: It's important to review any action items from previous meetings and ensure they are addressed in the current meeting agenda.</li>
+                              <li>Preparing meeting minutes: Accurate and thorough meeting minutes should be taken to document what was discussed, decisions made, and any action items assigned.</li>
+                              <li>Following up: After the meeting, it's important to follow up on any action items assigned and ensure they are completed on time.</li>
+                            </ul>
+                          </div>
+                          <h4>Presenting Project Status Info</h4>
+                          <div>
+                            <ul>
+                              <li>Project status report</li>
+                              <ul>
+                                <li> a written document that outlines the status of the project, including accomplishments, issues, risks, and upcoming tasks.</li>
+                              </ul>
+                              <li>Project dashboard</li>
+                              <ul>
+                                <li> a visual representation of the project's status, often presented in a graphical format, that provides an at-a-glance view of the project's progress and status. Good for execs</li>
+                              </ul>
+                              <li>Charts</li>
+                              <ul>
+                                <li>graphical representations of data, often used to show trends, comparisons, or progress over time.</li>
+                                <li>Burndown Chart</li>
+                                <ul>
+                                  <li>shows the remaining work in the iteration or sprint, allowing the team to track progress and identify potential issues</li>
+                                </ul>
+                                <li>Burnup Chart</li>
+                                <ul>
+                                  <li> starts at zero and shows the total work for the project, including work completed during the iteration or sprint.</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Team and Resource Management</h3>
+                        <div>
+                          <ul>
+                            <li>RACI chart</li>
+                            <ul>
+                              <li>Responsible, Accountable, Consulted, and Informed</li>
+                              <li>A chart that defines and communicates the roles and responsibilities of team members for a project or work product.</li>
+                            </ul>
+                          </ul>
+                          <h4>Organisation Structures</h4>
+                          <div>
+                            <ul>
+                              <li>Functional</li>
+                              <ul>
+                                <li>Traditional business structure in which people are grouped together based on their areas of specialization or function.</li>
+                                <li>Each department operates independently and reports to a department manager</li>
+                              </ul>
+                              <li>Matrix</li>
+                              <ul>
+                                <li>People are assigned to a department and project team</li>
+                                <li>Strong</li>
+                                <ul>
+                                  <li>Project manager has more power and authority</li>
+                                </ul>
+                                <li>Balanced</li>
+                                <ul>
+                                  <li>Equal power and authority between functional and project managers</li>
+                                </ul>
+                                <li>Weak</li>
+                                <ul>
+                                  <li>Functional manager has more power and authority</li>
+                                  <li>A project manager has complete authority and responsibility for the project team</li>
+                                </ul>
+                              </ul>
+                              <li>Projectized</li>
+                              <ul>
+                                <li>People are organized around projects, rather than functions or departments</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Roles and Responsibilities</h4>
+                          <div>
+                            <ul>
+                              <li>Project Stakeholders</li>
+                              <ul>
+                                <li>Anyone with a vested interest in the project</li>
+                                <li>Something to gain and lose</li>
+                              </ul>
+                              <li>Project Sponser</li>
+                              <ul>
+                                <li>A person in the organization with the power to provide funds to the project</li>
+                              </ul>
+                              <li>Project Customer</li>
+                              <ul>
+                                <li>The organization that pays for the resulting product or service from a project</li>
+                              </ul>
+                              <li>Project User</li>
+                              <ul>
+                                <li>The organization that uses the resulting product or service from a project</li>
+                              </ul>
+                              <li>Project Management Office</li>
+                              <ul>
+                                <li>Maintain standards, processes, procedures, and templates.</li>
+                                <li>Provide guidance to the project manager</li>
+                              </ul>
+                              <li>Project Manager</li>
+                              <ul>
+                                <li>Project Integration</li>
+                                <li>Leads team to complete the goals and satisfy the stakeholders</li>
+                                <li>Manages the team, communication, scope, risk, budget, qa and time.</li>
+                                <li>Responsible for the project artifacts</li>
+                              </ul>
+                              <li>Project Team</li>
+                              <ul>
+                                <li></li>
+                              </ul>
+                              <li>Solutions Architect</li>
+                              <ul>
+                                <li>Responsible for designing technical solutions to meet business requirements.</li>
+                                <li>They work closely with enterprise architects, project managers, and business teams to understand the needs of the business and to create a plan for implementing the solution.</li>
+                              </ul>
+                              <li>Business Analyst</li>
+                              <ul>
+                                <li>Interviews stakeholders to gather and document requirements for the project</li>
+                                <li>Implement the requirements into the final product, service, or result of the project</li>
+                              </ul>
+                              <li>Subject Matter Expert</li>
+                              <ul>
+                                <li>Specific skills that can be applied to more accurate estimation of dependencies, durations, costs and more</li>
+                              </ul>
+                              <li>IT Team</li>
+                              <ul>Consists of IT architect, developers, QA</ul>
+                            </ul>
+                          </div>
+                          <h4>General Management Skills</h4>
+                          <div>
+                            <ul>
+                              <li>Leadership, Communication, Problem-Solving, Negotiation, Organization, and Time Management</li>
+                            </ul>
+                          </div>
+                          <h4>Team Development Stages</h4>
+                          <div>
+                            <ol>
+                              <li>Forming</li>
+                              <ul>
+                                <li>team members get to know each other and establish ground rules</li>
+                              </ul>
+                              <li>Storming</li>
+                              <ul>
+                                <li>conflicts and disagreements arise as team members compete for ideas and influence</li>
+                              </ul>
+                              <li>Norming</li>
+                              <ul>
+                                <li>team members start to resolve their differences and establish trust and cooperation</li>
+                              </ul>
+                              <li>Performing</li>
+                              <ul>
+                                <li>team members work together smoothly and effectively</li>
+                              </ul>
+                              <li>Adjourning</li>
+                              <ul>
+                                <li>team members disband after the project is completed</li>
+                              </ul>
+                            </ol>
+                            <ul>
+                              <li>Team building</li>
+                              <ul>
+                                <li>Activities and techniques to help team members work together effectively, such as icebreakers, team-building exercises, and social events</li>
+                              </ul>
+                              <li>Trust building</li>
+                              <ul>
+                                <li>Developing trust among team members and with the project manager by being transparent, honest, and reliable</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Conflict Resolution</h4>
+                          <div>
+                            <ul>
+                              <li>Smoothing</li>
+                              <ul>
+                                <li>downplaying the conflict and focusing on areas of agreement to minimize the negative impact of the conflict and to maintain positive relationships between team members</li>
+                              </ul>
+                              <li>Forcing</li>
+                              <ul>
+                                <li>Using power or authority to resolve the conflict</li>
+                                <li>May lead to resentment</li>
+                              </ul>
+                              <li>Compromising</li>
+                              <ul>
+                                <li>Finding a middle-ground</li>
+                                <li>Useful when both parties have equal power</li>
+                              </ul>
+                              <li>Collaborating</li>
+                              <ul>
+                                <li>Working together to find a mutually beneficial solution</li>
+                                <li>The best form of conflict resolution</li>
+                              </ul>
+                              <li>Avoiding</li>
+                              <ul>
+                                <li>Delay in order to minimise the impact of conflict</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Project Procurement and Vendor Selection</h3>
+                        <div>
+                          <ul>
+                            <li>Vendor Performance Reviews</li>
+                            <ul>
+                              <li>Conducted to evaluate how well a seller is meeting the terms and conditions of their contract</li>
+                              <li>Can be conducted on a regular basis, such as quarterly or annually, or at specific milestones in the project.</li>
+                              <li>Typically examine the seller's performance in areas such as scope, quality, budget, schedule, and customer satisfaction</li>
+                              <li>The results of the review can be used to identify areas for improvement and to develop a plan for corrective action if necessary</li>
+                            </ul>
+                          </ul>
+                          <h4>Resources</h4>
+                          <div>
+                            <ul>
+                              <li>Resource Allocation</li>
+                              <ul>
+                                <li>Assigning resources to specific tasks in the project plan based on their availability, skills, and availability</li>
+                                <li>Overallocation</li>
+                                <ul>
+                                  <li>A resource is assigned to more tasks than they can complete in a given time frame</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Interproject</h4>
+                          <div>
+                            <ul>
+                              <li>Interproject Dependencies</li>
+                              <ul>
+                                <li>When one project cannot start or finish its deliverables until another project has completed its deliverables</li>
+                              </ul>
+                              <li>Interproject Resource Contention</li>
+                              <ul>
+                                <li>When resources are shared between multiple projects and there is a conflict or competition for their time and availability</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Contracts</h4>
+                          <div>
+                            <ul>
+                              <li>Fixed-Price</li>
+                              <ul>
+                                <li>The price is agreed upon between the buyer and the seller at the start of the project</li>
+                                <li>This type of contract puts more risk on the seller, as they may end up spending more money than they anticipated to deliver the product or service. However, it also gives the buyer more certainty about the total cost of the project.</li>
+                              </ul>
+                              <li>Cost-Reimbursable</li>
+                              <ul>
+                                <li>The buyer agrees to pay the seller for the actual cost of the work, plus a fee for the seller's services</li>
+                              </ul>
+                              <li>Time and Materials</li>
+                              <ul>
+                                <li>The buyer agrees to pay the seller for the actual time and materials used to complete the work, plus a fee for the seller's services.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Funding</h4>
+                          <div>
+                            <ul>
+                              <li>Discretionary Funding</li>
+                              <ul>
+                                <li>Money set aside for unplanned expenses or events that may occur during a project</li>
+                                <li>Contingency Reserve</li>
+                                <ul>
+                                  <li>Funds set aside to cover the cost of potential adverse events.</li>
+                                  <li>The project manager has discretion over how to use these funds</li>
+                                </ul>
+                                <li>Management Reserve</li>
+                                <ul>
+                                  <li>Funds set aside by upper management to cover future situations that cannot be predicted during project planning</li>
+                                </ul>
+                              </ul>
+                              <li>Cost Baseline</li>
+                              <ul>
+                                <li>The approved, expected cost for the project.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="L">
+                        <div id="L"></div>
+                        <h2>2.0 - Project Life Cycle</h2>
+                        <h3>Discovery/Concept</h3>
+                        <div>
+                          <ul>
+                            <li>Needs that bring about a Project</li>
+                            <ul>
+                              <li>Market Demand</li>
+                              <li>Organizational Need</li>
+                              <li>Customer Request</li>
+                              <li>Tech Advancements</li>
+                              <li>Legal Requirements</li>
+                              <li>Ecological Impact</li>
+                              <li>Social Need</li>
+                            </ul>
+                            <li>Business Case</li>
+                            <ul>
+                              <li>Documents the business need for the project and determines whether investment in the project is worthwhile</li>
+                              <li>Justifications</li>
+                              <ul>
+                                <li>Cost/Benefit Analysis</li>
+                                <ul>
+                                  <li>involves comparing the costs of a project against the benefits that it will generate</li>
+                                </ul>
+                                <li>Scoring Model</li>
+                                <ul>
+                                  <li>a method of evaluating different options based on specific criteria</li>
+                                  <li>Assigns a score to each criterion for each option and then adds up the scores to determine which option is best</li>
+                                </ul>
+                                <li>Payback Period</li>
+                                <ul>
+                                  <li>the time it takes for a project to pay for itself through generated benefits</li>
+                                </ul>
+                                <li>Discounted Cash Flow</li>
+                                <ul>
+                                  <li>considers the time value of money and calculates the present value of future cash flows</li>
+                                </ul>
+                                <li>Net Present Value</li>
+                                <ul>
+                                  <li>calculates the present value of future cash flows minus the initial investment to determine if the project is financially viable</li>
+                                </ul>
+                                <li>ROI</li>
+                                <ul>
+                                  <li>calculates the financial return on investment of a project by dividing the net profit by the initial investment</li>
+                                </ul>
+                                <li>IRR</li>
+                                <ul>
+                                  <li>calculates the rate at which the project generates positive cash flows, and it considers the time value of money</li>
+                                </ul>
+                                <li>State Analysis</li>
+                                <ul>
+                                  <li>involves evaluating the project's impact on different stakeholders and their willingness to support or oppose the project</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                            <li>Stakeholder Analysis</li>
+                            <ul>
+                              <li>Assess influence and level of involvement</li>
+                              <li>Determine needs, interests</li>
+                              <li>Record info in the register</li>
+                              <li>Categories</li>
+                              <ul>
+                                <li>Power/Interest Grid</li>
+                                <ul>
+                                  <li>Stakeholders with high power and high interest are classified as "key players" and require close management and attention.</li>
+                                </ul>
+                                <li>Power/Influence Grid</li>
+                                <ul>
+                                  <li>Stakeholders with high power and high influence are classified as "critical stakeholders" and should be managed closely.</li>
+                                </ul>
+                                <li>Impact/Influence Grid</li>
+                                <ul>
+                                  <li>Stakeholders with high impact and high influence are classified as "priority stakeholders" and should be managed closely.</li>
+                                </ul>
+                                <li>Stakeholder Cube</li>
+                                <ul>
+                                  <li>This tool categorizes stakeholders based on three dimensions: power, urgency, and legitimacy.</li>
+                                </ul>
+                                <li>Salience Model</li>
+                                <ul>
+                                  <li>Power, Legitimacy, Urgency</li>
+                                </ul>
+                                <li>Prioritization</li>
+                                <ul>
+                                  <li>Stakeholders can be prioritized based on their importance to the project. This can be done using a numerical scoring system or a more subjective approach based on the project manager's knowledge and experience.</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                            <li>Project Validation</li>
+                            <ol>
+                              <li>Writing and Reviewing Business Case</li>
+                              <li>Stakeholder Analysis</li>
+                            </ol>
+                          </ul>
+                        </div>
+
+                        <h3>Initiation</h3>
+                        <div>
+                          <ul>
+                            <li>Preliminary Scope Statement</li>
+                            <ul>
+                              <li>Describes the business problem the project is trying to solve and describes the project objectives</li>
+                              <li>Project Scope, Deliverables, Constraints, Assumptions, Risks</li>
+                            </ul>
+                            <li>Project Charter</li>
+                            <ul>
+                              <li>Formally approves the project and authorizes the project manager to apply resources to it.</li>
+                              <li>Contains the project purpose, goals, description, deliverables, requirements, milestones, budget, assumptions, constraints, risks, sponsor and manager names, and criteria for approval.</li>
+                            </ul>
+                            <li>Success Criteria</li>
+                            <ul>
+                              <li>Where the deliverables are acceptable and satisfactory to the stakeholders</li>
+                            </ul>
+                          </ul>
+                        </div>
+
+                        <h3>Planning</h3>
+                        <div>
+                          <ul>
+                            <li>Scope Statement</li>
+                            <ul>
+                              <li>Defines the boundaries of a project and provides a clear understanding of the project's objectives, deliverables, and success criteria.</li>
+                              <li>Includes a project description, acceptance criteria, key deliverables, exclusions from scope, assumptions, and constraints.</li>
+                            </ul>
+                          </ul>
+                          <ul>
+                            <li>Project Management Plan</li>
+                            <ul>
+                              <li>The final, approved, documented plan that’s used in the Executing phase to measure project progress.</li>
+                              <li>Includes information such as the project scope, schedule, budget, quality requirements, risk management plan, stakeholder management plan, communication plan, and other relevant information</li>
+                            </ul>
+                          </ul>
+                        </div>
+
+                        <h3>Execution</h3>
+                        <div>
+                          <ul>
+                            <li>Work is performed, most people-hours spent here.</li>
+                          </ul>
+                          <h4>Testing</h4>
+                          <div>
+                            <ul>
+                              <li>Smoke Testing</li>
+                              <ul>
+                                <li>ensure that the basic functionality of the system or application is working after a build or update.</li>
+                              </ul>
+                              <li>Unit Testing</li>
+                              <ul>
+                                <li>testing individual software components or modules to ensure that each performs as intended.</li>
+                              </ul>
+                              <li>Integration Testing</li>
+                              <ul>
+                                <li>tests how multiple components or modules interact with each other and ensures that they work together as a system</li>
+                              </ul>
+                              <li>End to End</li>
+                              <ul>
+                                <li>simulates real-world scenarios to ensure that the system works as expected from start to finish</li>
+                              </ul>
+                              <li>Regression</li>
+                              <ul>
+                                <li>verifies that the changes made to the system or application have not introduced any new defects or problems.</li>
+                              </ul>
+                              <li>Stress Testing</li>
+                              <ul>
+                                <li>puts the system under heavy load or difficult conditions to see how it performs.</li>
+                              </ul>
+                              <li>Performance Testing</li>
+                              <ul>
+                                <li>how the system performs in different scenarios, such as different levels of user traffic or data volume.</li>
+                              </ul>
+                              <li>User-Acceptance</li>
+                              <ul>
+                                <li>Involves testing the system with actual users to ensure that it meets their needs and is easy to use.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Quality Assurance</h4>
+                          <div>
+                            <ul>
+                              <li>Reworks</li>
+                              <ul>
+                                <li>correcting work that does not meet quality standard</li>
+                              </ul>
+                              <li>Process Adjustments</li>
+                              <ul>
+                                <li>modifying the project process to address quality issues.</li>
+                              </ul>
+                              <li>Acceptance</li>
+                              <ul>
+                                <li>accepting the product or service even if it does not meet all of the quality criteria</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Closing</h3>
+                        <div>
+                          <ul>
+                            <li>Project closeout</li>
+                          </ul>
+                          <h4>Types of Project Closures</h4>
+                          <div> 
+                            <ul>
+                              <li>Addition</li>
+                              <ul>
+                                <li>when new projects are added to an existing portfolio</li>
+                              </ul>
+                              <li>Starvation</li>
+                              <ul>
+                                <li>when a project does not receive the necessary resources to complete the project successfully</li>
+                              </ul>
+                              <li>Integration</li>
+                              <ul>
+                                <li>when a project is merged or integrated into another project or program</li>
+                              </ul>
+                              <li>Extinction</li>
+                              <ul>
+                                <li>When a project is terminated before completion</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Steps</h4>
+                          <div>
+                            <ol>
+                              <li>Verification and validation of deliverables</li>
+                              <li>Obtaining sign-off</li>
+                              <li>Transition plan creation</li>
+                              <li>Revoking access</li>
+                              <li>Releasing project resources</li>
+                              <li>Closing out contracts</li>
+                              <li>Archiving documents</li>
+                              <li>Lessons learned</li>
+                              <li>Closure meeting</li>
+                              <li>Closeout report</li>
+                              <li>Celebration</li>
+                              <li>Support</li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="T">
+                        <div id="T"></div>
+                        <h2>3.0 - Tools and Documentation</h2>
+                        <h3>Life Cycle Tools</h3>
+                        <div>
+                          <h4>Vendor Documents</h4>
+                          <div>
+                            <ul>
+                              <li>NDA</li>
+                              <ul>
+                                <li>A legal agreement between two or more parties that outlines confidential material, knowledge, or information that the parties wish to share with one another for certain purposes but restrict from disclosure to others</li>
+                              </ul>
+                              <li>Cease and Desist</li>
+                              <ul>
+                                <li>A formal letter sent to an individual or entity to demand that they stop engaging in a particular activity that the sender believes is illegal or harmful</li>
+                              </ul>
+                              <li>Letters of Intent</li>
+                              <ul>
+                                <li>A letter outlining the tentative agreement between two or more parties to engage in a business transaction or to pursue a certain course of action</li>
+                              </ul>
+                              <li>Statements of Work</li>
+                              <ul>
+                                <li>A document that outlines the specific tasks, deliverables, and timeline for a project</li>
+                              </ul>
+                              <li>Memoranda of Understanding</li>
+                              <ul>
+                                <li>A non-binding agreement between two or more parties that outlines their mutual understanding of a particular issue or set of issues</li>
+                              </ul>
+                              <li>Service Level Agreements</li>
+                              <ul>
+                                <li> A contract between a service provider and a customer that outlines the level of service that will be provided and the standards that will be maintained.</li>
+                              </ul>
+                              <li>Purchase Orders</li>
+                              <ul>
+                                <li>A document that a buyer sends to a supplier to request goods or services and to specify the details of the transaction</li>
+                              </ul>
+                              <li>Maintenence Agreements</li>
+                              <ul>
+                                <li>A contract between a service provider and a customer that outlines the terms and conditions of ongoing maintenance and support services</li>
+                              </ul>
+                              <li>Warranties</li>
+                              <ul>
+                                <li>A guarantee provided by a manufacturer or seller that their product will meet certain standards of quality and will function as intended for a certain period of time</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Communication Tools</h4>
+                          <div>
+                            <ul>
+                              <li>Multi-authoring and editing software: Examples include Google Docs, Microsoft Office 365, and Zoho Docs.</li>
+                              <li>File-sharing platforms: Examples include Dropbox, Google Drive, and Microsoft OneDrive.</li>
+                              <li>Workflow and e-signature platforms: Examples include DocuSign, Adobe Sign, and HelloSign.</li>
+                              <li>Whiteboards: Examples include Miro, Lucidchart, and Conceptboard.</li>
+                              <li>Wiki knowledge base: Examples include Confluence, Notion, and Trello.</li>
+                            </ul>
+                          </div>
+                          <h4>Meeting Tools</h4>
+                          <div>
+                            <ul>
+                              <li>Real-time surveys and polling: These tools can be used during a meeting to gather feedback from participants on various topics or questions. This can be done through dedicated polling tools or even built-in features in video conferencing platforms.</li>
+                              <li>Calendaring tools: These tools help schedule and coordinate meetings with participants. They can also send out reminders and update participants of any changes to the meeting schedule.</li>
+                              <li>Print media: This includes materials such as handouts, agendas, and presentation slides that can be distributed to participants before or during the meeting. They can help keep participants informed and engaged during the meeting.</li>
+                              <li>Conferencing platforms: These tools enable participants to join meetings remotely through audio or video conferencing. They may also have additional features such as screen sharing, recording, and chat functionality.</li>
+                              <li>Project management scheduling tools: These tools can help manage the scheduling and coordination of meetings within the context of a larger project. They can also integrate with other project management tools to streamline communication and collaboration.</li>
+                              <li>Version control tools: These tools help manage different versions of meeting materials such as agendas, presentations, and minutes. This can help ensure that everyone is working with the latest and most up-to-date information.</li>
+                              <li>Time-tracking tools: These tools can help track the time spent on meetings, which can be useful for analyzing productivity and identifying areas for improvement. They may also help with invoicing and billing for billable hours.</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Chart Analysis</h3>
+                        <div>
+                        <ul>
+                          <li>CPM</li>
+                          <ul>
+                            <li>Calculates the sequence of activities that have the longest total duration in a project</li>
+                          </ul>
+                          <li>Network Diagram</li>
+                          <ul>
+                            <li>A graphical representation of project activities and their dependencies</li>
+                            <li>Displays the activities as nodes or boxes and the dependencies as arrows or lines between them.</li>
+                            <li>Helps to visualize the project flow and identify the critical path</li>
+                          </ul>
+                        </ul>
+                        <h4>Charts</h4>
+                        <div>
+                          <ul>
+                            <li>Pareto Charts</li>
+                            <ul>
+                              <li>a type of chart that combines both a bar graph and a line graph.</li>
+                              <li>It displays the relative frequency or size of problems in descending order of importance</li>
+                              <li>The chart is based on the Pareto principle, which states that 80% of problems are typically caused by 20% of the root causes.</li>
+                            </ul>
+                            <li>Run Chart</li>
+                            <ul>
+                              <li>A line graph that displays the variation in data over time. It is used to identify patterns, trends, and shifts in data, and can be helpful in identifying process improvements.</li>
+                            </ul>
+                            <li>Control Chart</li>
+                            <ul>
+                              <li> A control chart is a statistical tool used to monitor and control a process over time.</li>
+                              <li>It plots data points on a graph and identifies any variation or abnormalities in the data.</li>
+                            </ul>
+                          </ul>
+                          <h4>Diagrams and Graphs</h4>
+                          <ul>
+                            <li>Histogram</li>
+                            <ul>
+                              <li>A graphical representation of data that displays the frequency distribution of a set of continuous data. It is similar to a bar chart, but the bars in a histogram represent ranges of data values instead of discrete categories.</li>
+                            </ul>
+                            <li>Fishbone Diagram</li>
+                            <ul>
+                              <li>Also known as an Ishikawa diagram, is a visual tool used to identify the potential causes of a problem or effect.</li>
+                              <li>The diagram includes a central spine and branches that represent different categories of possible causes.</li>
+                            </ul>
+                            <li>Decision Tree</li>
+                            <ul>
+                              <li>A diagram that displays a sequence of decisions and their possible consequences</li>
+                              <li> Each decision node represents a choice, and each branch represents the possible outcomes of that choice.</li>
+                            </ul>
+                            <li>Scatter Diagram</li>
+                            <ul>
+                              <li>Also known as a correlation chart, is a graph that displays the relationship between two numerical variables.</li>
+                              <li>Used to identify whether there is a correlation or association between the two variables, and to determine the strength and direction of the relationship.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="G">
+                        <div id="G"></div>
+                        <h2>4.0 - IT Governance</h2>
+                        <h3>ESG</h3>
+                        <div>
+                          <ul>
+                            <li>Environment, Social, Governance</li>
+                          </ul>
+                        <h3>Security</h3>
+                        <div>
+                          <ul>
+                            <li>Security Policy</li>
+                            <ul>
+                              <li>Outlines the minimum standards and procedures required to secure an organization's assets</li>
+                            </ul>
+                            <li>Physical Security Policy</li>
+                            <ul>
+                              <li>Typically covers; mobile devices,</li>
+                            </ul>
+                          </ul>
+                          <h4>MFA</h4>
+                          <div>
+                            <ul>
+                              <li>Something the user knows (such as a password or PIN)</li>
+                              <li>Something the user has (such as a security token or smart card)</li>
+                              <li>Something the user is (such as biometric data like fingerprints or facial recognition)</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>Compliance and Privacy</h3>
+                        <div>
+                          <h4>Data Classification</h4>
+                          <div>
+                            <ul>
+                              <li>Public</li>
+                              <ul>
+                                <li>Information that can be freely shared with the public</li>
+                              </ul>
+                              <li>Private</li>
+                              <ul>
+                                <li>Information that is not intended for public release</li>
+                              </ul>
+                              <li>Confidential</li>
+                              <ul>
+                                <li>Information that is highly sensitive and must be protected from unauthorized access</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <h3>IT Concepts</h3>
+                        <div>
+                          <ul>
+                            <li>IT infrastructure</li>
+                            <ul>
+                              <li>Includes any technology that supports the creation, storage, processing, and transmition of electronic information</li>
+                            </ul>
+                            <li>Data Warehouse</li>
+                            <ul>
+                              <li>a system that collects, organizes, centralizes, and manages data that is used and analyzed by managers and executives to make decisions about the business.</li>
+                            </ul>
+                          </ul>
+                          <h4>Cloud Models</h4>
+                          <div>
+                            <ul>
+                              <li>SaaS</li>
+                              <ul>
+                                <li>Managed by third party, reduces need for internal IT resources</li>
+                                <li>Software such as gmail and dropbox</li>
+                              </ul>
+                              <li>PaaS</li>
+                              <ul>
+                                <li>Platform for developing and deploying apps</li>
+                                <li>Uses pre-built tools and software provided by platform.</li>
+                              </ul>
+                              <li>IaaS</li>
+                              <ul>
+                                <li>Virtualized computing resources such as servers, storage, and networking</li>
+                              </ul>
+                              <li>XaaS</li>
+                              <ul>
+                                <li>Refers to any cloud-based service provided on a subscription basis</li>
+                                <li>Includes SaaS, PaaS, and IaaS, as well as other cloud-based services such as DRaaS, SecaaS, and DaaS</li>
+                                <li>Enables organizations to outsource a wide range of IT services to third-party providers</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Software Systems</h4>
+                          <div>
+                            <ul>
+                              <li>ERP (Enterprise Resource Planning)</li>
+                              <ul>
+                                <li>A software system that manages business processes and information across the entire organization. It typically includes modules for finance, accounting, human resources, supply chain management, and more.</li>
+                              </ul>
+                              <li>CRM (Customer Relationship Management)</li>
+                              <ul>
+                                <li>A software system that helps businesses manage their interactions with customers and potential customers. It typically includes modules for sales, marketing, customer service, and analytics.</li>
+                              </ul>
+                              <li>EDRMS (Electronic Document and Records Management System)</li>
+                              <ul>
+                                <li>A software system that manages the creation, storage, retrieval, and disposition of electronic documents and records. It helps organizations comply with regulatory requirements and ensure the authenticity, integrity, and accessibility of their digital records.</li>
+                              </ul>
+                              <li>CMS (Content Management System)</li>
+                              <ul>
+                                <li>A software system that helps organizations create, manage, and publish digital content. It typically includes tools for creating and editing web pages, managing images and other media, and controlling access and permissions.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Operational Policies</h4>
+                          <div>
+                            <ul>
+                              <li>Checks</li>
+                              <ul>
+                                <li>Procedures that ensure compliance with policies and regulations.</li>
+                                <li>Examples include financial audits, security audits, and compliance check</li>
+                              </ul>
+                              <li>Security Clearence</li>
+                              <ul>
+                                <li>Background checks that determine an individual's suitability for access to sensitive information or restricted areas.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/searchFile.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+    </div>
+    <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+  </div>
+</body>
+</html>

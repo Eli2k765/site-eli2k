@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Injection</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content="Auth hacking">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Injection</h1>
+                <p class="alert">Questions I try to answer while testing for injection vulns and a bypass cheatsheet.</p>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Identifying Vulnerabilities</h3>
+                    <div>
+                      <h4>How do they occur?</h4>
+                      <div>
+                        <p>Input vulnerabilities occur when an application fails to properly validate and sanitize user-supplied input before using it in a vulnerable manner. This can happen when the application does not have adequate input validation mechanisms or when the input is processed in an unsafe manner, allowing an attacker to inject carefully crafted malicious input.</p>
+                      </div>
+                      <h4>What tech is in use?</h4>
+                      <div>
+                        <p>The occurrence of input vulnerabilities are dependent on the technologies and frameworks used in the application. For example, for SQLi to be a valid attack, there needs to be a database system that processes the attackers payload and for SSTI, there needs to be a templating engine. Of course some vulnerabilities have broader requirements for occuring such as Command Injection or XSS. It's important to identify the tech in use to improve efficiency.</p>
+                      </div>
+                      <h4>Where does the app take input?</h4>
+                      <div>
+                        <ul>
+                          <li>Understanding data flow</li>
+                          <ul>
+                            <li>Understanding how user-supplied data flows through the application can help trace how the input is processed, stored, and ultimately utilized allowing the attacker to identify potential points of interest that can be manipulated or where malicious data can be injected.</li>
+                          </ul>
+                          <li>Identifying vectors for attack</li>
+                          <ul>
+                            <li>By knowing where the app takes input, attackers can assess which vectors are available to them. Below I've included a table that demonstrates common vectors for different vuln types.</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>What preventions are in place?</h4>
+                      <div>
+                        <p>Once I've identified likely vectors, I try to determine what preventions are in place. Below I talk about this process in detail. Knowing the preventions will determine the feasability/difficulty of the attack and help in developing a working PoC.</p>
+                      </div>
+                      <h4>Can you escalate?</h4>
+                      <div>
+                        <p>Once I have a PoC, I determine if the issue can be escalated, this usually involves a lot of research into disclosed vulns and is highly specific to the occurence of the vulnerability.</p>
+                      </div>
+                    </div>
+                    <h3>Filters</h3>
+                    <div>
+                      <h4>Determining Filters</h4>
+                      <div>
+                        <ul>
+                          <li>Observation, Testing and Analysis</li>
+                          <ul>
+                            <li>Interact with the application and analyze its responses: Submit various inputs (both normal and malicious) and observe how the application handles them. Look for any patterns or indications of input validation or filtering.</li>
+                            <li>Pay attention to error messages and unexpected behaviors: Examine error messages returned by the application to identify any clues about the types of input filtering in place. Note any unusual or unexpected behaviors exhibited by the application.</li>
+                            <li>Attempt simple bypasses and use the result to determine modifications necessary to a payload.</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Bypassing Filters</h4>
+                      <div>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Bypass Attempt</th>
+                              <th>Examples</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Special Characters</td>
+                              <td>Using single quotes, double quotes, or other special characters in user input.</td>
+                            </tr>
+                            <tr>
+                              <td>Whitespace Manipulation</td>
+                              <td>Using tabs, spaces, or line breaks to manipulate input and bypass filters.</td>
+                            </tr>
+                            <tr>
+                              <td>Comment Characters</td>
+                              <td>Using comment characters like "//" or "--" to ignore the rest of the input.</td>
+                            </tr>
+                            <tr>
+                              <td>Case Sensitivity</td>
+                              <td>Using different capitalization or mixed-case input to bypass case-insensitive filters.</td>
+                            </tr>
+                            <tr>
+                              <td>Input Encoding</td>
+                              <td>URL encoding (%20), HTML entity encoding (&amp;amp;), or JavaScript encoding (encodeURIComponent).</td>
+                            </tr>
+                            <tr>
+                              <td>Double Encoding</td>
+                              <td>Using URL encoding twice or HTML entity encoding twice.</td>
+                            </tr>
+                            <tr>
+                              <td>Unicode/UTF-8 Encoding</td>
+                              <td>Using overlong encoding or homoglyph substitution to manipulate character representations.</td>
+                            </tr>
+                            <tr>
+                              <td>Obfuscation</td>
+                              <td>Using character concatenation, escaping, or base64 encoding to obfuscate input.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <h3>Table Summary for Specific Vulns</h3>
+                    <div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Vulnerability</th>
+                            <th>App Input Handling</th>
+                            <th>Common Input Sources</th>
+                            <th>Associated Technologies</th>
+                            <th>Prevention</th>
+                            <th>Impact</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>XSS (Cross-Site Scripting)</td>
+                            <td>Rendering user input as HTML or JavaScript</td>
+                            <td>Input fields in web forms, URL query parameters, User-generated content</td>
+                            <td>HTML, JavaScript</td>
+                            <td>Properly encode or sanitize user input, use output encoding functions, enable Content Security Policy (CSP), and perform input validation.</td>
+                            <td>Cookie theft, session hijacking, defacement, phishing attacks, data theft.</td>
+                          </tr>
+                          <tr>
+                            <td>SQLi (SQL Injection)</td>
+                            <td>Concatenating user input into database queries</td>
+                            <td>Input fields in web forms, URL query parameters, HTTP headers, Cookie values</td>
+                            <td>SQL Database Management Systems (DBMS), SQL Queries</td>
+                            <td>Use prepared statements or parameterized queries, input validation, and avoid dynamically constructing SQL queries with user input.</td>
+                            <td>Data breaches, unauthorized access, data manipulation, information leakage.</td>
+                          </tr>
+                          <tr>
+                            <td>SSRF (Server-Side Request Forgery)</td>
+                            <td>Using user-supplied URLs to make HTTP requests to external resources</td>
+                            <td>URLs for requesting external resources, Input fields for URLs or IP addresses, File uploads or inclusion mechanisms</td>
+                            <td>Web applications making HTTP requests</td>
+                            <td>Implement input validation and whitelist-based URL checking, restrict access to internal resources, and use network-level protections like firewalls.</td>
+                            <td>Data exposure, server-side resource abuse, remote code execution.</td>
+                          </tr>
+                          <tr>
+                            <td>File Inclusion</td>
+                            <td>Including files based on user-provided paths or URLs</td>
+                            <td>Input fields specifying file paths or names, URLs for including remote files</td>
+                            <td>Server-side programming languages or frameworks performing file inclusion</td>
+                            <td>Use whitelisting for file inclusion, validate user input, and avoid direct inclusion of user-supplied input without proper sanitization.</td>
+                            <td>Arbitrary code execution, sensitive information exposure, server compromise.</td>
+                          </tr>
+                          <tr>
+                            <td>Command Injection</td>
+                            <td>Executing user input as system commands</td>
+                            <td>Input fields accepting system commands, Command-line arguments, OS-specific APIs or functions</td>
+                            <td>Operating systems, command execution mechanisms, executing commands on the server</td>
+                            <td>Use parameterized commands, input validation, and avoid executing user input as commands without proper sanitization.</td>
+                            <td>Arbitrary command execution, system compromise, data loss.</td>
+                          </tr>
+                          <tr>
+                            <td>Server-Side Template Injection (SSTI)</td>
+                            <td>Evaluating user-supplied input within server-side templates</td>
+                            <td>Template files or strings, Input fields for injecting template code, Template engines or processing functions</td>
+                            <td>Template engines, server-side scripting languages</td>
+                            <td>Use sandboxing or secure configurations for template engines, avoid direct evaluation of user input, and implement input validation and output encoding.</td>
+                            <td>Arbitrary code execution, data leakage, server compromise.</td>
+                          </tr>
+                          <tr>
+                            <td>XML External Entity (XXE) Injection</td>
+                            <td>Parsing user-provided XML input</td>
+                            <td>XML input fields or documents, XML parsers or processing libraries</td>
+                            <td>XML parsing libraries, XML processing technologies</td>
+                            <td>Disable external entity parsing, restrict XML parsing to trusted sources, and perform input validation and sanitization.</td>
+                            <td>Information disclosure, denial of service, server-side request forgery.</td>
+                          </tr>
+                          <tr>
+                            <td>Remote Code Execution (RCE)</td>
+                            <td>Executing user-supplied code or commands on the server</td>
+                            <td>Input fields accepting code snippets or commands, File uploads with executable code, Interpreters or runtime environments</td>
+                            <td>Server-side programming languages, execution environments</td>
+                            <td>Avoid executing user input as code, implement proper input validation and sanitization, and use secure coding practices.</td>
+                            <td>Arbitrary code execution, server compromise, data loss.</td>
+                          </tr>
+                          <tr>
+                            <td>Directory Traversal/Path Traversal</td>
+                            <td>Handling user-provided file or directory paths</td>
+                            <td>Input fields specifying file or directory paths, URLs for accessing specific files or directories</td>
+                            <td>Web servers, file systems</td>
+                            <td>Use input validation, whitelist-based path checks, and ensure proper access controls are in place to prevent unauthorized access to files and directories.</td>
+                            <td>Unauthorized access to sensitive files, information disclosure, server compromise.</td>
+                          </tr>
+                          <tr>
+                            <td>Insecure Deserialization</td>
+                            <td>Deserializing user-supplied serialized objects</td>
+                            <td>Serialized objects or data streams, Input fields accepting serialized data</td>
+                            <td>Serialization and deserialization frameworks</td>
+                            <td>Avoid deserializing untrusted data, validate and sanitize serialized input, and use secure deserialization techniques such as type checking and integrity verification.</td>
+                            <td>Arbitrary code execution, remote command execution, data tampering.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

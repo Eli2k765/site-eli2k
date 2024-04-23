@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Vim Cheatsheet</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Vim Cheatsheet</h1>
+                <p class="alert">A simple cheatsheet I made when I
+                was first using Vim/Neovim that I still use to this
+                day.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="V">Vital Commands</button>
+                  <button class="OM">Operators, Motions, and
+                  Counts</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong><br>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="V">
+                        <div id="V"></div>
+                        <h2>Vital Commands</h2>
+                        <h3>Opening Files</h3>
+                        <p>The most basic way to open a file in vim
+                        is to just call it as an argument:</p>
+                        <pre><code class=
+                        "language-bash">$ vim path/to/file.txt
+
+      #You can open more than one file like this.
+      vim path/to/file1.txt path/to/file2.txt path/to/file3.txt
+
+      #Vim even supports connecting over urls
+      vim https://path/to/file1.txt ftp://path/to/file2.txt scp://path/to/file3.txt
+      </code></pre>
+                        <p>Alternatively, if you open vim without
+                        arguments you can use :edit or :e to open
+                        files in write mode.</p>
+                        <pre><code class=
+                        "language-bash">:e path/to/file4.txt</code></pre>
+                        <h3>Basic Navigation</h3>
+                        <ul>
+                          <li>k - up</li>
+                          <li>j - down</li>
+                          <li>l - right</li>
+                          <li>h - left</li>
+                          <li>Ctrl+f - bottom</li>
+                          <li>Ctrl+b - top</li>
+                          <li>:n - move to nth line</li>
+                        </ul>
+                        <h3>Basic Editing</h3>
+                        <p>To edit the document you need to enter
+                        insert mode. You can do this by pressing
+                        the <code>i</code> key. To exit insert mode
+                        you press the <code>Esc</code> key</p>
+                        <h3>Closing the File</h3>
+                        <p>If you're in normal mode you can exit in
+                        two ways:</p>
+                        <pre><code class=
+                        "language-bash">:wq  #write changes to disk and quit.
+      :qa!  # quit all open docs and ignore warnings.</code></pre>
+                        <div class="OM">
+                          <div id="OM"></div>
+                          <h2>Operators and Motions</h2>
+                          <p>Operators are commands and motions are
+                          what you want the command to act on.</p>
+                          <h3>List of Operators</h3>
+                          <ul>
+                            <li>d - delete (adds to buffer, can
+                            paste)</li>
+                            <li>u - undo</li>
+                            <li>y - yank/copy</li>
+                            <li>p - put/paste</li>
+                            <li>r - replace</li>
+                            <li>c - change</li>
+                            <li>A - append</li>
+                            <li>/ - search</li>
+                            <li>% - finds matching brackets</li>
+                            <li>:% - all occurences</li>
+                            <li>:r - pushes external data to
+                            cursor, can be file or external
+                            command</li>
+                            <li>:! - run external command</li>
+                            <li>:s/old/new/g</li>
+                          </ul>
+                          <h3>List of Motions</h3>
+                          <ul>
+                            <li>w - until next word</li>
+                            <li>e - end of current word</li>
+                            <li>$ - end of line</li>
+                          </ul>
+                          <h3>List of Counts</h3>
+                          <ul>
+                            <li>0 - start of the current line</li>
+                            <li>n - n * motion</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script> 
+        <script src=
+        "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

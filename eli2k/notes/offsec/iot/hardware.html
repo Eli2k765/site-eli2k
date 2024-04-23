@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Hardware Hacking</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Hardware Hacking</h1>
+                <p class="alert">Tinkerer's unite! I'm going to
+                attempt a very brief overview of approaching
+                hardware from a security PoV</p><strong>Last
+                updated: March 5th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h2>Recon</h2>
+                    <h3>Searching</h3>
+                    <div>
+                      <p>As with most engagements, this one starts
+                      with research. One of the best places to
+                      quickly find images and manuals for a device is
+                      by searching for the devices FCC ID on <a href=
+                      "https://fccid.io">fccid.io</a>. The FCC ID
+                      will likely be on the label of the device.
+                      Occasionally you can also find public research
+                      that has already been done on a device on
+                      hobbyist forums.</p>
+                    </div>
+                    <h2>Teardown</h2>
+                    <h3>Enclosure Bypass</h3>
+                    <div>
+                      <p>Determine what is needed to open the casing
+                      of a device. It may be the case that the device
+                      can be opened by some pressure, if there seems
+                      to be glue holding the case together, use a
+                      heat gun to melt the glue. If the device has
+                      rubber pads there may be screws beneath them.
+                      As a last resort you can attempt to cut or
+                      force the device open.</p>
+                    </div>
+                    <h2>Exploitation</h2>
+                    <h3>Chips and Parts</h3>
+                    <div>
+                      <p>You can start by identifying different chips
+                      and part numbers. Google will help you find
+                      corresponding datasheets that give more info
+                      and may hint at what protocol it works on.</p>
+                    </div>
+                    <h3>Interfaces</h3>
+                    <div>
+                      <h4>UART</h4>
+                      <div>
+                        <p>UART interfaces are usually in a pair of 3
+                        or 4 where one of the pins are a GND. You can
+                        identify the GND by placing the black probe on
+                        any metal part of the device and placing the
+                        red probes on the four pads. The beeping pin is
+                        GND. To identify the other pins you can place
+                        the black probe on the ground and turn the
+                        device on. While the device is on, place the
+                        red probe on the other pins. The pin with
+                        constant high voltage is the Vcc pin. Reboot
+                        the device and place the red probe over the
+                        remaining two pins. The pin that fluctuates is
+                        the Tx pin and the low voltage pin is Rx. You
+                        can then use the Attify Badge to connect to
+                        UART and use a usb to connect to your PC.</p>
+                        <p>To interact with the console you need to
+                        identify the baudrate via trial and error
+                        although commonly it's 9600, 38400, 19200,
+                        57600 or 115200. Once you've identified the
+                        baudrate you can use the screen command:
+                        <code>screen /dev/ttyUSB0 38400</code> From
+                        here you can reboot the device and access the
+                        debug logs to identify the booting process. You
+                        may be able to get bootloader access while the
+                        device is booting or find a way to get a root
+                        shell.</p>
+                      </div>
+                      <h4>SPI</h4>
+                      <div>
+                        <p>The SPI flash chip will usually have a
+                        component number on it that will allow you to
+                        find a datasheet. You can use a SOIC clip and
+                        Attify Badge to connect the device to your
+                        computer. Using spiflash.py will allow us to
+                        read with: <code>spiflash.py -s 5120000
+                        --read=new.bin</code> and write with
+                        <code>spiflash.py -s 5120000 -w
+                        new.bin</code></p>
+                      </div>
+                      <h4>JTAG</h4>
+                      <div>
+                        <p>Usually a set of 6, 12, 13 or 20 pin headers
+                        that may be spread across the board. If the IoT
+                        device is not running a full-fledged OS or the
+                        hardware does not provide a serial interface, a
+                        lower-level debug approach, JTAG, is usually
+                        available. We can connect in a similar manner
+                        to the other interfaces. Using OpenOCD will
+                        allow us to read and write data to the
+                        target.</p>
+                      <pre><code class=
+                    "language-bash">#Read over JTAG
+flash banks
+dump_image firmware.bin 0x08000000 0x00010000
+flash banks</code></pre>
+                    <pre><code class=
+                    "language-bash">#Write over JTAG
+flash banks
+flash write_image erase firmware.bin 0x08000000
+flash banks</code></pre>
+                    <p>We can also use gdb for reversing:</p>
+                    <pre><code class=
+                    "language-bash">#Debugging with GDB
+gdb-multiarch program.bin
+  set architecture arm
+  target remote localhost:3333</code></pre>
+                      </div>
+                      <h4>More coming soon.</h4>
+                      <div></div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>eCPPT Review</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>eCPPT Review</h1>
+                <p class="alert">I recently passed the eCPPT exam,
+                below you'll find my timeline, my tips and some
+                resources I'd recommend viewing before attempting
+                the exam.</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                  <h3>What's on the eCPPT?</h3>
+                  <div>
+                    <p>This exam is primarily designed to test your
+                    ability to comprehend a network environment,
+                    which makes it somewhat challenging to prepare
+                    for. While the lab machines may be easy to
+                    compromise, the network itself is much more
+                    difficult to navigate.</p>
+                    <p>To pass this exam, you'll need to be able to
+                    accurately identify web vulnerabilities and
+                    possess the necessary skills to easily complete
+                    an easy-rated box on HackTheBox. If you're
+                    confident in both of these areas, it's time to
+                    dive into the details of tunneling, routing, and
+                    pivoting. In my opinion, the best way to do this
+                    is by creating a home lab consisting of at least
+                    three machines, each on a different NAT network
+                    with different subnets. You can set this up using
+                    VirtualBox. At the bottom of this page, you'll
+                    find a video that demonstrates this process and
+                    guides you through compromising each network. The
+                    final skill you'll need is the ability to
+                    generate shellcode and understand simple
+                    stack-based buffer overflows.</p>
+                  </div>
+                  <h3>My Thoughts on the Exam</h3>
+                  <div>
+                    <h4>Content</h4>
+                    <p>Overall, the exam felt a little dated,
+                    especially compared to the labs being released on
+                    HTB or THM recently. If you've been able to
+                    compromise the easy-medium machines on HTB you
+                    shouldn't have a problem with the labs here. The
+                    network itself was complicated for me to figure
+                    out because I didn't prepare enough, if you
+                    bought the course I'm pretty sure it's covered in
+                    there. If not set up a home lab. You will at
+                    least need a Windows lab with Immunity to get
+                    through the BoF.</p>
+                    <h4>Difficulty</h4>
+                    <p>There were a few curve balls. I certainly was
+                    unprepared for the network situation and think
+                    this is the most difficult part of the exam. If
+                    this was a 24 hour exam like the OSCP I would've
+                    failed, the additional time gave me a chance to
+                    do more researh and learn while in the
+                    environment. I'd recommend having a strong
+                    understanding of routing, the difference between
+                    bind and reverse shells, how to pivot and tunnel
+                    and how to use metasploit, it helped so much with
+                    routing and initial access.</p>
+                  </div>
+                  <h3>Recommendations and Resources</h3>
+                  <div>
+                    <h4>Tips</h4>
+                    <ul>
+                      <li>Brush up on <a href=
+                      "https://eli2k.com/notes/offsec/post/pivoting.html">
+                        pivoting and tunneling</a>
+                      </li>
+                      <li>Confidently exploit <a href=
+                      "https://eli2k.com/notes/offsec/re/stack.html">
+                        stack</a> overflows and practice with
+                        different payloads
+                      </li>
+                      <li>Be familiar with <a href=
+                      "https://eli2k.com/notes/offsec/post/linpriv.html">
+                        Linux</a> and <a href=
+                        "https://eli2k.com/notes/offsec/post/winpriv.html">
+                        Windows</a> privilege escalation.
+                      </li>
+                      <li>Take good notes, screenshot each step of
+                      each process</li>
+                      <li>Be comfortable with common vulnerabilities
+                      affecting webapps</li>
+                    </ul>
+                    <h4>Resources</h4>
+                    <ul>
+                      <li>
+                        <a href=
+                        "https://yewtu.be/watch?v=QNoIX1au_CM">A
+                        video showing the exploitation of a home lab
+                        setup similar to an ecppt environment</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://yewtu.be/playlist?list=PLLKT__MCUeix3O0DPbmuaRuR_4Hxo4m3G">
+                        TCM Buffer Overflow playlist</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://tryhackme.com/room/wreath">TryHackMe
+                        Wreath Network. You need at least a 7 day
+                        streak if unsubscribed</a>
+                      </li>
+                      <li>
+                        <a href=
+                        "https://pentest.blog/explore-hidden-networks-with-double-pivoting/">
+                        An article that made pivoting stick</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3>My Certification</h3>
+                  <div>
+                    <img src=
+                  "https://eli2k.com/resources/images/ecpptcert.png"
+                  alt="eCPPTv2, Certification ID: 2707216">
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

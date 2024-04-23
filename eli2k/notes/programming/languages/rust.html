@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>BASH</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Bash Basics</h1>
+                <p class="alert">An intro to bash that only covers
+                the essentials to get you started.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="Find">Finding</button>
+                  <button class="FEv">Filter Evasion</button>
+                  <button class="Ex">Exploiting</button>
+                  <button class="Res">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong><br>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="Find">
+                        <div id="Find"></div>
+                        <h2>One-Liners</h2>
+                        <p>Bash one-liners are lines of code that
+                        can be executed on a single line in a bash
+                        terminal. They typically use loops, pipes,
+                        output redirections and many other useful
+                        methods for automating repetitive tasks in
+                        the shell. While writing this, I found a
+                        super useful series that can be used as a
+                        reference when creating bash one-liners
+                        called: "<a href=
+                        "https://catonmat.net/books" target=
+                        "_blank">Next up – Bash One-Liners</a>"
+                        near the bottom of the page. I highly
+                        recommend reading each post in the bash
+                        section thoroughly as much of what is
+                        talked about I use or come across
+                        daily.</p>
+                        <h2>Shell Scripts</h2>
+                        <h3>Shebang</h3>
+                        <p>Bash files will start with a shebang.
+                        You can read about them here: <a href=
+                        "https://en.wikipedia.org/wiki/Shebang_(Unix)"
+                        target="_blank">Shebang_(Unix)</a></p>
+                        <h3>Variables</h3>
+                        <p>In bash there are local variables, which
+                        are only available within the block of code
+                        where they are defined and global
+                        variables, which we will cover below and
+                        are also called environment variables.</p>
+                        <p>Here is an example defining and calling
+                        a local variable</p>
+                        <pre><code class=
+                        "language-bash">#!/bin/bash
+exampleVar="Hello"
+echo $exampleVar</code></pre>
+                        <h3>Environment Variables</h3>
+                        <p>An environment is an array of strings
+                        that are passed to a program when the
+                        program is executed. Environment variables
+                        are the key-value pairs that make up that
+                        array and provide information about the
+                        system.</p>
+                        <p>You can check the current env vars
+                        with:</p>
+                        <pre><code class=
+                        "language-bash">printenv</code></pre>Running
+                        commands with sudo will change, add and
+                        remove some vars while in the elevated
+                        environment, this can be observed by
+                        running:
+                        <pre><code class=
+                        "language-bash">sudo printenv</code></pre>Keep
+                        this in mind when making scripts meant to
+                        run with sudo.
+                        <p>Setting environment variables can be
+                        done with:</p>
+                        <pre><code class=
+                        "language-bash">export &lt;KEY&gt;=&lt;VALUE&gt;</code></pre>
+                        <p>Bash has positional variables. $0 is the
+                        name of the program. $n are the arguments
+                        where n is a number &gt;= 1. These
+                        arguments are defined when the program is
+                        executed on the commandline and can then be
+                        called in a script.</p>
+                        <pre><code class=
+                        "language-bash">/usr/bin/cat program.sh
+#!/bin/bash
+printf "The program you are running is $0 \n $3 $1$2"
+</code></pre>
+                        <pre><code class=
+                        "language-bash">./program.sh  world ! Hello
+
+The program you are running is /home/erodgers/Desktop/eli2k/program.sh
+Hello world!⏎</code></pre>
+                        <p>Bash has a few special variables. This
+                        post talks about them and gives examples:
+                        <a href=
+                        "https://www.thegeekstuff.com/2010/05/bash-shell-special-parameters/"
+                        target="_blank">Bash Special Parameters
+                        Explained with 4 Example Shell
+                        Scripts</a></p>
+                        <p>Bash has prompt variables. This post
+                        elaborates and gives some examples:
+                        <a href="https://www.shell-tips.com/bash/prompt/#gsc.tab=0"
+                        target="_blank">How To Make A Custom Bash
+                        Shell Prompt</a>.</p>
+                        <h3>If/Then</h3>
+                        <p>This post goes in-depth about
+                        conditionals in bash: <a href=
+                        "https://www.shell-tips.com/bash/if-statement/#gsc.tab=0"
+                        target="_blank">How To Script Error Free
+                        Bash If Statements?</a></p>
+                        <p>To test what you learned I recommend
+                        attempting the <a href=
+                        "https://www.codingame.com/training/easy/onboarding"
+                        target="_blank">Onboarding Challenge</a>,
+                        <a href=
+                        "https://www.codingame.com/training/easy/power-of-thor-episode-1"
+                        target="_blank">Power of Thor
+                        Challenge</a>, and <a href=
+                        "https://www.codingame.com/training/easy/mars-lander-episode-1"
+                        target="_blank">Mars Lander Challenge</a>
+                        at CodingGame. The site visualises the code
+                        you write in the form of games and allows
+                        you to choose from several languages. It
+                        also allows you to skip the account
+                        creation. We will be using that site in the
+                        future so you may want to create an
+                        account.</p>
+                        <h3>Loops</h3>
+                        <p>Read through the following post and
+                        answer the questions below:</p><a href=
+                        "https://www.shell-tips.com/bash/loops/#gsc.tab=0"
+                        target="_blank">What is the Right Way to do
+                        Bash Loops?</a>
+                        <p>Questions:</p>
+                        <ul>
+                          <li>How do you iterate over a list of
+                          files? How about lines in a file?</li>
+                          <li>What are the four types of iteration
+                          constructs? Describe how each of those
+                          can be implemented in bash, feel free to
+                          make scripts for each.</li>
+                          <li>What are the <code>break</code>
+                          keyword and <code>continue</code>
+                          keywords used for?</li>
+                          <li>How would you perform a do-while loop
+                          in bash?</li>
+                        </ul>
+                        <p>This challenge is optional if you were
+                        able to answer and implement the questions
+                        above. It is quite fun and will prepare you
+                        for the next challenge so I do recommend
+                        doing it: <a href=
+                        "https://www.codingame.com/training/easy/the-descent"
+                        target="_blank">The Descent</a></p>
+                        <h3>Arrays</h3>
+                        <p>Another informative post by Shell-Tips
+                        about arrays is below.</p><a href=
+                        "https://www.shell-tips.com/bash/arrays/#gsc.tab=0"
+                        target="_blank">A Complete Guide on How To
+                        Use Bash Arrays</a>
+                        <p>Attempt to answer these questions after
+                        reading that post:</p>
+                        <ul>
+                          <li>What are the two types of arrays in
+                          bash and how are they declared?</li>
+                          <li>How do you reference an item stored
+                          in an array?</li>
+                          <li>How do you remove a key from an
+                          array?</li>
+                          <li>How do you loop over an array?</li>
+                        </ul>
+                        <p>Now that you're familiar with loops and
+                        arrays do these challenges:</p>
+                        <ol>
+                          <li>
+                            <a href=
+                            "https://www.codingame.com/training/easy/temperatures"
+                            target="_blank">Temperatures</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://www.codingame.com/training/easy/ascii-art"
+                            target="_blank">Ascii-art</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://www.codingame.com/training/easy/rock-paper-scissors-lizard-spock"
+                            target="_blank">Rock-Paper-Scissors</a>
+                          </li>
+                        </ol>
+                        <h3>Functions</h3>
+                        <p>For our last topic in bash you will be
+                        learning about functions. I won't be
+                        providing any problems for this one, but I
+                        do suggest you challenge yourself in a way
+                        you see fit. The recommended reading is
+                        here: <a href=
+                        "https://www.shell-tips.com/bash/functions/#gsc.tab=0"
+                        target="_blank">The Complete How To Guide
+                        of Bash Functions</a></p>
+                        <p>There is a lot more to bash than what I
+                        showed here but hopefully this will get you
+                        started.</p>
+                        <h2>Summary</h2>
+                        <pre><code class="language-bash">#Variables
+exampleVar="Hello"
+echo $exampleVar
+
+#If/then
+if $some_var &gt; 10; then
+    echo "some_var is totally bigger than 10."
+elif some_var &lt; 10; then    # This elif clause is optional.
+    echo "some_var is smaller than 10."
+else:                  # This is optional too.
+    echo "some_var is indeed 10."
+
+#For Loops
+for number in {0..4..1}; do
+  echo " ${number}"
+done
+
+for ((x=0 ; x&lt;5 ; x++)); do
+  echo "$x"
+done
+
+#While Loops
+x = 0
+while (( x &lt; 4 )); do
+    echo $((x++))
+done
+
+#Arrays (lists)
+myIndexedArray=(one two three)
+echo ${myIndexedArray[*]}
+
+for value in "${myIndexedArray[*]}"; do echo "$value"; done
+
+#Functions
+fn() { echo "Hello World!"; }
+
+#Calling Functions
+fn      # =&gt; Hello World!
+</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>AD Basics</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Active Directory Basics</h1>
+                <p class="alert">An overview of basic concepts and functionality provided by Active Directory</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Windows Domains</h3>
+                    <div>
+                      <ul>
+                        <li>Advantages</li>
+                        <ul>
+                          <li>Centralised Identity Management</li>
+                          <li>Security Policies</li>
+                        </ul>
+                        <li>Summary</li>
+                        <ul>
+                          <li>Windows Domain is a group of users and devices</li>
+                          <li>Administration is centralised through Active Directory</li>
+                          <li>The Domain Controller is the server that runs the AD services</li>
+                          <li>The core of the domain is the AD DS which contains object information</li>
+                        </ul>
+                      </ul>
+                    </div>
+                    <h3>Active Directory</h3>
+                    <div>
+                      <ul>
+                        <li>Objects</li>
+                        <ul>
+                          <li>Users</li>
+                          <ul>
+                            <li>Security principles; can be assigned privileges over resources</li>
+                            <li>Represent people and services</li>
+                          </ul>
+                        </ul>
+                        <li>Machines</li>
+                        <ul>
+                          <li>Security principles; local administrators; ComputerName$; rotated 120 char passwords</li>
+                        </ul>
+                        <li>Security Groups</li>
+                        <ul>
+                          <li>Domain Admins</li>
+                          <ul>
+                            <li>Admins of entire domain</li>
+                          </ul>
+                          <li>Server Operators</li>
+                          <ul>
+                            <li>Administer DCs, cannot change admin group memberships</li>
+                          </ul>
+                          <li>Backup Operators</li>
+                          <ul>
+                            <li>Access any file</li>
+                          </ul>
+                          <li>Account Operators</li>
+                          <ul>
+                            <li>Create and modify accounts</li>
+                          </ul>
+                          <li>Domain Users</li>
+                          <ul>
+                            <li>All user accounts</li>
+                          </ul>
+                          <li>Domain Users</li>
+                          <ul>
+                            <li>All Computers</li>
+                          </ul>
+                          <li>Domain Controllers</li>
+                          <ul>
+                            <li>All DC's</li>
+                          </ul>
+                        </ul>
+                        <li>Organizational Unit (OUs) vs Security Groups</li>
+                        <ul>
+                          <li>OUs are for applying policies</li>
+                          <li>Security Groups are used to grant permissions over resources.</li>
+                        </ul>
+                      </ul>
+                    </div>
+                    <h3>Group Policy Object (GPO)</h3>
+                    <div>
+                      <ul>
+                        <li>GPO push configurations and security policies to OUs</li>
+                        <li>GPO distribution is done over the network share; SYSVOL at C:\Windows\SYSVOL\sysvol\</li>
+                      </ul>
+                    </div>
+                    <h3>Auth Methods</h3>
+                    <div>
+                      <ul>
+                        <li>Kerberos</li>
+                        <ol>
+                          <li>User send username and timestamp, encrypted using a key derived from the password, to the KDC</li>
+                          <li>KDC sends back a TGT, encrypted with the krbtgt accounts hash, and a session key, encrypted with the user hash</li>
+                          <li>The client can then request a TGS by sending the username and timestamp, encrypted with the session key, the TGT and a service principle name (SPN) to connect to a service</li>
+                          <li>The KDC will respond with the TGS, encrypted with the service hash, and a service session key, encrypted with the session key.</li>
+                          <li>The client will finally send the username and timestamp, encrypted with a service session key, and the TGS to the server.</li>
+                        </ol>
+                        <li>NetNTLM</li>
+                        <ol>
+                          <li>The client sends an authentication request to the server they want to access.</li>
+                          <li>The server generates a random number and sends it as a challenge to the client.</li>
+                          <li>The client combines their NTLM password hash with the challenge (and other known data) to generate a response to the challenge and sends it back to the server for verification.</li>
+                          <li>The server forwards the challenge and the response to the Domain Controller for verification.</li>
+                          <li>The domain controller uses the challenge to recalculate the response and compares it to the original response sent by the client. If they both match, the client is authenticated; otherwise, access is denied. The authentication result is sent back to the server.</li>
+                          <li>The server forwards the authentication result to the client.</li>
+                        </ol>
+                      </ul>
+                    </div>
+                    <h3>Trees, Forests, and Trusts</h3>
+                    <div>
+                      <ul>
+                        <li>Trees</li>
+                        <ul>
+                          <li>Allow domains to be combined</li>
+                        </ul>
+                        <li>Forests</li>
+                        <ul>
+                          <li>Trees with different name spaces.</li>
+                        </ul>
+                        <li>Trusts</li>
+                        <ul>
+                          <li>Allows permissions to be extended to other domains in a tree</li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

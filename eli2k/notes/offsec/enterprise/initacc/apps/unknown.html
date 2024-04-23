@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>New Service</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>1234 Unknown Service</h1>
+                <p class="“alert”">A mysterious service that nmap
+                failed to identify. We’ll cover how to fingerprint
+                it manually, use Google to find clues, test the
+                connection and eventually discover what it
+                is.</p><strong>Last updated: March 9th,
+                2023</strong>
+                <article>
+                  <div id="“contain”">
+                    <h3>Manual Fingerprinting</h3>
+                    <div>
+                      <pre><code class=
+                    "“language-bash”">nmap -sV -p 1234 x.x.x.x 
+#If nmap says “unknown service”, try this script: 
+nmap --script=fingerprint-strings -p 1234 x.x.x.x 
+#This will print the readable strings from the service response</code></pre>
+                    </div>
+                    <h3>Google Search</h3>
+                    <div>
+                      <p>Copy and paste some of the strings into
+                      Google and see if you can find any matches. For
+                      example, if you see something like “Welcome to
+                      FooBar server v1.2”, try searching for “FooBar
+                      server”. You might find some documentation or
+                      forum posts that describe the service or its
+                      protocol</p>
+                    </div>
+                    <h3>Testing Connection</h3>
+                    <div>
+                      <p>If you have an idea of what the service is
+                      or how it works, try connecting to it with
+                      different tools. For example, if you think it’s
+                      a web server, try curl or wget. If you think
+                      it’s a telnet server, try telnet or netcat. If
+                      you think it’s a FTP server, try ftp. 
+                      See if you get any useful output or error
+                      messages</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

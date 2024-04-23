@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Getting Started</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Getting Started in Offensive Security
+                (Shortened)</h1>
+                <p>Currently this post is just a collection of links with a description of how I recommend using them.</p>
+                <p>TryHackMe recently released a good blog on this: <a href="https://tryhackme.com/resources/blog/free_path">Free Intro to Cyber</a>. It goes along with a lot of this post and can be done independently or as a supplement to this post.</p>
+                <p>A simple collection of resources can be found at: <a href="https://eli2k.com/cyberResources.pdf">My Cyber Resources</a>.
+                <p>If you live in the United States and are a citizen without a Bachelor's/Master's Degree, I recommend heading over to <a href="https://www.wgu.edu/online-it-degrees.html">WGU's website</a>. I'm currently enrolled in the BSCIA there and it follows along with many of my recommendations in this post.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="Pre">Getting
+                  Started</button> <button class="Early">Getting
+                  Challenged</button> <button class="Mid">Getting
+                  Comfortable</button> <button class="Late">Getting
+                  a Cert</button> <button class="Beyond">And
+                  Beyond</button></span>
+                </div><br>
+                <strong>Last updated: April 14th, 2023</strong><br>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="Pre">
+                        <h2>Getting Started</h2>
+                        <h3>Intro</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://en.m.wikipedia.org/wiki/Computer_security"
+                          target="_blank">Computer Security</a><br>
+                          This page is a bit long but it covers
+                          cybersecurity and its importance well and
+                          will help you understand how the field
+                          came to be, how it's evolved, and how
+                          it's implemented in the private and
+                          public sector.</span></li>
+                          <li><span><a href=
+                          "https://en.m.wikipedia.org/wiki/Penetration_test"
+                          target="_blank">Penetration
+                          Testing</a><br>
+                          Know what the goals of a pentest are,
+                          what the phases of a pentest are, and
+                          what white/black box refers
+                          to.</span></li>
+                        </ul>
+                        <h3>Google is my Superpower</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://support.google.com/websearch/answer/2466433?visit_id=638019829426316636-1353079814&amp;p=adv_operators&amp;hl=en&amp;rd=1"
+                          target="_blank">Refine Web
+                          Searches</a><br>
+                          Most search engines allow users to
+                          optimize searches through the use of
+                          keywords and operators. We can use these
+                          methods to refine our searches but they
+                          also have an interesting security
+                          implication.</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Google_hacking"
+                          target="_blank">Google
+                          Hacking/Dorking</a><br>
+                          Although google dorking is a bit out of
+                          scope for this section it's existence
+                          should plant some ideas about the
+                          "misuse" of innocent features and the
+                          scope of security in todays increasingly
+                          complex internet. An interesting side
+                          effect of adding complexity to any
+                          feature is that there are usually
+                          unintended consequences.</span></li>
+                          <li><span><a href=
+                          "https://www.exploit-db.com/google-hacking-database"
+                          target="_blank">GHDB</a><br>
+                          This might come in handy
+                          later.</span></li>
+                        </ul>
+                        <h3>Linux Fu</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://en.m.wikipedia.org/wiki/Linux"
+                          target="_blank">Linux</a><br>
+                          By now it might be obvious that I love
+                          Wikipedia.</span></li>
+                          <li><span><a href=
+                          "https://linux.die.net/man/" target=
+                          "_blank">Online Man Pages</a><br>
+                          A site that allows you to search the
+                          documentation of system commands for
+                          linux. These will be useful for
+                          completing the challenges at the end of
+                          this section.</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+                          target="_blank">Bash</a><br>
+                          Bash's Wikipedia page. Although it might
+                          not be incredibly helpful yet, you can
+                          refer to it in the future.</span></li>
+                          <li><span><a href=
+                          "https://cmdchallenge.com/" target=
+                          "_blank">CmdChallenge</a><br>
+                          An online introduction to shell commands,
+                          don't forget to check the man pages. Go
+                          as far as you can.</span></li>
+                          <li><span><a href=
+                          "https://www.virtualbox.org/wiki/Downloads"
+                          target="_blank">VirtualBox Download
+                          Page</a><br>
+                          Under "VirtualBox x.x.x platform
+                          packages" select your host. Download the
+                          "VirtualBox x.x.x Oracle VM VirtualBox
+                          Extension Pack" as well. You should only
+                          have to walk through the installation
+                          GUI. Refer to the docs if you run into
+                          issues.</span></li>
+                          <li><span><a href=
+                          "https://www.kali.org/get-kali/#kali-virtual-machines"
+                          target="_blank">Kali Download
+                          Page</a><br>
+                          Select one of the VirtualBox downloads.
+                          You probably won't have to configure much
+                          but if you run into problems refer to the
+                          docs. Default credentials are
+                          kali/kali.</span></li>
+                          <li><span><a href=
+                          "https://overthewire.org/wargames/bandit/"
+                          target="_blank">Bandit OTW</a><br>
+                          Further introduction to the shell, this
+                          time you have to <a href=
+                          "https://linux.die.net/man/1/ssh" target=
+                          "_blank">ssh</a> into the labs. You can
+                          do this with PuTTY on Windows or Linux. I
+                          describe installing VirtualBox and a Kali
+                          VM above. Try your best to reach and
+                          complete level 13.</span></li>
+                        </ul>
+                        <h3>Windows Pain</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Microsoft_Windows"
+                          target="_blank">Microsoft Windows</a><br>
+                          A brief intro to Windows from
+                          Wikipedia</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Cmd.exe"
+                          target="_blank">cmd.exe</a><br>
+                          cmd.exe's Wikipedia page. The internal
+                          command section is particurlarly useful.
+                          You may notice some commands are the same
+                          as the Bash commands from before but many
+                          are different. Try to determine which
+                          commands were essential during the
+                          challenges and what they are in
+                          cmd.</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/PowerShell"
+                          target="_blank">PowerShell</a><br>
+                          PowerShell will feel more familiar than
+                          cmd but in reality it's quite different
+                          than bash. You can invoke PowerShell with
+                          <code>PS</code> in a cmd
+                          shell.</span></li>
+                          <li><span><a href=
+                          "https://learn.microsoft.com/en-us/training/modules/introduction-to-powershell/"
+                          target="_blank">Intro to
+                          PowerShell</a><br>
+                          The basics, provided by Microsoft
+                          itself.</span></li>
+                          <li><span><a href=
+                          "https://underthewire.tech/century"
+                          target="_blank">Century UTW</a><br>
+                          UnderTheWire, inspired by OverTheWire and
+                          for PowerShell. Go as far as you
+                          can.</span></li>
+                        </ul>
+                        <h3>CompTIA A+ (Non-free - Optional)</h3>
+                        <ul>
+                          <li>
+                            <span><a href=
+                            "https://www.comptia.org/certifications/a"
+                            target="_blank">Official A+
+                            page</a><br>
+                            The A+ exams cover the basics of
+                            computing and IT as the field is today.
+                            The exam will ensure that you have the
+                            necessary competancy to approach most
+                            basic problems faced as an IT
+                            professional. I only recommend taking
+                            this if you're a total noob or you have
+                            the money. My recommendation:</span>
+                            <ol>
+                              <li><span>Take ExamCompass practice
+                              tests by topic.</span></li>
+                              <li><span>Study underperformed topics
+                              using Professor Messer's
+                              videos.</span></li>
+                              <li><span>Use getcertified4less to
+                              buy discounted voucher when
+                              thoroughly prepared.</span></li>
+                            </ol>
+                          </li>
+                          <li><span><a href=
+                          "https://www.examcompass.com/comptia/a-plus-certification/free-a-plus-practice-tests"
+                          target="_blank">ExamCompass Practice
+                          Tests</a><br>
+                          Free practice exams that can be taken by
+                          topic. Topics where you struggle can be
+                          improved by watching professor
+                          Messer.</span></li>
+                          <li><span><a href=
+                          "https://www.professormesser.com/free-a-plus-training/220-1101/220-1101-video/220-1101-training-course/"
+                          target="_blank">Professor Messer 1101</a>
+                          and <a href=
+                          "https://www.professormesser.com/free-a-plus-training/220-1102/220-1102-video/220-1102-training-course/"
+                          target="_blank">Professor Messer 1102</a>
+                          videos<br>
+                          Completely free videos that cover almost
+                          everything on each test.</span></li>
+                          <li><span><a href=
+                          "https://getcertified4less.com/CompTIA-A-Voucher"
+                          target="_blank">getcertified4less</a><br>
+                          An authorized CompTIA partner that offers
+                          soon-to-expire vouchers at a discounted
+                          price. Make sure you select your regions
+                          voucher.</span></li>
+                        </ul>
+                      </div>
+                      <div class="Early">
+                        <h2>Getting Challenged</h2>
+                        <h3>Networking</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/OSI_model"
+                          target="_blank">OSI (7-layer)
+                          Model</a><br>
+                          All networking courses seem to start here
+                          and for good reason, it will help
+                          conceptualize how the internet works.
+                          Remeber the layers, PDU's and the
+                          function of each layer, but most
+                          importantly; Please Don't Throw Sausage
+                          Pizza Away!</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Internet_protocol_suite"
+                          target="_blank">TCP/IP Model</a><br>
+                          An alternative to the OSI Model but
+                          actually implemented as a protocol stack.
+                          Memorize the comparison between the OSI
+                          Model and the TCP/IP Model. I learned
+                          this one from the top-down using this
+                          book: <a href=
+                          "https://b-ok.cc/book/17542426/3ed9b3">Computer
+                          Networking: A Top-Down Approach, Global
+                          Edition, 8th Edition</a>. I can't
+                          recommend the book enough. I highly
+                          recommend buying if you can, otherwise it
+                          is atainable through that
+                          link.</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+                          target="_blank">TCP</a> and <a href=
+                          "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+                          target="_blank">UDP</a><br>
+                          Both are transport protocols but differ
+                          from each other significantly. TCP is
+                          connection-oriented and makes use of a
+                          <a href=
+                          "https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment">
+                          three-way handshake</a> to establish a
+                          connection. UDP is connectionless,
+                          meaning that it does not provide
+                          guaranteed delivery although there are
+                          some applications that attempt to make up
+                          for this, such as TFTP, which has a
+                          rudimentary handshake
+                          process.</span></li>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Client%E2%80%93server_model"
+                          target="_blank">Client-Server Model</a>
+                          and <a href=
+                          "https://en.wikipedia.org/wiki/Peer-to-peer">
+                          Peel-to-Peer</a><br>
+                          Understand the difference between the two
+                          and be able to identify some applications
+                          that uses each.</span></li>
+                          <li><span><a href=
+                          "https://www.wireshark.org/#download"
+                          target="_blank">Wireshark
+                          Download</a><br>
+                          Wireshark is already on Kali if you
+                          downloaded that earlier. The official
+                          page has some sample captures that might
+                          be of interest. I suggest checking out
+                          the protocols you're familiar with:
+                          <a href=
+                          "https://wiki.wireshark.org/SampleCaptures">
+                          SampleCaptures</a>. You can also capture
+                          your own traffic and observe
+                          it.</span></li>
+                          <li><span><a href=
+                          "https://www.hackers-arise.com/networks-basics"
+                          target="_blank">Hackers-Arise: Networking
+                          for Hackers</a><br>
+                          A good intro to networking. I recommend
+                          just looking through this casually so you
+                          become familiar with
+                          terminology.</span></li>
+                        </ul>
+                        <h3>CompTIA Network+ (Non-free -
+                          Recommended)</h3>
+                        <ul>
+                          <li>
+                            <span><a href=
+                            "https://www.comptia.org/certifications/network"
+                            target="_blank">Official Network+
+                            page</a><br>
+                            I recommend taking, or at least
+                            studying this exam. It probably won't
+                            land you any jobs but the information
+                            you will take away is highly
+                            applicable. I recommend the same method
+                            for preparing for the A+:</span>
+                            <ol>
+                              <li><span>Take ExamCompass practice
+                              tests by topic.</span></li>
+                              <li><span>Study underperformed topics
+                              using Professor Messer's
+                              videos.</span></li>
+                              <li><span>Use getcertified4less to
+                              buy discounted voucher when
+                              thoroughly prepared.</span></li>
+                            </ol>
+                          </li>
+                          <li><span><a href=
+                          "https://www.examcompass.com/comptia/network-plus-certification/free-network-plus-practice-tests"
+                          target="_blank">ExamCompass Practice
+                          Tests</a><br>
+                          Free practice exams that can be taken by
+                          topic. Topics where you struggle can be
+                          improved by watching professor
+                          Messer.</span></li>
+                          <li><span><a href=
+                          "https://www.professormesser.com/network-plus/n10-008/n10-008-video/n10-008-training-course/"
+                          target="_blank">Professor Messer
+                          N10-008</a> videos<br>
+                          Completely free videos that cover almost
+                          everything on each test.</span></li>
+                          <li><span><a href=
+                          "https://getcertified4less.com/Comptia-Network-Certification/"
+                          target="_blank">getcertified4less</a><br>
+                          An authorized CompTIA partner that offers
+                          soon-to-expire vouchers at a discounted
+                          price. Make sure you select your regions
+                          voucher.</span></li>
+                        </ul>
+                        <h3>Bash Scripting (Optional but
+                          recommended)</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://catonmat.net/bash-one-liners-explained-part-one"
+                          target="_blank">Bash One-Liners
+                          Explained: Part 1</a>, <a href=
+                          "https://catonmat.net/bash-one-liners-explained-part-two"
+                          target="_blank">Part 2</a>, <a href=
+                          "https://catonmat.net/bash-one-liners-explained-part-three"
+                          target="_blank">Part 3</a>, <a href=
+                          "https://catonmat.net/bash-one-liners-explained-part-four"
+                          target="_blank">Part 4</a>, and <a href=
+                          "https://catonmat.net/bash-one-liners-explained-part-five"
+                          target="_blank">Part 5</a><br>
+                          Learning one-liners will be a great
+                          primer for learning bash scripting and
+                          will make life in the shell
+                          easier.</span></li>
+                          <li><span><a href=
+                          "https://learnxinyminutes.com/docs/bash/"
+                          target="_blank">Learn Bash in Y
+                          mins</a><br>
+                          This site is an awesome resource for
+                          quickly covering the basics of a
+                          language. I recommend using
+                          it</span></li>
+                          <li>
+                            <span><a href=
+                            "https://www.codingame.com/training/easy"
+                            target="_blank">Coding Game</a><br>
+                            A fun, interactive way to practice
+                            programming in multiple languages.
+                            Don't forget to select Bash. I
+                            recommend doing the few below:</span>
+                            <ul>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/onboarding">
+                              Onboarding</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/power-of-thor-episode-1">
+                              Power of Thor</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/mars-lander-episode-1">
+                              Mars Lander</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/the-descent">
+                              The Descent</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/temperatures">
+                              Temperatures</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/ascii-art">
+                              Ascii-art</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/rock-paper-scissors-lizard-spock">
+                              Rock-Paper-Scissors</a></span></li>
+                              <p><span>Special (Optional)
+                              Challenges for the
+                              Initiated:</span></p>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/medium/stock-exchange-losses">
+                              Stock Exchange Losses</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/encryptiondecryption-of-enigma-machine">
+                              Encryption/Decryption of Enigma
+                              Machine</a></span></li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <h3>Python Scripting (Optional)</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://learnxinyminutes.com/docs/python/"
+                          target="_blank">Learn Python in Y
+                          mins</a><br>
+                          Once you start using a language regularly
+                          you can compare the LXYM pages to the
+                          language's page you're already familiar
+                          with. I reccomend looking through this
+                          and writing what you don't
+                          know.</span></li>
+                          <li><span><a href=
+                          "https://automatetheboringstuff.com/"
+                          target="_blank">Automate the Boring
+                          Stuff</a><br>
+                          This book has a nice intro to Python as
+                          well as practical use cases for python
+                          scripting.</span></li>
+                          <li><span><a href=
+                          "https://python-course.eu/python-tutorial/"
+                          target="_blank">Python-Course</a><br>
+                          Only read through what you're not
+                          familiar with.</span></li>
+                          <li>
+                            <span><a href=
+                            "https://www.codingame.com/training/easy"
+                            target="_blank">Coding Game</a><br>
+                            A fun, interactive way to practice
+                            programming in multiple languages.
+                            Don't forget to select Python. I
+                            recommend doing the few below:</span>
+                            <ul>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/onboarding">
+                              Onboarding</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/power-of-thor-episode-1">
+                              Power of Thor</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/mars-lander-episode-1">
+                              Mars Lander</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/the-descent">
+                              The Descent</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/temperatures">
+                              Temperatures</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/ascii-art">
+                              Ascii-art</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/rock-paper-scissors-lizard-spock">
+                              Rock-Paper-Scissors</a></span></li>
+                              <p><span>Special (Optional)
+                              Challenges for the
+                              Initiated:</span></p>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/medium/stock-exchange-losses">
+                              Stock Exchange Losses</a></span></li>
+                              <li><span><a href=
+                              "https://www.codingame.com/training/easy/encryptiondecryption-of-enigma-machine">
+                              Encryption/Decryption of Enigma
+                              Machine</a></span></li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <h3>Javascript (Optional)</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                          target="_blank">Mozilla Developer
+                          Network: JavaScript</a><br>
+                          A good resource for learning
+                          JS.</span></li>
+                          <li><span><a href=
+                          "https://www.learneroo.com/modules/64/nodes/350"
+                          target="_blank">Learneroo: JS</a><br>
+                          Interactive JavaScript language guide
+                          with challenges</span></li>
+                          <li><span><a href=
+                          "https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_W3C_DOM_Level_1_Core"
+                          target="_blank">MDN: DOM</a><br>
+                          I highly recommend reading through this
+                          and going down the rabbit hole with
+                          DOM.</span></li>
+                          <li><span><a href=
+                          "https://pentesteracademylab.appspot.com/lab/webapp/jfp/1"
+                          target="_blank">Javascript for Pentesters
+                          (Challenging)</a><br>
+                          These are the challenges provided by
+                          Pentester Academy. We have yet to cover
+                          web attacks but this may serve as an
+                          introduction. If you want to do all of
+                          the challenges modify the URL by changing
+                          the 1 to a 2 and so forth. There are 21
+                          pages in total. Good luck!</span></li>
+                        </ul>
+                          <h3>C++ (Optional)</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://learnxinyminutes.com/docs/c++/"
+                          target="_blank">Learn C++ in Y
+                          Mins</a><br>
+                          I recommend at least getting an
+                          elementary understanding of an
+                          intermediate or lower level language.
+                          This is a good start and there are more
+                          references at the bottom.</span></li>
+                          <li><span><a href=
+                          "https://www.learncpp.com/" target=
+                          "_blank">Learn Cpp</a><br>
+                          A course if you prefer.</span></li>
+                          <li><span><a href=
+                          "https://github.com/0x00pf/programming4wannabes"
+                          target=
+                          "_blank">Programming4Wannabes</a><br>
+                          Course covering C and Assembly, I do
+                          recommend reading through this as it will
+                          help with the C-Family Vulnerabilities
+                          course later.</span></li>
+                        </ul>
+                          <h3>ASM</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://en.wikipedia.org/wiki/Assembly_language"
+                          target="_blank">Assembly on
+                          Wikipedia</a><br>
+                          Understand what assembly is and how it
+                          relates to programming today.</span></li>
+                          <li><span><a href=
+                          "https://www.cs.virginia.edu/~evans/cs216/guides/x86.html"
+                          target="_blank">x86 Assembly
+                          Refresher</a><br>
+                          This can serve as a cheat sheet for x86
+                          Intel assembly. Look through and remember
+                          the registers and
+                          instructions.</span></li>
+                          <li><span><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Arch1001_x86-64_Asm+2021_v1/course/" target="_blank">OpenSecurityTraining2s Architecture 1001: x86-64 Assembly</a><br>
+                          A thorough intro to asm that covers the 20 most common instructions.</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="Mid">
+                        <h2>Getting Comfortable</h2>
+                        <h3>Labs (Non-free Recommended 1-2 Month
+                        subscription)</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://tryhackme.com/path/outline/jrpenetrationtester"
+                          target="_blank">Tryhackme Jr Pentest
+                          Path</a><br>
+                          A great hands-on introduction to
+                          Penetration Testing. I recommend taking
+                          notes.</span></li>
+                        </ul>
+                        <h3>Initial Reconnaissance</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://book.hacktricks.xyz/welcome/readme?q="
+                          target="_blank">HackTricks</a><br>
+                          When you start it seems like there is an
+                          overwhelming amount of possibilities.
+                          Over time you'll be able to narrow those
+                          possibilities down to the most likely to
+                          occur. I recommend using this site to get
+                          a sense of valuable targets and ports.
+                          Simply look up the ports open on the
+                          target, take notes and try to not become
+                          over-dependent.</span></li>
+                          <li><span><a href=
+                          "https://github.com/Tib3rius/AutoRecon"
+                          target="_blank">Autorecon</a><br>
+                          Once you get some experience, it can
+                          sometimes save time to use this script. I
+                          only recommend using it once you can move
+                          through labs on your own. Alternatively,
+                          attempt to make your own script that can
+                          automate this phase.</span></li>
+                        </ul>  
+                          <h3>Web Vulnerabilities</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://portswigger.net/web-security"
+                          target="_blank">Portswigger's Web
+                          Academy</a><br>
+                          You need to sign up. They have a learning
+                          path that you can follow but I got bored
+                          going through all of them in order. I
+                          recommend reading what you find
+                          interesting, doing the apprentice labs
+                          and then 2 or 3 of the most interesting
+                          practitioner labs for each section. You
+                          can pair this with the next
+                          resource.</span></li>
+                          <li><span><a href=
+                          "https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/"
+                          target="_blank">OWASP WSTG</a><br>
+                          Owasp's Web Security Testing Guide. I
+                          recommend reading through this as you're
+                          doing the labs from the last section and
+                          taking notes.</span></li>
+                          <li><span><a href=
+                          "https://owasp.org/www-project-juice-shop/"
+                          target="_blank">OWASP Juice Shop</a><br>
+                          An intentionally vulnerable site. Practice what you've learned in the past two sections.</span></li>
+                        </ul>  
+                          <h3>Finding Known Vulnerabilities and
+                          Exploits</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://www.google.com/search?client=firefox-b-d&amp;q=%22CVE%22+"
+                          target="_blank">Using Google for Finding
+                          CVE's</a><br>
+                          Add the version of software to the
+                          beginning of this query. For example if
+                          you found a MySQL instance running
+                          version 5.0.12 then you would search for:
+                          <code>mysql "5.0.12" "CVE"</code><br>
+                          This will return known vulnerabilities
+                          for that version and make finding
+                          exploits easier.</span></li>
+                          <li><span><a href=
+                          "https://www.google.com/search?client=firefox-b-d&amp;q=%22exploit%22+"
+                          target="_blank">Using Google for Finding
+                          Exploits</a><br>
+                          Add the CVE ID to the beginning of this
+                          query. For example if you found a service
+                          that was vulnerable to CVE-2012-2122 then
+                          your query would be:
+                          <code>"CVE-2012-2122"
+                          "exploit"</code></span></li>
+                          <li><span><a href=
+                          "https://www.exploit-db.com/search?text="
+                          target="_blank">ExploitDB</a><br>
+                          You can modify the URL to search for text
+                          content within exploits, it's usually
+                          useful to try software name, software
+                          version and CVE ID.</span></li>
+                        </ul>
+                      </div>
+                      <div class="Late">
+                        <h2>Getting a Cert</h2>
+                        <h3>Windows Privilege Escalation</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation"
+                          target="_blank">Windows PrivEsc
+                          HackTricks</a><br>
+                          From the maker of PEASS-ng. Lots of good
+                          info on this cheat sheet.</span></li>
+                          <li><span><a href=
+                          "https://eli2k.com/notes/offsec/post/winpriv.html"
+                          target="_blank">Eli2k's Windows PrivEsc
+                          Cheat Sheet</a><br>
+                          My personal cheat sheet. You can look up
+                          the Windows version and it will search
+                          the page for the first occurence of a
+                          kernel exploit for that
+                          version.</span></li>
+                          <li><span><a href=
+                          "https://github.com/carlospolop/PEASS-ng/releases/tag/20221023"
+                          target="_blank">PEASS-ng</a><br>
+                          Binaries that will automate these checks
+                          to a degree, transfer and execute on
+                          victim.</span></li>
+                          <li><span><a href=
+                          "https://lolbas-project.github.io/#"
+                          target="_blank">LOLBAS</a><br>
+                          A list of binaries on Windows with
+                          methods for taking advantage of
+                          them.</span></li>
+                        </ul>  
+                        <h3>Linux Privilege Escalation</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://book.hacktricks.xyz/linux-hardening/privilege-escalation"
+                          target="_blank">Linux Privilege
+                          Escalation HackTricks</a><br>
+                          From the maker of PEASS-ng. Lots of good
+                          info on this cheat sheet.</span></li>
+                          <li><span><a href=
+                          "https://eli2k.com/notes/offsec/post/linpriv.html"
+                          target="_blank">Eli2k's Linux PrivEsc
+                          Cheat Sheet</a><br>
+                          My personal cheat sheet.</span></li>
+                          <li><span><a href=
+                          "https://github.com/carlospolop/PEASS-ng/releases/tag/20221023"
+                          target="_blank">PEASS-ng</a><br>
+                          Binaries that will automate these checks
+                          to a degree, transfer and execute on
+                          victim.</span></li>
+                          <li><span><a href=
+                          "https://gtfobins.github.io/" target=
+                          "_blank">GTFOBins</a><br>
+                          A list of binaries with methods for
+                          taking advantage of them, similar to
+                          LOLBAS.</span></li>
+                        </ul>  
+                          <h3>Memory Vulnerablities</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Vulns1001_C-derived+2022_v1/course/"
+                          target="_blank">OpenSecurityTraining's
+                          C-Family Vulns</a><br>
+                          An in-depth intro to memory vulns. Feel
+                          free to complete other courses on this
+                          site as they are all good.</span></li>
+                          <li><span><a href=
+                          "https://tryhackme.com/room/bufferoverflowprep"
+                          target="_blank">Tib3rius's BoF room on
+                          THM</a><br>
+                          A good room covering the basics and a
+                          solid methodology. If you want to host
+                          the files locally you can download them
+                          here: <a href=
+                          "https://github.com/Eli2k765/Exploitable-Binaries">
+                          Exploitable-Binaries</a></span></li>
+                          <li><span><a href=
+                          "https://guyinatuxedo.github.io/" target=
+                          "_blank">Nightmare!</a><br>
+                          A challenging introductory course that
+                          has many hands on challenges. You can get
+                          the files without text from here:
+                          <a href="https://github.com/Eli2k765/Nightmare-Files">
+                          Nightmare-Files</a></span></li>
+                        </ul>  
+                          <h3>Labs (Highly recommend a paid
+                          subscription to both TryHackMe and
+                          HackTheBox)</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://tryhackme.com/path/outline/pentesting"
+                          target="_blank">Tryhackme Offensive
+                          Pentest Path</a><br>
+                          A step-up from the previous tryhackme
+                          path, I highly recommend avoiding
+                          write-ups, if you struggle go back to
+                          your notes. This path covers Active
+                          Directory nicely as well.</span></li>
+                          <li><span><a href=
+                          "https://app.hackthebox.com/starting-point"
+                          target="_blank">Hack The Box: Starting
+                          Point</a><br>
+                          HackTheBox is a great platform that
+                          allows you to test your skills on a
+                          variety of machines. I recommend starting
+                          here.</span></li>
+                          <li><span><a href=
+                          "https://docs.google.com/spreadsheets/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/edit#gid=0"
+                          target="_blank">TJ_Nulls HackTheBox
+                          list</a><br>
+                          A curated list said to be OSCP-like. Many
+                          of these are exceptionally difficult
+                          while you're starting out. I recommend
+                          going as far as you can in the labs while
+                          writing detailed notes. If you get stuck
+                          for more than 4 hours move on and come
+                          back later.</span></li>
+                          <li><span><a href=
+                          "https://docs.google.com/spreadsheets/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/edit#gid=0"
+                          target="_blank">TJ_Nulls Vulnhub
+                          list</a><br>
+                          A curated list said to be OSCP-like, I
+                          personally did not use this list but I
+                          have heard good things about
+                          it.</span></li>
+                        </ul>  
+                        <h3>Resources</h3>
+                        <ul>  
+                          <li><span><a href="https://ippsec.rocks"
+                          target="_blank">IppSec</a><br>
+                          Once you complete a lab, I recommend
+                          checking out the associated video on
+                          ippsecs channel. They provide detailed
+                          explanations and may give you a different
+                          perspective.</span></li>
+                          <li><span><a href=
+                          "https://0xdf.gitlab.io" target=
+                          "_blank">Oxdf</a><br>
+                          If you prefer reading, this is a great
+                          alternative or addition to watching
+                          ippsecs videos.</span></li>
+                          <li><span><a href=
+                          "https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw"
+                          target="_blank">LiveOverflow</a><br>
+                          This is the channel that got me into
+                          CTFs, I started with the pwnie adventures
+                          series. I followed along the best I could
+                          and then started watching every other
+                          series on the channel. I don't
+                          necessarily recommend the channel as a
+                          source of information since it isn't as
+                          concise and explicit in delivering
+                          information as some others but definitely
+                          do recommend the channel as a source of
+                          inspiration.</span></li>
+                        </ul>
+                      </div>
+                      <h4>Note:</h4>
+                      <p>This is the end for now, If you've made it
+                      this far and done everything I recommended,
+                      Congrats! If you're still working through
+                      everything don't stress about speed too much.
+                      It took me almost a year to gather this list
+                      together and finish everything. Don't rush
+                      too much and enjoy the process as much as you
+                      can. The amount of things to do can get
+                      overwhelming and you'll never be able to do
+                      everything, just make sure you're doing
+                      things you enjoy.</p>
+                      <div>
+                        <h2>And Beyond (Coming Soon. -
+                        Optional)</h2>
+                        <h3>Mobile Security</h3>
+                        <h3>Wireless and IoT Security</h3>
+                        <h3>Hardware Security</h3>
+                        <h3>Fuzzing</h3>
+                        <ul>
+                          <li><span><a href=
+                          "https://github.com/antonio-morales/Fuzzing101"
+                          target="_blank">Fuzzing 101</a><br>
+                          A great introduction to
+                          fuzzing.</span></li>
+                        </ul>
+                        <h3>Red Teaming</h3>
+                        <ul>  
+                          <li><span><a href=
+                          "https://tryhackme.com/path/outline/redteaming"
+                          target="_blank">Tryhackme's Red Teaming
+                          Path</a><br>
+                          A nice intro to red teaming</span></li>
+                        </ul>  
+                        <h3>Cert Advice</h3>
+                        <ul>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+        "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Firmware Hacking</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Firmware Hacking</h1>
+                <p class="alert">How to obtain and hack
+                firmware.</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Obtaining</h3>
+                    <div>
+                      <h4>Just Google it</h4>
+                      <div>
+                        <p>The first step to testing firmware is
+                        obtaining it. Oftentimes this as simple as
+                        visiting the vendors websites, forums or
+                        hobbyist forums.</p>
+                      </div>
+                      <h4>Dumping from Flash Chips</h4>
+                      <div>
+                        <p>Sometimes it will require a bit more
+                        digging. If the firmware you want to test is on
+                        a local device, you can usually open it up and
+                        identify the chip containing the firmware.
+                        Usually this chip will be small and have eight
+                        pins connecting it to the board. Google will be
+                        your friend when identifying the chip and what
+                        each pin is for. In order to dump the firmware
+                        from this point, you'll need a microcontroller
+                        that can communicate with SPI chips, such as
+                        the Attify Badge. Once you have connected the
+                        pins to the microcontroller you will need to
+                        connect your microcontroller to your computer.
+                        You can use a script like spiflash.py to dump
+                        the firmware.</p>
+                      </div>
+                      <h4>OTA DFU Sniffing</h4>
+                      <div>
+                        <p>Another scenario where you can grab firmware
+                        is by dumping an Over-the-Air
+                        Device-Firmware-Update. For this to be viable,
+                        the device traffic must be over HTTP if traffic
+                        is being captured by a transparent proxy such
+                        as Burp. If the device traffic is encrypted
+                        then traffic must be captured in a MitM
+                        scenario.</p>
+                      </div>
+                    </div>
+                      <h3>Encrypted</h3>
+                      <div>
+                      <h4>XOR</h4>
+                      <div>
+                        <p>Coming across encrypted firmware is becoming
+                        more common. The most common form of encryption
+                        for firmware is just a simple XOR. You can
+                        identify XOR'd firmware by the repitition of
+                        strings when viewing the hexdump</p>
+                      </div>
+                      <h4>Not XOR</h4>
+                      <div>
+                        <p>In the case that the firmware is not XOR'd
+                        an attacker must perform manual analysis using
+                        a disassembler or dump from memory while the
+                        firmware is decrypted.</p>
+                      </div>
+                    </div>
+                    <h3>Not Encrypted</h3>
+                    <div>
+                      <h4>Extracting and Analysing</h4>
+                      <div>
+                        <p>Occasionally, you will obtain unencrypted
+                        firmware. This makes analysis quite a bit
+                        easier. Running <code>binwalk -e
+                        firmware.bin</code> will extract the file
+                        system</p>
+                        <h5>Hardcoded Secrets</h5>
+                        <div>
+                          <p>I usually start off by looking for
+                          configuration files and identifying any
+                          hardcoded credentials or certificates. You can
+                          do this manually or with a tool such as
+                          firmwalker.</p>
+                        </div>
+                        <h5>Dissassemble</h5>
+                        <div>
+                          <p>I like using radare2 to check for strings
+                          and functions in the individual binaries of the
+                          firmware. You can also use radare to easily
+                          search for Xrefs to system(). It may be
+                          possible to identify backdoors or injection
+                          vulns here too.</p>
+                        </div>
+                        <h5>Emulation Station</h5>
+                        <div>
+                          <p>We can emulate the binaries here to allow us
+                          to find overflow vulns. <code>sudo chroot .
+                          ./qemu-arch -L optional-lib-path -g gdb-port
+                          binary.bin</code> will get the binary running
+                          and attach it to gdb-multiarch. At this point I
+                          set breakpoints at strcmp and other functions.
+                          If I find an overflow vulnerability I will
+                          usually exploit it using a ROP chain.</p>
+                        </div>
+                      </div>
+                      <h4>Modifying with FMK</h4>
+                      <div>
+                        <h5>Extracting and Backdooring</h5>
+                        <div>
+                          <p>Using Firmware-Mod-Kit will allow us to
+                          upload a modified version of the firmware to
+                          the device allowing us to check if there are
+                          integrity checks. First we extract the firmware
+                          with <code>extract-firmware.sh</code>. Then we
+                          can add a backdoor or bindshell to the firmware
+                          and build it with <code>./build-firmware.sh
+                          -nopad -min</code></p>
+                        </div>
+                        <h5>Uploading</h5>
+                        <div>
+                          <p>Now we can upload the firmware to the device
+                          and determine if there are any integrity
+                          checks, if there are, we can try to identify
+                          where it's checking for signature verification
+                          and see if there is a way to bypass it.</p>
+                        </div>
+                      <h4>More coming soon.</h4>
+                      <div></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

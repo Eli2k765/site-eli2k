@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>D431 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>D431 - Digital Forensics</h1>
+                <p class="alert"></p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags">
+                  <button class="L">Laws</button><button class="F">Forensic Analysis</button><button class="S">Stego</button><button class="R">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="L">
+                        <div id="L"></div>
+                        <h3>U.S. Laws Affecting Digital Forensics</h3>
+                        <div>
+                          <ul>
+                            <li>The Federal Privacy Act of 1974</li>
+                            <ul>
+                              <li>Governs the collection, maintenance, use, and dissemination of information about individuals that is maintained in systems of records by U.S. federal agencies.</li>
+                            </ul>
+                            <li>The Privacy Protection Act of 1980 (PPA)</li>
+                            <ul>
+                              <li>Protects journalists from being required to turn over to law enforcement any work product and documentary materials, including sources, before it is disseminated to the public.</li>
+                            </ul>
+                            <li>The Communications Assistance to Law Enforcement Act of 1994 (CALEA)</li>
+                            <ul>
+                              <li>Wiretap law</li>
+                            </ul>
+                            <li>18 U.S.C. § 2701</li>
+                            <ul>
+                              <li>The focus is on any facility, server, or device used to store electronic communications.</li>
+                            </ul>
+                            <li>The Electronic Communications Privacy Act of 1986 (ECPA)</li>
+                            <ul>
+                              <li>Governs the privacy and disclosure, access, and interception of content and traffic data</li>
+                            </ul>
+                            <li>The Computer Security Act of 1987 (CSA)</li>
+                            <ul>
+                              <li>Requires the establishment of minimum acceptable security practices, creation of computer security plans, and training of system users or owners of facilities that house sensitive information.</li>
+                            </ul>
+                            <li>The Foreign Intelligence Surveillance Act of 1978</li>
+                            <ul>
+                              <li>Allows for collection of “foreign intelligence information” between foreign powers and agents of foreign powers using physical and electronic surveillance.</li>
+                            </ul>
+                            <li>The Child Protection and Sexual Predator Punishment Act of 1998</li>
+                            <ul>
+                              <li></li>
+                            </ul>
+                            <li>The Children’s Online Privacy Protection Act of 1998 (COPPA)</li>
+                            <ul>
+                              <li>Protects children 13 years of age and under from the collection and use of their personal information by websites.</li>
+                            </ul>
+                            <li>The Communications Decency Act of 1996</li>
+                            <ul>
+                              <li>Protect persons 18 years of age and under from downloading or viewing material considered indecent</li>
+                            </ul>
+                            <li>The Telecommunications Act of 1996</li>
+                            <ul>
+                              <li>Related to the privacy and disclosure of information in motion through and across telephony and computer networks</li>
+                            </ul>
+                            <li>The Wireless Communications and Public Safety Act of 1999</li>
+                            <ul>
+                              <li>Allows for collection and use of “empty” communications, which means nonverbal and nontext communications</li>
+                            </ul>
+                            <li>The USA PATRIOT Act</li>
+                            <ul>
+                              <li>The primary law under which a wide variety of internet and communications information content and metadata is currently collected.</li>
+                            </ul>
+                            <li>The Sarbanes-Oxley Act of 2002 (SOX)</li>
+                            <ul>
+                              <li>Related to the recordkeeping and destruction of electronic records relating to the management and operation of publicly held companies</li>
+                            </ul>
+                            <li>18 USC 1030 Fraud and Related Activity in Connection with Computers</li>
+                            <ul>
+                              <li>Covers a wide range of crimes involving illicit access of any computer</li>
+                            </ul>
+                            <li>18 USC 1020 Fraud and Related Activity in Connection with Access Devices</li>
+                            <ul>
+                              <li>Closely related to 1030 but covers access devices (such as routers)</li>
+                            </ul>
+                            <li>The Digital Millennium Copyright Act (DMCA)</li>
+                            <ul>
+                              <li>Makes it a crime to publish methods or techniques to circumvent copyright protection</li>
+                            </ul>
+                            <li>18 USC § 1028A Identity Theft and Aggravated Identity Theft</li>
+                            <ul>
+                              <li>This law targets any crime related to identity theft</li>
+                            </ul>
+                            <li>18 USC § 2251 Sexual Exploitation of Children</li>
+                            <ul>
+                              <li>Covers a range of child exploitation crimes</li>
+                            </ul>
+                            <li>18 U.S.C. § 2260</li>
+                            <ul>
+                              <li>Production of sexually explicit depictions of a minor for importation into the United States</li>
+                            </ul>
+                            <li>18 U.S.C. § 2252</li>
+                            <ul>
+                              <li>Certain activities relating to material involving the sexual exploitation of minors (possession, distribution, and receipt of child pornography)</li>
+                            </ul>
+                            <li>18 U.S.C. § 2252A</li>
+                            <ul>
+                              <li>Certain activities relating to material constituting or containing child pornography</li>
+                            </ul>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="F">
+                        <div id="F"></div>
+                        <h2>Forensic Analysis</h2>
+                        <h3>Email</h3>
+                        <ul>
+                          <li>.pst (Outlook)</li>
+                          <li>.ost (Offline Outlook Storage)</li>
+                          <li>.mbx or .dbx (Outlook Express)</li>
+                          <li>.mbx (Eudora)</li>
+                          <li>.emi (common to several email clients)</li>
+                        </ul>
+                        <h3>Storage</h3>
+                        <div>
+                          <ul>
+                            <li>Features</li>
+                            <ul>
+                              <li>HPA</li>
+                              <ul>
+                                <li>Protected from user activities</li>
+                              </ul>
+                              <li>MBR</li>
+                              <ul>
+                                <li>Only requires a single sector, leaving 62 empty sectors of MBR space for hidden data</li>
+                              </ul>
+                              <li>Volume Slack</li>
+                              <ul>
+                                <li>This is the space that remains on a hard drive if the partitions do not use all the available space</li>
+                              </ul>
+                              <li>File Slack</li>
+                              <ul>
+                                <li>File slack is the unused space that is created between the end of the last data cluster assigned to a file</li>
+                              </ul>
+                              <li>Unallocated Space</li>
+                              <ul>
+                                <li>An operating system can’t access any unallocated space in a partition.</li>
+                              </ul>
+                            </ul>
+                            <li>Connectors</li>
+                            <ul>
+                              <li>Integrated Drive Electronics (IDE)</li>
+                              <li>Extended Integrated Drive Electronics (EIDE)</li>
+                              <li>Parallel Advanced Technology Attachment (PATA)</li>
+                              <li>Serial Advanced Technology Attachment (SATA)</li>
+                              <li>Serial SCSI</li>
+                            </ul>
+                            <li>Magnetic</li>
+                            <ul>
+                              <li>Data is organized by sectors and clusters, which are in turn organized in tracks around the platter</li>
+                              <li>A typical sector is 512 bytes, although newer drives use 4096-byte sectors, and a cluster can be from 1 to 128 sectors</li>
+                            </ul>
+                            <li>Solid-State</li>
+                            <ul>
+                              <li> Most SSDs use Negated AND (NAND) gate–based flash memory, which retains memory even without power.</li>
+                              <li>No moving parts.</li>
+                            </ul>
+                            <li>File Formats</li>
+                            <ul>
+                              <li>The Advanced Forensic Format (AFF)</li>
+                              <ul>
+                                <li>The AFF file format is part of the AFF Library and Toolkit, which is a set of open-source computer forensics programs.</li>
+                                <li>Autopsy and Sleuth Kit</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Forensic Software</h3>
+                        <div>
+                          <ul>
+                            <li>EnCase</li>
+                            <ul>
+                              <li>Guidance Software</li>
+                              <li>This tool allows the examiner to connect an Ethernet cable or null modem cable to a suspect machine and to view the data on that machine</li>
+                              <li>prevents the examiner from making any accidental changes to the suspect machine.</li>
+                              <li>The evidence file is an exact copy of the hard drive.</li>
+                              <li>EnCase calculates an MD5 hash when the drive is acquired.</li>
+                              <li>This hash is used to check for changes, alterations, or errors.</li>
+                            </ul>
+                            <li>FTK</li>
+                            <ul>
+                              <li>AccessData</li>
+                              <li>Forensic Toolkit is particularly useful at cracking passwords</li>
+                              <li>FTK also provides tools to search and analyze the Windows Registry.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Windows</h3>
+                        <div>
+                          <ul>
+                            <li>Security log: This is probably the most important log from a forensics point of view. It has both successful and unsuccessful login events. [anything about external connections]</li>
+                            <li>Application log: This log contains various events logged by applications or programs. Many applications record their errors here in the Application log.</li>
+                            <li>System log: The System log contains events logged by Windows system components. This includes events like driver failures. This particular log is not as interesting from a forensics perspective as the other logs are.</li>
+                            <li>ForwardedEvents log: The ForwardedEvents log is used to store events collected from remote computers. This has data in it only if event forwarding has been configured.</li>
+                            <li>Applications and Services logs: This log is used to store events from a single application or component rather than events that might have system-wide impact.</li>
+                          </ul>
+                          <h4>Registry</h4>
+                          <div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Registry Hive</th>
+                                  <th>Supporting Files</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>HKEY_LOCAL_MACHINE\SAM</td>
+                                  <td>Sam, Sam.log, Sam.sav</td>
+                                </tr>
+                                <tr>
+                                  <td>HKEY_LOCAL_MACHINE\Security</td>
+                                  <td>Security, Security.log, Security.sav</td>
+                                </tr>
+                                <tr>
+                                  <td>HKEY_LOCAL_MACHINE\Software</td>
+                                  <td>Software, Software.log, Software.sav</td>
+                                </tr>
+                                <tr>
+                                  <td>HKEY_LOCAL_MACHINE\System</td>
+                                  <td>System, System.alt, System.log, System.sav</td>
+                                </tr>
+                                <tr>
+                                  <td>HKEY_CURRENT_CONFIG</td>
+                                  <td>System, System.alt, System.log, System.sav, Ntuser.dat, Ntuser.dat.log</td>
+                                </tr>
+                                <tr>
+                                  <td>HKEY_USERS\DEFAULT</td>
+                                  <td>Default, Default.log, Default.sav</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <h3>Mac</h3>
+                        <div></div>
+                        <h3>Mobile</h3>
+                        <div>
+                          <h4>iOS</h4>
+                          <ul>
+                            <li>XRY</li>
+                            <ul>
+                              <li>Crack passcode</li>
+                            </ul>
+                            <li>Pwnage</li>
+                            <ul>
+                              <li>Unlock a locked iPod Touch</li>
+                            </ul>
+                          </ul>
+                          <h4>Tools</h4>
+                          <div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Forensics Tool</th>
+                                  <th>Description</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Oxygen Forensics</td>
+                                  <td>This is a full forensic tool capable of imaging and examining iPhones and Android phones. It provides a number of user-friendly tools for extracting specific data such as contacts, social media data, etc.</td>
+                                </tr>
+                                <tr>
+                                  <td>Cellebrite</td>
+                                  <td>This is probably the most widely known phone forensics tool. It is used heavily by federal law enforcement. It is a very robust and effective tool. The only downside to Cellebrite that I am aware of is its high cost. It is the most expensive phone forensics tool on the market.</td>
+                                </tr>
+                                <tr>
+                                  <td>MobileEdit</td>
+                                  <td>There are several variations of this product. MobileEdit Lite is the most forensically advanced version of MobileEdit. This is a very easy-to-use tool that can aid a forensic examiner in extracting data from cell phones.</td>
+                                </tr>
+                                <tr>
+                                  <td>Data Doctor</td>
+                                  <td>This product recovers all Inbox and Outbox data and all contacts data, and has an easy-to-use interface. Most important, it has a free trial version, but there is a cost for the full version. It is available from <a href="http://www.simrestore.com/">http://www.simrestore.com/</a>.</td>
+                                </tr>
+                                <tr>
+                                  <td>Device Seizure</td>
+                                  <td>This is available from Paraben Software at <a href="http://www.paraben.com/">http://www.paraben.com/</a>. There is a license fee associated with this product. Paraben makes a number of forensic products.</td>
+                                </tr>
+                                <tr>
+                                  <td>Forensic SIM Cloner</td>
+                                  <td>This tool is used to clone SIM cards, allowing you to perform forensic analysis of the SIM card.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="S">
+                        <div id="S"></div>
+                        <h2>Steganography</h2>
+                        <h3>Concepts</h3>
+                        <div>
+                          <ul>
+                            <li>LSB</li>
+                            <ul>
+                              <li>One of the most common methods of performing stego is the least significant bit (LSB) method (when the last bit or least significant bit is used to store data)</li>
+                            </ul>
+                            <li>Payload</li>
+                            <ul>
+                              <li>The information to be covertly communicated</li>
+                            </ul>
+                            <li>Carrier</li>
+                            <ul>
+                              <li>The signal, stream, or file in which the payload is hidden</li>
+                            </ul>
+                            <li>Channel</li>
+                            <ul>
+                              <li>The type of medium used</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Tools</h3>
+                        <div>
+                          <ul>
+                            <li>QuickStego</li>
+                            <ul>
+                              <li>Easy to use, but very limited.</li>
+                            </ul>
+                            <li>Invisible Secrets</li>
+                            <ul>
+                              <li>More robust, with both a free and a commercial version.</li>
+                            </ul>
+                            <li>MP3Stego</li>
+                            <ul>
+                              <li>Hides a payload in MP3 files</li>
+                            </ul>
+                            <li>Stealth Files 4</li>
+                            <ul>Works with sound files, video files, and image files</ul>
+                            <li>StegVideo</li>
+                            <ul>
+                              <li>Hides data in a video sequence.</li>
+                            </ul>
+                            <li>Deep Sound</li>
+                            <ul>
+                              <li>Hides data in sound files.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h3>Resources</h3>
+                        <div>
+                          <ul>
+                            <li><a href="https://srm.file.force.com/servlet/servlet.FileDownload?file=00P3x00001kygyl">What you need to know</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

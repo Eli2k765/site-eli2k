@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C480 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C480 - Networks (Network+)</h1>
+                <p class="alert">For this class, I started by taking all of the network+ ExamCompass tests, anything below a 90% I would write down the correct answer and some context below using Professor Messers videos. Finally, I would take Jason Dion's practice test on Udemy, after getting a 90% on the first test I signed up for the exam.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="NOT">Course Notes</button>
+                  <button class="RES">Resources</button></span>
+                </div><br>
+                <strong>Last updated: April 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="NOT">
+                        <div id="NOT"></div>
+                        <h2>Notes:</h2>
+                        <h3>1 - Networking Concepts</h3>
+                        <div>
+                          <h4>1.1 - OSI Model</h4>
+                          <div>
+                            <ol>
+                              <li>physical, bit, cables, loopbacks, punchdowns, hubs, repeaters</li>
+                              <li>data link, frame, mac, switch, ethernet</li>
+                              <li>network, packet, ip, port numbers, router</li>
+                              <li>transport, segment/datagram, udp/tcp, </li>
+                              <li>session, auth</li>
+                              <li>presentation, encryption/decryption, compression, format translation</li>
+                              <li>application, http, ftp, smtp, etc.</li>
+                            </ol>
+                          </div>
+                          <h4>1.2 - Network Topologies</h4>
+                          <div>
+                            <ul>
+                              <li>WAN Termination</li>
+                              <ul>
+                                <li>Demarcation Point</li>
+                                <ul>
+                                  <li>Where you connect to the outside world</li>
+                                </ul>
+                                <li>Smartjack</li>
+                                <ul>
+                                  <li>NIU - Device determines the demarc</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>1.3 - Cables</h4>
+                          <div>
+                            <ul>
+                              <li>Cable Management</li>
+                              <ul>
+                                <li>Copper Patch Panel</li>
+                                <ul>
+                                  <li>Provide a centralized location for cable management and make it easy to troubleshoot network issues</li>
+                                  <li>Consists of multiple ports that can be connected to individual network devices such as computers, switches, and routers</li>
+                                </ul>
+                                <li>66 block</li>
+                                <ul>
+                                  <li> A patch panel for analog voice</li>
+                                  <li>Wire and a punch-down tool</li>
+                                  <li>Replaced by 110 blocks</li>
+                                </ul>
+                                <li>110 block</li>
+                                <ul>
+                                  <li>Patch Category 5 and Category 6 cables</li>
+                                </ul>
+                                <li>Krone block</li>
+                                <ul>
+                                  <li>Commonly used in Europe and is an alternative to the 110 block</li>
+                                </ul>
+                                <li>BIX(Building Industry Cross-connect)</li>
+                                <ul>
+                                  <li>GigaBIX performance is better than the Category 6 cable standard</li>
+                                </ul>
+                              </ul>
+                              <li>Ethernet Standards</li>
+                              <ul>
+                                <li>Ethernet</li>
+                                <ul>
+                                  <li>10BASE-T</li>
+                                  <ul>
+                                    <li>Two pair, Category 3 cable minimum</li>
+                                    <li>100m</li>
+                                  </ul>
+                                  <li>100BASE-TX</li>
+                                  <ul>
+                                    <li>Category 5 or better twisted pair copper - two pair</li>
+                                    <li>100m</li>
+                                  </ul>
+                                  <li>1000BASE-T</li>
+                                  <ul>
+                                    <li>A shift to using all four pair</li>
+                                    <li>4-pair balanced twisted-pair</li>
+                                  </ul>
+                                  <li>10GBASE-T</li>
+                                  <ul>
+                                    <li>Frequency use of 500 MHz</li>
+                                    <li>Category 6; Unshielded: 55 meters, Shielded: 100 meters</li>
+                                    <li> Category 6A (augmented); Unshielded or shielded: 100 meters</li>
+                                  </ul>
+                                  <li>40GBASE-T</li>
+                                  <ul>
+                                    <li>Category 8 cable; Up to 30 meters</li>
+                                  </ul>
+                                </ul>
+                                <li>Fiber</li>
+                                <ul>
+                                  <li>100BASE-FX</li>
+                                  <ul>
+                                    <li>Pair of multimode fiber - Same fiber as FDDI</li>
+                                    <li> 400 meters (half-duplex), 2 kilometers (full-duplex)</li>
+                                  </ul>
+                                  <li>100BASE-SX</li>
+                                  <ul>
+                                    <li>A less-expensive version of 100BASE-FX</li>
+                                    <li>LED optics, 300 meters maximum distance</li>
+                                  </ul>
+                                  <li>1000BASE-SX</li>
+                                  <ul>
+                                    <li>Gigabit Ethernet using NIR (near infrared) light</li>
+                                    <li>220 meters to 500 meters</li>
+                                  </ul>
+                                  <li>1000BASE-LX</li>
+                                  <ul>
+                                    <li>Gigabit Ethernet using long wavelength laser</li>
+                                    <li>Multi-mode fiber to 550 meters</li>
+                                    <li>Single-mode fiber to 5 kilometers</li>
+                                  </ul>
+                                  <li>10GBASE-SR</li>
+                                  <ul>
+                                    <li>26 to 400 meters, depending on the fiber</li>
+                                  </ul>
+                                  <li>10GBASE-LR</li>
+                                  <ul>
+                                    <li>10 kilometers maximum range</li>
+                                  </ul>
+                                </ul>
+                                <li>WDM</li>
+                                <ul>
+                                  <li>Wavelength Division Multiplexing</li>
+                                  <li>CWDM, DWDM</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>1.4 - IP Subnetting</h4>
+                          <div>
+                            <h5>IPv4</h5>
+                            <div>
+                              <ul>
+                                <li>Binary Math</li>
+                                <ul>
+                                  <li><img src="https://eli2k.com/resources/images/notes/binaryMath.png" alt="A two row, thirteen column table, the first row is showing 2 to the power of a number incrementing by one, starting from zero and ending at 12. The bottom row shows that 2 to the power of 0 is 1, 2 to the power of 1 is 2 and so on..."></li>
+                                </ul>
+                                <li>Calculating Subnets and Hosts</li>
+                                <ol>
+                                  <li>Determine Classful range</li>
+                                  <li>Identify interesting octet</li>
+                                  <li>Calculate Magic number</li>
+                                  <li>Calculate host range</li>
+                                  <li>Identify net addy</li>
+                                  <li>Identify broad addy</li>
+                                </ol>
+                                <ul>
+                                  <li>IP: 165.245.77.14, Mask: 255.255.240.0</li>
+                                  <ul>
+                                    <li>If mask is 255, copy IP</li>
+                                    <li>If mask is 0, copy mask</li>
+                                    <li>The interesting octet is remaining octet</li>
+                                    <li>Subtract interesting octet from 256</li>
+                                    <li>256-240=16</li>
+                                    <li>The magic number is 16, determine where the IP falls in the multiple of the magic number, in our case: 16, 32, 48, 64, 80...</li>
+                                    <li>Our interesting octet IP is 77 which would fall between 64 and 80 so we go with the lowest, 64.</li>
+                                  </ul>
+                                </ul>
+                                <li>Classes</li>
+                                <ul>
+                                  <li>Class A</li>
+                                  <ul>
+                                    <li>The first octet is reserved for network ID, and the remaining three octets are available for host ID</li>
+                                    <li>This provides a large address space of up to 126 networks, each with up to 16,777,214 hosts</li>
+                                    <li>Range: 1.0.0.0 to 126.0.0.0</li>
+                                  </ul>
+                                  <li>Class B</li>
+                                  <ul>
+                                    <li> The first two octets are reserved for network ID, and the remaining two octets are available for host ID</li>
+                                    <li>This provides a smaller address space of up to 16,384 networks, each with up to 65,534 hosts</li>
+                                    <li>This provides an even smaller address space of up to 2,097,152 networks, each with up to 254 hosts</li>
+                                    <li>Range: 128.0.0.0 to 191.255.0.0</li>
+                                  </ul>
+                                  <li>Class C</li>
+                                  <ul>
+                                    <li>The first three octets are reserved for network ID, and the remaining octet is available for host ID</li>
+                                    <li>This provides an even smaller address space of up to 2,097,152 networks, each with up to 254 hosts</li>
+                                    <li>Range: 192.0.0.0 to 223.255.255.0</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                            </div>
+                            <h5>Binary Translation Subnetting</h5>
+                            <div>
+                              <div class="calc1">
+                                <form id="form1">
+                                  <label for="cidr-input">Enter IP address and subnet mask in CIDR notation:</label>
+                                  <input type="text" id="cidr-input" name="cidr-input" required>
+                                  <button type="submit">Calculate</button>
+                                </form>
+                                <div id="calcResult"></div>
+                              </div>
+                            </div>
+                            <h5>Magic Number Calculator</h5>
+                            <div>
+                              <div class="calc2">
+                                <form id="form2">
+                                  <label for="ip-input">IP Address:</label>
+                                  <input type="text" id="ip-input" name="ip-input" required>
+                                  <br>
+                                  <label for="mask-input">Subnet Mask:</label>
+                                  <input type="text" id="mask-input" name="mask-input" required>
+                                  <br>
+                                  <button type="submit">Calculate</button>
+                                </form>
+                                <div id="calcResult2"></div>
+                              </div>
+                            </div>
+                            <h5>IPv6</h5>
+                            <div>
+                              <ul>
+                                <li>Abbreviate groups of zeros with a double colon ::, with only one abbreviation allowed per address, and leading zeros are optional</li>
+                                <li>128 bits</li>
+                                <li><img src="https://eli2k.com/resources/images/notes/ipv6MacConversion.png"></li>
+                                <li><img src="https://eli2k.com/resources/images/notes/ipv6Subnet.png"></li>
+                                <li>IPv6 tunneling options:
+                                  <ul>
+                                    <li>6 to 4 addressing</li>
+                                    <li>4in6</li>
+                                    <li>Teredo/Miredo</li>
+                                    <li>Dual-stack routing</li>
+                                  </ul>
+                                </li>
+                                <li>NDP (Neighbor Discovery Protocol) in IPv6 replaces ARP for MAC address discovery.</li>
+                                <li>NDP includes features such as SLAAC for automatic IP configuration and DAD for preventing duplicate IPs without dhcp server.</li>
+                                <li>RS/RA messages in NDP are used for router discovery.</li>
+                                <li>ICMPv6 adds NDP for finding routers with unsolicited RA messages.</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <h4>1.5 - Common Ports</h4>
+                          <div>
+                            <img src="https://eli2k.com/resources/images/notes/commonPorts.png">
+                          </div>
+                        </div>
+                        <h3>2 - Network Implementations</h3>
+                        <div>
+                          <h4>2.2 - Routing</h4>
+                          <div>
+                            <ul>
+                              <li>Dynamic Protocols</li>
+                              <ul>
+                                <li>Distance-Vector</li>
+                                <ul>
+                                  <li>Counts hops automatically</li>
+                                  <li>Good for small networks</li>
+                                  <li>RIP, EIGRP</li>
+                                </ul>
+                                <li>Link-state</li>
+                                <ul>
+                                  <li>Related to connectivity</li>
+                                  <li>Large networks</li>
+                                  <li>OSPF</li>
+                                </ul>
+                                <li>Hybrid</li>
+                                <ul>
+                                  <li>BGP - Border Gateway Protocol</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>2.3 - Network Switching</h4>
+                          <div>
+                            <ul>
+                              <li>Ethernet Overview</li>
+                              <ul>
+                                <li><img src="https://eli2k.com/resources/images/notes/ethContent.png"></li>
+                                <li>MAC</li>
+                                <ul>
+                                  <li>Organizational ID + NIC ID</li>
+                                </ul>
+                                <li>Half-Duplex</li>
+                                <ul>
+                                  <li>Send OR recieve at anytime</li>
+                                </ul>
+                                <li>Full-Duplex</li>
+                                <ul>
+                                  <li>Send AND recieve at anytime</li>
+                                </ul>
+                                <li>CSMA/CD</li>
+                                <ul>
+                                  <li>Carrier Sense</li>
+                                  <li>Mulitple Access</li>
+                                  <li>Collision Detect</li>
+                                </ul>
+                              </ul>
+                              <li>Switching Overview</li>
+                              <ul>
+                                <li>A switch forwards or drops frames based on the dest mac and constantly updates its mac list based on incoming traffic</li>
+                                <li>Switches maintain a loop-free env with STP</li>
+                                <ul>
+                                  <li>Blocking</li>
+                                  <li>Listening</li>
+                                  <li>Learning</li>
+                                  <li>Forwarding</li>
+                                  <li>Disabled</li>
+                                  <li>802.1D</li>
+                                  <li>802.1w</li>
+                                  <ul>
+                                    <li>Faster</li>
+                                  </ul>
+                                </ul>
+                                <li>ARP allows you to determine MAC with IP</li>
+                                <li>NDP is ARP for IPv6</li>
+                                <ul>
+                                  <li>SLAAC - DHCP w/o server</li>
+                                  <li>DAD - dupe detector</li>
+                                  <li>RS, RA, NS, NA</li>
+                                </ul>
+                              </ul>
+                              <li>VLAN Trunking</li>
+                              <ul>
+                                <li>802.1Q</li>
+                                <ul>
+                                  <li>Adds vlan to eth frame</li>
+                                  <li>Commonly used for voice</li>
+                                  <li>Helps avoid congestion</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>2.4 - Wireless Networking</h4>
+                          <div>
+                            <h5>Wireless Standards</h5>
+                            <div>
+                              <ol>
+                                <li>802.11a</li>
+                                <ul>
+                                  <li>5GHz</li>
+                                  <li>54Mbits/s</li>
+                                  <li>Not good at penetrating walls</li>
+                                </ul>
+                                <li>802.11b</li>
+                                <ul>
+                                  <li>2.4GHz</li>
+                                  <li>11Mbits/s</li>
+                                  <li>Frequency conflicts</li>
+                                </ul>
+                                <li>802.11g</li>
+                                <ul>
+                                  <li>2.4GHz</li>
+                                  <li>54Mbits/s</li>
+                                </ul>
+                                <li>802.11n</li>
+                                <ul>
+                                  <li>5GHz or 2.4GHz</li>
+                                  <li>600Mbits/s</li>
+                                  <li>MIMO</li>
+                                  <li>2009</li>
+                                </ul>
+                                <li>802.11ac</li>
+                                <ul>
+                                  <li>5GHz</li>
+                                  <li>Eight MU-MIMO streams</li>
+                                  <li>7Gbits/s</li>
+                                  <li>2014</li>
+                                </ul>
+                                <li>802.11ax</li>
+                                <ul>
+                                  <li>5GHz or 2.4GHz</li>
+                                  <li>Eight bi-directional MU-MIMO streams</li>
+                                  <li>9.6Gbits/s</li>
+                                  <li>OFDMA</li>
+                                  <ul>
+                                    <li>Similar to cell</li>
+                                    <li>good for density</li>
+                                  </ul>
+                                  <li>2021</li>
+                                </ul>
+                              </ol>
+                            </div>
+                            <h5>Wireless Encryption</h5>
+                            <div>
+                              <ol>
+                                <li>WPA</li>
+                                <li>WPA2 and CCMP</li>
+                                <ul>
+                                  <li>Counter Mode with Cipher Block Chaining</li>
+                                  <ul>
+                                    <li>AES encryption</li>
+                                    <li>Message Integrity Check with CBC-MAC</li>
+                                  </ul>
+                                </ul>
+                                <li>WPA3 and GCMP</li>
+                                <ul>
+                                  <li>Galois Counter Mode</li>
+                                  <ul>
+                                    <li>MIC with GMAC</li>
+                                  </ul>
+                                  <li>SAE</li>
+                                  <ul>
+                                    <li>Creates a shared session key without sending across network</li>
+                                    <li>Different session key with same PSK</li>
+                                  </ul>
+                                </ul>
+                              </ol>
+                            </div>
+                            <h5>Cellular</h5>
+                            <div>
+                              <ol>
+                                <li>2G</li>
+                                <ul>
+                                  <li>GSM</li>
+                                  <li>CDMA</li>
+                                </ul>
+                                <li>3G</li>
+                                <li>4G</li>
+                                <ul>
+                                  <li>Converged GSM and CDMA</li>
+                                  <li>Based on GSM and EDGE</li>
+                                </ul>
+                                <li>5G</li>
+                                <ul>
+                                  <li>10Gbits</li>
+                                </ul>
+                              </ol>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>3 - Network Operations</h3>
+                        <div>
+                          <h4>3.1 - Statistics and Sensors</h4>
+                          <div>
+                            <h5>SNMP</h5>
+                            <div>
+                              <ul>
+                                <li>Database containing object ids (OIDs)</li>
+                                <li>Devices are polled over udp 161, snmp traps communicate over udp 162</li>
+                              </ul>
+                            </div>
+                            <h5>Logs and Monitoring</h5>
+                            <div>
+                              <ul>
+                                <li>Interface Errors</li>
+                                <ul>
+                                  <li>Runts</li>
+                                  <ul>
+                                    <li>less than 64 bytes</li>
+                                    <li>collision?</li>
+                                  </ul>
+                                  <li>Giants</li>
+                                  <ul>
+                                    <li>more than 1518 bytes</li>
+                                  </ul>
+                                  <li>CRC error</li>
+                                  <ul>
+                                    <li>may indicate bad cable</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                            </div>
+                          </div>
+                          <h4>3.2 Logs and Monitoring</h4>
+                          <div>
+                            <h5>Plans and Procedures</h5>
+                            <div>
+                              <ul>
+                                <li>NIST SP800-61</li>
+                                <ul>
+                                  <li>IR lifecycle</li>
+                                </ul>
+                                <li>Main Distribution Frame (MDF)</li>
+                                <ul>
+                                  <li>Central Point of Network</li>
+                                </ul>
+                                <li>Intermediate Distribution Frame (IDF)</li>
+                                <ul>
+                                  <li>Strategic distribution point</li>
+                                </ul>
+                                <li>ANSI/TIA/EIA 606</li>
+                                <ul>
+                                  <li>Cable management</li>
+                                </ul>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>4 - Network Security</h3>
+                        <div>
+                          <h4>4.2 - Common Attacks</h4>
+                          <div>
+                            <ul>
+                              <li>VLAN Hopping</li>
+                              <ul>
+                                <li>Switch Spoofing</li>
+                                <ul>
+                                  <li>Malicious user pretends to be a switch and sends a trunk negotiation</li>
+                                </ul>
+                                <li>Double Tagging</li>
+                                <ul>
+                                  <li>Crafting a packet with two VLAN tags, the native tag gets removed, packet gets forwarded to target</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>4.3 - Network Hardening</h4>
+                          <div>
+                            <ul>
+                              <li>RA Guard</li>
+                              <ul>
+                                <li>Switches can validate the RA messages</li>
+                                <li> A rogue device could pretend to be a router</li>
+                              </ul>
+                              <li>Port Security</li>
+                              <ul>
+                                <li> Prevent unauthorized users from connecting to a switch interface based on MAC</li>
+                                <li>Configure a maximum number of source MAC addresses on an interface</li>
+                              </ul>
+                              <li>DHCP snooping</li>
+                              <ul>
+                                <li>IP tracking on a layer 2 device</li>
+                                <li> Switch watches for DHCP conversations asd adds a list of untrusted devices to a table</li>
+                              </ul>
+                              <li>Dynamic ARP inspection (DAI)</li>
+                              <ul>
+                                <li>Prevent on-path attacks</li>
+                                <li>Relies on DHCP snooping</li>
+                                <li>Intercept all ARP req and resp</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>5 - Network Troubleshooting</h3>
+                        <div>
+                          <h4>5.1 - Methodology</h4>
+                          <ol>
+                            <li>Identify the problem</li>
+                            <li>Establish a theory of probable cause</li>
+                            <li>Test the theory</li>
+                            <li>Establish a plan of action</li>
+                            <li>Implement the solution or escalate as necessary</li>
+                            <li>Verify functionality</li>
+                            <li>Document</li>
+                          </ol>
+                        </div>
+                        <h4>5.2 - Cable</h4>
+                        <div>
+                          <ul>
+                            <li>Plenum</li>
+                            <ul>
+                              <li>HVAC</li>
+                              <li>Toxic fumes if burned</li>
+                              <li>Fire-rated</li>
+                              <ul>
+                                <li>PVC</li>
+                                <ul>
+                                  <li>Low-smoke polyvinyl chloride</li>
+                                </ul>
+                                <li>FEP</li>
+                                <ul>
+                                  <li>Fluorinated ethylene polymer</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h4>5.3 - Tools</h4>
+                        <div>
+                          <h5>Hardware</h5>
+                          <div>
+                            <ul>
+                              <li>Cable Crimper</li>
+                              <ul>
+                                <li>A tool used to terminate Ethernet cables by attaching connectors to the cable ends.</li>
+                              </ul>
+                              <li>Punch-down</li>
+                              <ul>
+                                <li>A technique used to terminate twisted pair cables on patch panels or keystone jacks in a structured cabling system.</li>
+                              </ul>
+                              <li>Tone Generator</li>
+                              <ul>
+                                <li>A device used to trace and identify cables by sending a tone through the cable, which can be detected using a tone probe or tracer.</li>
+                              </ul>
+                              <li>Loopback Plug</li>
+                              <ul>
+                                <li>A device used to test the functionality of a network port by creating a loopback connection.</li>
+                              </ul>
+                              <li>TDR/OTDR</li>
+                              <ul>
+                                <li>Time-Domain Reflectometer (TDR) or Optical Time-Domain Reflectometer (OTDR) are tools used to troubleshoot and test the integrity of network cables, particularly in fiber optic networks.</li>
+                              </ul>
+                              <li>Multimeter</li>
+                              <ul>
+                                <li>A versatile tool used to measure various electrical parameters, such as voltage, current, and resistance, which can be helpful in diagnosing network equipment issues.</li>
+                              </ul>
+                              <li>Cable Tester</li>
+                              <ul>
+                                <li>A device used to verify the connectivity and performance of network cables by testing for continuity, short circuits, and open circuits.</li>
+                              </ul>
+                              <li>Taps and Port Mirrors</li>
+                              <ul>
+                                <li>Network monitoring tools used to capture and analyze network traffic for troubleshooting, performance monitoring, and security purposes.</li>
+                              </ul>
+                              <li>Light Meter</li>
+                              <ul>
+                                <li>A tool used to measure the intensity of light in fiber optic networks to ensure proper signal transmission and detect potential issues.</li>
+                              </ul>
+                              <li>Spectrum Analyzer</li>
+                              <ul>
+                                <li>A device used to analyze and measure the frequency spectrum of signals in a network to identify and troubleshoot interference, signal quality, and performance issues.</li>
+                              </ul>
+                              <li>Fusion Splicer</li>
+                              <ul>
+                                <li>A device used to join two fiber optic cables together by melting and fusing their ends, creating a low-loss connection.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h5>Command-Line Tools</h5>
+                          <div>
+                            <ul>
+                              <li>ping - Test reachability</li>
+                              <ul>
+                                <li>ping &lt;ip address&gt; - Test reachability to a TCP/IP address</li>
+                                <li>ping -t &lt;ip address&gt; - Ping until stopped with Ctrl-c</li>
+                                <li>ping -a &lt;ip address&gt; - Resolve address to a hostname</li>
+                                <li>ping -n &lt;count&gt; &lt;ip address&gt; - Send # of echo requests</li>
+                                <li>ping -f &lt;ip address&gt; - Send with Don’t Fragment flag set</li>
+                              </ul>
+                              <li>arp - Address resolution protocol information</li>
+                              <ul>
+                                <li>arp -a - View the local ARP table</li>
+                              </ul>
+                              <li>netstat - Display network statistics</li>
+                              <ul>
+                                <li>netstat -a - Show all active connections</li>
+                                <li>netstat -b - Show binaries</li>
+                                <li>netstat -n - Do not resolve names</li>
+                              </ul>
+                              <li>Route</li>
+                              <ul>
+                                <li>View the device's routing table to determine the path that packets will take.</li>
+                                <li>Windows: route print</li>
+                                <li>Linux and macOS: netstat -r</li>
+                              </ul>
+                              <li>Tcpdump</li>
+                              <ul>
+                                <li>Capture packets from the command line.</li>
+                                <li>Available in most Unix/Linux operating systems, included with Mac OS X, and available for Windows (WinDump).</li>
+                                <li>Apply filters and view captured packets in real-time.</li>
+                                <li>Written in standard pcap format.</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h4>5.4 - Common Issues</h4>
+                        <div>
+                          <h5>Wireless</h5>
+                          <ul>
+                            <li>Overlapping channels: Use a wireless analyzer to avoid interference from other access points.</li>
+                            <li>Attenuation: Wireless signals weaken as you move farther from the antenna. Measure attenuation with a Wi-Fi analyzer and control power output or use higher gain receive antennas.</li>
+                            <li>Wrong SSID: Confirm correct SSID settings as multiple SSIDs can be confusing. Check current connection status for the right SSID.</li>
+                            <li>Wrong passphrase: Check wireless authentication methods and ensure correct passphrase is used for connection.</li>
+                            <li>Security type mismatch: Ensure client matches access point encryption settings, upgrade legacy equipment if needed, and migrate from WEP to WPA2/3.</li>
+                            <li>Incorrect antenna placement: Check access point locations and channel settings to avoid interference and slow throughput.</li>
+                            <li>Captive portal: Authenticate to network through captive portal page with username/password. Check for authentication timeout and back-end process.</li>
+                            <li>Client disassociation: Identify and remove device causing denial of service attack through 802.11 frame information capture with Wireshark.</li>
+                          </ul>
+                          <h5>Network</h5>
+                          <ul>
+                            <li>Half-duplex Ethernet: Collisions are normal and can be caused by heavy utilization, interface configuration issues, or hardware issues.</li>
+                            <li>Broadcast storms: Large numbers of broadcasts can impact performance, and troubleshooting can involve packet capture and separating the network into smaller broadcast domains.</li>
+                            <li>Duplicate MAC addresses: Not common but can occur due to mistakes or on-path attacks, and can cause intermittent connectivity.</li>
+                            <li>Duplicate IP addresses: Static address assignments, overlapping DHCP servers, or rogue DHCP servers can cause intermittent connectivity and IP address conflicts.</li>
+                            <li>Multicast flooding: Switches forward multicast traffic to all ports, consuming resources on remote devices and using bandwidth and switch processing time.</li>
+                            <li>IGMP Snooping: Hosts and routers use IGMP to direct multicast transmissions, and switches can intelligently forward multicasts to specific devices by enabling IGMP snooping.</li>
+                            <li>Asymmetric Routes: Traffic follows different paths on egress and ingress, which can be challenging to troubleshoot and may result in dropped sessions. Traceroute can help identify potential asymmetric routes.</li>
+                            <li>Switching Loops: Spanning Tree Protocol is often configured to prevent switching loops, which can cause broadcast storms. Broadcasts and multicasts are sent to all switch ports, making it difficult to identify loops at the MAC address level.</li>
+                            <li>Routing Loops: Misconfigured routes can result in routing loops, where routers send traffic back and forth indefinitely. Traceroute can help identify and resolve routing loops.</li>
+                            <li>Missing Route: If a route to the destination network does not exist, packets will be dropped. Checking and modifying routing tables in each L3 device can resolve this issue.</li>
+                            <li>Rogue DHCP Server: Rogue DHCP servers can assign invalid or duplicate IP addresses, causing connectivity issues. Enabling DHCP snooping and using authorized DHCP servers can help prevent rogue DHCP servers.</li>
+                            <li>Exhausted DHCP Scope: If DHCP server runs out of IP addresses in its scope, clients may receive APIPA addresses, resulting in limited local subnet communication. Monitoring and adding more IP addresses, lowering lease time, or using IP address management tools can help resolve this issue.</li>
+                            <li>IP Configuration Issues: Issues with IP address, subnet mask, gateway, or DNS settings can cause communication problems. Checking documentation, monitoring traffic, and confirming subnet mask and gateway settings can help troubleshoot IP configuration issues.</li>
+                            <li>Low Optical Link Budget: Fiber networks rely on transmission of light, and attenuation can occur over long distances or with dirty connectors. Using a light meter and checking equipment documentation can ensure sufficient light for proper network functioning.</li>
+                            <li>Certificate Issues: Security alerts and invalid certificates may indicate expired or improperly signed certificates. Checking certificate details, domain names, and time/date settings can help resolve certificate issues.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h2>Resources</h2>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://www.professormesser.com/network-plus/n10-008/n10-008-video/n10-008-training-course/">
+                            Professor Messer's CompTIA Network+
+                            N10-008</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://www.examcompass.com/">ExamCompass
+                            Practice Tests</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://protect-us.mimecast.com/s/ylgvCYEYOvtkLL2L8f0XpnL?domain=wgu.udemy.com/">
+                            Jason Dion Practice Exams</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/magicNumSub.js"></script>
+        <script src=
+      "https://eli2k.com/resources/js/netIDCalc.js"></script>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

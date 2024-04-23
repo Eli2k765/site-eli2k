@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>AWS IAM</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>AWS IAM</h1>
+                <p class="alert">Intro to IAM</p>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h3>Review</h3>
+                    <div>
+                      <h4>Principles</h4>
+                      <div>
+                        <ul>
+                          <li>Root</li>
+                          <ul>
+                            <li>Represents the accounts owner</li>
+                            <li>Reset passwords are usually a weakness of AWS root accounts that don't have MFA</li>
+                            <li></li>
+                            <li><pre><code class="language-bash">aws organization describe-organization</code></pre></li>
+                          </ul>
+                          <li>IAM Users</li>
+                          <ul>
+                            <li>Most basic principle</li>
+                            <li>Represent people or apps</li>
+                            <li><pre><code class="language-bash">aws iam list-users
+aws iam list-access-keys --user-name username</code></pre> </li>
+                          </ul>
+                          <li>Roles</li>
+                          <ul>
+                            <li>Enables trust because of assume-role</li>
+                            <li><pre><code class="language-bash">aws iam list-roles</code></pre></li>
+                          </ul>
+                          <li>*</li>
+                          <ul>
+                            <li>Everyone, could be anyone on the internet or any AWS Costomer</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Permissions</h4>
+                      <div>
+                        <ul>
+                          <li>IAM Policies</li>
+                          <ul>
+                            <li>Attached to specific principles and define the resources a principle can act on.</li>
+                            <li>Contain:</li>
+                            <ul>
+                              <li>Optional SID</li>
+                              <li>Action - What the policy explicitly allows or denies</li>
+                              <li>Resources - The ARNs of resources the statement applies to</li>
+                              <li>Effect - Either Allow or Deny</li>
+                              <li>Condition - Optional conditions</li>
+                            </ul>
+                            <li><pre><code class="language-bash">aws iam get-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess</code></pre></li>
+                            <li>Action</li>
+                            <ul>
+                              <li>Consist of a service and an API call</li>
+                            </ul>
+                            <li>Resource</li>
+                            <ul>
+                              <li>A resource is always in an ARN format or a wildcard to represent any resource</li>
+                              <li>Essential for least privilege</li>
+                            </ul>
+                            <li>Effect</li>
+                            <ul>
+                              <li>Explicit allow or deny</li>
+                            </ul>
+                            <li>Principal</li>
+                            <ul>
+                              <li>Can be AWS Account, IAM roles, Role sessions, IAM users, Federated user sessions, services, or everyone.</li>
+                            </ul>
+                            <li>Conditions</li>
+                            <ul>
+                              <li>Evaluate against specific keys and values</li>
+                            </ul>
+                          </ul>
+                          <li>Resource Policies</li>
+                          <ul>
+                            <li>Attached to a resource and define the Principles that can act on the resource</li>
+                          </ul>
+                          <li>Service Control Policies</li>
+                          <ul>
+                            <li>A function of Organizations</li>
+                            <li>Apply to all principles in the AWS account</li>
+                            <li>Users cannot view</li>
+                          </ul>
+                        </ul>
+                      </div>
+                      <h4>Credentials</h4>
+                      <div>
+                        <ul>
+                          <li>Root Password</li>
+                          <ul>
+                            <li>If the acct was created before 2017, it is the same as retail.</li>
+                            <li>If the acct was created via the CreateAccount API call, it is a random string</li>
+                            <li>Login and pw reset available on <a ref="https://signin.aws.amazon.com/signin">the main sign-in page.</a></li>
+                          </ul>
+                          <li>IAM Login</li>
+                          <ul>
+                            <li>LoginProfile is the term used to describe the users console pass</li>
+                            <li>IAM users can be granted access to AWS console from the Security Credentials tab or via CLI:<pre><code class="language-bash">aws iam create-login-profile --user IAM-User --password 'Password123'</code></pre></li>
+                            <li>You can also change a password: <pre><code class="language-bash">aws iam update-login-profile --user IAM-User --password '123Password'</code></pre></li>
+                            <li>And display password policy: <pre><code class="language-bash">aws iam get-account-password-policy</code></pre></li>
+                          </ul>
+                          <li>AWS API Access Key</li>
+                          <ul>
+                            <li>Long Term</li>
+                            <ul>
+                              <li>Begin with AKIA</li>
+                              <li>Create Key: <pre><code class="language-bash">aws iam create-access-key --user-name student</code></pre></li>
+                              <li>Disable Key: <pre><code class="language-bash">aws iam update-access-key --access-key-id AKIA... --status Inactive</code></pre></li>
+                              <li>Delete Key: <pre><code class="language-bash">aws iam delete-access-key --access-key-id AKIA...</code></pre></li>
+                              <li>Identify Acct: <pre><code class="language-bash">aws sts get-access-key-info --access-key-id AKIA...</code></pre></li>
+                            </ul>
+                            <li>Temporary Session</li>
+                            <ul>
+                              <li>Begin with ASIA</li>
+                              <li>Must be requested, cannot be created: <pre><code class="language-bash">aws sts get-session-token</code></pre></li>
+                            </ul>
+                          </ul>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>IAM Initial Access</h3>
+                    <div></div>
+                    <h3>IAM Enumeration</h3>
+                    <div></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

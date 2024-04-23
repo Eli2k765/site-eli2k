@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C175 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C175 - Data Management Foundations</h1>
+                <p class="alert"></p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags">
+                  <button class="N">Notes</button><button class="R">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="N">
+                        <div id="N"></div>
+                        <h3>Intro</h3>
+                        <div>
+                          <h4>DBMS</h4>
+                          <div>
+                            <ul>
+                              <li>Functions:</li>
+                              <ul>
+                                <li>Data Dictionary Management</li>
+                                <ul>
+                                  <li>Data Abstraction and dependence removals</li>
+                                </ul>
+                                <li>Data Storage Management</li>
+                                <ul>
+                                  <li>Performance Tuning</li>
+                                </ul>
+                                <li>Data Transformation and Presentation</li>
+                                <li>Security Management</li>
+                                <li>UAC</li>
+                                <li>Integrity Managemnt</li>
+                                <li>Backup and Recovery Management</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Entity Relationship Diagrams and Data Modelling</h3>
+                        <div>
+                          <h4>Evolution of Data Models</h4>
+                          <div>
+                            <ol>
+                              <li>Hierarchical</li>
+                              <ul>
+                                <li>Contains levels, parents and segments(children)</li>
+                                <li>1:M</li>
+                              </ul>
+                              <li>Network</li>
+                              <ul>
+                                <li>Allows a record to have more than one parent</li>
+                              </ul>
+                              <li>Relational</li>
+                              <ul>
+                                <li>Uses relation tables, tuples and attributes</li>
+                              </ul>
+                              <li>ERDs</li>
+                              <ul>
+                                <li>Graphical representations of entities and their relationships</li>
+                                <li><img src=
+                                "https://eli2k.com/resources/images/notes/erdNotations.png"
+                                alt=
+                                "Shows chen, crows foot and UML notation. This class uses a combination of crows foot and uml. crows foot is described below, uml uses numbers."></li>
+                              </ul>
+                              <li>OOM</li>
+                              <ul>
+                                <li>Objects, attributes, classes, methods</li>
+                              </ul>
+                              <li>Big Data</li>
+                              <ul>
+                                <li>3 Vs</li>
+                              </ul>
+                              <li>NoSQL</li>
+                              <ul>
+                                <li>Not Only SQL</li>
+                                <li>Relational vs Cassandra</li>
+                                <ul>
+                                  <li>Relational:</li>
+                                  <ul>
+                                    <li>Data is stored in a database/schema which contains at least one table</li>
+                                    <li>Tables can be joined</li>
+                                  </ul>
+                                  <li>Cassandra:</li>
+                                  <ul>
+                                    <li>Data is stored in a keyspace which contain column families</li>
+                                    <li>Join is not supported</li>
+                                    <li>Rows are not required to contain same number of columns</li>
+                                    <li>No foreign keys</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                            </ol>
+                          </div>
+                          <h4>Crows Foot Notation with Modality</h4>
+                          <div>
+                            <ul>
+                              <li><img src=
+                                "https://eli2k.com/resources/images/notes/relationships.png"
+                                alt=
+                                "Mandatory One to One: A line going from one entity box to another with two verticle lines on each side, the line furthest from the entity is the minimum and the second is the maximum. Mandatory One to Many: Another line between boxes but this one has two verticle lines on one side and one verticle line followed by a &quot;crows foot&quot; which is similar to a &lt; with a line horizontally in the middle. Optional is represented by a circle as the minimum."></li>
+                              <li>The minimum will always be on the inside and the maximum on the outside.</li>
+                              <li>A zero would indicate an optional relationship</li>
+                            </ul>
+                          </div>
+                          <h4>Describing Relationships</h4>
+                          <ul>
+                            <li>Unary</li>
+                            <ul>
+                              <li>Relationship with itself</li>
+                            </ul>
+                            <li>Binary</li>
+                            <ul>
+                              <li>Relationship between two entities</li>
+                            </ul>
+                            <li>Ternary</li>
+                            <ul>
+                              <li>Relationship between at least three entities.</li>
+                            </ul>
+                            <li>1:1 or 1..1 (One to One)</li>
+                            <ul>
+                              <li>A single record has a relationship with a single record in another table</li>
+                            </ul>
+                            <li>1:M or 1..* (One to Many)</li>
+                            <ul>
+                              <li>One record in a table is related to more than one record in another</li>
+                            </ul>
+                            <li>M:N or *..* (Many to Many)</li>
+                            <ul>
+                              <li>A record can be related to one or more records in another table and vice versa.</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>SQL</h3>
+                        <div>
+                          <h4>DDL: Data Definintion Language</h4>
+                          <div>
+                            <ul>
+                              <li>Define and manage DB structures</li>
+                              <li>Main SQL commands:</li>
+                              <ul>
+                                <li>CREATE</li>
+                                <ul>
+                                  <li>Create DB objects</li>
+                                  <li>CREATE TABLE Employee(empId Integer NOT NULL, empName Char(25) NOT NULL, CONSTRAINT empPk PRIMARY KEY(empID));</li>
+                                </ul>
+                                <li>ALTER</li>
+                                <ul>
+                                  <li>Modify structure of existing DB objects</li>
+                                  <li>ALTER TABLE Employee ADD CONSTRAINT empPk PRIMARY KEY(empId);</li>
+                                </ul>
+                                <li>DROP</li>
+                                <ul>
+                                  <li>Delete existing objects</li>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>DML: Data Manipulation Language</h4>
+                          <div>
+                            <ul>
+                              <li>Define, update and retrieve data</li>
+                              <li>Main SQL commands for defining and updating:</li>
+                              <ul>
+                                <li>INSERT INTO</li>
+                                <ul>
+                                  <li>Add a new row</li>
+                                  <li>INSERT INTO Employee (empId, salaryCode, lastName) VALUES (62, 11, 'Halpert');</li>
+                                </ul>
+                                <li>UPDATE</li>
+                                <ul>
+                                  <li>Update rows</li>
+                                  <li>UPDATE Employee SET phone = '123-867-5309' WHERE empId = 29;</li>
+                                </ul>
+                                <li>DELETE FROM</li>
+                                <ul>
+                                  <li>Delete rows</li>
+                                  <li>DELETE FROM Employee WHERE empId = 29;</li>
+                                </ul>
+                              </ul>
+                              <li>Main SQL commands for retrieving:</li>
+                              <ul>
+                                <li>SELECT</li>
+                                <ul>
+                                  <li>Queries a table and returns result as a 2D relation table.</li>
+                                  <li>SELECT empName FROM Employee WHERE empId = 29;</li>
+                                  <li>SELECT * FROM Employee;</li>
+                                  <ul>
+                                    <li>* = All Columns</li>
+                                  </ul>
+                                </ul>
+                                <li>DISTINCT</li>
+                                <ul>
+                                  <li>Added to SELECT to suppress duplicates</li>
+                                  <li>SELECT DISTINCT deptId FROM Employee;</li>
+                                </ul>
+                                <li>WHERE</li>
+                                <ul>
+                                  <li>Allows matching</li>
+                                  <ul>
+                                    <li>=</li>
+                                    <li>&lt;&gt; or !=</li>
+                                    <li>&gt;</li>
+                                    <li>&lt;</li>
+                                    <li>&gt;=</li>
+                                    <li>&lt;=</li>
+                                    <li>IN</li>
+                                    <ul>
+                                      <li>SELECT empName FROM Employee WHERE deptId IN (4, 8, 9);</li>
+                                    </ul>
+                                    <li>AND</li>
+                                    <ul>
+                                      <li>Intersection</li>
+                                    </ul>
+                                    <li>OR</li>
+                                    <ul>
+                                      <li>Union</li>
+                                    </ul>
+                                    <li>NOT</li>
+                                    <ul>
+                                      <li>Exclusion</li>
+                                    </ul>
+                                    <li>BETWEEN</li>
+                                    <ul>
+                                      <li>Range</li>
+                                    </ul>
+                                    <li>LIKE</li>
+                                    <ul>
+                                      <li>Allows wildcard search</li>
+                                      <li>%</li>
+                                      <ul>
+                                        <li>Match all</li>
+                                      </ul>
+                                      <li>_</li>
+                                      <ul>
+                                        <li>Match letter</li>
+                                      </ul>
+                                    </ul>
+                                  </ul>
+                                </ul>
+                              </ul>
+                              <li>GROUP BY</li>
+                              <ul>
+                                <li>HAVING</li>
+                                <ul>
+                                  <li>Same functionality as WHERE</li>
+                                  <li>SELECT salespersonId, salespersonLastName, SUM(saleAmount) AS totalSales FROM Sales GROUP BY salespersonId, salespersonLastName HAVING SUM(saleAmount) &gt;= 10000; </li>
+                                </ul>
+                              </ul>
+                              <li>ORDER BY</li>
+                              <ul>
+                                <li>ORDER BY empName DESC;</li>
+                                <li>ORDER BY empName ASC;</li>
+                                <ul>
+                                  <li>Default</li>
+                                </ul>
+                              </ul>
+                              <li>COUNT, MIN, MAX, SUM, AVG, STDEV</li>
+                              <li>JOIN</li>
+                              <ul>
+                                <li>Combine data from multiple tables</li>
+                                <li>Outer Join:</li>
+                                <ul>
+                                  <li>Left Outer Join</li>
+                                  <ul>
+                                    <li>SELECT empName, deptName FROM Employee E LEFT OUTER JOIN Department D ON E.deptId = D.deptId;</li>
+                                  </ul>
+                                  <li>Full Outer Join</li>
+                                  <li>Right Outer Join</li>
+                                </ul>
+                                <li>Inner Join:</li>
+                                <ul>
+                                  <li>Must have matching values from both tables</li>
+                                  <li>Implicit join via WHERE:</li>
+                                  <ul>
+                                    <li>SELECT empName, deptName FROM Employee AS E, Department AS D WHERE E.deptId = D.deptId</li>
+                                  </ul>
+                                  <li>Explicit join:</li>
+                                  <ul>
+                                    <li>SELECT empName, deptName FROM Employee E INNER JOIN Department D ON E.deptId = D.deptId WHERE D.deptName NOT LIKE 'Account%';</li>
+                                  </ul>
+                                </ul>
+                                </ul>
+                            </ul>
+                          </div>
+                          <h4>DCL: Data Control Language</h4>
+                          <div>
+                            <ul>
+                              <li>Create user accts and manages permissions</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Data Modeling</h3>
+                        <div>
+                          <h4>Keys</h4>
+                          <div>
+                            <ul>
+                              <li>Unique</li>
+                              <ul>
+                                <li>Primary Key</li>
+                                <ul>
+                                  <li>Main key that identifies a row in a table</li>
+                                  <li>never changing, never null</li>
+                                </ul>
+                                <li>Candidate Key</li>
+                                <ul>
+                                  <li>Has the potential to become a primary key</li>
+                                  <li>Smallest combination of columns for uniqueness</li>
+                                </ul>
+                                <li>Composite Key</li>
+                                <ul>
+                                  <li>Composed of two or more columns</li>
+                                </ul>
+                                <li>Surrogate Key</li>
+                                <ul>
+                                  <li>Added to a relation to act as the primary key</li>
+                                  <li>Not a natural key</li>
+                                </ul>
+                              </ul>
+                              <li>Non-Unique</li>
+                              <ul>
+                                <li>Foreign Key</li>
+                                <ul>
+                                  <li>A primary key that links multiple tables.</li>
+                                  <li>Referential integrity ensures foreign keys refer to an entity</li>
+                                  <ul>
+                                    <li>DELETE, UPDATE, INSERT</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                            </ul>
+                            <h4>Keys and Relationships</h4>
+                            <ul>
+                              <li>1:1</li>
+                              <ul>
+                                <li>Optional side will recieve the foreign key</li>
+                              </ul>
+                              <li>1:M</li>
+                              <ul>
+                                <li>The Many side recieves the foreign key</li>
+                              </ul>
+                              <li>M:M</li>
+                              <ul>
+                                <li>The intersection has a composite key</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Normalization</h3>
+                        <div>
+                          <ul>
+                            <li>Ensuring that a relation is well formed</li>
+                            <li>Dependency Concepts</li>
+                            <ul>
+                              <li>Functional dependence</li>
+                              <ul>
+                                <li>B is fully functionally dependent on A if each value of A determines only one value of B
+                                </li>
+                              </ul>
+                              <li>Partial Dependency</li>
+                              <ul>
+                                <li>Attribute is dependent on a portion of the primary key</li>
+                              </ul>
+                              <li>Transitive Dependency</li>
+                              <ul>
+                                <li>Attribute is dependent on something other than the primary key</li>
+                              </ul>
+                            </ul>
+                            <li>Normal Forms:</li>
+                            <ul>
+                              <li>1NF</li>
+                              <ul>
+                                <li>Cells hold a single value (atomicity)</li>
+                              </ul>
+                              <li>2NF</li>
+                              <ul>
+                                <li>1NF + no partial dependencies</li>
+                              </ul>
+                              <li>3NF</li>
+                              <ul>
+                                <li>2NF + no transitive dependencies</li>
+                              </ul>
+                              <li>Boyce-Codd</li>
+                              <ul>
+                                <li>Every determinant is a candidate key</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                          <h4>Conversion</h4>
+                          <ul>
+                            <li>To 1NF</li>
+                            <ol>
+                              <li>Eliminate repeating groups</li>
+                              <li>Identify primary keys</li>
+                              <li>Identify dependencies</li>
+                            </ol>
+                            <li>To 2NF</li>
+                            <ol>
+                              <li>Make new tables to eliminate partial dependencies</li>
+                              <li>Reassign corresponding dependent attributes</li>
+                            </ol>
+                            <li>To 3NF</li>
+                            <ol>
+                              <li>Make new tables to eliminate transitive dependencies</li>
+                              <li>Reassign corresponding dependent attributes</li>
+                            </ol>
+                          </ul>
+                        </div>
+                        <h3>Business Intelligence</h3>
+                        <div>
+                          <h4>Reporting</h4>
+                          <div>
+                            <ul>
+                              <li>Filter, sort, group, and make simple calc</li>
+                              <li>Summaries, comparisons, classifications</li>
+                              <li>Report delivery crucial</li>
+                              <li>OLAP</li>
+                              <ul>
+                                <li>OnLine Analytical Processing</li>
+                                <li>Used for dynamically examining database data</li>
+                                <li>Input = dimensions; Output = measures</li>
+                                <li>Results in OLAP Cube/Report</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Data Mining</h4>
+                          <div>
+                            <ul>
+                              <li>Analyze, predict and decision-making</li>
+                              <ul>
+                                <li>Uses sophisticated math and stats</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h3>Resources</h3>
+                        <div>
+                          <ul>
+                            <li><a href="https://youtube.com/playlist?list=PL1LIXLIF50uXWJ9alDSXClzNCMynac38g">Dr. Soper</a></li>
+                            <li><a href="https://youtube.com/playlist?list=PL_c9BZzLwBRK0Pc28IdvPQizD2mJlgoID">Caleb Curry</a></li>
+                            <li><a href="https://srm--c.na127.content.force.com/servlet/servlet.FileDownload?retURL=https%3A%2F%2Fsrm--c.na127.visual.force.com%2Fapex%2FFDP%2FCommonsExpandedChatter%3Fcode%3DC175&file=00P3x00001jvv30EAA&_CONFIRMATIONTOKEN=VmpFPSxNakF5TXkwd05TMHhNVlF4T1RveU5UbzFOeTQ0TXpsYSxQSE95a3JpNF9vWUd4Q0MzaWVzMnU0LFlUQmhOamht&common.udd.actions.ActionsUtilORIG_URI=%2Fservlet%2Fservlet.FileDownload">Study Guide</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

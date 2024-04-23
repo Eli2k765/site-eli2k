@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>C394 - Eli2k</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>C394 - IT Foundations (A+ Core 2)</h1>
+                <p class="alert">Exam Compass -&gt; Professor Messer -&gt; Dion Practice -&gt; Win.</p>
+                <div class="tags">
+                  <span id="all"><button class=
+                  "all">All</button></span> <span id=
+                  "tags"><button class="N">Notes</button>
+                  <button class="R">Resources</button></span>
+                </div><br>
+                <strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <div id="blurbs">
+                      <div class="N">
+                        <div id="N"></div>
+                        <h2>1.0 - Operating Systems</h2>
+                        <h3>Installing OS</h3>
+                        <div>
+                          <ul>
+                            <li>Bootable media</li>
+                            <ul>
+                              <li>CD/DVD</li>
+                              <li>USB</li>
+                              <li>PXE</li>
+                            </ul>
+                            <li>Partitioning</li>
+                            <ul>
+                              <li>GPT</li>
+                              <ul>
+                                <li>Up to 128 partitions</li>
+                                <li>9 billion TB</li>
+                              </ul>
+                              <li>MBR</li>
+                              <ul>
+                                <li>4 primary partitions, only
+                                bootable partitions</li>
+                                <li>1 extended partition, can contain
+                                logical partitions</li>
+                                <li>2TB</li>
+                              </ul>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h3>Windows</h3>
+                        <div>
+                          <h4>Requirements</h4>
+                          <div>
+                            <ul>
+                              <li>Windows 10</li>
+                              <ul>
+                                <li>1 GHz processor</li>
+                                <li>2 GB RAM</li>
+                                <li>32 GB of free space</li>
+                              </ul>
+                              <li>Windows 11</li>
+                              <ul>
+                                <li>1 GHz processor</li>
+                                <li>4 GB RAM</li>
+                                <li>64 GB of free space</li>
+                                <li>UEFI capable</li>
+                                <li>TPM 2.0</li>
+                                <li>DirectX 12</li>
+                                <li>720p display</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>System Tools</h4>
+                          <div>
+                            <ul>
+                              <li>Control Panel</li>
+                              <ul>
+                                <li>Internet Options</li>
+                                <li>Devices and Printers</li>
+                                <li>Programs and Features</li>
+                                <li>Network and Sharing Center</li>
+                                <li>System</li>
+                                <li>Windows Defender Firewall</li>
+                                <li>Mail</li>
+                                <li>Sound</li>
+                                <li>User Accounts</li>
+                                <li>Device Manager</li>
+                                <li>Indexing Options</li>
+                                <li>Administrative Tools</li>
+                                <li>File Explorer Options</li>
+                                <li>Power Options</li>
+                                <li>Ease of Access</li>
+                              </ul>
+                              <li>Micorsoft Management Console</li>
+                              <ul>
+                                <li>Create snap-ins that can make use
+                                of Windows Tools</li>
+                                <li>mmc.exe</li>
+                              </ul>
+                              <li>Device Manager</li>
+                              <ul>
+                                <li>View and manage hardware and
+                                drivers</li>
+                                <li>devmgmt.msc</li>
+                              </ul>
+                              <li>Disk Management</li>
+                              <ul>
+                                <li>View and manage disk drives</li>
+                                <li>diskmgmt.msc</li>
+                              </ul>
+                              <li>System Information</li>
+                              <ul>
+                                <li>Summary</li>
+                                <li>Components</li>
+                                <li>Software Environment</li>
+                                <li>Hardware Resources</li>
+                              </ul>
+                              <li>Local Users and Groups</li>
+                              <ul>
+                                <li>Manage local users and groups</li>
+                                <li>lusrmgr.msc</li>
+                              </ul>
+                              <li>Grou Policy Editor</li>
+                              <ul>
+                                <li>Local Group Policy Editor</li>
+                                <ul>
+                                  <li>gpedit.msc</li>
+                                </ul>
+                                <li>Domain Group Policy Editor</li>
+                                <ul>
+                                  <li>gpmc.msc</li>
+                                </ul>
+                              </ul>
+                              <li>Certificate Manager</li>
+                              <ul>
+                                <li>Manage certificates</li>
+                                <li>certmgr.msc</li>
+                              </ul>
+                              <li>Task Manager</li>
+                              <ul>
+                                <li>Processes</li>
+                                <li>Performance</li>
+                                <li>App History</li>
+                                <li>Startup</li>
+                                <li>Users</li>
+                                <li>Details</li>
+                                <li>Services</li>
+                              </ul>
+                              <li>Tasks Scheduler</li>
+                              <ul>
+                                <li>Cron jobs for Windows</li>
+                                <li>taskschd.msc</li>
+                              </ul>
+                              <li>Performance Monitor</li>
+                              <li>Event Viewer</li>
+                              <ul>
+                                <li>Warns of issues</li>
+                                <li>Logs errors</li>
+                                <li>System, Application, Security</li>
+                                <li>eventvwr.msc</li>
+                              </ul>
+                              <li>Performance Monitor</li>
+                              <ul>
+                                <li>Monitors system performance</li>
+                                <li>Graphs</li>
+                                <li>Counters, Alarms</li>
+                                <li>perfmon.msc</li>
+                              </ul>
+                              <li>Resource Monitor</li>
+                              <ul>
+                                <li>Detailed view of cpu, memory, disk,
+                                network, and gpu</li>
+                                <li>resmon.msc</li>
+                              </ul>
+                              <li>Disk Cleanup</li>
+                              <ul>
+                                <li>Free up disk space</li>
+                                <li>cleanmgr.exe</li>
+                              </ul>
+                              <li>Disk Defragmenter</li>
+                              <ul>
+                                <li>Defragment hard drives</li>
+                                <li>dfrgui.exe</li>
+                              </ul>
+                              <li>Registry Editor</li>
+                              <ul>
+                                <li>Manage system configuration
+                                settings</li>
+                                <li>regedit.exe</li>
+                              </ul>
+                              <li>msconfig</li>
+                              <li>msinfo32</li>
+                              <ul>
+                                <li>System Information</li>
+                              </ul>
+                              <li>WinRE</li>
+                              <ul>
+                                <li>Windows Recovery Environment</li>
+                                <li>Startup repair</li>
+                                <li>System restore</li>
+                                <li>Command prompt</li>
+                                <li>Startup settings</li>
+                                <ul>
+                                  <li>Safe mode</li>
+                                  <li>Low resolution mode</li>
+                                  <li>Last known good
+                                  configuration</li>
+                                </ul>
+                              </ul>
+                              <li>Bitlocker</li>
+                              <ul>
+                                <li>Encrypts entire drive</li>
+                                <li>Requires TPM 2.0</li>
+                              </ul>
+                              <li>EFS</li>
+                              <ul>
+                                <li>Encrypts individual files within
+                                Properties tab</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>CLI Tools</h4>
+                          <div>
+                            <ul>
+                              <li>Navigation and File Manipulation</li>
+                              <ul>
+                                <li>dir</li>
+                                <ul>
+                                  <li>Displays a list of files and
+                                  subdirectories in a directory.</li>
+                                </ul>
+                                <li>cd</li>
+                                <ul>
+                                  <li>Changes the current
+                                  directory.</li>
+                                </ul>
+                                <li>copy</li>
+                                <ul>
+                                  <li>Copies one or more files to
+                                  another location.</li>
+                                </ul>
+                                <li>robocopy</li>
+                                <ul>
+                                  <li>Robust File Copy</li>
+                                </ul>
+                                <li>del</li>
+                                <ul>
+                                  <li>Deletes one or more files.</li>
+                                </ul>
+                                <li>move</li>
+                                <ul>
+                                  <li>Move one or more files from one
+                                  directory to another directory.</li>
+                                </ul>
+                              </ul>
+                              <li>Disk Management</li>
+                              <ul>
+                                <li>format</li>
+                                <ul>
+                                  <li>Formats a disk for use with
+                                  Windows.</li>
+                                </ul>
+                                <li>diskpart</li>
+                                <ul>
+                                  <li>diskpart is a command-line tool
+                                  that allows you to manage disks and
+                                  partitions.</li>
+                                </ul>
+                                <li>chkdsk</li>
+                                <ul>
+                                  <li>Checks a disk and displays a
+                                  status report.</li>
+                                  <li>chkdsk /f</li>
+                                  <ul>
+                                    <li>Automatically fixes file system
+                                    errors.</li>
+                                  </ul>
+                                  <li>chkdsk /r</li>
+                                  <ul>
+                                    <li>Locates bad sectors and
+                                    recovers readable information.</li>
+                                  </ul>
+                                </ul>
+                                <ul>
+                                  sfc
+                                </ul>
+                                <ul>
+                                  <li>Scans all protected system files
+                                  and replaces incorrect versions with
+                                  correct Microsoft versions.</li>
+                                  <li>sfc /scannow</li>
+                                  <ul>
+                                    <li>Scans the system for corrupted
+                                    files and attempts to fix
+                                    them.</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                              <li>System Configuration</li>
+                              <ul>
+                                <li>msconfig</li>
+                                <ul>
+                                  <li>Displays the System Configuration
+                                  utility.</li>
+                                </ul>
+                                <li>systeminfo</li>
+                                <ul>
+                                  <li>Displays detailed information
+                                  about the computer
+                                  configuration.</li>
+                                </ul>
+                                <li>winver</li>
+                                <ul>
+                                  <li>Pop up window with version
+                                  information.</li>
+                                </ul>
+                              </ul>
+                              <li>Group Policy</li>
+                              <ul>
+                                <li>gpupdate</li>
+                                <ul>
+                                  <li>Updates Group Policy
+                                  settings.</li>
+                                </ul>
+                                <li>gpresult</li>
+                                <ul>
+                                  <li>Displays Group Policy info.</li>
+                                </ul>
+                              </ul>
+                              <li>Network Management</li>
+                              <ul>
+                                <li>ipconfig</li>
+                                <ul>
+                                  <li>Displays all current TCP/IP
+                                  network configuration values</li>
+                                  <li>ipconfig /all</li>
+                                  <ul>
+                                    <li>Shows additional
+                                    information</li>
+                                  </ul>
+                                </ul>
+                                <li>ping</li>
+                                <ul>
+                                  <li>Tests the reachability of a
+                                  network host.</li>
+                                  <li>ping -t</li>
+                                  <ul>
+                                    <li>Continuously pings the
+                                    specified host until stopped.</li>
+                                  </ul>
+                                  <li>ping -a</li>
+                                  <ul>
+                                    <li>Resolves addresses to
+                                    hostnames.</li>
+                                  </ul>
+                                  <li>ping -n</li>
+                                  <ul>
+                                    <li>Specifies the number of echo
+                                    requests to send.</li>
+                                  </ul>
+                                  <li>ping -l</li>
+                                  <ul>
+                                    <li>Changes the default size of the
+                                    data portion of the echo
+                                    request.</li>
+                                  </ul>
+                                </ul>
+                                <li>tracert</li>
+                                <ul>
+                                  <li>Traces the route that packets
+                                  take to a network host by sending
+                                  ICMP ECHO_REQUEST packets.</li>
+                                </ul>
+                                <li>pathping</li>
+                                <ul>
+                                  <li>Combines the functionality of the
+                                  ping and tracert commands.</li>
+                                </ul>
+                                <li>netstat</li>
+                                <ul>
+                                  <li>Displays protocol statistics and
+                                  current TCP/UDP network
+                                  connections.</li>
+                                </ul>
+                                <li>nslookup</li>
+                                <ul>
+                                  <li>Queries Internet name servers
+                                  interactively or in batch mode.</li>
+                                </ul>
+                                <li>net</li>
+                                <ul>
+                                  <li>Displays or modifies network
+                                  configuration.</li>
+                                  <li>net use</li>
+                                  <ul>
+                                    <li>Connects to a shared
+                                    resource.</li>
+                                  </ul>
+                                  <li>net view</li>
+                                  <ul>
+                                    <li>Displays resources, including
+                                    file and print shares, on remote
+                                    computers.</li>
+                                  </ul>
+                                  <li>net user</li>
+                                  <ul>
+                                    <li>Displays or modifies user
+                                    accounts.</li>
+                                  </ul>
+                                  <li>net start/stop</li>
+                                  <ul>
+                                    <li>Starts or stops a service.</li>
+                                  </ul>
+                                </ul>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Windows Shares</h4>
+                          <div>
+                            <ul>
+                              <li>Domain</li>
+                              <ul>
+                                <li>Centralized management</li>
+                                <li>Security</li>
+                                <li>1000s of users</li>
+                              </ul>
+                              <li>Workgroup</li>
+                              <ul>
+                                <li>More flexible for the end user</li>
+                                <li>20 max inbound</li>
+                              </ul>
+                            </ul>
+                          </div>
+                          <h4>Backup and Restore</h4>
+                          <div>
+                            <ul>
+                              <li>File History</li>
+                              <ul>
+                                <li>Control Panel &gt; System and
+                                Security &gt; File History</li>
+                                <li>Control Panel (icon) &gt; File
+                                History</li>
+                                <li>Backup files to external drive</li>
+                              </ul>
+                              <li>Windows Backup</li>
+                              <ul>
+                                <li>Settings &gt; Accounts &gt;
+                                Backup</li>
+                              </ul>
+                              <li>Restore</li>
+                              <ul>
+                                <li>Control Panel &gt; System and
+                                Security &gt; Create a restore
+                                point</li>
+                              </ul>
+                              <li>Reset</li>
+                              <ul>
+                                <li>Settings &gt; Update & Security
+                                &gt; Recovery</li>
+                                <li>Control Panel &gt; Security and
+                                Maintenence &gt; Restore</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>Linux</h3>
+                        <div>
+                          <h4>Linux Commands</h4>
+                          <div>
+                            <ul>
+                              <li>ip a</li>
+                              <ul>
+                                <li>Displays all current TCP/IP network
+                                configuration values</li>
+                              </ul>
+                              <li>chmod</li>
+                              <ul>
+                                <li>Changes file permissions</li>
+                                <li>Permissions are read, write,
+                                execute</li>
+                                <li>Order is owner, group, other</li>
+                                <li>Octal numbers are used to represent
+                                permissions</li>
+                                <li>1 = execute</li>
+                                <li>2 = write</li>
+                                <li>4 = read</li>
+                                <li>1 + 2 + 4 = 7</li>
+                                <li>chmod 777 filename = chmod
+                                rwxrwxrwx filename</li>
+                                <ul>
+                                  <li>Owner, group, and other have full
+                                  permissions</li>
+                                </ul>
+                              </ul>
+                              <li>chown</li>
+                              <ul>
+                                <li>Changes file ownership</li>
+                                <li>chown username filename</li>
+                              </ul>
+                              <li>df</li>
+                              <ul>
+                                <li>Displays disk space usage</li>
+                              </ul>
+                              <li>top</li>
+                              <ul>
+                                <li>Displays running processes</li>
+                              </ul>
+                              <li>cat /etc/os-release</li>
+                              <ul>
+                                <li>Displays Linux version</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>MacOS</h3>
+                        <div>
+                          <h4>MacOS Tools</h4>
+                          <div>
+                            <ul>
+                              <li>Dock</li>
+                              <ul>
+                                <li>Icons on the bottom</li>
+                              </ul>
+                              <li>Finder</li>
+                              <ul>
+                                <li>For locating applications and
+                                files, seems like a DE</li>
+                              </ul>
+                              <li>Key Chain</li>
+                              <ul>
+                                <li>Protected
+                                passwords/certificates</li>
+                              </ul>
+                              <li>Mission Control</li>
+                              <ul>
+                                <li>Larger desktop perspective</li>
+                              </ul>
+                              <li>Spotlight</li>
+                              <ul>
+                                <li>The search tool</li>
+                              </ul>
+                              <li>iCloud</li>
+                              <ul>
+                                <li>For cloud storage, sync, and
+                                backup</li>
+                              </ul>
+                              <li>Screen Sharing</li>
+                              <ul>
+                                <li>View and take control of remote
+                                systems</li>
+                              </ul>
+                              <li>Boot Camp</li>
+                              <ul>
+                                <li>Dual-boot to Windows</li>
+                              </ul>
+                              <li>Time Machine</li>
+                              <ul>
+                                <li>Backup program/system state</li>
+                              </ul>
+                              <li>Terminal</li>
+                              <ul>
+                                <li>Similar to Linux</li>
+                              </ul>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3>File Systems</h3>
+                        <div>
+                          <ul>
+                            <li>NTFS</li>
+                            <ul>
+                              <li>Windows</li>
+                            </ul>
+                            <li>FAT32</li>
+                            <ul>
+                              <li>Cross-platform</li>
+                              <li>Commonly used on flash drives</li>
+                              <li>4GB file size limit</li>
+                            </ul>
+                            <li>exFAT</li>
+                            <ul>
+                              <li>Cross-platform</li>
+                              <li>Larger file size limit of 16TB</li>
+                            </ul>
+                            <li>APFS</li>
+                            <ul>
+                              <li>MacOS</li>
+                            </ul>
+                            <li>EXT4</li>
+                            <ul>
+                              <li>Debian and Ubuntu</li>
+                            </ul>
+                            <li>EXT3</li>
+                          </ul>
+                        </div>
+                        <h2>2.0 - Security</h2>
+                        <h3>Wireless Security</h3>
+                        <div>
+                          <ul>
+                            <li>WPA2</li>
+                            <ul>
+                              <li>Uses PSK (Pre-Shared Key)</li>
+                            </ul>
+                            <li>WPA3</li>
+                            <ul>
+                              <li>Uses AES-128 and GCM encryption so
+                              each IV is unique</li>
+                              <li>Uses Simultaneous Authentication of
+                              Equals (SAE) for authentication which
+                              is sometimes referred to as the
+                              dragonfly handshake and uses
+                              Diffie-Helman key exchange and
+                              HMAC</li>
+                              <li>Uses a new key exchange protocol
+                              called Enhanced Open and Opportunistic
+                              Wireless Encryption (OWE) that enables
+                              devices to connect to a network without
+                              having to enter a password by using
+                              PKI</li>
+                            </ul>
+                            <li>Deprecated</li>
+                            <ul>
+                              <li>WEP (Wired Equivalent Privacy)</li>
+                              <li>WPA (Wi-Fi Protected Access)</li>
+                              <li>TKIP (Temporal Key Integrity
+                              Protocol)</li>
+                            </ul>
+                            <li>RADIUS server (port 1812) is used for
+                            remote auth</li>
+                          </ul>
+                        </div>
+                        <h3>Removing Malware</h3>
+                        <div>
+                          <ol>
+                            <li>Identify and verify malware
+                            symptoms</li>
+                            <li>Quarantine infected systems</li>
+                            <li>Disable System Restore in
+                            Windows</li>
+                            <li>Remediate infected systems: update
+                            anti-malware, scan and use removal
+                            techniques (safe mode, preinstallation
+                            environment)</li>
+                            <li>Schedule scans and run updates</li>
+                            <li>Enable System Restore and create a
+                            restore point in Windows</li>
+                            <li>Educate the end user</li>
+                          </ol>
+                        </div>
+                        <h3>AAA</h3>
+                        <div>
+                          <ul>
+                            <li>RADIUS (Remote Authentication Dial-In
+                            User Service)</li>
+                            <ul>
+                              <li>A protocol for authenticating
+                              users</li>
+                            </ul>
+                            <li>TACACS+ (Terminal Access Controller
+                            Access-Control System Plus)</li>
+                            <ul>
+                              <li>Commonly used for cisco
+                              devices</li>
+                            </ul>
+                            <li>Kerberos</li>
+                            <ul>
+                              <li>Uses a ticket granting service
+                              (TGS) to authenticate users</li>
+                              <li>Used for Windows domain
+                              authentication</li>
+                            </ul>
+                          </ul>
+                        </div>
+                        <h2>4.0 - Operational Procedures</h2>
+                        <h3>Change Management</h3>
+                        <div>
+                          <ol>
+                            <li>Purpose of change</li>
+                            <li>Scope of change</li>
+                            <li>Affected systems</li>
+                            <li>Risk analysis</li>
+                            <li>End-user acceptance</li>
+                            <li>Change board approvals</li>
+                            <li>Rollback plan</li>
+                            <li>Sandbox testing</li>
+                          </ol>
+                        </div>
+                      </div>
+                      <div class="R">
+                        <div id="R"></div>
+                        <h2>Resources</h2>
+                        <ul>
+                          <li>
+                            <a href=
+                            "https://professormesser.com/free-a-plus-training/220-1102/220-1102-video/220-1102-training-course/">
+                            Professor Messer's CompTIA A+
+                            220-1002</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://www.examcompass.com/">ExamCompass
+                            Practice Tests</a>
+                          </li>
+                          <li>
+                            <a href=
+                            "https://protect-us.mimecast.com/s/ylgvCYEYOvtkLL2L8f0XpnL?domain=wgu.udemy.com/">
+                            Jason Dion Practice Exams</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="footer border"></div>
+        </div>
+        <script src=
+      "https://eli2k.com/resources/js/buttonCategories.js"></script>
+      </div>
+      <script src=
+      "https://eli2k.com/resources/js/themeSwitch.js"></script>
+      <script src=
+      "https://eli2k.com/resources/js/collapseList.js"></script>
+      
+    </div>
+  </div>
+</body>
+</html>

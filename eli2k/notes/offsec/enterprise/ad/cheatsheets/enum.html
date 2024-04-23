@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="content-type" content=
+  "text/html; charset=UTF-8">
+  <title>Active Directory Enumeration</title>
+  <meta name="viewport" content=
+  "initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta name="description" content=
+  "My notes from various labs and certs.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://eli2k.com/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Home">
+  <meta property="og:image" content=
+  "https://eli2k.com/resources/images/homepage.png">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/style.css">
+  <link rel="icon" href=
+  "https://eli2k.com/resources/images/bluscrn.gif" type=
+  "image/gif">
+  <link rel="stylesheet" href=
+  "https://eli2k.com/resources/css/prism.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <input type="checkbox" class="theme-switch" id="theme-switch">
+  <div id="page">
+    <label for="theme-switch" class="switch-label"></label>
+    <script src="https://eli2k.com/resources/js/prism.js"></script>
+    
+    <script>
+
+    NekoType = "robot"
+    </script>
+    <h1 id="nl">
+    <script src=
+    "https://webneko.net/n20171213.js"></script><a href="https://webneko.net">Neko</a></h1>
+    <div id="container">
+      <div id="header">
+        <div class="text-container">
+          <span>E</span> <span>L</span> <span>I</span> <span>2</span> <span>K</span>
+        </div>
+      </div>
+      <div id="left-sidebar"></div>
+      <div class="divider"></div>
+      <div class="pageContent">
+        <div class="nav border">
+          <ul>
+            <a href="https://eli2k.com/" title="The homepage. acts as an index for all of the indexes.">
+              <li>Home
+              </li>
+            </a>
+            <a href="https://github.com/Eli2k765" title="My Github.">
+              <li>Github
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="page-content blog border"><button id="toggle-all-btn">Show All</button>
+          <div class="box">
+            <div class="inner-box-content">
+              <div class="article-wrapper">
+                <h1>Active Directory Enum</h1>
+                <p class="alert">Mostly a powerview
+                cheatsheet</p><strong>Last updated: May 4th, 2023</strong>
+                <article>
+                  <div id="contain">
+                    <h2>Automated</h2>
+                    <h3>Bloodhound</h3>
+                    <div>
+                      <pre><code class=
+                    "language-powershell">Invoke-BloodHound -CollectionMethod All
+Invoke-BloodHound -CollectionMethod All -ExcludeDC</code></pre>
+                    </div>
+                    <h2>Manual</h2>
+                    <h3>Powerview</h3>
+                    <div>
+                      <h4>Domain Enum</h4>
+                      <pre><code class=
+                    "language-powershell">#Current Domain
+Get-Domain | select Name,Parent,Forest,DomainControllers| fl
+Get-DomainSID
+
+#Domain Policy
+(Get-DomainPolicyData).systemaccess
+
+#Domain Controllers
+Get-DomainController | select Name,OSversion,IPAddress | fl</code></pre>
+                      <h4>Trusts</h4>
+                      <pre><code class=
+                    "language-powershell">#Domain Trusts
+Get-DomainTrust | select SourceName.TrustAttributes,TargetName,TrustDirection
+
+#Forest Enum
+#Current Forest
+Get-Forest | select Name,SchemaRoleOwner,RootDomainSid | fl
+
+#Forest Domains
+Get-ForestDomain | select Name,PdcRoleOwner
+
+#Forest Global Catalogue
+Get-ForestGlobalCatalogue | select Name,Domain,IPAddress,OSVersion,Forest
+
+#Forest Trusts
+#Current Trusts
+Get-ForestTrust
+
+#External Forest Trusts
+Get-ForestDomain | %{Get-DomainTrust -Domain $_.Name} | ?{$_.TrustAttributes -eq "FILTER_SIDS"}
+
+#Enum Domain External Trusts
+Get-DomainTrust | ?{$_.TrustAttributes -eq "FILTER_SIDS"}</code></pre>
+                      <h4>Computer Enum</h4>
+                      <pre><code class=
+                    "language-powershell">#Current Domain Computers
+Get-DomainComputer | select name,logoncount,description,operatingsystem
+
+#Server
+Get-DomainComputer -OperatingSystem "*Server*"
+
+#Pingable Computers
+Get-DomainComputer -Ping | select name,logoncount,description,operatingsystem</code></pre>
+                      <h4>LoggedOn Users</h4>
+                      <pre><code class=
+                    "language-powershell">#Current Local Logged on Users
+Get-NetLoggedon | select username
+
+#Current Computer Logged on Users
+Get-NetLoggedon -ComputerName {HOST}
+
+#Last Login for a Domian Computer
+Get-LastLoggedOn -ComputerName {HOST}</code></pre>
+                      <h4>User Enum</h4>
+                      <pre><code class=
+                    "language-powershell">#Current Domain Users
+Get-DomainUser | select name,logoncount,description,memberof,useraccountcontrol
+#User Full Details
+Get-DomainUser -Identify {USER} -Properties *</code></pre>
+                      <h4>Group Enum</h4>
+                      <pre><code class=
+                    "language-powershell">#Domain Groups
+#Current Domain Groups
+Get-DomainGroup | select Name
+
+#Domain Groups Contains "Admin"
+Get-DomainGroup *admin* | select name,Description
+
+#Domain Group members
+Get-DomainGroupMember -Identify "Domain Admins" | select MemberName,MemberObjectCLass,MemberSID
+
+#Local Groups
+#Local Groups for Computer
+Get-NetLocalGroup -ComputerName {HOST}
+
+#Local Group Members
+Get-NetLocalGroupMember -group Administrators
+
+#Other Computer's Group Members
+Get-NetLocalGroupMember -ComputerName {HOST} -GroupName Administrators | select MemberName,IsGroup,IsDomain</code></pre>
+                      <h4>Group Policy</h4>
+                      <pre><code class=
+                    "language-powershell">#Domain GPOs
+Get-DomainGPO | select displayname,name
+
+#Domain GPOs for Computer
+Get-DomainGPO -ComputerIdentity {HOST} | select displayname,name
+
+#Local Group Users GPO
+Get-DomainGPOComputerLocalGroupMapping -ComputerIdentity
+Get-DomainGPOUserLocalGroupMapping -Identity {USER}
+
+#GPO applied on speecific OU
+Get-DomainGPO -Identity "{}"</code></pre>
+                      <h4>Organizational Units (OUs)</h4>
+                      <pre><code class=
+                    "language-powershell">#Current Domain OUs
+Get-DomainOU | select name,gplink
+
+#Computers on Specific OU
+(Get-DomainOU -Identity {OU}).distinguishedname | %{Get-DomainComputer -SearchBase $_} | select name</code></pre>
+                      <h4>Access Controls Lists (ACL)</h4>
+                      <pre><code class=
+                    "language-powershell">#ACLs for Object
+Get-DomainObjectAcl -SamAccountName {USER} -ResolveGUIDs
+
+#ACLS for Prefix or Group
+Get-DomainObjectAcl -SearchBase "LDAP://CN=Domain Admins,CN=Users,DC=example,DC=domain,DC=com" -ResolveGUIDs | select ObjectDN,AceType,ActiveDirectoryRights
+
+#Interesting ACLs
+Find-InterestingDomainAcl -ResolveGUIDs | select IdentityReferenceName,AceType,ActiveDirectoryRights -Unique
+
+#Path's ACL
+Get-PathAcl -Path "\\{HOST}.{full.domain}\sysvol"</code></pre>
+                      <h4>Other</h4>
+                      <pre><code class=
+                    "language-powershell">#Share Enum
+Invoke-ShareFinder
+Invoke-ShareFinder -CheckShareAccess
+
+#Sensitive Files
+Invoke-FileFinder
+
+#Domain File Servers
+Get-NetFileServer
+
+#Local Admin Access
+Find-LocalAdminAccess -Verbose
+Find-WMILocalAdminAccess.ps1
+Find-PSRemotingLocalAdminAccess.ps1</code></pre>
+                      <h4>Kerberoasting</h4>
+                      <pre><code class=
+                    "language-powershell">#Find SPNs
+Get-DomainUser -SPN | select samaccountname,serviceprinciplename
+impacket-GetUserSPNs -request -dc-ip {IP} {full.domain}/{USER}:{PASS}
+rubeus.exe kerberoast /stats
+
+#Check for SPNs
+Get-DomainUser -Identity {USER} | select serviceprinciplename</code></pre>
+                      <h4>Kerberos Delegation</h4>
+                      <pre><code class=
+                    "language-powershell">#Unconstrained
+Get-DomainComputer -Unconstrained | select name,logoncount,msds-allowedtodelegateto | fl
+
+#Constrained
+#User Enum
+Get-DomainUser -TrustedToAuth | select samaccountname,logoncount,msds-allowedtodelegateto | fl
+
+#Computers Enum
+Get-DomainComputer -TrustedToAuth | select name,logoncount,description,operatingsystem,msds-allowedtodelegateto | fl
+
+#Resource-Based
+Find-InterestingDomainACL | ?{$_.identityreferencename -match '{USER}'}</code></pre>
+                      <h4>ASREPRoast</h4>
+                      <pre><code class=
+                    "language-powershell">Get-DomainUser -PreauthNotRequired -Verbose
+impacket-GetNPUsers -request -dc-ip {IP} {full.domain}/{USER}:{PASS}
+
+#ASREPRoast.ps1
+invoke-ASREPRoast -Verbose</code></pre>
+                      <h4>More coming soon.</h4>
+                      <div></div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer border"></div>
+      </div>
+    </div>
+    <script src=
+    "https://eli2k.com/resources/js/themeSwitch.js"></script>
+    <script src=
+    "https://eli2k.com/resources/js/collapseList.js"></script>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © eli2k
+
+//@version=5
+strategy('EMA-CCI-RSI Swing Strategy', overlay=true, calc_on_every_tick=true, currency=currency.USD, default_qty_value=100, default_qty_type=strategy.percent_of_equity, initial_capital=5000)
+
+// === INPUTS ===
+sourceData = input(close, title="Source")
+fastEMALength = input.int(title='Fast EMA Length', defval=1, minval=1, maxval=9999)
+slowEMALength = input.int(title='Slow EMA Length', defval=36, minval=1, maxval=9999)
+cciLength = input.int(title='CCI Length', defval=14, minval=1, maxval=9999)
+cciEntryThreshold = input.int(title='CCI Entry Threshold', defval=45)
+cciExitThreshold = input.int(title='CCI Exit Threshold', defval=106)
+rsiLength = input.int(title='RSI Length', defval=13, minval=1, maxval=9999)
+rsiBearThreshold = input.int(title='RSI Bear Threshold', defval=80)
+rsiBullThreshold = input.int(title='RSI Bull Threshold', defval=33)
+tradeDirection = input.string(title='Trade Direction', options=['Long', 'Short', 'Both'], defval='Both')
+startDate = input.time(title='Start Date', defval=timestamp('01 Jan 2020 00:00'))
+endDate = input.time(title='End Date', defval=timestamp('31 Dec 2170 23:59'))
+optionalEntryAfterExit = input.bool(title='Optional Entry After Exit', defval=true)
+
+// === CALCULATIONS ===
+// EMA (Exponential Moving Average)
+fastEMA = ta.ema(sourceData, fastEMALength)
+slowEMA = ta.ema(sourceData, slowEMALength)
+
+// CCI (Commodity Channel Index)
+ma = ta.sma(sourceData, cciLength)
+cci = (sourceData - ma) / (0.015 * ta.dev(sourceData, cciLength))
+
+// RSI (Relative Strength Index)
+up = ta.rma(math.max(ta.change(sourceData), 0), rsiLength)
+down = ta.rma(-math.min(ta.change(sourceData), 0), rsiLength)
+rsi = down == 0 ? 100 : up == 0 ? 0 : 100 - (100 / (1 + up / down))
+
+// === CONDITIONS ===
+inDateRange = time >= startDate and time < endDate
+longAllowed = tradeDirection == 'Long' or tradeDirection == 'Both'
+shortAllowed = tradeDirection == 'Short' or tradeDirection == 'Both'
+longSignal = ta.crossover(fastEMA, slowEMA) and cci > cciEntryThreshold
+shortSignal = ta.crossunder(fastEMA, slowEMA) and cci < -cciEntryThreshold
+
+// === VARIABLES ===
+var bool longExitCondition = false
+var bool shortExitCondition = false
+var float lastTradeTime = na
+
+// === ORDERS ===
+// Entry Conditions
+if (longSignal or shortSignal) and inDateRange and (na(lastTradeTime))
+    if (longSignal and longAllowed)
+        strategy.entry(id='Long Entry', direction=strategy.long)
+    if (shortSignal and shortAllowed)
+        strategy.entry(id='Short Entry', direction=strategy.short)
+    lastTradeTime := time
+    longExitCondition := false
+    shortExitCondition := false
+
+// Exit Conditions
+if strategy.position_size > 0
+    if (shortSignal or (rsi >= rsiBearThreshold and cci >= cciExitThreshold))
+        strategy.exit(id='Long Exit', stop=close)
+        longExitCondition := true
+
+if strategy.position_size < 0
+    if (longSignal or (rsi <= rsiBullThreshold and cci >= -cciExitThreshold))
+        strategy.exit(id='Short Exit', stop=close)
+        shortExitCondition := true
+
+// Optional Entry After Exit
+if optionalEntryAfterExit
+    if longExitCondition and inDateRange and shortAllowed
+        strategy.entry(id='Short Entry', direction=strategy.short)
+        longExitCondition := false
+
+    if shortExitCondition and inDateRange and longAllowed
+        strategy.entry(id='Long Entry', direction=strategy.long)
+        shortExitCondition := false
+
+// === PLOTTING ===
+fastPlot = plot(series=fastEMA, color=color.purple, linewidth=3)
+slowPlot = plot(series=slowEMA, color=color.red, linewidth=3)
+
+// === FILLING ===
+fillColor = color.new(strategy.position_size > 0 ? color.purple : strategy.position_size < 0 ? color.red : color.black, 65)
+fill(fastPlot, slowPlot, color=fillColor, title="EMA Cloud Fill")
