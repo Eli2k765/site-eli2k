@@ -677,7 +677,6 @@ form.f1::after {
     min-width: 270px;
     margin-right: 40px;
     background: var(--bg-color);
-    padding-left: 200px;
 }
 
 .S ul[role="tree"] {
